@@ -1,0 +1,26 @@
+{
+  "name": "reliefweb-widgets",
+  "version": "0.0.0",
+  "authors": [
+    "Brandon Morrison <brandon@brandonmorrison.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "handlebars": "~2.0.0",
+    "d3": "~3.4.13",
+    "moment": "~2.8.4"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "jasmine": "~2.1.3"
+  }
+}

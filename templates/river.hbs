@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<ul>
+  {{#each items}}
+  <li>
+    <div>
+      <h2>{{this.fields.name}}</h2>
+      {{#each this.fields.country}}
+      <div>{{this.name}}</div>
+      {{/each}}
+      <p>{{dateFormat this.fields.date.created format="YYYY"}}</p>
+      <div>{{this.fields.description}}</div>
+    </div>
+  </li>
+  {{/each}}
+</ul>
