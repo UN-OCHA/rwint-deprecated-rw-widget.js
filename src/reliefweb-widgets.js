@@ -16,76 +16,46 @@
     }
   });
 
+  var _render = function(selector) {
+    var widget = this;
+
+    widget.element = d3.select(selector);
+
+    d3.text(this.opts.templatePath, function(res) {
+      var template = Handlebars.compile(res);
+      var markup = template({title: widget.opts.title});
+      console.log(markup, widget.element);
+      widget.element.html(markup);
+
+      d3.select(selector).append('script').attr({
+        'type': "text/javascript",
+        'src': "../src/widget/heatmap.js"
+      });
+    });
+    console.log(this, selector);
+
+    return widget;
+  };
+
   window.ReliefwebWidgets = {
     widget: function(opts) {
       // Widget method should add template, inject css/js.
 
-      d3.text('../templates/heatmap.hbs', function(res) {
-        var template = Handlebars.compile(res);
-        var markup = template({title: opts.title, items: []});
-        d3.select(opts.selector).html(markup);
-        rw.post('disasters')
-          .limit(0)
-          .send({"facets": [{"field": "date", "interval": "month", "sort": "value"}]})
-          .end(function(err, res) {
-            var data = _.map(res.body.embedded.facets.date.data, function(facet) {
-              var theDate = moment(facet.epoch_ms);
-              return {
-                count: facet.count,
-                label: theDate.format('MMMM YYYY'),
-                year: theDate.format('YYYY') * 1,
-                month: theDate.format('M') * 1
-              }
-            });
 
-            var nestedData = d3.nest()
-              .key(function(d) {return d.year;})
-              .key(function(d) {return d.month;})
-              .entries(data);
 
-            var markup = template({title: opts.title, items: data});
-            d3.select('#widget').html(markup);
+      var baseWidget = new this.baseWidget();
 
-            var blockSize = 8,
-                blockSpacer = 2,
-                extent = [0, d3.max(data, function(d) {return d.count;})],
-                colorRange = d3.scale.pow().exponent(0.8).domain(extent).range(['#FFFFFF', '#8749d8']);
-
-            d3.select('#widget').append('script').attr({
-              'type': "text/javascript",
-              'src': "../src/widget/heatmap.js"
-            });
-
-            // heatmap specific
-            var container = d3.select('.heatmap').append('svg');
-
-            var yearContainers = container.selectAll('.year')
-              .data(nestedData)
-              .enter()
-              .append('g')
-              .attr({
-                'class': function(d, i) {return 'year year-' + d.key;},
-                'transform': function(d, i) {return "translate(" + i * (blockSize + blockSpacer) + ",0)"}
-              });
-
-            var monthContainers = yearContainers.selectAll('.month')
-              .data(function(d) {return d.values;})
-              .enter()
-              .append('rect')
-              .attr({
-                'fill': function(d) { return colorRange(d.values[0].count);},
-                'y': function(d, i) {return d.values[0].month * (blockSize + blockSpacer)},
-                'width': blockSize,
-                'height': blockSize
-              });
-          });
+      return _.assign(baseWidget, {
+        opts: opts,
+        render: _render
       });
     },
     river: function(opts) {
       this.widget(opts);
     },
     heatmap: function(opts) {
-      this.widget(opts);
+      opts.templatePath = '../templates/heatmap.hbs';
+      return this.widget(opts);
     }
   };
 })(window, d3, Handlebars, moment, Reliefweb);

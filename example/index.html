@@ -10,11 +10,14 @@
     <script type="text/javascript" src="../lib/reliefweb/node_modules/superagent/superagent.js"></script>
     <script type="text/javascript" src="../lib/reliefweb/lib/reliefweb.js"></script>
     <script type="text/javascript" src="../src/reliefweb-widgets.js"></script>
+    <script type="text/javascript" src="../src/widget-base.js"></script>
     <script type="text/javascript">
-      ReliefwebWidgets.heatmap({
-        'selector': '#widget',
-        'title': 'Disasters'
-      });
+      setTimeout(function() {
+        var heatmapWidget = ReliefwebWidgets.heatmap({
+          'title': "Disasters"
+        }).render('#widget');
+      }, 100);
+
     </script>
   </head>
   <body>
