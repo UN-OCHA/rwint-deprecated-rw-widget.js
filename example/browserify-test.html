@@ -14,8 +14,12 @@
   <body>
     <div id="widget"></div>
     <script type="text/javascript">
-      var imageWidget = ReliefwebWidgets.image();
-      console.log(imageWidget, imageWidget.template);
+      var imageWidget = ReliefwebWidgets.image({
+        title: "Foobar",
+        template: '../src/components/image/image.hbs'
+      });
+
+      imageWidget.render('#widget');
     </script>
   </body>
 </html>

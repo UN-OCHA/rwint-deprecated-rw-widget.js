@@ -3426,6 +3426,12 @@ widgetBase.prototype.template = function(callback) {
   }
 };
 
+widgetBase.prototype.render = function(element) {
+  this.template(function(content) {
+    d3.select(element).html(content);
+  });
+}
+
 module.exports = widgetBase;
 
 },{"handlebars":17}]},{},[18,19,20,21])
