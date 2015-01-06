@@ -3,30 +3,44 @@
 module.exports = function (grunt) {
   // Load grunt tasks automatically. Manually load grunt-contrib-jasmine, because it
   // doesn't like being loaded this way for some reason.
-  require('load-grunt-tasks')(grunt, {pattern: ['grunt-contrib-*', '!grunt-contrib-jasmine']});
-  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  require('load-grunt-tasks')(grunt, {pattern: ['grunt-contrib-*', 'grunt-mocha-test', 'grunt-watchify']});
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
   grunt.initConfig({
-    jasmine: {
-      default: {
-        src: 'src/*.js',
-        options: {
-          specs: 'spec/*.spec.js',
-          vendor: [
-            'bower_components/d3/d3.js',
-            'bower_components/moment/moment.js',
-            'bower_components/handlebars/handlebars.js',
-            'bower_components/lodash/dist/lodash.js',
-            'lib/reliefweb/node_modules/superagent/superagent.js',
-            'lib/reliefweb/lib/reliefweb.js'
-          ]
-        }
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'Gruntfile.js',
+        'src/**/*.js',
+        '!src/components/heatmap/heatmap.js' // Ignoring until we refactor to use widgets library
+      ]
+    },
+    mochaTest: {
+      dist: {
+        src: ['spec/reliefweb-widgets.spec.js']
+      }
+    },
+    watch: {
+      dist: {
+        files: './dist/reliefweb-widgets.js',
+        tasks: ['jshint:all']
+      },
+      myhint: {
+        files: ['src/*.js'],
+        tasks: ['jshint:all']
+      }
+    },
+    watchify: {
+      dist: {
+        src: './src/**/*.js',
+        dest: './dist/reliefweb-widgets.js'
       }
     }
   });
 
-  grunt.registerTask('default', ['serve']);
+  grunt.registerTask('default', ['watchify:dist', 'watch:dist']);
 };
