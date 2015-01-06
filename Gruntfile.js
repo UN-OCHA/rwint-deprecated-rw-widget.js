@@ -21,7 +21,7 @@ module.exports = function (grunt) {
     },
     mochaTest: {
       dist: {
-        src: ['spec/reliefweb-widgets.spec.js']
+        src: ['spec/*.js']
       }
     },
     watch: {
@@ -42,5 +42,6 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('test', ['mochaTest:dist']);
   grunt.registerTask('default', ['watchify:dist', 'watch:dist']);
 };

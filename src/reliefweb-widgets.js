@@ -4,9 +4,11 @@ var d3 = require('d3'),
     _ = require('lodash'),
     Handlebars = require('Handlebars'),
     moment = require('moment'),
-    Reliefweb = require('reliefweb');
+    reliefweb = require('reliefweb');
 
-var rw = new Reliefweb();
+var ImageWidget = require('./components/image/image');
+
+var rw = reliefweb.client();
 
 //  format an ISO date using Moment.js
 //  http://momentjs.com/
@@ -45,8 +47,6 @@ var _render = function(selector) {
 
 global.ReliefwebWidgets = {
   widget: function(opts) {
-    // Widget method should add template, inject css/js.
-
     var baseWidget = new this.baseWidget();
 
     return _.assign(baseWidget, {
@@ -60,9 +60,12 @@ global.ReliefwebWidgets = {
   heatmap: function(opts) {
     opts.templatePath = '../templates/heatmap.hbs';
     return this.widget(opts);
+  },
+  image: function(opts) {
+    return new ImageWidget(opts);
   }
 };
 
 module.exports = function() {
-  return d3.version;
+  return global.ReliefwebWidgets;
 };
