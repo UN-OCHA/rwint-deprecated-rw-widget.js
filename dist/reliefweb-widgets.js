@@ -3284,12 +3284,18 @@ var WidgetBase = require('../../widget-base');
 var ImageWidget = function(opts) {
   var config = {
     title: "Image Widget",
-    template: 'image.hbs'
+    template: "image.hbs",
+    src: "https://placekitten.com/g/350/150",
+    alt: "Cat",
+    credit: ""
   };
 
   opts = (opts) ? opts : {};
 
+  console.log(config, opts);
+
   config = _.defaults(opts, config);
+  console.log(config);
   WidgetBase.call(this, config);
 };
 
@@ -3297,7 +3303,7 @@ ImageWidget.prototype = new WidgetBase();
 
 module.exports = ImageWidget;
 
-},{"../../widget-base":21}],20:[function(require,module,exports){
+},{"../../widget-base":22}],20:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
@@ -3309,20 +3315,6 @@ var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefin
 var ImageWidget = require('./components/image/image');
 
 var rw = reliefweb.client();
-
-//  format an ISO date using Moment.js
-//  http://momentjs.com/
-//  moment syntax example: moment(Date("2011-07-18T15:50:52")).format("MMMM YYYY")
-//  usage: {{#dateFormat creation_date format="MMMM YYYY"}}
-Handlebars.registerHelper('dateFormat', function(context, block) {
-  if (global.moment) {
-    var f = block.hash.format || "MMM Do, YYYY";
-    var myDate = new Date(context);
-    return moment(myDate).format(f);
-  } else {
-    return context;   //  moment plugin not available. return data as is.
-  }
-});
 
 var _render = function(selector) {
   var widget = this;
@@ -3371,6 +3363,26 @@ module.exports = function() {
 };
 
 },{"./components/image/image":19}],21:[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+
+var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
+    moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
+
+//  format an ISO date using Moment.js
+//  http://momentjs.com/
+//  moment syntax example: moment(Date("2011-07-18T15:50:52")).format("MMMM YYYY")
+//  usage: {{#dateFormat creation_date format="MMMM YYYY"}}
+Handlebars.registerHelper('dateFormat', function(context, block) {
+  if (global.moment) {
+    var f = block.hash.format || "MMM Do, YYYY";
+    var myDate = new Date(context);
+    return moment(myDate).format(f);
+  } else {
+    return context;   //  moment plugin not available. return data as is.
+  }
+});
+
+},{}],22:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
@@ -3430,9 +3442,13 @@ widgetBase.prototype.render = function(element) {
   this.template(function(content) {
     d3.select(element).html(content);
   });
-}
+};
 
 module.exports = widgetBase;
 
-},{"handlebars":17}]},{},[18,19,20,21])
+},{"handlebars":17}],23:[function(require,module,exports){
+"use strict";
+
+
+},{}]},{},[18,19,20,21,22,23])
 ;

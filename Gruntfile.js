@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = function (grunt) {
-  // Load grunt tasks automatically. Manually load grunt-contrib-jasmine, because it
-  // doesn't like being loaded this way for some reason.
+  // Load grunt tasks automatically.
   require('load-grunt-tasks')(grunt, {pattern: ['grunt-contrib-*', 'grunt-mocha-test', 'grunt-watchify']});
 
   // Time how long tasks take. Can help when optimizing build times

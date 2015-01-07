@@ -11,6 +11,12 @@ describe("WidgetBase", function() {
     it("expects WidgetBase.config to be a method", function() {
       assert.equal(typeof widgetbase.config, "function");
     });
+    it("expects WidgetBase.template to be a method", function() {
+      assert.equal(typeof widgetbase.template, "function");
+    });
+    it("expects WidgetBase.render to be a method", function() {
+      assert.equal(typeof widgetbase.render, "function");
+    });
   });
 
   describe(".config()", function() {
