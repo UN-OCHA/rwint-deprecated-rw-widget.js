@@ -18,7 +18,8 @@
     "handlebars": "~2.0.0",
     "d3": "~3.4.13",
     "moment": "~2.8.4",
-    "superagent": "~0.21.0"
+    "superagent": "~0.21.0",
+    "reliefweb.js": "git@github.com:reliefweb/reliefweb.js.git#~0.3.1"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
