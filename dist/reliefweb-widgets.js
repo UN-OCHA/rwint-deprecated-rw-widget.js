@@ -3306,53 +3306,18 @@ module.exports = ImageWidget;
 },{"../../widget-base":22}],20:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
-var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
-    _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
-    Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
-    moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null),
-    reliefweb = (typeof window !== "undefined" ? window.reliefweb : typeof global !== "undefined" ? global.reliefweb : null);
+/**
+ * @file: Exposes various widgets and utilities to the global
+ * context, mostly useful in a browser setting.
+ */
 
+// Utilities
+require('./util/handlebar-extensions');
+
+// Widgets
 var ImageWidget = require('./components/image/image');
 
-var rw = reliefweb.client();
-
-var _render = function(selector) {
-  var widget = this;
-
-  widget.element = d3.select(selector);
-
-  d3.text(this.opts.templatePath, function(res) {
-    var template = Handlebars.compile(res);
-    var markup = template({title: widget.opts.title});
-    console.log(markup, widget.element);
-    widget.element.html(markup);
-
-    d3.select(selector).append('script').attr({
-      'type': "text/javascript",
-      'src': "../src/widget/heatmap.js"
-    });
-  });
-  console.log(this, selector);
-
-  return widget;
-};
-
 global.ReliefwebWidgets = {
-  widget: function(opts) {
-    var baseWidget = new this.baseWidget();
-
-    return _.assign(baseWidget, {
-      opts: opts,
-      render: _render
-    });
-  },
-  river: function(opts) {
-    this.widget(opts);
-  },
-  heatmap: function(opts) {
-    opts.templatePath = '../templates/heatmap.hbs';
-    return this.widget(opts);
-  },
   image: function(opts) {
     return new ImageWidget(opts);
   }
@@ -3362,7 +3327,7 @@ module.exports = function() {
   return global.ReliefwebWidgets;
 };
 
-},{"./components/image/image":19}],21:[function(require,module,exports){
+},{"./components/image/image":19,"./util/handlebar-extensions":21}],21:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
@@ -3446,9 +3411,5 @@ widgetBase.prototype.render = function(element) {
 
 module.exports = widgetBase;
 
-},{"handlebars":17}],23:[function(require,module,exports){
-"use strict";
-
-
-},{}]},{},[18,19,20,21,22,23])
+},{"handlebars":17}]},{},[18,19,20,22,21])
 ;
