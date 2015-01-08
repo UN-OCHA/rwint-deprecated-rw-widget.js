@@ -51,4 +51,17 @@ describe("WidgetBase", function() {
       assert.notDeepEqual(foo.config(), bar.config());
     });
   });
+
+  describe(".template()", function() {
+    var widgetBase;
+
+    beforeEach(function(done) {
+      widgetBase = new WidgetBase();
+      done();
+    });
+
+    it ("expects template called without a template config item defined to throw an error.", function() {
+      assert.throws(function() {widgetBase.template();}, /widget template/);
+    });
+  });
 });

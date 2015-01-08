@@ -14,10 +14,7 @@ var ImageWidget = function(opts) {
 
   opts = (opts) ? opts : {};
 
-  console.log(config, opts);
-
   config = _.defaults(opts, config);
-  console.log(config);
   WidgetBase.call(this, config);
 };
 

@@ -3276,6 +3276,22 @@ if (typeof require !== 'undefined' && require.extensions) {
 })(window, d3, Handlebars, moment, _, Reliefweb);
 
 },{}],19:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['image.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<h1>"
+    + escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"title","hash":{},"data":data}) : helper)))
+    + "</h1>\n<img src=\""
+    + escapeExpression(((helper = (helper = helpers.src || (depth0 != null ? depth0.src : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"src","hash":{},"data":data}) : helper)))
+    + "\" alt=\""
+    + escapeExpression(((helper = (helper = helpers.alt || (depth0 != null ? depth0.alt : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"alt","hash":{},"data":data}) : helper)))
+    + "\" />\n<p class=\"credit\">"
+    + escapeExpression(((helper = (helper = helpers.credit || (depth0 != null ? depth0.credit : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"credit","hash":{},"data":data}) : helper)))
+    + "</p>";
+},"useData":true});
+})();
+},{}],20:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
@@ -3292,10 +3308,7 @@ var ImageWidget = function(opts) {
 
   opts = (opts) ? opts : {};
 
-  console.log(config, opts);
-
   config = _.defaults(opts, config);
-  console.log(config);
   WidgetBase.call(this, config);
 };
 
@@ -3303,7 +3316,7 @@ ImageWidget.prototype = new WidgetBase();
 
 module.exports = ImageWidget;
 
-},{"../../widget-base":22}],20:[function(require,module,exports){
+},{"../../widget-base":23}],21:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 /**
@@ -3327,7 +3340,7 @@ module.exports = function() {
   return global.ReliefwebWidgets;
 };
 
-},{"./components/image/image":19,"./util/handlebar-extensions":21}],21:[function(require,module,exports){
+},{"./components/image/image":20,"./util/handlebar-extensions":22}],22:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
@@ -3347,7 +3360,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
   }
 });
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
@@ -3388,18 +3401,44 @@ widgetBase.prototype.config = function(opts) {
 };
 
 /**
+ * Default templating method. Uses Handlebars (http://handlebarsjs.com/) to render
+ * content. Functionality differs depending on what's being passed in via the
+ * config.template option.
  *
- * @param callback
+ * Note that you probably shouldn't load this directly, but instead rely on the render method.
+ *
+ * If config.template is a method, the template is assumed to be a pre-compiled
+ * Handlebars template (see http://handlebarsjs.com/precompilation.html)
+ *
+ * If config.template is a string, and it starts with a '#', the template is assumed
+ * to be an inline template inside a script tag and loaded from there.
+ *
+ * Otherwise, config.template is assumed to be a url and the template is loaded from
+ * the external file.
+ *
+ * @param callback - A method to call once the Handlebars template method is prepared.
  */
 
 widgetBase.prototype.template = function(callback) {
   var config = this.config();
 
   if (config.template) {
-    d3.text(config.template, function(res) {
-      var template = Handlebars.compile(res);
-      callback(template(config));
-    });
+    if (typeof config.template === "function") {
+      callback(config.template(config));
+    } else {
+      if (config.template.charAt(0) === '#') {
+        var content = d3.select(config.template).html();
+        var template = Handlebars.compile(content);
+        callback(template(config));
+      } else {
+        d3.text(config.template, function(res) {
+          var template = Handlebars.compile(res);
+          callback(template(config));
+        });
+      }
+    }
+  } else {
+    throw new Error("No widget template specified.");
   }
 };
 
@@ -3411,5 +3450,5 @@ widgetBase.prototype.render = function(element) {
 
 module.exports = widgetBase;
 
-},{"handlebars":17}]},{},[18,19,20,22,21])
+},{"handlebars":17}]},{},[18,19,20,21,22,23])
 ;

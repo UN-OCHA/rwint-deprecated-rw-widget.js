@@ -38,18 +38,44 @@ widgetBase.prototype.config = function(opts) {
 };
 
 /**
+ * Default templating method. Uses Handlebars (http://handlebarsjs.com/) to render
+ * content. Functionality differs depending on what's being passed in via the
+ * config.template option.
  *
- * @param callback
+ * Note that you probably shouldn't load this directly, but instead rely on the render method.
+ *
+ * If config.template is a method, the template is assumed to be a pre-compiled
+ * Handlebars template (see http://handlebarsjs.com/precompilation.html)
+ *
+ * If config.template is a string, and it starts with a '#', the template is assumed
+ * to be an inline template inside a script tag and loaded from there.
+ *
+ * Otherwise, config.template is assumed to be a url and the template is loaded from
+ * the external file.
+ *
+ * @param callback - A method to call once the Handlebars template method is prepared.
  */
 
 widgetBase.prototype.template = function(callback) {
   var config = this.config();
 
   if (config.template) {
-    d3.text(config.template, function(res) {
-      var template = Handlebars.compile(res);
-      callback(template(config));
-    });
+    if (typeof config.template === "function") {
+      callback(config.template(config));
+    } else {
+      if (config.template.charAt(0) === '#') {
+        var content = d3.select(config.template).html();
+        var template = Handlebars.compile(content);
+        callback(template(config));
+      } else {
+        d3.text(config.template, function(res) {
+          var template = Handlebars.compile(res);
+          callback(template(config));
+        });
+      }
+    }
+  } else {
+    throw new Error("No widget template specified.");
   }
 };
 
