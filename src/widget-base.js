@@ -4,6 +4,8 @@ var _ = require('lodash'),
     d3 = require('d3'),
     Handlebars = require('handlebars');
 
+var Config = require('./util/config-manager');
+
 /**
  * Constructor.
  * @param opts
@@ -11,7 +13,7 @@ var _ = require('lodash'),
  */
 
 var widgetBase = function(opts) {
-  this._config = {};
+  this._config = Config();
 
   if (opts) {
     this.config(opts);
@@ -26,15 +28,15 @@ var widgetBase = function(opts) {
  *   .config(obj) - Returns this for chaining.
  */
 
-widgetBase.prototype.config = function(opts) {
-  if (opts === undefined) {
-    return _.cloneDeep(this._config);
-  }
-
-  this._config = _.defaults(opts, this._config);
+widgetBase.prototype.config = function() {
+  var _return = this._config.apply(this, arguments);
 
   // chainable
-  return this;
+  return (_return) ? _return : this;
+};
+
+widgetBase.prototype.has = function(key) {
+  return this._config.has(key);
 };
 
 /**

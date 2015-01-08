@@ -3300,7 +3300,7 @@ ImageWidget.prototype = new WidgetBase();
 
 module.exports = ImageWidget;
 
-},{"../../widget-base":22}],20:[function(require,module,exports){
+},{"../../widget-base":23}],20:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 /**
@@ -3324,7 +3324,67 @@ module.exports = function() {
   return global.ReliefwebWidgets;
 };
 
-},{"./components/image/image":19,"./util/handlebar-extensions":21}],21:[function(require,module,exports){
+},{"./components/image/image":19,"./util/handlebar-extensions":22}],21:[function(require,module,exports){
+var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+
+var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+
+var config = function() {
+  var _config = {};
+
+  /**
+   *
+   * @returns {*}
+   */
+  var myConfig = function() {
+    return configMethod.apply(this, arguments);
+  };
+
+  /**
+   *
+   * @returns {*}
+   */
+  myConfig.config = function () {
+    return configMethod.apply(this, arguments);
+  };
+
+  /**
+   *
+   * @returns {*}
+   */
+  function configMethod() {
+    if (arguments.length === 0) {
+      return _.cloneDeep(_config);
+    }
+
+    if (arguments.length === 1) {
+      if (_.isObject(arguments[0])) {
+        _config = _.defaults(arguments[0], _config);
+      } else if (_.isString(arguments[0])) {
+        return _config[arguments[0]];
+      }
+    }
+
+    if (arguments.length === 2) {
+      _config[arguments[0]] = arguments[1];
+    }
+  }
+
+  /**
+   *
+   * @param key
+   * @returns {*|boolean}
+   */
+  myConfig.has = function(key) {
+    return _config.hasOwnProperty(key);
+  };
+
+  return myConfig;
+};
+
+module.exports = config;
+
+},{}],22:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
@@ -3344,12 +3404,14 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
   }
 });
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
     d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
     Handlebars = require('handlebars');
+
+var Config = require('./util/config-manager');
 
 /**
  * Constructor.
@@ -3358,7 +3420,7 @@ var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined
  */
 
 var widgetBase = function(opts) {
-  this._config = {};
+  this._config = Config();
 
   if (opts) {
     this.config(opts);
@@ -3434,5 +3496,5 @@ widgetBase.prototype.render = function(element) {
 
 module.exports = widgetBase;
 
-},{"handlebars":17}]},{},[18,19,20,21,22])
+},{"./util/config-manager":21,"handlebars":17}]},{},[18,19,20,21,22,23])
 ;

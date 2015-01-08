@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     },
     mochaTest: {
       dist: {
-        src: ['spec/*.js']
+        src: ['spec/*.js', 'spec/**/*.js']
       }
     },
     watch: {
