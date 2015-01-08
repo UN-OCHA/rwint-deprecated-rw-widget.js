@@ -2,7 +2,7 @@
 
 var _ = require('lodash'),
     d3 = require('d3'),
-    Handlebars = require('handlebars');
+    Handlebars = require('Handlebars');
 
 var config = require('./util/config-manager');
 
