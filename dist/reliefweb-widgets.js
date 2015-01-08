@@ -1,4 +1,4 @@
-;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/bmorrison/htdocs/reliefweb-widgets/src/components/heatmap/heatmap.js":[function(require,module,exports){
 (function(window, d3, Handlebars, moment, _, Reliefweb) {
   var config = {
     'title': "Timeline"
@@ -110,8 +110,9 @@
   window.HeatmapComponent = HeatmapComponent;
 })(window, d3, Handlebars, moment, _, Reliefweb);
 
-},{}],2:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+},{}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/components/image/image.js":[function(require,module,exports){
+(function (global){
+"use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
 var WidgetBase = require('../../widget-base');
@@ -135,8 +136,10 @@ ImageWidget.prototype = new WidgetBase();
 
 module.exports = ImageWidget;
 
-},{"../../widget-base":6}],3:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../widget-base":"/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js"}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/reliefweb-widgets.js":[function(require,module,exports){
+(function (global){
+"use strict";
 
 /**
  * @file: Exposes various widgets and utilities to the global
@@ -177,8 +180,10 @@ module.exports = function() {
   return global.ReliefwebWidgets;
 };
 
-},{"./components/image/image":2,"./util/config-manager":4,"./util/handlebar-extensions":5,"./widget-base":6}],4:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./components/image/image":"/Users/bmorrison/htdocs/reliefweb-widgets/src/components/image/image.js","./util/config-manager":"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js","./util/handlebar-extensions":"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/handlebar-extensions.js","./widget-base":"/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js"}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js":[function(require,module,exports){
+(function (global){
+"use strict";
 
 /**
  * @file: Configuration object. Allows for getting and setting of various properties.
@@ -261,8 +266,10 @@ var config = function() {
 
 module.exports = config;
 
-},{}],5:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/handlebar-extensions.js":[function(require,module,exports){
+(function (global){
+"use strict";
 
 var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
     moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
@@ -281,8 +288,10 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
   }
 });
 
-},{}],6:[function(require,module,exports){
-var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js":[function(require,module,exports){
+(function (global){
+"use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
     d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
@@ -373,5 +382,5 @@ widgetBase.prototype.render = function(element) {
 
 module.exports = widgetBase;
 
-},{"./util/config-manager":4}]},{},[1,2,3,4,5,6])
-;
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./util/config-manager":"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js"}]},{},["/Users/bmorrison/htdocs/reliefweb-widgets/src/components/heatmap/heatmap.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/components/image/image.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/reliefweb-widgets.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/util/handlebar-extensions.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js"]);

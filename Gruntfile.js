@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
   // Load grunt tasks automatically.
-  require('load-grunt-tasks')(grunt, {pattern: ['grunt-contrib-*', 'grunt-mocha-test', 'grunt-watchify']});
+  require('load-grunt-tasks')(grunt, {pattern: ['grunt-contrib-*', 'grunt-mocha-test', 'grunt-browserify']});
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -25,15 +25,14 @@ module.exports = function (grunt) {
     },
     watch: {
       dist: {
-        files: './dist/reliefweb-widgets.js',
-        tasks: ['jshint:all']
-      },
-      myhint: {
-        files: ['src/*.js'],
-        tasks: ['jshint:all']
+        files: ['src/*.js', 'src/**/*.js'],
+        tasks: ['jshint:all', 'mochaTest:dist', 'browserify:dist']
       }
     },
-    watchify: {
+    browserify: {
+      options: {
+        watch: true
+      },
       dist: {
         src: './src/**/*.js',
         dest: './dist/reliefweb-widgets.js'
@@ -41,6 +40,8 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('default', ['watch:dist']);
   grunt.registerTask('test', ['mochaTest:dist']);
-  grunt.registerTask('default', ['watchify:dist', 'watch:dist']);
+  grunt.registerTask('lint', ['jshint:all']);
+  grunt.registerTask('build', ['browserify:dist']);
 };

@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * @file: Contains the base functionality that we want with all widgets.
+ */
+
 var _ = require('lodash'),
     d3 = require('d3'),
     Handlebars = require('Handlebars');
