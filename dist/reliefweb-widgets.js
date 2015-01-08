@@ -293,6 +293,10 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 (function (global){
 "use strict";
 
+/**
+ * @file: Contains the base functionality that we want with all widgets.
+ */
+
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
     d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
     Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null);
