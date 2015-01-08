@@ -16,6 +16,9 @@ describe("Config Manager", function() {
     it("expects .has() method to exist", function() {
       assert.ok(config.has);
     });
+    it("expects .list() method to exist", function() {
+      assert.ok(config.list);
+    });
   });
 
   describe(".config()", function() {

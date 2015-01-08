@@ -3312,11 +3312,29 @@ var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? 
 require('./util/handlebar-extensions');
 
 // Widgets
+var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
 
+var widgetRegistry = require('./util/config-manager')();
+
+widgetRegistry.config('image', ImageWidget);
+
 global.ReliefwebWidgets = {
-  image: function(opts) {
-    return new ImageWidget(opts);
+  widget: function(name, opts) {
+    var Widget = widgetRegistry.config(name);
+    if (Widget) {
+      return new Widget(opts);
+    }
+    throw new Error("Can't find '" + name + "' widget.");
+  },
+  addWidgetToRegistry: function(name, widget) {
+    widgetRegistry.config(name, widget);
+  },
+  listWidgets: function() {
+    return widgetRegistry.list();
+  },
+  helpers: {
+    widgetBase: widgetBase
   }
 };
 
@@ -3324,8 +3342,12 @@ module.exports = function() {
   return global.ReliefwebWidgets;
 };
 
-},{"./components/image/image":19,"./util/handlebar-extensions":22}],21:[function(require,module,exports){
+},{"./components/image/image":19,"./util/config-manager":21,"./util/handlebar-extensions":22,"./widget-base":23}],21:[function(require,module,exports){
 var global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};"use strict";
+
+/**
+ * @file: Configuration object. Allows for getting and setting of various properties.
+ */
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
 
@@ -3333,24 +3355,34 @@ var config = function() {
   var _config = {};
 
   /**
-   *
-   * @returns {*}
+   * Shortcut method for .config().
+   * @see .config();
    */
   var myConfig = function() {
     return configMethod.apply(this, arguments);
   };
 
   /**
+   * Config get/setter
+   * @param - Accepts 0, 1 or 2 parameters
+   *
+   * .config() - Load config object.
+   * .config(obj) - Sets multiple config options.
+   * .config(string) - Loads a single config item based on key
+   * .config(string, string) - Sets a string
    *
    * @returns {*}
+   *   .config() - Returns object.
+   *   .config(obj) - Returns resulting config object.
+   *   .config(string) - Returns single config object.
+   *   .config(string, string) - Returns resulting config object.
    */
   myConfig.config = function () {
     return configMethod.apply(this, arguments);
   };
 
   /**
-   *
-   * @returns {*}
+   * @see .config().
    */
   function configMethod() {
     if (arguments.length === 0) {
@@ -3360,6 +3392,7 @@ var config = function() {
     if (arguments.length === 1) {
       if (_.isObject(arguments[0])) {
         _config = _.defaults(arguments[0], _config);
+        return _.cloneDeep(_config);
       } else if (_.isString(arguments[0])) {
         return _config[arguments[0]];
       }
@@ -3367,6 +3400,7 @@ var config = function() {
 
     if (arguments.length === 2) {
       _config[arguments[0]] = arguments[1];
+      return _.cloneDeep(_config);
     }
   }
 
@@ -3377,6 +3411,14 @@ var config = function() {
    */
   myConfig.has = function(key) {
     return _config.hasOwnProperty(key);
+  };
+
+  /**
+   *
+   * @returns {*}
+   */
+  myConfig.list = function() {
+    return _.keys(_config);
   };
 
   return myConfig;
@@ -3411,7 +3453,7 @@ var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined
     d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
     Handlebars = require('handlebars');
 
-var Config = require('./util/config-manager');
+var config = require('./util/config-manager');
 
 /**
  * Constructor.
@@ -3420,7 +3462,7 @@ var Config = require('./util/config-manager');
  */
 
 var widgetBase = function(opts) {
-  this._config = Config();
+  this._config = config();
 
   if (opts) {
     this.config(opts);
@@ -3435,15 +3477,15 @@ var widgetBase = function(opts) {
  *   .config(obj) - Returns this for chaining.
  */
 
-widgetBase.prototype.config = function(opts) {
-  if (opts === undefined) {
-    return _.cloneDeep(this._config);
-  }
-
-  this._config = _.defaults(opts, this._config);
+widgetBase.prototype.config = function() {
+  var _return = this._config.apply(this, arguments);
 
   // chainable
-  return this;
+  return (_return) ? _return : this;
+};
+
+widgetBase.prototype.has = function(key) {
+  return this._config.has(key);
 };
 
 /**

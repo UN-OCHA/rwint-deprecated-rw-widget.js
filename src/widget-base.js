@@ -4,7 +4,7 @@ var _ = require('lodash'),
     d3 = require('d3'),
     Handlebars = require('handlebars');
 
-var Config = require('./util/config-manager');
+var config = require('./util/config-manager');
 
 /**
  * Constructor.
@@ -13,7 +13,7 @@ var Config = require('./util/config-manager');
  */
 
 var widgetBase = function(opts) {
-  this._config = Config();
+  this._config = config();
 
   if (opts) {
     this.config(opts);

@@ -37,8 +37,6 @@ var config = function() {
   };
 
   /**
-   *
-   *
    * @see .config().
    */
   function configMethod() {
@@ -68,6 +66,14 @@ var config = function() {
    */
   myConfig.has = function(key) {
     return _config.hasOwnProperty(key);
+  };
+
+  /**
+   *
+   * @returns {*}
+   */
+  myConfig.list = function() {
+    return _.keys(_config);
   };
 
   return myConfig;
