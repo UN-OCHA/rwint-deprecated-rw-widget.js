@@ -1,68 +1,40 @@
 "use strict";
 
-var d3 = require('d3'),
-    _ = require('lodash'),
-    Handlebars = require('Handlebars'),
-    moment = require('moment'),
-    Reliefweb = require('reliefweb');
+/**
+ * @file: Exposes various widgets and utilities to the global
+ * context, mostly useful in a browser setting.
+ */
 
-var rw = new Reliefweb();
+// Utilities
+require('./util/handlebar-extensions');
 
-//  format an ISO date using Moment.js
-//  http://momentjs.com/
-//  moment syntax example: moment(Date("2011-07-18T15:50:52")).format("MMMM YYYY")
-//  usage: {{#dateFormat creation_date format="MMMM YYYY"}}
-Handlebars.registerHelper('dateFormat', function(context, block) {
-  if (global.moment) {
-    var f = block.hash.format || "MMM Do, YYYY";
-    var myDate = new Date(context);
-    return moment(myDate).format(f);
-  } else {
-    return context;   //  moment plugin not available. return data as is.
-  }
-});
+// Widgets
+var widgetBase = require('./widget-base');
+var ImageWidget = require('./components/image/image');
 
-var _render = function(selector) {
-  var widget = this;
+var widgetRegistry = require('./util/config-manager')();
 
-  widget.element = d3.select(selector);
-
-  d3.text(this.opts.templatePath, function(res) {
-    var template = Handlebars.compile(res);
-    var markup = template({title: widget.opts.title});
-    console.log(markup, widget.element);
-    widget.element.html(markup);
-
-    d3.select(selector).append('script').attr({
-      'type': "text/javascript",
-      'src': "../src/widget/heatmap.js"
-    });
-  });
-  console.log(this, selector);
-
-  return widget;
-};
+widgetRegistry.config('image', ImageWidget);
 
 global.ReliefwebWidgets = {
-  widget: function(opts) {
-    // Widget method should add template, inject css/js.
-
-    var baseWidget = new this.baseWidget();
-
-    return _.assign(baseWidget, {
-      opts: opts,
-      render: _render
-    });
+  widget: function(name, opts) {
+    var Widget = widgetRegistry.config(name);
+    if (Widget) {
+      return new Widget(opts);
+    }
+    throw new Error("Can't find '" + name + "' widget.");
   },
-  river: function(opts) {
-    this.widget(opts);
+  addWidgetToRegistry: function(name, widget) {
+    widgetRegistry.config(name, widget);
   },
-  heatmap: function(opts) {
-    opts.templatePath = '../templates/heatmap.hbs';
-    return this.widget(opts);
+  listWidgets: function() {
+    return widgetRegistry.list();
+  },
+  helpers: {
+    widgetBase: widgetBase
   }
 };
 
 module.exports = function() {
-  return d3.version;
+  return global.ReliefwebWidgets;
 };

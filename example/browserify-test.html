@@ -8,13 +8,25 @@
     <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
     <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
     <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
-    <script type="text/javascript" src="../lib/reliefweb/lib/reliefweb.js"></script>
+    <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
     <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
+    <!-- Image widget assets -->
+    <link rel="stylesheet" href="../src/components/image/image.css" />
+    <script id="image-template" type="text/x-handlebars-template">
+      <h1>Title: {{title}}</h1>
+      <img src="{{src}}" alt="{{alt}}" />
+      <p class="credit">{{credit}}</p>
+    </script>
   </head>
   <body>
     <div id="widget"></div>
     <script type="text/javascript">
-      console.log(ReliefwebWidgets);
+      var imageWidget = ReliefwebWidgets.widget('image', {
+        template: "#image-template",
+        credit: "Photo by Placekitten"
+      });
+
+      imageWidget.render('#widget');
     </script>
   </body>
 </html>
