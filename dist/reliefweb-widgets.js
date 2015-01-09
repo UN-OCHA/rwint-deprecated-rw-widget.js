@@ -1,4 +1,32 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function (global){
+"use strict";
+
+var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var WidgetBase = require('../../widget-base');
+
+var CrisisOverviewWidget = function(opts) {
+  var config = {
+    title: "Crisis Overview",
+    template: "crisis-overview.hbs",
+    map: {
+      src: "",
+      alt: ""
+    }
+  };
+
+  opts = (opts) ? opts : {};
+
+  config = _.defaults(opts, config);
+  WidgetBase.call(this, config);
+};
+
+CrisisOverviewWidget.prototype = new WidgetBase();
+
+module.exports = CrisisOverviewWidget;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../widget-base":7}],2:[function(require,module,exports){
 (function(window, d3, Handlebars, moment, _, Reliefweb) {
   var config = {
     'title': "Timeline"
@@ -110,7 +138,7 @@
   window.HeatmapComponent = HeatmapComponent;
 })(window, d3, Handlebars, moment, _, Reliefweb);
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -137,7 +165,7 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":6}],3:[function(require,module,exports){
+},{"../../widget-base":7}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -152,10 +180,12 @@ require('./util/handlebar-extensions');
 // Widgets
 var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
+var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
 
 var widgetRegistry = require('./util/config-manager')();
 
 widgetRegistry.config('image', ImageWidget);
+widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 
 global.ReliefwebWidgets = {
   widget: function(name, opts) {
@@ -181,7 +211,7 @@ module.exports = function() {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/image/image":2,"./util/config-manager":4,"./util/handlebar-extensions":5,"./widget-base":6}],4:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":7}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -267,7 +297,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -289,7 +319,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -387,4 +417,4 @@ widgetBase.prototype.render = function(element) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":4}]},{},[1,2,3,4,5,6]);
+},{"./util/config-manager":5}]},{},[1,2,3,4,5,6,7]);

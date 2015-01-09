@@ -11,10 +11,12 @@ require('./util/handlebar-extensions');
 // Widgets
 var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
+var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
 
 var widgetRegistry = require('./util/config-manager')();
 
 widgetRegistry.config('image', ImageWidget);
+widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 
 global.ReliefwebWidgets = {
   widget: function(name, opts) {
