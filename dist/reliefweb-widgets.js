@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/Users/bmorrison/htdocs/reliefweb-widgets/src/components/heatmap/heatmap.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function(window, d3, Handlebars, moment, _, Reliefweb) {
   var config = {
     'title': "Timeline"
@@ -110,7 +110,7 @@
   window.HeatmapComponent = HeatmapComponent;
 })(window, d3, Handlebars, moment, _, Reliefweb);
 
-},{}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/components/image/image.js":[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -137,7 +137,7 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":"/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js"}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/reliefweb-widgets.js":[function(require,module,exports){
+},{"../../widget-base":6}],3:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -181,7 +181,7 @@ module.exports = function() {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/image/image":"/Users/bmorrison/htdocs/reliefweb-widgets/src/components/image/image.js","./util/config-manager":"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js","./util/handlebar-extensions":"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/handlebar-extensions.js","./widget-base":"/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js"}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js":[function(require,module,exports){
+},{"./components/image/image":2,"./util/config-manager":4,"./util/handlebar-extensions":5,"./widget-base":6}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -267,7 +267,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/handlebar-extensions.js":[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -289,7 +289,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js":[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -387,4 +387,4 @@ widgetBase.prototype.render = function(element) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":"/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js"}]},{},["/Users/bmorrison/htdocs/reliefweb-widgets/src/components/heatmap/heatmap.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/components/image/image.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/reliefweb-widgets.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/util/config-manager.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/util/handlebar-extensions.js","/Users/bmorrison/htdocs/reliefweb-widgets/src/widget-base.js"]);
+},{"./util/config-manager":4}]},{},[1,2,3,4,5,6]);

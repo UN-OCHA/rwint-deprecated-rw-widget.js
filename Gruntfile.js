@@ -30,9 +30,7 @@ module.exports = function (grunt) {
       }
     },
     browserify: {
-      options: {
-        watch: true
-      },
+      options: {},
       dist: {
         src: './src/**/*.js',
         dest: './dist/reliefweb-widgets.js'
