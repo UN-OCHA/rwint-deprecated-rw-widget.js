@@ -18,7 +18,7 @@ var widgetRegistry = require('./util/config-manager')();
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 
-global.ReliefwebWidgets = {
+module.exports = {
   widget: function(name, opts) {
     var Widget = widgetRegistry.config(name);
     if (Widget) {
@@ -35,8 +35,4 @@ global.ReliefwebWidgets = {
   helpers: {
     widgetBase: widgetBase
   }
-};
-
-module.exports = function() {
-  return global.ReliefwebWidgets;
 };

@@ -166,7 +166,6 @@ module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../../widget-base":7}],4:[function(require,module,exports){
-(function (global){
 "use strict";
 
 /**
@@ -187,7 +186,7 @@ var widgetRegistry = require('./util/config-manager')();
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 
-global.ReliefwebWidgets = {
+module.exports = {
   widget: function(name, opts) {
     var Widget = widgetRegistry.config(name);
     if (Widget) {
@@ -206,11 +205,6 @@ global.ReliefwebWidgets = {
   }
 };
 
-module.exports = function() {
-  return global.ReliefwebWidgets;
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./components/crisis-overview/crisis-overview":1,"./components/image/image":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":7}],5:[function(require,module,exports){
 (function (global){
 "use strict";
