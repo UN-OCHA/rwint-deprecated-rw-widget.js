@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.ReliefwebWidgets=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -26,119 +26,7 @@ CrisisOverviewWidget.prototype = new WidgetBase();
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],2:[function(require,module,exports){
-(function(window, d3, Handlebars, moment, _, Reliefweb) {
-  var config = {
-    'title': "Timeline"
-  };
-
-  var HeatmapComponent = function(options) {
-
-    if (options) {
-      this.config(options);
-    }
-
-  };
-
-  HeatmapComponent.prototype.parameters = function() {
-    return [{
-      'title': {
-        'default': 'Timeline',
-        type: 'text'
-      }
-    }];
-  };
-
-  HeatmapComponent.prototype.dependencies = function() {
-    return {
-      'external': {
-        'd3': '~3.3'
-      }
-    };
-  };
-
-  HeatmapComponent.prototype.config = function(newConfig) {
-    if (newConfig === undefined) {
-      return _.cloneDeep(config);
-    }
-
-    config = _.defaults(newConfig, config);
-
-    // chainable
-    return this;
-  };
-
-  HeatmapComponent.prototype.template = function(callback) {
-    d3.text('../src/components/heatmap/heatmap.hbs', function(res) {
-      var template = Handlebars.compile(res);
-      callback(template(config));
-    });
-  };
-
-  HeatmapComponent.prototype.render = function(element) {
-    this.template(function(content) {
-      d3.select(element).html(content);
-
-      var rw = new Reliefweb();
-
-      rw.post('reports')
-            .limit(0)
-            .send({"facets": [{"field": "date", "interval": "month", "sort": "value"}]})
-            .end(function(err, res) {
-              var data = _.map(res.body.embedded.facets.date.data, function(facet) {
-                var theDate = moment(facet.epoch_ms);
-                return {
-                  count: facet.count,
-                  label: theDate.format('MMMM YYYY'),
-                  year: theDate.format('YYYY') * 1,
-                  month: theDate.format('M') * 1
-                }
-              });
-
-          var nestedData = d3.nest()
-            .key(function(d) {return d.year;})
-            .key(function(d) {return d.month;})
-            .entries(data);
-
-          var blockSize = 8,
-            blockSpacer = 2,
-            extent = [0, d3.max(data, function(d) {return d.count;})],
-            colorRange = d3.scale.linear().domain(extent).range(['#FFFFFF', '#8749d8']);
-
-          // heatmap specific
-          var container = d3.select('.heatmap').append('svg').style('width', '100%');
-
-          var yearContainers = container.selectAll('.year')
-            .data(nestedData)
-            .enter()
-            .append('g')
-            .attr({
-              'class': function(d, i) {return 'year year-' + d.key;},
-              'transform': function(d, i) {return "translate(" + i * (blockSize + blockSpacer) + ",0)"}
-            });
-
-          var monthContainers = yearContainers.selectAll('.month')
-            .data(function(d) {return d.values;})
-            .enter()
-            .append('rect')
-            .attr({
-              'fill': function(d) { return colorRange(d.values[0].count);},
-              'stroke': '#EEE',
-              'y': function(d, i) {return d.values[0].month * (blockSize + blockSpacer)},
-              'width': blockSize,
-              'height': blockSize
-            });
-        });
-    });
-
-
-    return this;
-  };
-
-  window.HeatmapComponent = HeatmapComponent;
-})(window, d3, Handlebars, moment, _, Reliefweb);
-
-},{}],3:[function(require,module,exports){
+},{"../../widget-base":6}],2:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -165,8 +53,7 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],4:[function(require,module,exports){
-(function (global){
+},{"../../widget-base":6}],3:[function(require,module,exports){
 "use strict";
 
 /**
@@ -187,7 +74,7 @@ var widgetRegistry = require('./util/config-manager')();
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 
-global.ReliefwebWidgets = {
+module.exports = {
   widget: function(name, opts) {
     var Widget = widgetRegistry.config(name);
     if (Widget) {
@@ -206,12 +93,7 @@ global.ReliefwebWidgets = {
   }
 };
 
-module.exports = function() {
-  return global.ReliefwebWidgets;
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":7}],5:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./util/config-manager":4,"./util/handlebar-extensions":5,"./widget-base":6}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -297,7 +179,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -319,7 +201,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -417,4 +299,5 @@ widgetBase.prototype.render = function(element) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":5}]},{},[1,2,3,4,5,6,7]);
+},{"./util/config-manager":4}]},{},[3])(3)
+});
