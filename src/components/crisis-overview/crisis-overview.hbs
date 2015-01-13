@@ -1,3 +1,54 @@
-<div class="map">
-  <img src="{{map.src}}" alt="{{map.alt}}" />
+<div class="overview-widget">
+  <h1 class="overview-widget--title"><span><i class="un-icon-crisis_conflict"></i><span class="word1">Crisis</span> <span class="word2">Overview</span></span></h1>
+  <div class="overview-widget--map">
+    <img src="../../images/overview-map.jpg" alt="Overview map of Syria / Iraq Crisis" />
+  </div>
+  <div class="overview-widget--description">
+    <div class="accordion-set">
+      <input type="checkbox" id="syria" class="accordion-set--check" checked="checked"/>
+      <label for="syria" class="accordion-set--label"><h2>Syria</h2></label>
+      <div class="accordion-set--content" data-eq-pts="cols2: 500">
+        <p>The <b>Syrian Civil War</b>, also known as the <b>Syrian Revolution</b>, is an ongoing armed conflict taking place in Syria. The unrest began in the early spring of 2011 within the context of <a href="/wiki/Arab_Spring" title="Arab Spring">Arab Spring</a> protests, with nationwide protests against President Bashar al-Assad's government, whose forces responded with violent crackdowns. The conflict gradually morphed from popular protests to an armed rebellion after months of military sieges.</p>
+        <p>The armed opposition consists of various groups that were formed during the course of the conflict, primarily the Free Syrian Army, which was the first to take up arms in 2011, and the <a href="/wiki/Islamic_Front_(Syria)" title="Islamic Front (Syria)">Islamic Front</a> formed in 2013. In 2013, Hezbollah entered the war in support of the Syrian army. In the east, the <a href="/wiki/Islamic_State_of_Iraq_and_the_Levant" title="Islamic State of Iraq and the Levant">Islamic State of Iraq and the Levant</a> (ISIL), a jihadist militant group originating from Iraq, made very rapid military gains in both Syria and Iraq, eventually conflicting with the other rebels. In July 2014, ISIL controlled a third of Syria's territory and most of its oil and gas production, thus establishing itself as the major opposition force.</p>
+      </div>
+      <input type="checkbox" id="iraq" class="accordion-set--check"/>
+      <label for="iraq" class="accordion-set--label"><h2>Iraq</h2></label>
+      <div class="accordion-set--content" data-eq-pts="cols2: 500">
+        <p>{{excerpt.long}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="overview-widget--tabs tab-set">
+    <input type="radio" name="tab" id="tab-1" class="tab-set--tab" checked="checked"/>
+    <label for="tab-1">Iraq</label>
+    <input type="radio" name="tab" id="tab-2" class="tab-set--tab" />
+    <label for="tab-2">Syria</label>
+    <div class="tab-set--content">
+      <div id="tab-body-1" class="tab-set--body">
+        <h2>Iraq</h2>
+        <i class="un-icon-crisis_population_displacement"></i>
+        <div class="refugees">
+          <h3><span class="figure">3</span> Million</h3>
+          <p>Refugees</p>
+        </div>
+        <div class="idp">
+          <h3><span class="figure">6.25</span> Million</h3>
+          <p>Internally Displaced</p>
+        </div>
+      </div>
+      <div id="tab-body-2" class="tab-set--body">
+        <h2>Syria</h2>
+        <i class="un-icon-crisis_population_displacement"></i>
+        <div class="refugees">
+          <h3><span class="figure">4</span> Million</h3>
+          <p>Refugees</p>
+        </div>
+        <div class="idp">
+          <h3><span class="figure">7.5</span> Million</h3>
+          <p>Internally Displaced</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="overview-widget--sources">Data Source <cite><a href="">UNHCR</a></cite></footer>
 </div>
