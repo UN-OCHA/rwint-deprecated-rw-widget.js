@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Using a Component Directly</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+    <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
+    <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="../lib/reliefweb/node_modules/superagent/superagent.js"></script>
+    <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
+    <script type="text/javascript" src="../src/components/heatmap/heatmap.js"></script>
+  </head>
+  <body>
+    <div id="widget"></div>
+    <script type="text/javascript">
+      var component = new HeatmapComponent({
+        'title': "Overridden title",
+        'content': 'report'
+      });
+      component.render('#widget');
+    </script>
+  </body>
+</html>
