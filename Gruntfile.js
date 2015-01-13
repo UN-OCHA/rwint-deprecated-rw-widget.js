@@ -35,11 +35,38 @@ module.exports = function (grunt) {
         src: './src/**/*.js',
         dest: './dist/reliefweb-widgets.js'
       }
-    }
+    },
+    connect: {
+      server: {
+        options: {
+          base: 'example',
+          port: 9000,
+          open: true,
+          keepalive: true
+        }
+      }
+    },
+    copy: {
+      base: {
+        files: [
+          {
+            expand: true,
+            src: 'dist/*',
+            dest: 'example'
+          },
+          {
+            expand: true,
+            src: 'bower_components/**',
+            dest: 'example'
+          }
+        ]
+      }
+    },
   });
 
   grunt.registerTask('default', ['watch:dist']);
   grunt.registerTask('test', ['mochaTest:dist']);
   grunt.registerTask('lint', ['jshint:all']);
   grunt.registerTask('build', ['browserify:dist']);
+  grunt.registerTask('serve', ['copy:base', 'connect:server']);
 };

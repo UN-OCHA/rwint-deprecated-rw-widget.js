@@ -87,7 +87,10 @@ widgetBase.prototype.template = function(callback) {
 
 widgetBase.prototype.render = function(element) {
   this.template(function(content) {
-    d3.select(element).html(content);
+    d3.select(element)
+      .classed('rw-widget', true)
+      .classed('rw-widget-image', true)
+      .html(content);
   });
 };
 
