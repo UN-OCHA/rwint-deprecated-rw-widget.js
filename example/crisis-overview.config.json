@@ -1,0 +1,42 @@
+{
+  "title": "Crisis Overview",
+  "dataSource": "Data Source <cite><a href=\"\">UNHCR</a></cite>",
+  "content": {
+    "syria": {
+      "title": "Syria",
+      "content": "<p>The <b>Syrian Civil War</b>, also known as the <b>Syrian Revolution</b>, is an ongoing armed conflict taking place in Syria. The unrest began in the early spring of 2011 within the context of <a href=\"/wiki/Arab_Spring\" title=\"Arab Spring\">Arab Spring</a> protests, with nationwide protests against President Bashar al-Assad's government, whose forces responded with violent crackdowns. The conflict gradually morphed from popular protests to an armed rebellion after months of military sieges.</p><p>The armed opposition consists of various groups that were formed during the course of the conflict, primarily the Free Syrian Army, which was the first to take up arms in 2011, and the <a href=\"/wiki/Islamic_Front_(Syria)\" title=\"Islamic Front (Syria)\">Islamic Front</a> formed in 2013. In 2013, Hezbollah entered the war in support of the Syrian army. In the east, the <a href=\"/wiki/Islamic_State_of_Iraq_and_the_Levant\" title=\"Islamic State of Iraq and the Levant\">Islamic State of Iraq and the Levant</a> (ISIL), a jihadist militant group originating from Iraq, made very rapid military gains in both Syria and Iraq, eventually conflicting with the other rebels. In July 2014, ISIL controlled a third of Syria's territory and most of its oil and gas production, thus establishing itself as the major opposition force.</p>",
+      "indicator": {
+        "data": [
+          {
+            "figure": "4",
+            "quantifier": "million",
+            "description": "Refugees"
+          },
+          {
+            "figure": "7.5",
+            "quantifier": "million",
+            "description": "Internally Displaced"
+          }
+        ]
+      }
+    },
+    "iraq": {
+      "title": "Iraq",
+      "content": "This is being rendered via the widget API. Awesome!",
+      "indicator": {
+        "data": [
+          {
+            "figure": "4",
+            "quantifier": "million",
+            "description": "Refugees"
+          },
+          {
+            "figure": "7.5",
+            "quantifier": "million",
+            "description": "Internally Displaced"
+          }
+        ]
+      }
+    }
+  }
+}

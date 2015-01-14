@@ -3,6 +3,7 @@
 "use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
 var WidgetBase = require('../../widget-base');
 
 var CrisisOverviewWidget = function(opts) {
@@ -25,14 +26,26 @@ CrisisOverviewWidget.prototype = new WidgetBase();
 
 CrisisOverviewWidget.prototype.render = function(element) {
   var config = this.config();
-  this.config('adjustedTitle', titleAdjust(config.title));
+  var that = this;
+  if (config.configFile) {
+    d3.json(config.configFile, function(e, res) {
+      for (var key in res) {
+        that.config(key, res[key]);
+      }
 
-  this.template(function(content) {
-    d3.select(element)
-      .classed('rw-widget', true)
-      .classed('rw-widget-image', true)
-      .html(content);
-  });
+      config = that.config();
+      that.config('adjustedTitle', titleAdjust(config.title));
+
+      that.template(function(content) {
+        d3.select(element)
+          .classed('rw-widget', true)
+          .classed('rw-widget-image', true)
+          .html(content);
+      });
+    });
+  } else {
+
+  }
 };
 
 function titleAdjust(title) {

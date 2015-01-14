@@ -20,17 +20,13 @@
         </div>
         <div class="overview-widget--description">
           <div class="accordion-set">
-            <input type="checkbox" id="syria" class="accordion-set--check" checked="checked"/>
-            <label for="syria" class="accordion-set--label"><h2>Syria</h2></label>
+            {{#each content}}
+            <input type="checkbox" id="{{@key}}" class="accordion-set--check" checked="checked"/>
+            <label for="{{@key}}" class="accordion-set--label"><h2>{{this.title}}</h2></label>
             <div class="accordion-set--content" data-eq-pts="cols2: 500">
-              <p>The <b>Syrian Civil War</b>, also known as the <b>Syrian Revolution</b>, is an ongoing armed conflict taking place in Syria. The unrest began in the early spring of 2011 within the context of <a href="/wiki/Arab_Spring" title="Arab Spring">Arab Spring</a> protests, with nationwide protests against President Bashar al-Assad's government, whose forces responded with violent crackdowns. The conflict gradually morphed from popular protests to an armed rebellion after months of military sieges.</p>
-              <p>The armed opposition consists of various groups that were formed during the course of the conflict, primarily the Free Syrian Army, which was the first to take up arms in 2011, and the <a href="/wiki/Islamic_Front_(Syria)" title="Islamic Front (Syria)">Islamic Front</a> formed in 2013. In 2013, Hezbollah entered the war in support of the Syrian army. In the east, the <a href="/wiki/Islamic_State_of_Iraq_and_the_Levant" title="Islamic State of Iraq and the Levant">Islamic State of Iraq and the Levant</a> (ISIL), a jihadist militant group originating from Iraq, made very rapid military gains in both Syria and Iraq, eventually conflicting with the other rebels. In July 2014, ISIL controlled a third of Syria's territory and most of its oil and gas production, thus establishing itself as the major opposition force.</p>
+              {{{this.content}}}
             </div>
-            <input type="checkbox" id="iraq" class="accordion-set--check"/>
-            <label for="iraq" class="accordion-set--label"><h2>Iraq</h2></label>
-            <div class="accordion-set--content" data-eq-pts="cols2: 500">
-              <p>{{excerpt.long}}</p>
-            </div>
+            {{/each}}
           </div>
         </div>
         <div class="overview-widget--tabs tab-set">
@@ -74,6 +70,7 @@
     <script type="text/javascript">
       var widget = ReliefwebWidgets.widget('crisis-overview', {
         template: '#crisis-overview-template',
+        configFile: "crisis-overview.config.json",
         map: {
           src: "http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Soho_-_map_1.png/1024px-Soho_-_map_1.png"
         },
