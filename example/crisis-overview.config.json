@@ -1,10 +1,14 @@
 {
   "title": "Crisis Overview",
   "dataSource": "Data Source <cite><a href=\"\">UNHCR</a></cite>",
+  "map": {
+    "src": "img/overview-map.jpg",
+    "alt": "Syria/Iraq"
+  },
   "content": {
     "syria": {
       "title": "Syria",
-      "content": "<p>The <b>Syrian Civil War</b>, also known as the <b>Syrian Revolution</b>, is an ongoing armed conflict taking place in Syria. The unrest began in the early spring of 2011 within the context of <a href=\"/wiki/Arab_Spring\" title=\"Arab Spring\">Arab Spring</a> protests, with nationwide protests against President Bashar al-Assad's government, whose forces responded with violent crackdowns. The conflict gradually morphed from popular protests to an armed rebellion after months of military sieges.</p><p>The armed opposition consists of various groups that were formed during the course of the conflict, primarily the Free Syrian Army, which was the first to take up arms in 2011, and the <a href=\"/wiki/Islamic_Front_(Syria)\" title=\"Islamic Front (Syria)\">Islamic Front</a> formed in 2013. In 2013, Hezbollah entered the war in support of the Syrian army. In the east, the <a href=\"/wiki/Islamic_State_of_Iraq_and_the_Levant\" title=\"Islamic State of Iraq and the Levant\">Islamic State of Iraq and the Levant</a> (ISIL), a jihadist militant group originating from Iraq, made very rapid military gains in both Syria and Iraq, eventually conflicting with the other rebels. In July 2014, ISIL controlled a third of Syria's territory and most of its oil and gas production, thus establishing itself as the major opposition force.</p>",
+      "content": "<p>The conflict in Syria is now in its fourth year and the humanitarian situation continues to worsen. There were major changes in conflict dynamics over 2014, both in terms of warring factions’ control over territory and in terms of the fault lines of the conflict.</p><p>The conflict has killed over 195,000 people and caused large-scale displacement. More people are in camps than last year, and more non-displaced are in need of humanitarian assistance. The country has also experienced severe drought, impacting the availability of safe water and the health status of the population, as well as reducing agricultural output and local food production. Protection concerns are widespread. WASH and access to food are high priorities as well as access to health services. Humanitarian needs in areas under prolonged and ongoing siege are particularly high as access to food, basic services, and livelihoods is obstructed.</p>",
       "indicator": {
         "data": [
           {
@@ -22,16 +26,16 @@
     },
     "iraq": {
       "title": "Iraq",
-      "content": "This is being rendered via the widget API. Awesome!",
+      "content": "<p>The Islamic State insurgency has compounded an already fragile political situation, leading to a level 3 humanitarian crisis and international military intervention. In 2014, four massive waves of internal displacement have taken place: Anbar in January, Mosul in June, Sinjar in August and Hit in October. Priority humanitarian needs are food, water, shelter, and fuel. Protection and the risk of disease outbreak are also concerns. Iraq now hosts one of the largest internally displaced populations in the world. Host communities are increasingly stretched.</p>",
       "indicator": {
         "data": [
           {
-            "figure": "4",
+            "figure": "3",
             "quantifier": "million",
             "description": "Refugees"
           },
           {
-            "figure": "7.5",
+            "figure": "6.25",
             "quantifier": "million",
             "description": "Internally Displaced"
           }

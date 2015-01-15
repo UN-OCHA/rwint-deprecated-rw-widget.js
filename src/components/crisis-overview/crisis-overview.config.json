@@ -1,6 +1,10 @@
 {
   "title": "Crisis Overview",
   "dataSource": "Data Source <cite><a href=\"\">UNHCR</a></cite>",
+  "map": {
+    "src": "img/overview-map.jpg",
+    "alt": "Syria/Iraq"
+  },
   "content": {
     "syria": {
       "title": "Syria",
@@ -22,7 +26,7 @@
     },
     "iraq": {
       "title": "Iraq",
-      "content": "This is being rendered via the widget API. Awesome!",
+      "content": "<p>The Islamic State insurgency has compounded an already fragile political situation, leading to a level 3 humanitarian crisis and international military intervention. In 2014, four massive waves of internal displacement have taken place: Anbar in January, Mosul in June, Sinjar in August and Hit in October. Priority humanitarian needs are food, water, shelter, and fuel. Protection and the risk of disease outbreak are also concerns. Iraq now hosts one of the largest internally displaced populations in the world. Host communities are increasingly stretched.</p>",
       "indicator": {
         "data": [
           {

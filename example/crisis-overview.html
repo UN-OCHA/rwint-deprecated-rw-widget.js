@@ -7,6 +7,7 @@
     <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
     <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
     <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="../bower_components/eq.js/build/eq.js"></script>
     <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
     <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
     <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
@@ -21,7 +22,7 @@
         <div class="overview-widget--description">
           <div class="accordion-set">
             {{#each content}}
-            <input type="checkbox" id="{{@key}}" class="accordion-set--check" checked="checked"/>
+            <input type="checkbox" id="{{@key}}" class="accordion-set--check"{{#if @index}}{{else}} checked="checked"{{/if}}>
             <label for="{{@key}}" class="accordion-set--label"><h2>{{this.title}}</h2></label>
             <div class="accordion-set--content" data-eq-pts="cols2: 500">
               {{{this.content}}}
@@ -30,53 +31,36 @@
           </div>
         </div>
         <div class="overview-widget--tabs tab-set">
-          <input type="radio" name="tab" id="tab-1" class="tab-set--tab" checked="checked"/>
-          <label for="tab-1">Iraq</label>
-          <input type="radio" name="tab" id="tab-2" class="tab-set--tab" />
-          <label for="tab-2">Syria</label>
+          {{#each content}}
+          <input type="radio" name="tab" id="tab-{{@index}}" class="tab-set--tab"{{#if @index}}{{else}} checked="checked"{{/if}}/>
+          <label for="tab-{{@index}}">{{this.title}}</label>
+          {{/each}}
           <div class="tab-set--content">
-            <div id="tab-body-1" class="tab-set--body">
-              <h2>Iraq</h2>
+            {{#each content}}
+            <div id="tab-body-{{@index}}" class="tab-set--body">
+              <h2>{{this.title}}</h2>
               <i class="un-icon-crisis_population_displacement"></i>
+              {{#each this.indicator.data}}
               <div class="refugees">
-                <h3><span class="figure">3</span> Million</h3>
-                <p>Refugees</p>
+                <h3><span class="figure">{{this.figure}}</span> {{this.quantifier}}</h3>
+                <p>{{this.description}}</p>
               </div>
-              <div class="idp">
-                <h3><span class="figure">6.25</span> Million</h3>
-                <p>Internally Displaced</p>
-              </div>
+              {{/each}}
             </div>
-            <div id="tab-body-2" class="tab-set--body">
-              <h2>Syria</h2>
-              <i class="un-icon-crisis_population_displacement"></i>
-              <div class="refugees">
-                <h3><span class="figure">4</span> Million</h3>
-                <p>Refugees</p>
-              </div>
-              <div class="idp">
-                <h3><span class="figure">7.5</span> Million</h3>
-                <p>Internally Displaced</p>
-              </div>
-            </div>
+            {{/each}}
           </div>
         </div>
-        <footer class="overview-widget--sources">Data Source <cite><a href="">UNHCR</a></cite></footer>
+        <footer class="overview-widget--sources">{{{dataSource}}}</footer>
       </div>
     </script>
   </head>
   <body>
     <div id="widget" class="widget"></div>
+
     <script type="text/javascript">
       var widget = ReliefwebWidgets.widget('crisis-overview', {
         template: '#crisis-overview-template',
-        configFile: "crisis-overview.config.json",
-        map: {
-          src: "http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Soho_-_map_1.png/1024px-Soho_-_map_1.png"
-        },
-        excerpt: {
-          long: "This is being rendered via the widget library. Isn't that neat?"
-        }
+        configFile: "crisis-overview.config.json"
       });
       widget.render('#widget');
     </script>
