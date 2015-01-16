@@ -61,7 +61,7 @@ function titleAdjust(title) {
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":6}],2:[function(require,module,exports){
+},{"../../widget-base":7}],2:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -88,7 +88,40 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":6}],3:[function(require,module,exports){
+},{"../../widget-base":7}],3:[function(require,module,exports){
+(function (global){
+"use strict";
+
+var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
+var WidgetBase = require('../../widget-base');
+
+var TimelineWidget = function(opts) {
+  var config = {
+    title: "Crisis Overview",
+    template: "crisis-overview.hbs"
+  };
+
+  opts = (opts) ? opts : {};
+
+  config = _.defaults(opts, config);
+  WidgetBase.call(this, config);
+};
+
+TimelineWidget.prototype = new WidgetBase();
+
+TimelineWidget.prototype.render = function(element) {
+  this.template(function(content) {
+    d3.select(element)
+      .classed('rw-widget', true)
+      .html(content);
+  });
+};
+
+module.exports = TimelineWidget;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../widget-base":7}],4:[function(require,module,exports){
 "use strict";
 
 /**
@@ -103,11 +136,13 @@ require('./util/handlebar-extensions');
 var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
+var TimelineWidget = require('./components/timeline/timeline');
 
 var widgetRegistry = require('./util/config-manager')();
 
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
+widgetRegistry.config('timeline', TimelineWidget);
 
 module.exports = {
   widget: function(name, opts) {
@@ -128,7 +163,7 @@ module.exports = {
   }
 };
 
-},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./util/config-manager":4,"./util/handlebar-extensions":5,"./widget-base":6}],4:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./components/timeline/timeline":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":7}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -214,7 +249,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -236,7 +271,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -337,5 +372,5 @@ widgetBase.prototype.render = function(element) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":4}]},{},[3])(3)
+},{"./util/config-manager":5}]},{},[4])(4)
 });
