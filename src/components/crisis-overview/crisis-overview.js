@@ -22,7 +22,7 @@ var CrisisOverviewWidget = function(opts) {
 
 CrisisOverviewWidget.prototype = new WidgetBase();
 
-CrisisOverviewWidget.prototype.render = function(element) {
+CrisisOverviewWidget.prototype.compile = function(elements) {
   var config = this.config();
   var that = this;
   if (config.configFile) {
@@ -30,19 +30,22 @@ CrisisOverviewWidget.prototype.render = function(element) {
       for (var key in res) {
         that.config(key, res[key]);
       }
-
-      config = that.config();
-      that.config('adjustedTitle', titleAdjust(config.title));
-
-      that.template(function(content) {
-        d3.select(element)
-          .classed('rw-widget', true)
-          .classed('rw-widget-image', true)
-          .html(content);
-      });
+      _compile(elements);
     });
   } else {
+    _compile(elements);
+  }
 
+  function _compile(el) {
+    var config = that.config();
+    that.config('adjustedTitle', titleAdjust(config.title));
+
+    that.template(function(content) {
+      el
+        .classed('rw-widget', true)
+        .classed('rw-widget-image', true)
+        .html(content);
+    });
   }
 };
 
