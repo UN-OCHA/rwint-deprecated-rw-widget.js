@@ -7,27 +7,65 @@
     <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
     <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
     <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="../bower_components/eq.js/build/eq.js"></script>
     <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
     <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
     <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
     <!-- widget assets -->
+    <link rel="stylesheet" href="css/styles.css" />
     <script id="crisis-overview-template" type="text/x-handlebars-template">
-      <h1>{{title}}</h1>
-      <div class="map">
-        <img src="{{map.src}}" alt="{{map.alt}}" />
+      <div class="overview-widget">
+        <h1 class="overview-widget--title"><span><i class="un-icon-crisis_conflict"></i>{{{adjustedTitle}}}</span></h1>
+        <div class="overview-widget--map">
+          <img src="{{map.src}}" alt="{{map.alt}}" />
+        </div>
+        <div class="overview-widget--description">
+          <div class="accordion-set">
+            {{#each content}}
+            <input type="checkbox" id="{{@key}}" class="accordion-set--check"{{#if @index}}{{else}} checked="checked"{{/if}}>
+            <label for="{{@key}}" class="accordion-set--label"><h2>{{this.title}}</h2></label>
+            <div class="accordion-set--content" data-eq-pts="cols2: 500">
+              {{{this.content}}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        <div class="overview-widget--tabs tab-set">
+          {{#each content}}
+          <input type="radio" name="tab" id="tab-{{@index}}" class="tab-set--tab"{{#if @index}}{{else}} checked="checked"{{/if}}/>
+          <label for="tab-{{@index}}">{{this.title}}</label>
+          {{/each}}
+          <div class="tab-set--content">
+            {{#each content}}
+            <div id="tab-body-{{@index}}" class="tab-set--body">
+              <h2>{{this.title}}</h2>
+              <i class="un-icon-crisis_population_displacement"></i>
+              {{#each this.indicator.data}}
+              <div class="refugees">
+                <h3><span class="figure">{{this.figure}}</span> {{this.quantifier}}</h3>
+                <p>{{this.description}}</p>
+              </div>
+              {{/each}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+        <footer class="overview-widget--sources">{{{dataSource}}}</footer>
       </div>
     </script>
   </head>
   <body>
     <div id="widget" class="widget"></div>
+
     <script type="text/javascript">
       var widget = ReliefwebWidgets.widget('crisis-overview', {
         template: '#crisis-overview-template',
-        map: {
-          src: "http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Soho_-_map_1.png/1024px-Soho_-_map_1.png"
-        }
+        configFile: "crisis-overview.config.json"
       });
       widget.render('#widget');
     </script>
+    <!-- Typekit -->
+    <script src="//use.typekit.net/pqs1mrp.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
   </body>
 </html>

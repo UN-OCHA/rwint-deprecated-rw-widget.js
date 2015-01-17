@@ -26,7 +26,7 @@ module.exports = function (grunt) {
     watch: {
       dist: {
         files: ['src/*.js', 'src/**/*.js'],
-        tasks: ['jshint:all', 'mochaTest:dist', 'browserify:dist']
+        tasks: ['jshint:all', 'mochaTest:dist', 'browserify:dist', 'copy:base']
       }
     },
     browserify: {
@@ -45,8 +45,7 @@ module.exports = function (grunt) {
         options: {
           base: 'example',
           port: 9000,
-          open: true,
-          keepalive: true
+          open: true
         }
       }
     },
@@ -68,7 +67,7 @@ module.exports = function (grunt) {
     },
   });
 
-  grunt.registerTask('default', ['watch:dist']);
+  grunt.registerTask('default', ['connect:server', 'watch:dist']);
   grunt.registerTask('test', ['mochaTest:dist']);
   grunt.registerTask('lint', ['jshint:all']);
   grunt.registerTask('build', ['browserify:dist']);
