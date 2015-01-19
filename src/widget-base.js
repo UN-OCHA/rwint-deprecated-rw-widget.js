@@ -9,6 +9,7 @@ var _ = require('lodash'),
     Handlebars = require('Handlebars');
 
 var config = require('./util/config-manager');
+var junkDrawer = require('./util/junk-drawer');
 
 /**
  * Constructor.
@@ -42,6 +43,52 @@ widgetBase.prototype.config = function() {
 widgetBase.prototype.has = function(key) {
   return this._config.has(key);
 };
+
+/**
+ * Main render method. This should be the primary method that devs use
+ * to trigger a component render.
+ *
+ * @param selector (string) - See https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors
+ * for valid css selectors.
+ *
+ * @return - Nothing
+ */
+
+widgetBase.prototype.render = function(selector) {
+  var elements = d3.selectAll(selector);
+  this.compile(elements);
+
+  if (!junkDrawer.isNode()) {
+    this.link(elements);
+  }
+};
+
+/**
+ * Renders the markup of a widget. Should only be used to set the initial state
+ * of a widget. See .link() for ways to add interactivity to component.
+ *
+ * As a convention, this code should be runnable both server-side and in the browser.
+ * Only override if you need to adjust how the markup is being processed.
+ *
+ * @param elements - D3 object with pre-selected elements.
+ */
+
+widgetBase.prototype.compile = function(elements) {
+  this.template(function(content) {
+    elements
+      .classed('rw-widget', true)
+      .html(content);
+  });
+};
+
+/**
+ * Provides a way to adjust a component after initial rendering. This method should be
+ * overridden whenever a component needs to provide interactivity.
+ *
+ * @param elements - D3 object with pre-selected elements.
+ */
+
+widgetBase.prototype.link = function(elements) {};
 
 /**
  * Default templating method. Uses Handlebars (http://handlebarsjs.com/) to render
@@ -83,15 +130,6 @@ widgetBase.prototype.template = function(callback) {
   } else {
     throw new Error("No widget template specified.");
   }
-};
-
-widgetBase.prototype.render = function(element) {
-  this.template(function(content) {
-    d3.select(element)
-      .classed('rw-widget', true)
-      .classed('rw-widget-image', true)
-      .html(content);
-  });
 };
 
 module.exports = widgetBase;

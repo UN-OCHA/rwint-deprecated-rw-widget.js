@@ -41,11 +41,19 @@ module.exports = function (grunt) {
       }
     },
     connect: {
-      server: {
+      watch: {
         options: {
           base: 'example',
           port: 9000,
           open: true
+        }
+      },
+      standalone: {
+        options: {
+          base: 'example',
+          port: 9000,
+          open: true,
+          keepalive: true
         }
       }
     },
@@ -67,9 +75,9 @@ module.exports = function (grunt) {
     },
   });
 
-  grunt.registerTask('default', ['connect:server', 'watch:dist']);
+  grunt.registerTask('default', ['connect:watch', 'watch:dist']);
   grunt.registerTask('test', ['mochaTest:dist']);
   grunt.registerTask('lint', ['jshint:all']);
   grunt.registerTask('build', ['browserify:dist']);
-  grunt.registerTask('serve', ['copy:base', 'connect:server']);
+  grunt.registerTask('serve', ['copy:base', 'connect:standalone']);
 };
