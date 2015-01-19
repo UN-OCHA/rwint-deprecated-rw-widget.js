@@ -24,7 +24,7 @@ var CrisisOverviewWidget = function(opts) {
 
 CrisisOverviewWidget.prototype = new WidgetBase();
 
-CrisisOverviewWidget.prototype.render = function(element) {
+CrisisOverviewWidget.prototype.compile = function(elements) {
   var config = this.config();
   var that = this;
   if (config.configFile) {
@@ -32,19 +32,22 @@ CrisisOverviewWidget.prototype.render = function(element) {
       for (var key in res) {
         that.config(key, res[key]);
       }
-
-      config = that.config();
-      that.config('adjustedTitle', titleAdjust(config.title));
-
-      that.template(function(content) {
-        d3.select(element)
-          .classed('rw-widget', true)
-          .classed('rw-widget-image', true)
-          .html(content);
-      });
+      _compile(elements);
     });
   } else {
+    _compile(elements);
+  }
 
+  function _compile(el) {
+    var config = that.config();
+    that.config('adjustedTitle', titleAdjust(config.title));
+
+    that.template(function(content) {
+      el
+        .classed('rw-widget', true)
+        .classed('rw-widget-image', true)
+        .html(content);
+    });
   }
 };
 
@@ -61,7 +64,7 @@ function titleAdjust(title) {
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],2:[function(require,module,exports){
+},{"../../widget-base":8}],2:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -88,7 +91,7 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],3:[function(require,module,exports){
+},{"../../widget-base":8}],3:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -121,7 +124,7 @@ TimelineWidget.prototype.render = function(element) {
 module.exports = TimelineWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],4:[function(require,module,exports){
+},{"../../widget-base":8}],4:[function(require,module,exports){
 "use strict";
 
 /**
@@ -163,7 +166,7 @@ module.exports = {
   }
 };
 
-},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./components/timeline/timeline":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":7}],5:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./components/timeline/timeline":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":8}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -272,6 +275,22 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],7:[function(require,module,exports){
+/**
+ * @file
+ *
+ * Utility functions/methods that don't fit anywhere else.
+ */
+
+
+var isNode = function() {
+  return window === undefined;
+};
+
+module.exports = {
+  isNode: isNode
+};
+
+},{}],8:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -284,6 +303,7 @@ var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined
     Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null);
 
 var config = require('./util/config-manager');
+var junkDrawer = require('./util/junk-drawer');
 
 /**
  * Constructor.
@@ -317,6 +337,52 @@ widgetBase.prototype.config = function() {
 widgetBase.prototype.has = function(key) {
   return this._config.has(key);
 };
+
+/**
+ * Main render method. This should be the primary method that devs use
+ * to trigger a component render.
+ *
+ * @param selector (string) - See https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors
+ * for valid css selectors.
+ *
+ * @return - Nothing
+ */
+
+widgetBase.prototype.render = function(selector) {
+  var elements = d3.selectAll(selector);
+  this.compile(elements);
+
+  if (!junkDrawer.isNode()) {
+    this.link(elements);
+  }
+};
+
+/**
+ * Renders the markup of a widget. Should only be used to set the initial state
+ * of a widget. See .link() for ways to add interactivity to component.
+ *
+ * As a convention, this code should be runnable both server-side and in the browser.
+ * Only override if you need to adjust how the markup is being processed.
+ *
+ * @param elements - D3 object with pre-selected elements.
+ */
+
+widgetBase.prototype.compile = function(elements) {
+  this.template(function(content) {
+    elements
+      .classed('rw-widget', true)
+      .html(content);
+  });
+};
+
+/**
+ * Provides a way to adjust a component after initial rendering. This method should be
+ * overridden whenever a component needs to provide interactivity.
+ *
+ * @param elements - D3 object with pre-selected elements.
+ */
+
+widgetBase.prototype.link = function(elements) {};
 
 /**
  * Default templating method. Uses Handlebars (http://handlebarsjs.com/) to render
@@ -360,17 +426,8 @@ widgetBase.prototype.template = function(callback) {
   }
 };
 
-widgetBase.prototype.render = function(element) {
-  this.template(function(content) {
-    d3.select(element)
-      .classed('rw-widget', true)
-      .classed('rw-widget-image', true)
-      .html(content);
-  });
-};
-
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":5}]},{},[4])(4)
+},{"./util/config-manager":5,"./util/junk-drawer":7}]},{},[4])(4)
 });
