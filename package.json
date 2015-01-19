@@ -24,6 +24,7 @@
   "scripts": {
     "build": "grunt --verbose"
   },
+  "main": "src/reliefweb-widgets.js",
   "dependencies": {
     "d3": "^3.5.3",
     "handlebars": "^2.0.0",
