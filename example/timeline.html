@@ -4,6 +4,9 @@
     <title>Timeline</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
+    <script type="text/javascript" src="../bower_components/sly/dist/sly.js"></script>
     <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
     <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
     <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
@@ -28,20 +31,11 @@
             <div class="timeline-widget--dropdown--wrapper">
               <div class="timeline-widget--dropdown-controls">
                 <div class="form-select">
-                  <select name="" id="">
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
+                  <select name="year">
                   </select>
                 </div>
                 <div class="form-select">
-                  <select name="" id="">
-                    <option value="dec">December</option>
-                    <option value="dec">January</option>
-                    <option value="dec">February</option>
-                    <option value="dec">March</option>
-                    <option value="dec">April</option>
-                  </select>
+                  <select name="month"></select>
                 </div>
                 <span class="close"></span>
               </div>
@@ -50,7 +44,7 @@
                   {{#timeline-items}}
                   <li>
                     <div class="timeline-widget--dot"></div>
-                    <div class="timeline-widget-dropdown--item" data-slide="{{ index }}">
+                    <div class="timeline-widget-dropdown--item" data-slide="{{ @index }}">
                       {{ short-desc }}
                     </div>
                   </li>
@@ -97,7 +91,7 @@
             <ul class="">
               {{#timeline-items}}
               <li>
-                <div class="timeline-widget-pager--item" data-slide="{{ index }}">
+                <div class="timeline-widget-pager--item" data-slide="{{ @index }}">
                   <div class="timeline-widget--dot"></div>
                   <div class="timeline-widget-pager--item-content">
                     {{ short-desc }}
@@ -122,10 +116,76 @@
     <script type="text/javascript">
       var widget = ReliefwebWidgets.widget('timeline', {
         template: '#timeline-template',
-        title: "TITLE",
-        foo: ['foo', 'bar', 'baz']
+        "timeline-items":[
+          {
+            "title": "Spate of attacks terrorize civilains in Iraq — HRW",
+            "date-full": "12 December 2014",
+            "date-month": "December",
+            "country": "Iraq",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Spate of attacks terrorize civilains in Iraq — HRW"
+          },
+          {
+            "title": "Lorem ipsum dolor sit amet, condimentum tempor elit tincidun",
+            "date-full": "12 January 2015",
+            "date-month": "December",
+            "country": "Iran",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Lorem ipsum dolor sit amet, condimentum tempor elit tincidun"
+          },
+          {
+            "title": "Magna laoreet justo eget laoreet, quis magna sagittis amet risus",
+            "date-full": "12 February 2015",
+            "date-month": "December",
+            "country": "Iraq",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Magna laoreet justo eget laoreet, quis magna sagittis amet risus"
+          },
+          {
+            "title": "Vel habitasse, justo lectus luctus eget nec sollicitudin, massa",
+            "date-full": "10 March 2015",
+            "date-month": "December",
+            "country": "Iran",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Vel habitasse, justo lectus luctus eget nec sollicitudin, massa"
+          },
+          {
+            "title": "Urna id pretium neque eget faucibus in, mattis nam phasellus",
+            "date-full": "30 April 2015",
+            "date-month": "December",
+            "country": "Iraq",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Urna id pretium neque eget faucibus in, mattis nam phasellus"
+          },
+          {
+            "title": "Quisque mauris dui curabitur sed morbi, a hymenaeos nec",
+            "date-full": "17 May 2015",
+            "date-month": "December",
+            "country": "Iran",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Quisque mauris dui curabitur sed morbi, a hymenaeos nec"
+          },
+          {
+            "title": "Ipsum magnis tortor nullam tincidunt luctus, ipsum nullam",
+            "date-full": "12 June 2015",
+            "date-month": "December",
+            "country": "Iraq",
+            "img-source": "../../images/timeline-img.png",
+            "long-desc": "<p>The <a>United Nations top official</a> for Iraq today urged continuance of, and support to, the new unity Government’s efforts to push forward reconciliation and security efforts that he said were beginning to succeed in countering the brutal onslaught of terrorist forces.</p>",
+            "short-desc": "Ipsum magnis tortor nullam tincidunt luctus, ipsum nullam"
+          }
+        ]
       });
       widget.render('#widget');
     </script>
+    <!-- Typekit -->
+    <script src="//use.typekit.net/pqs1mrp.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
   </body>
 </html>

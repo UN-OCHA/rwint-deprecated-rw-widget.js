@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * Here's where the magic happens.
  * All styles that are imported here will be compiled into css/style.css
@@ -460,9 +459,6 @@ table {
  * sprites-sprite-width(some_icon)
  */
 /* ==========================================================================
-   Global Variables - Type-sizes
-   ========================================================================== */
-/* ==========================================================================
    Global Variables - Typography
    ========================================================================== */
 /* Font names
@@ -519,178 +515,84 @@ table {
  */
 /* Mixin - Set Link Defaults
    ========================================================================== */
-/*
- * @params
- *  $extend - Toggle if contained in a media query.
- *            true || false. Default: $links-defaults-extend (true).
- *
- * Usage:
- * @include set-link-defaults();
- *
- * @media (min-width: 720px) {
- *   @include set-link-defaults($extend: false);
- * }
- */
 /* Mixin - Set Link Colors
    ========================================================================== */
-/*
- * @params
- *  $link-normal - CSS color. Default: $link-normal-default ($cs-link-normal).
- *  $link-hover - CSS color. Default: $link-hover-default ($cs-link-hover).
- *  $link-active - CSS color. Default: $link-active-default ($cs-link-active).
- *  $link-visited - CSS color. Default: $link-visited-default ($cs-link-visited).
- *  $link-focus - CSS color. Default: $link-focus-default ($cs-link-focus).
- *  $extend - Toggle if contained in a media query.
- *            true || false. Default: $links-extend (true).
- *
- * Usage:
- * @include set-link-colors();
- *
- * @media (min-width: 720px) {
- *   @include set-link-colors($extend: false);
- * }
- */
 /* Mixin - Set Underline Links
    ========================================================================== */
-/*
- * @params
- *  $link-underline-normal - CSS color. Default: $link-underline-normal-default ($cs-link-underline-normal).
- *  $link-underline-hover - CSS color. Default: $link-underline-hover-default ($cs-link-underline-hover).
- *  $link-underline-active - CSS color. Default: $link-underline-active-default ($cs-link-underline-active).
- *  $link-underline-visited - CSS color. Default: $link-underline-visited-default ($cs-link-underline-visited).
- *  $link-underline-focus - CSS color. Default: $link-underline-focus-default ($cs-link-underline-focus).
- *  $link-underline-size - CSS color. Default: $link-background-size-default (1px).
- *  $extend - Toggle if contained in a media query.
- *            true || false. Default: $set-background-links-default (true).
- *
- * Usage:
- * @include set-underline-links();
- *
- * @media (min-width: 720px) {
- *   @include set-underline-links($extend: false);
- * }
- */
 /* Mixin - Unset Underline Links
    ========================================================================== */
-/*
- * @params
- *  $extend - Toggle if contained in a media query.
- *            true || false. Default: $unset-underline-links-extend (true).
- *
- * Usage:
- * @include unset-underline-links();
- *
- * @media (min-width: 720px) {
- *   @include unset-underline-links($extend: false);
- * }
- */
-/* Extendables - Link Element Extendables
-   ========================================================================== */
-/*
- * Use this standalone extendable to set link defaults
- * when inside a media query.
- *
- * Usage:
- * @extend %link-defaults-extend;
- */
-/* line 56, ../scss/global/mixins/_link.scss */
+/* line 228, ../scss/global/mixins/_link.scss */
+a {
+  color: #6c9acd;
+  text-shadow: white -1px 1px 0, white 0 1px 0, white 1px 1px 0;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiM2YzlhY2QiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(50%, #6c9acd), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(bottom, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: -webkit-linear-gradient(bottom, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: linear-gradient(to top, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  text-decoration: none;
+  background-position: 100% 97%;
+  background-repeat-y: no-repeat;
+  background-size: 50% 1px;
+}
+/* line 43, ../scss/global/mixins/_link.scss */
 a:focus {
   outline: none;
 }
-
-/*
- * Use this standalone extendable to set link colors
- * when inside a media query.
- *
- * Usage:
- * @extend %link-colors-extend;
- */
-/* line 209, ../scss/global/mixins/_link.scss */
-a, .social-link--facebook:before, .social-link--twitter:before, .social-link--instagram:before {
-  color: #6c9acd;
-}
 /* line 18, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
-a:visited, .social-link--facebook:visited:before, .social-link--twitter:visited:before, .social-link--instagram:visited:before {
+a:visited {
   color: #6c9acd;
 }
 /* line 21, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
-a:focus, .social-link--facebook:focus:before, .social-link--twitter:focus:before, .social-link--instagram:focus:before {
+a:focus {
   color: #375573;
 }
 /* line 24, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
-a:hover, .social-link--facebook:hover:before, .social-link--twitter:hover:before, .social-link--instagram:hover:before {
+a:hover {
   color: #375573;
 }
 /* line 27, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
-a:active, .social-link--facebook:active:before, .social-link--twitter:active:before, .social-link--instagram:active:before {
+a:active {
   color: #6c9acd;
 }
-
-/*
- * Use this standalone extendable to set link underlines
- * when inside a media query.
- *
- * Usage:
- * @extend %link-underline-extend;
- */
-/* line 221, ../scss/global/mixins/_link.scss */
-a {
-  text-decoration: none;
-  border-bottom: 1px solid #6c9acd;
-}
-/* line 134, ../scss/global/mixins/_link.scss */
+/* line 113, ../scss/global/mixins/_link.scss */
 a:visited {
-  border-bottom-color: #6c9acd;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiM2YzlhY2QiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(50%, #6c9acd), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(bottom, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: -webkit-linear-gradient(bottom, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: linear-gradient(to top, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
 }
-/* line 137, ../scss/global/mixins/_link.scss */
+/* line 116, ../scss/global/mixins/_link.scss */
 a:focus {
-  border-bottom-color: #375573;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMzNzU1NzMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(50%, #375573), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(bottom, #375573 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: -webkit-linear-gradient(bottom, #375573 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: linear-gradient(to top, #375573 1px, rgba(0, 0, 0, 0) 2px);
 }
-/* line 140, ../scss/global/mixins/_link.scss */
+/* line 119, ../scss/global/mixins/_link.scss */
 a:hover {
-  border-bottom-color: #375573;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMzNzU1NzMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(50%, #375573), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(bottom, #375573 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: -webkit-linear-gradient(bottom, #375573 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: linear-gradient(to top, #375573 1px, rgba(0, 0, 0, 0) 2px);
 }
-/* line 143, ../scss/global/mixins/_link.scss */
+/* line 122, ../scss/global/mixins/_link.scss */
 a:active {
-  border-bottom-color: #6c9acd;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiM2YzlhY2QiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(50%, #6c9acd), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -moz-linear-gradient(bottom, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: -webkit-linear-gradient(bottom, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
+  background-image: linear-gradient(to top, #6c9acd 1px, rgba(0, 0, 0, 0) 2px);
 }
 
-/*
- * Use this standalone extendable to unset link underlines
- * when inside a media query.
- *
- * Usage:
- * @extend %link-unset-underline-extend;
- */
-/* line 233, ../scss/global/mixins/_link.scss */
-.link-plain, [class*="icon--"], .social-link--facebook:before, .social-link--twitter:before, .social-link--instagram:before, .btn, .btn--light, .social-link:before {
-  text-decoration: none;
-  border-bottom: none;
-}
-/* line 171, ../scss/global/mixins/_link.scss */
-.link-plain:visited, [class*="icon--"]:visited, .social-link--facebook:visited:before, .social-link--twitter:visited:before, .social-link--instagram:visited:before, .btn:visited, .btn--light:visited, .social-link:visited:before {
-  border-bottom: none;
-}
-/* line 174, ../scss/global/mixins/_link.scss */
-.link-plain:focus, [class*="icon--"]:focus, .social-link--facebook:focus:before, .social-link--twitter:focus:before, .social-link--instagram:focus:before, .btn:focus, .btn--light:focus, .social-link:focus:before {
-  border-bottom: none;
-}
-/* line 177, ../scss/global/mixins/_link.scss */
-.link-plain:hover, [class*="icon--"]:hover, .social-link--facebook:hover:before, .social-link--twitter:hover:before, .social-link--instagram:hover:before, .btn:hover, .btn--light:hover, .social-link:hover:before {
-  border-bottom: none;
-}
-/* line 180, ../scss/global/mixins/_link.scss */
-.link-plain:active, [class*="icon--"]:active, .social-link--facebook:active:before, .social-link--twitter:active:before, .social-link--instagram:active:before, .btn:active, .btn--light:active, .social-link:active:before {
-  border-bottom: none;
-}
-
-/*
- * Use this inclusive extendable to set all link properties
- * when outside of a media query.
- *
- * Usage:
- * @extend %links-extend;
- */
 /* ==========================================================================
    Global Mixins - Typography
    ========================================================================== */
@@ -708,46 +610,6 @@ a:active {
  *  $px
  *  $root-px
  */
-/* ==========================================================================
-   Global Extends - Flexbox
-   ========================================================================== */
-/* Mixin - Flex Column
-   ========================================================================== */
-/*
- * @params
- *  $height
- *  $extend
- */
-/* Mixin - Flex Row
-   ========================================================================== */
-/*
- * @params
- *  $height
- *  $extend
- */
-/* Mixin - Flex Item
-   ========================================================================== */
-/*
- * @params
- *  $flex
- *  $extend
- */
-/* Mixin - No Flexbox / Reset
-   ========================================================================== */
-/* Extendable - Flex Column
-   ========================================================================== */
-/* Extendable - Flex Row
-   ========================================================================== */
-/* Extendable - Flex Column Auto
-   ========================================================================== */
-/* Extendable - Flex Auto
-   ========================================================================== */
-/* Extendable - Flex One
-   ========================================================================== */
-/* Extendable - Flex None
-   ========================================================================== */
-/* Extendable - No Flexbox / Reset
-   ========================================================================== */
 /* ==========================================================================
    Global Extends - Helpers
    ========================================================================== */
@@ -820,8 +682,6 @@ a:active {
   clear: both;
 }
 
-/* link with no style
-   ========================================================================== */
 /* ==========================================================================
    Global Extends - Typography
    ========================================================================== */
@@ -830,173 +690,6 @@ a:active {
  */
 /* Body Text
    ========================================================================== */
-/* Mixin - Font Icon Base
-   ========================================================================== */
-/*
-* Common styles used by all icons in HTML and CSS
-*/
-/* line 28, ../scss/global/icons/_icons-mixins.scss */
-[class*="icon--"], .social-link--facebook:before, .social-link--twitter:before, .social-link--instagram:before {
-  font-family: "icons";
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
-  font-weight: normal;
-  font-style: normal;
-  speak: none;
-  text-decoration: inherit;
-  text-transform: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Mixin - Font Icon Replace
-   ========================================================================== */
-/*
-* Replace text with a font icon
-*/
-/* Mixin - Icon
-   ========================================================================== */
-/*
-* @params
-*  $icon
-*  $pseudo
-*  $mq
-*  $text-replace
-*  $size
-*  $color
-*/
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--down:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--left-medium:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--left:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--right-medium:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--right:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--up-medium:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--arrow--up:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--bars:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--caret-down:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--caret-right:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--caret-up:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--check:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--envelope:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--facebook:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--heart-o:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--heart:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--instagram:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--pinterest:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--play-circle:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--play:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--remove:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--search:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--shopping-bag:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--tumblr:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--twitter:before {
-  content: "";
-}
-
-/* line 97, ../scss/global/icons/_icons-mixins.scss */
-.icon--youtube:before {
-  content: "";
-}
-
 /* ==========================================================================
    Base - Base Styles
    ========================================================================== */
@@ -1017,33 +710,26 @@ textarea {
   font-size: 16px;
   line-height: 1.5;
   color: black;
-  /* font-family: volkhov-regular, Times New Roman, Times, serif; */
-  /* font-family: futura-pt, Helvetica, Arial, sans-serif; */
-  /* font-family: Helvetica, Arial, sans-serif; */
-  /* font-family: adelle-sans, sans-serif; */
-  /* font-family: servus-slab, sans-serif; */
-  /* font-family: ff-tisa-web-pro, serif; */
-  /* font-family: skolar, serif; */
 }
 
-/* line 22, ../scss/base/_base.scss */
+/* line 21, ../scss/base/_base.scss */
 body {
   background: white;
 }
 
-/* line 26, ../scss/base/_base.scss */
+/* line 25, ../scss/base/_base.scss */
 p {
   margin-top: 0;
   margin-bottom: 1.5em;
 }
 
-/* line 31, ../scss/base/_base.scss */
+/* line 30, ../scss/base/_base.scss */
 a:hover,
 a:active {
   text-decoration: none;
 }
 
-/* line 36, ../scss/base/_base.scss */
+/* line 35, ../scss/base/_base.scss */
 h1,
 h2,
 h3,
@@ -1052,7 +738,7 @@ h5 {
   font-weight: normal;
 }
 
-/* line 44, ../scss/base/_base.scss */
+/* line 43, ../scss/base/_base.scss */
 hr {
   display: block;
   height: 1px;
@@ -1062,19 +748,19 @@ hr {
   padding: 0;
 }
 
-/* line 54, ../scss/base/_base.scss */
+/* line 53, ../scss/base/_base.scss */
 ol,
 ul {
   margin: 0;
   padding: 0;
 }
 
-/* line 59, ../scss/base/_base.scss */
+/* line 58, ../scss/base/_base.scss */
 ul {
   list-style: none;
 }
 
-/* line 62, ../scss/base/_base.scss */
+/* line 61, ../scss/base/_base.scss */
 ol {
   margin-left: 2em;
 }
@@ -1083,7 +769,7 @@ ol {
  * Remove the gap between images, videos, audio and canvas and the bottom of
  * their containers: h5bp.com/i/440
  */
-/* line 71, ../scss/base/_base.scss */
+/* line 70, ../scss/base/_base.scss */
 audio,
 canvas,
 img,
@@ -1092,25 +778,25 @@ video {
   vertical-align: middle;
 }
 
-/* line 79, ../scss/base/_base.scss */
+/* line 78, ../scss/base/_base.scss */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* line 85, ../scss/base/_base.scss */
+/* line 84, ../scss/base/_base.scss */
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
 
-/* line 92, ../scss/base/_base.scss */
+/* line 91, ../scss/base/_base.scss */
 textarea {
   resize: vertical;
 }
 
-/* line 96, ../scss/base/_base.scss */
+/* line 95, ../scss/base/_base.scss */
 blockquote {
   margin-left: 0;
   margin-right: 0;
@@ -1123,13 +809,6 @@ blockquote {
  * Loop through our map and load font files
  * $fonts map defined in scss/global/variables/_fonts.scss
  */
-@font-face {
-  font-family: "volkhov-regular";
-  font-weight: "normal";
-  font-style: "normal";
-  src: url('../fonts/volkhov-regular/Volkhov-Regular.eot') format("embedded-opentype");
-  src: url('../fonts/volkhov-regular/Volkhov-Regular.eot#iefix') format("embedded-opentype"), url('../fonts/volkhov-regular/Volkhov-Regular.woff') format("woff"), url('../fonts/volkhov-regular/Volkhov-Regular.ttf') format("truetype"), url('../fonts/volkhov-regular/Volkhov-Regular.svg') format("svg");
-}
 @font-face {
   font-family: "rw-icomoon";
   font-weight: "normal";
@@ -1578,6 +1257,9 @@ blockquote {
    ========================================================================== */
 /* line 9, ../scss/components/atoms/_buttons.scss */
 .btn {
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
   color: white;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1593,6 +1275,26 @@ blockquote {
   background-color: black;
   text-transform: uppercase;
   cursor: pointer;
+}
+/* line 136, ../scss/global/mixins/_link.scss */
+.btn:visited {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 140, ../scss/global/mixins/_link.scss */
+.btn:focus {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 144, ../scss/global/mixins/_link.scss */
+.btn:hover {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 148, ../scss/global/mixins/_link.scss */
+.btn:active {
+  text-shadow: none;
+  background-image: none;
 }
 /* line 18, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:visited {
@@ -1642,10 +1344,33 @@ blockquote {
    ========================================================================== */
 /* line 61, ../scss/components/atoms/_buttons.scss */
 .btn--light {
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
   color: black;
   background-color: white;
   border-color: black;
   border-width: 1px;
+}
+/* line 136, ../scss/global/mixins/_link.scss */
+.btn--light:visited {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 140, ../scss/global/mixins/_link.scss */
+.btn--light:focus {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 144, ../scss/global/mixins/_link.scss */
+.btn--light:hover {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 148, ../scss/global/mixins/_link.scss */
+.btn--light:active {
+  text-shadow: none;
+  background-image: none;
 }
 /* line 18, ../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:visited {
@@ -1784,34 +1509,6 @@ h6 {
   line-height: 1.5;
   margin-bottom: 0.3em;
   margin-top: 0.3em;
-}
-
-/* ==========================================================================
-   Components Atoms - Social Links
-   ========================================================================== */
-/* line 6, ../scss/components/atoms/_social-links.scss */
-.social-link {
-  margin-left: 2em;
-}
-/* line 71, ../scss/global/icons/_icons-mixins.scss */
-.social-link--facebook:before {
-  content: "";
-  font-size: inherit;
-}
-/* line 71, ../scss/global/icons/_icons-mixins.scss */
-.social-link--twitter:before {
-  content: "";
-  font-size: inherit;
-}
-/* line 71, ../scss/global/icons/_icons-mixins.scss */
-.social-link--instagram:before {
-  content: "";
-  font-size: inherit;
-}
-/* line 11, ../scss/components/atoms/_social-links.scss */
-.social-link:before {
-  font-size: 2em;
-  margin-left: -1em;
 }
 
 /* line 1, ../scss/components/atoms/_un-icons.scss */
@@ -3377,7 +3074,7 @@ input[type="search"] {
 }
 
 @media (min-width: 37.5em) {
-  /* line 7, ../scss/components/organisms/_overview-widget.scss */
+  /* line 4, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--description {
     width: 59.52907%;
     float: left;
@@ -3386,7 +3083,7 @@ input[type="search"] {
     clear: none;
     clear: left;
   }
-  /* line 11, ../scss/components/organisms/_overview-widget.scss */
+  /* line 8, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--map {
     width: 36.79176%;
     float: right;
@@ -3394,7 +3091,7 @@ input[type="search"] {
     margin-right: 0;
     clear: none;
   }
-  /* line 14, ../scss/components/organisms/_overview-widget.scss */
+  /* line 11, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--tabs {
     width: 36.79176%;
     float: right;
@@ -3403,7 +3100,7 @@ input[type="search"] {
     clear: none;
     clear: right;
   }
-  /* line 18, ../scss/components/organisms/_overview-widget.scss */
+  /* line 15, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--sources {
     width: 36.79176%;
     float: right;
@@ -3414,7 +3111,7 @@ input[type="search"] {
   }
 }
 
-/* line 26, ../scss/components/organisms/_overview-widget.scss */
+/* line 23, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--title {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #eff0f1 16px, #eff0f1 32px);
   background-size: 100%;
@@ -3434,15 +3131,15 @@ input[type="search"] {
   line-height: 1.2;
   text-transform: uppercase;
 }
-/* line 41, ../scss/components/organisms/_overview-widget.scss */
+/* line 37, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--title .word1 {
   display: block;
 }
-/* line 44, ../scss/components/organisms/_overview-widget.scss */
+/* line 40, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--title .word2 {
   display: block;
 }
-/* line 47, ../scss/components/organisms/_overview-widget.scss */
+/* line 43, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--title .un-icon-crisis_conflict {
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -3457,30 +3154,15 @@ input[type="search"] {
   font-size: 2.25em;
   line-height: 1.74;
 }
-/* line 60, ../scss/components/organisms/_overview-widget.scss */
-.overview-option-a .overview-widget--title {
-  background-color: #375573;
-  color: white;
-}
-@media (min-width: 37.5em) {
-  /* line 60, ../scss/components/organisms/_overview-widget.scss */
-  .overview-option-a .overview-widget--title {
-    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzM3NTU3MyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), repeating-linear-gradient(-45deg, transparent, transparent 16px, #3c5b7c 16px, #3c5b7c 32px);
-    background-size: 100%;
-    background-image: -moz-linear-gradient(0deg, #375573, rgba(0, 0, 0, 0)), -moz-repeating-linear-gradient(-45deg, transparent, transparent 16px, #3c5b7c 16px, #3c5b7c 32px);
-    background-image: -webkit-linear-gradient(0deg, #375573, rgba(0, 0, 0, 0)), -webkit-repeating-linear-gradient(-45deg, transparent, transparent 16px, #3c5b7c 16px, #3c5b7c 32px);
-    background-image: linear-gradient(90deg, #375573, rgba(0, 0, 0, 0)), repeating-linear-gradient(-45deg, transparent, transparent 16px, #3c5b7c 16px, #3c5b7c 32px);
-  }
-}
 
-/* line 70, ../scss/components/organisms/_overview-widget.scss */
+/* line 56, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--map {
   border-width: 0 0 1px 0;
   border-style: solid;
   border-color: #060606;
 }
 
-/* line 79, ../scss/components/organisms/_overview-widget.scss */
+/* line 65, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--description h2 {
   font-size: 24px;
   font-size: 1.5rem;
@@ -3493,13 +3175,13 @@ input[type="search"] {
   line-height: 1.41667;
 }
 @media (min-width: 37.5em) {
-  /* line 79, ../scss/components/organisms/_overview-widget.scss */
+  /* line 65, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--description h2 {
     border-top: none;
     background-color: transparent;
   }
 }
-/* line 93, ../scss/components/organisms/_overview-widget.scss */
+/* line 79, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--description .accordion-set--content {
   -moz-column-gap: 2em;
   -webkit-column-gap: 2em;
@@ -3514,17 +3196,17 @@ input[type="search"] {
   margin-bottom: 1.5em;
 }
 @media (min-width: 37.5em) {
-  /* line 93, ../scss/components/organisms/_overview-widget.scss */
+  /* line 79, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--description .accordion-set--content {
     max-height: 100em;
   }
 }
 
-/* line 107, ../scss/components/organisms/_overview-widget.scss */
+/* line 93, ../scss/components/organisms/_overview-widget.scss */
 .accordion-set--label {
   position: relative;
 }
-/* line 109, ../scss/components/organisms/_overview-widget.scss */
+/* line 95, ../scss/components/organisms/_overview-widget.scss */
 .accordion-set--label:before {
   -moz-transition: -moz-transform 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out;
@@ -3547,23 +3229,23 @@ input[type="search"] {
   left: 0.5em;
 }
 @media (min-width: 37.5em) {
-  /* line 109, ../scss/components/organisms/_overview-widget.scss */
+  /* line 95, ../scss/components/organisms/_overview-widget.scss */
   .accordion-set--label:before {
     display: none;
   }
 }
-/* line 119, ../scss/components/organisms/_overview-widget.scss */
+/* line 105, ../scss/components/organisms/_overview-widget.scss */
 .accordion-set--label h2 {
   padding-left: 1em;
 }
 @media (min-width: 37.5em) {
-  /* line 119, ../scss/components/organisms/_overview-widget.scss */
+  /* line 105, ../scss/components/organisms/_overview-widget.scss */
   .accordion-set--label h2 {
     padding-left: 0.5rem;
   }
 }
 
-/* line 130, ../scss/components/organisms/_overview-widget.scss */
+/* line 116, ../scss/components/organisms/_overview-widget.scss */
 .accordion-set--check:checked + .accordion-set--label:before {
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
@@ -3571,20 +3253,20 @@ input[type="search"] {
   transform: rotate(90deg);
 }
 
-/* line 139, ../scss/components/organisms/_overview-widget.scss */
+/* line 125, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs {
   display: flex;
   margin-top: 1.5em;
   flex-wrap: wrap;
 }
 @media (min-width: 37.5em) {
-  /* line 139, ../scss/components/organisms/_overview-widget.scss */
+  /* line 125, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--tabs {
     margin-top: 0;
     background-color: #f5f5f5;
   }
 }
-/* line 147, ../scss/components/organisms/_overview-widget.scss */
+/* line 133, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label {
   -moz-transition-property: background-color, color;
   -o-transition-property: background-color, color;
@@ -3606,7 +3288,7 @@ input[type="search"] {
   flex-basis: 33%;
   position: relative;
 }
-/* line 157, ../scss/components/organisms/_overview-widget.scss */
+/* line 143, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label:before {
   -moz-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
@@ -3626,42 +3308,42 @@ input[type="search"] {
   z-index: 10;
   opacity: 0;
 }
-/* line 167, ../scss/components/organisms/_overview-widget.scss */
+/* line 153, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label {
   background-color: #a993e1;
   color: white;
 }
-/* line 170, ../scss/components/organisms/_overview-widget.scss */
+/* line 156, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label:before {
   opacity: 1;
 }
-/* line 175, ../scss/components/organisms/_overview-widget.scss */
+/* line 161, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--content {
   position: relative;
   width: 100%;
   background-color: #665695;
 }
-/* line 180, ../scss/components/organisms/_overview-widget.scss */
+/* line 166, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body {
   padding: 1em 0.5em;
 }
-/* line 185, ../scss/components/organisms/_overview-widget.scss */
+/* line 171, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 {
   margin-bottom: 0;
   color: #a993e1;
   line-height: 1;
   text-transform: lowercase;
 }
-/* line 190, ../scss/components/organisms/_overview-widget.scss */
+/* line 176, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 .figure {
   color: white;
   font-weight: bold;
 }
-/* line 194, ../scss/components/organisms/_overview-widget.scss */
+/* line 180, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 + p {
   color: white;
 }
-/* line 199, ../scss/components/organisms/_overview-widget.scss */
+/* line 185, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .un-icon-crisis_population_displacement {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
   opacity: 0.1;
@@ -3672,20 +3354,20 @@ input[type="search"] {
   text-align: center;
 }
 
-/* line 210, ../scss/components/organisms/_overview-widget.scss */
+/* line 196, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--sources {
   margin: 1em 0;
   color: #cccccc;
 }
 
-/* line 5, ../scss/components/organisms/_timeline-widget.scss */
+/* line 1, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown {
   position: relative;
   top: auto;
   right: auto;
 }
 @media (min-width: 43.75em) {
-  /* line 5, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 1, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown {
     position: absolute;
     top: 1.5em;
@@ -3693,7 +3375,7 @@ input[type="search"] {
     z-index: 10;
   }
 }
-/* line 17, ../scss/components/organisms/_timeline-widget.scss */
+/* line 13, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--wrapper {
   -moz-transition-property: max-height, opacity;
   -o-transition-property: max-height, opacity;
@@ -3717,7 +3399,7 @@ input[type="search"] {
   overflow: hidden;
   z-index: 100;
 }
-/* line 30, ../scss/components/organisms/_timeline-widget.scss */
+/* line 26, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--wrapper:before {
   display: block;
   position: absolute;
@@ -3732,7 +3414,7 @@ input[type="search"] {
   bottom: 100%;
 }
 @media (min-width: 43.75em) {
-  /* line 17, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 13, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown .timeline-widget--dropdown--wrapper {
     position: relative;
     top: 0.875em;
@@ -3740,13 +3422,13 @@ input[type="search"] {
     height: auto;
   }
 }
-/* line 43, ../scss/components/organisms/_timeline-widget.scss */
+/* line 39, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--wrapper.open {
   max-height: 100em;
   opacity: 1;
   overflow: visible;
 }
-/* line 50, ../scss/components/organisms/_timeline-widget.scss */
+/* line 46, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown-heading {
   width: 100%;
   padding: 0.625em 2em;
@@ -3758,19 +3440,19 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 50, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 46, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown .timeline-widget--dropdown-heading {
     width: auto;
   }
 }
-/* line 65, ../scss/components/organisms/_timeline-widget.scss */
+/* line 61, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown-controls {
   position: relative;
   height: 3.4375em;
   padding: 0.625em 2em;
   background: #2E4455;
 }
-/* line 72, ../scss/components/organisms/_timeline-widget.scss */
+/* line 68, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown-controls .close {
   display: inline-block;
   vertical-align: middle;
@@ -3785,7 +3467,7 @@ input[type="search"] {
   background-size: 0.9375em;
   cursor: pointer;
 }
-/* line 82, ../scss/components/organisms/_timeline-widget.scss */
+/* line 78, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown-controls .form-select {
   display: inline-block;
   vertical-align: middle;
@@ -3793,24 +3475,24 @@ input[type="search"] {
   *zoom: 1;
   *display: inline;
 }
-/* line 86, ../scss/components/organisms/_timeline-widget.scss */
+/* line 82, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--container {
   height: 100%;
   padding: 0 0.9375em 0 1.875em;
   background: url("../../images/dropdown-bk-img.png");
 }
 @media (min-width: 43.75em) {
-  /* line 86, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 82, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown .timeline-widget--dropdown--container {
     height: 20.3125em;
   }
 }
-/* line 94, ../scss/components/organisms/_timeline-widget.scss */
+/* line 90, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--container ul {
   padding: 0.875em 0;
   border-left: 0.25em solid #375573;
 }
-/* line 99, ../scss/components/organisms/_timeline-widget.scss */
+/* line 95, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--container li {
   position: relative;
   background: white;
@@ -3844,7 +3526,7 @@ input[type="search"] {
   border-width: 0.6875em;
   margin-top: -0.6875em;
 }
-/* line 108, ../scss/components/organisms/_timeline-widget.scss */
+/* line 104, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown .timeline-widget--dropdown--container .timeline-widget--dot {
   position: absolute;
   top: 36%;
@@ -3852,35 +3534,35 @@ input[type="search"] {
   background: #6c9acd;
 }
 
-/* line 117, ../scss/components/organisms/_timeline-widget.scss */
+/* line 113, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames-wrapper {
   margin: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 117, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 113, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-frames-wrapper {
     margin: 0 3.75em;
   }
 }
 @media (min-width: 85em) {
-  /* line 117, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 113, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-frames-wrapper {
     margin: 0;
   }
 }
 
-/* line 129, ../scss/components/organisms/_timeline-widget.scss */
+/* line 125, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames {
   width: 100%;
 }
-/* line 132, ../scss/components/organisms/_timeline-widget.scss */
+/* line 128, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames ul {
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 139, ../scss/components/organisms/_timeline-widget.scss */
+/* line 135, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames .timeline-widget-item {
   height: 100%;
   margin: 0;
@@ -3888,7 +3570,7 @@ input[type="search"] {
   float: left;
 }
 
-/* line 147, ../scss/components/organisms/_timeline-widget.scss */
+/* line 143, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget {
   position: relative;
   max-width: 73.4375em;
@@ -3896,11 +3578,11 @@ input[type="search"] {
   padding: 0 0.5em;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
-/* line 154, ../scss/components/organisms/_timeline-widget.scss */
+/* line 150, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget--controls {
   position: relative;
 }
-/* line 157, ../scss/components/organisms/_timeline-widget.scss */
+/* line 153, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget--controls .next,
 .timeline-widget .timeline-widget--controls .prev {
   position: absolute;
@@ -3910,7 +3592,7 @@ input[type="search"] {
   z-index: 10;
 }
 @media (min-width: 43.75em) {
-  /* line 157, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 153, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget--controls .next,
   .timeline-widget .timeline-widget--controls .prev {
     -moz-border-radius: 3.125em;
@@ -3922,11 +3604,11 @@ input[type="search"] {
     border: 0.0625em solid #f5f5f5;
   }
 }
-/* line 174, ../scss/components/organisms/_timeline-widget.scss */
+/* line 170, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget--controls .next {
   right: 0;
 }
-/* line 177, ../scss/components/organisms/_timeline-widget.scss */
+/* line 173, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget--controls .next .arrow {
   display: block;
   position: absolute;
@@ -3942,7 +3624,7 @@ input[type="search"] {
   right: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 177, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 173, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget--controls .next .arrow {
     display: block;
     position: absolute;
@@ -3957,11 +3639,11 @@ input[type="search"] {
     right: 1em;
   }
 }
-/* line 191, ../scss/components/organisms/_timeline-widget.scss */
+/* line 187, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget--controls .prev {
   left: 0;
 }
-/* line 194, ../scss/components/organisms/_timeline-widget.scss */
+/* line 190, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget--controls .prev .arrow {
   display: block;
   position: absolute;
@@ -3977,7 +3659,7 @@ input[type="search"] {
   left: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 194, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 190, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget--controls .prev .arrow {
     display: block;
     position: absolute;
@@ -3993,31 +3675,31 @@ input[type="search"] {
   }
 }
 @media (min-width: 85em) {
-  /* line 209, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 205, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget--controls .next {
     right: -6.375em;
   }
-  /* line 213, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 209, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget--controls .prev {
     left: -6.375em;
   }
 }
-/* line 219, ../scss/components/organisms/_timeline-widget.scss */
+/* line 215, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--headline {
   margin: 0 2.5em;
 }
 @media (min-width: 43.75em) {
-  /* line 219, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 215, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--headline {
     margin: 0;
     font-size: 31.25px;
   }
 }
-/* line 228, ../scss/components/organisms/_timeline-widget.scss */
+/* line 224, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--header {
   padding-top: 0.5em;
 }
-/* line 232, ../scss/components/organisms/_timeline-widget.scss */
+/* line 228, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--title {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -4025,12 +3707,12 @@ input[type="search"] {
   line-height: normal;
 }
 @media (min-width: 43.75em) {
-  /* line 232, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 228, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--title {
     font-size: 31.25px;
   }
 }
-/* line 243, ../scss/components/organisms/_timeline-widget.scss */
+/* line 239, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--category {
   display: inline-block;
   vertical-align: middle;
@@ -4043,7 +3725,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 243, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 239, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--category {
     margin-right: 20px;
     padding: 0.375em 0.625em;
@@ -4051,7 +3733,7 @@ input[type="search"] {
     color: white;
   }
 }
-/* line 257, ../scss/components/organisms/_timeline-widget.scss */
+/* line 253, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--category .arrow {
   display: block;
   position: absolute;
@@ -4068,12 +3750,12 @@ input[type="search"] {
   right: -0.75em;
 }
 @media (min-width: 43.75em) {
-  /* line 257, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 253, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--category .arrow {
     display: block;
   }
 }
-/* line 270, ../scss/components/organisms/_timeline-widget.scss */
+/* line 266, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--date {
   display: block;
   color: #665695;
@@ -4082,7 +3764,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 270, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 266, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--date {
     display: inline-block;
     vertical-align: middle;
@@ -4093,7 +3775,7 @@ input[type="search"] {
   }
 }
 @media screen and (min-width: 700px) {
-  /* line 287, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 283, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--content .grid--item:nth-of-type(2n+1) {
     width: 59.52907%;
     float: left;
@@ -4102,7 +3784,7 @@ input[type="search"] {
     clear: none;
     clear: both;
   }
-  /* line 291, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 287, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--content .grid--item:nth-of-type(2n+2) {
     width: 36.79176%;
     float: right;
@@ -4111,12 +3793,12 @@ input[type="search"] {
     clear: none;
   }
 }
-/* line 298, ../scss/components/organisms/_timeline-widget.scss */
+/* line 294, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content a {
   font-weight: bold;
   text-transform: none;
 }
-/* line 303, ../scss/components/organisms/_timeline-widget.scss */
+/* line 299, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .btn {
   width: 100%;
   background: #665695;
@@ -4125,55 +3807,55 @@ input[type="search"] {
   font-weight: normal;
   text-decoration: none;
 }
-/* line 312, ../scss/components/organisms/_timeline-widget.scss */
+/* line 308, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--image {
   position: relative;
 }
-/* line 316, ../scss/components/organisms/_timeline-widget.scss */
+/* line 312, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons {
   position: absolute;
   top: 0;
   left: 0;
   font-size: 16px;
 }
-/* line 322, ../scss/components/organisms/_timeline-widget.scss */
+/* line 318, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons a {
   border: none;
   color: white;
   text-transform: uppercase;
 }
-/* line 327, ../scss/components/organisms/_timeline-widget.scss */
+/* line 323, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--view-more {
   background: #ed5759;
 }
-/* line 331, ../scss/components/organisms/_timeline-widget.scss */
+/* line 327, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--country {
   padding: 0 0.1875em;
   background: #375573;
 }
-/* line 338, ../scss/components/organisms/_timeline-widget.scss */
+/* line 334, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--description {
   padding-top: 0.625em;
   color: #4d515b;
   font-family: "skolar", serif;
 }
 @media (min-width: 43.75em) {
-  /* line 338, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 334, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--content .timeline-widget-item--description {
     padding-top: 4em;
   }
 }
-/* line 347, ../scss/components/organisms/_timeline-widget.scss */
+/* line 343, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-item--content .timeline-widget-item--description p {
   display: none;
 }
 @media (min-width: 43.75em) {
-  /* line 347, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 343, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-item--content .timeline-widget-item--description p {
     display: block;
   }
 }
-/* line 358, ../scss/components/organisms/_timeline-widget.scss */
+/* line 354, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-pager {
   position: relative;
   width: 100%;
@@ -4182,29 +3864,29 @@ input[type="search"] {
   background: url("../../images/pager-bk-img.png") repeat-x #97dcf7;
 }
 @media (min-width: 43.75em) {
-  /* line 358, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 354, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-pager {
     height: 7.5em;
   }
 }
-/* line 369, ../scss/components/organisms/_timeline-widget.scss */
+/* line 365, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-pager ul {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 374, ../scss/components/organisms/_timeline-widget.scss */
+/* line 370, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-pager ul li {
   display: inline;
   height: 100%;
   float: left;
 }
-/* line 379, ../scss/components/organisms/_timeline-widget.scss */
+/* line 375, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item {
   max-width: 14.375em;
   margin: 0 auto;
 }
-/* line 383, ../scss/components/organisms/_timeline-widget.scss */
+/* line 379, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content {
   position: relative;
   background: white;
@@ -4239,12 +3921,12 @@ input[type="search"] {
   margin-left: -0.6875em;
 }
 @media (min-width: 43.75em) {
-  /* line 383, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 379, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content {
     display: block;
   }
 }
-/* line 400, ../scss/components/organisms/_timeline-widget.scss */
+/* line 396, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget .timeline-widget-pager--current {
   width: 100%;
   margin: auto;
@@ -4256,7 +3938,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 
-/* line 412, ../scss/components/organisms/_timeline-widget.scss */
+/* line 408, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dot {
   -moz-border-radius: 16px;
   -webkit-border-radius: 16px;
@@ -4296,11 +3978,6 @@ input[type="search"] {
   font-size: 2em;
 }
 
-/* line 7, ../scss/patternlab/_fonts.scss */
-.pl-font-volkhov {
-  font-family: "volkhov-regular", "Times New Roman", Times, serif;
-}
-
 /* line 8, ../scss/patternlab/_fonts.scss */
 .pl-font-futura {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
@@ -4321,6 +3998,30 @@ input[type="search"] {
 /* line 11, ../scss/patternlab/_fonts.scss */
 .pl-font-futura-bold-italic {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* line 12, ../scss/patternlab/_fonts.scss */
+.pl-font-skolar {
+  font-family: "skolar", serif;
+}
+
+/* line 13, ../scss/patternlab/_fonts.scss */
+.pl-font-skolar-italic {
+  font-family: "skolar", serif;
+  font-style: italic;
+}
+
+/* line 14, ../scss/patternlab/_fonts.scss */
+.pl-font-skolar-bold {
+  font-family: "skolar", serif;
+  font-weight: bold;
+}
+
+/* line 15, ../scss/patternlab/_fonts.scss */
+.pl-font-skolar-bold-italic {
+  font-family: "skolar", serif;
   font-weight: bold;
   font-style: italic;
 }
@@ -4615,38 +4316,29 @@ body .needsrefactor:before {
   height: 100%;
 }
 /* line 155, ../scss/patternlab/_styleguide-specific.scss */
-.sg-breakpoints .breakpoints > li > .icon--arrow--right-medium {
-  font-size: 18px;
-  margin-top: 100px;
-}
-/* line 159, ../scss/patternlab/_styleguide-specific.scss */
 .sg-breakpoints .breakpoints > li > .label {
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
-  -moz-transform-origin: bottom left 50%;
-  -ms-transform-origin: bottom left 50%;
-  -webkit-transform-origin: bottom left 50%;
-  transform-origin: bottom left 50%;
+  -moz-transform-origin: bottom left;
+  -ms-transform-origin: bottom left;
+  -webkit-transform-origin: bottom left;
+  transform-origin: bottom left;
   display: block;
   background: #595959;
   padding: 3px;
   color: white;
 }
-/* line 169, ../scss/patternlab/_styleguide-specific.scss */
+/* line 165, ../scss/patternlab/_styleguide-specific.scss */
 .sg-breakpoints .breakpoints > li:hover {
-  border-left-color: rgba(89, 89, 89, 0.3);
+  opacity: 0.5;
 }
-/* line 171, ../scss/patternlab/_styleguide-specific.scss */
-.sg-breakpoints .breakpoints > li:hover > .label {
-  opacity: 0;
-}
-/* line 177, ../scss/patternlab/_styleguide-specific.scss */
+/* line 170, ../scss/patternlab/_styleguide-specific.scss */
 .sg-breakpoints .device_widths {
   padding-top: 20px;
 }
-/* line 179, ../scss/patternlab/_styleguide-specific.scss */
+/* line 172, ../scss/patternlab/_styleguide-specific.scss */
 .sg-breakpoints .device_widths > li {
   border-bottom: solid 3px #cccccc;
   text-align: right;
@@ -4655,66 +4347,66 @@ body .needsrefactor:before {
   border-right: solid 3px #cccccc;
 }
 
-/* line 189, ../scss/patternlab/_styleguide-specific.scss */
+/* line 182, ../scss/patternlab/_styleguide-specific.scss */
 .demo-animate {
   min-height: 60px;
   cursor: pointer;
 }
 
-/* line 193, ../scss/patternlab/_styleguide-specific.scss */
+/* line 186, ../scss/patternlab/_styleguide-specific.scss */
 .animate-fade {
   opacity: 1;
 }
-/* line 196, ../scss/patternlab/_styleguide-specific.scss */
+/* line 189, ../scss/patternlab/_styleguide-specific.scss */
 .animate-fade:hover {
   opacity: 0;
 }
 
-/* line 200, ../scss/patternlab/_styleguide-specific.scss */
+/* line 193, ../scss/patternlab/_styleguide-specific.scss */
 .animate-min-height {
   min-height: 60px;
 }
-/* line 203, ../scss/patternlab/_styleguide-specific.scss */
+/* line 196, ../scss/patternlab/_styleguide-specific.scss */
 .animate-min-height:hover {
   min-height: 180px;
 }
 
-/* line 209, ../scss/patternlab/_styleguide-specific.scss */
+/* line 202, ../scss/patternlab/_styleguide-specific.scss */
 .animate-background-color:hover {
   background-color: black;
 }
 
-/* line 215, ../scss/patternlab/_styleguide-specific.scss */
+/* line 208, ../scss/patternlab/_styleguide-specific.scss */
 .animate-text-color:hover {
   color: #ed5759;
 }
 
-/* line 221, ../scss/patternlab/_styleguide-specific.scss */
+/* line 214, ../scss/patternlab/_styleguide-specific.scss */
 .animate-all:hover {
   color: #ed5759;
   background: black;
 }
 
-/* line 227, ../scss/patternlab/_styleguide-specific.scss */
+/* line 220, ../scss/patternlab/_styleguide-specific.scss */
 pre {
   margin-top: 0;
 }
 
-/* line 233, ../scss/patternlab/_styleguide-specific.scss */
+/* line 226, ../scss/patternlab/_styleguide-specific.scss */
 .sg-pattern .site-header {
   position: relative;
 }
 
-/* line 237, ../scss/patternlab/_styleguide-specific.scss */
+/* line 230, ../scss/patternlab/_styleguide-specific.scss */
 .sg-pattern-body {
   -webkit-transform: translateZ(0);
 }
 
-/* line 243, ../scss/patternlab/_styleguide-specific.scss */
+/* line 236, ../scss/patternlab/_styleguide-specific.scss */
 .sg-un-icons {
   outline: 1px solid red;
 }
-/* line 246, ../scss/patternlab/_styleguide-specific.scss */
+/* line 239, ../scss/patternlab/_styleguide-specific.scss */
 .sg-un-icons [class*="un-icon"]:before {
   font-size: 2em;
 }
