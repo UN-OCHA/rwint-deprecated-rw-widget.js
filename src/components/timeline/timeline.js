@@ -27,8 +27,7 @@ TimelineWidget.prototype.link = function(elements) {
   var $element = $(elements[0][0]); // @TODO, grab any potential element selected.
   var $frame,
       $item,
-      $margin,
-      $index;
+      margin;
 
   var $sly,
       $slyPager,
@@ -63,11 +62,11 @@ TimelineWidget.prototype.link = function(elements) {
     // Initialize Sly Sliders.
     $frame = $('.timeline-widget-frames', $element);
     $item = $('.timeline-widget-item', $element);
-    $margin = '40px';
+    margin = '40px';
 
     // Set initial widths.
     adjustTimelineWidth($frame.width());
-    $item.css({ marginRight : $margin});
+    $item.css({ marginRight : margin});
 
     // Control resizing.
     $(window).resize(function(e) {
@@ -153,6 +152,13 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function paint() {
+    slideTo(timelineState.currentIndex);
+
+    var now = moment(timelineContent[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    timelineState.currentYear = now.format('YYYY');
+    timelineState.currentMonth = now.format('M');
+    timelineState.currentFormatted = now.format('YYYY MMMM');
+
     $element.find('.timeline-widget-pager--current').text(timelineState.currentFormatted);
   }
 
@@ -179,14 +185,13 @@ TimelineWidget.prototype.link = function(elements) {
 
   init();
 
-  $('.timeline-widget-pager--item, .timeline-widget-dropdown--item').click(function(){
-    $index = $(this).attr('data-slide');
-    var $pos = $sly.getPos($index);
-    $sly.slideTo($pos.start);
+  $('.timeline-widget-pager--item, .timeline-widget-dropdown--item', $element).click(function(){
+    timelineState.currentIndex = $(this).attr('data-slide');
+    paint();
   });
 
   // Open popup.
-  $('.timeline-widget--dropdown-heading, .close').click(function(){
+  $('.timeline-widget--dropdown-heading, .close', $element).click(function(){
     $('.timeline-widget--dropdown--wrapper').toggleClass('open');
     $slyDropdown.reload();
   });
@@ -199,7 +204,7 @@ TimelineWidget.prototype.link = function(elements) {
   // Update other sliders based on main.
   $sly.on('moveStart', function(){
     timelineState.currentIndex = $sly.rel.activeItem;
-    slideTo(timelineState.currentIndex);
+    paint();
   });
 };
 
