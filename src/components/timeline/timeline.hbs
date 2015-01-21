@@ -1,0 +1,91 @@
+<div class="timeline-widget-wrapper">
+  <div class="timeline-widget">
+
+    <div class="timeline-widget--controls">
+      <button class="prev"><div class="arrow"></div></button>
+      <button class="next"><div class="arrow"></div></button>
+    </div><!-- .timeline-widget--controls -->
+
+    <div class="timeline-widget--dropdown">
+      <div class="timeline-widget--dropdown-heading">
+        <span class="un-icon-product_type_report"></span> Timeline - Calendar</div>
+      <div class="clear-both"></div>
+      <div class="timeline-widget--dropdown--wrapper">
+        <div class="timeline-widget--dropdown-controls">
+          <div class="form-select">
+            <select name="year">
+            </select>
+          </div>
+          <div class="form-select">
+            <select name="month"></select>
+          </div>
+          <span class="close"></span>
+        </div>
+        <div class="timeline-widget--dropdown--container">
+          <ul class="slidee">
+            {{#timeline-items}}
+            <li>
+              <div class="timeline-widget--dot"></div>
+              <div class="timeline-widget-dropdown--item" data-slide="{{ @index }}">
+                {{ short-desc }}
+              </div>
+            </li>
+            {{/timeline-items}}
+          </ul>
+        </div>
+      </div>
+    </div><!-- .timeline-widget--controls -->
+
+    <div class="timeline-widget-frames-wrapper">
+      <div class="timeline-widget-frames">
+        <ul class="slidee">
+          {{#timeline-items}}
+          <li class="timeline-widget-item">
+            <div class="timeline-widget-item--header">
+              <div class="timeline-widget-item--headline">
+                <div class="timeline-widget-item--category">Ocha <div class="arrow"></div></div> <div class="timeline-widget-item--date">{{ date-full }}</div>
+              </div>
+              <h1 class="timeline-widget-item--title">{{ title }}</h1>
+            </div>
+            <div class="timeline-widget-item--content clearfix">
+              <div class="timeline-widget-item--image grid--item">
+                <div class="timeline-widget-item--image--icons">
+                  <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img.png"></a>
+                  <a class="timeline-widget-item--image--country">{{ country }}</a>
+                </div>
+                <img src="../../images/timeline-img.png">
+              </div>
+              <div class="timeline-widget-item--description grid--item">
+                {{{long-desc}}}
+                <div class="timeline-widget-item-link">
+                  <a class="btn" href="{{ url }}"><span class="un-icon-product_type_report"></span> Read full report</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          {{/timeline-items}}
+        </ul>
+        <div class="clear-both"></div>
+      </div><!-- .timeline-widget-frames -->
+    </div><!-- .timeline-widget-frames-wrapper -->
+
+    <div class="timeline-widget-pager">
+      <ul class="">
+        {{#timeline-items}}
+        <li>
+          <div class="timeline-widget-pager--item" data-slide="{{ @index }}">
+            <div class="timeline-widget--dot"></div>
+            <div class="timeline-widget-pager--item-content">
+              {{ short-desc }}
+            </div>
+          </div>
+        </li>
+        {{/timeline-items}}
+      </ul>
+      <div class="clear-both"></div>
+    </div><!-- .timeline-widget-pager -->
+    <div class="timeline-widget-pager--current"></div>
+
+  </div>
+
+</div>

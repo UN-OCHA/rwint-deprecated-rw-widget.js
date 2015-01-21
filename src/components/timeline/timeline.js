@@ -8,8 +8,8 @@ var moment = require('moment');
 
 var TimelineWidget = function(opts) {
   var config = {
-    title: "Crisis Overview",
-    template: "crisis-overview.hbs"
+    title: "Timeline",
+    template: "timeline.hbs"
   };
 
   opts = (opts) ? opts : {};
