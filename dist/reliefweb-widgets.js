@@ -129,9 +129,25 @@ TimelineWidget.prototype.link = function(elements) {
       $slyPager,
       $slyDropdown;
 
+  function findClosestTimelineContent() {
+    var now = moment().unix();
+    var closestIndex = 0;
+    var closestIndexDistance;
+
+    timelineContent.forEach(function(val, key) {
+      var itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
+      if (closestIndexDistance === undefined || Math.abs(now - itemTime) < closestIndexDistance) {
+        closestIndexDistance = Math.abs(now - itemTime);
+        closestIndex = key;
+      }
+    });
+
+    return closestIndex;
+  }
+
   function init() {
-    var now = moment();
-    timelineState.currentIndex = 0;
+    timelineState.currentIndex = findClosestTimelineContent();
+    var now = moment(timelineContent[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -162,7 +178,7 @@ TimelineWidget.prototype.link = function(elements) {
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
-      startAt: 0,
+      startAt: timelineState.currentIndex,
       scrollBy: 1,
       speed: 200,
       elasticBounds: 1,
@@ -184,7 +200,7 @@ TimelineWidget.prototype.link = function(elements) {
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
-      startAt: 0,
+      startAt: timelineState.currentIndex,
       scrollBy: 1,
       speed: 200,
       elasticBounds: 1,
@@ -201,7 +217,7 @@ TimelineWidget.prototype.link = function(elements) {
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
-      startAt: 0,
+      startAt: timelineState.currentIndex,
       scrollBy: 1,
       activatePageOn: 'click',
       speed: 300,
