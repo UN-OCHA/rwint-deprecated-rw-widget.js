@@ -10,6 +10,11 @@
     <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
     <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
     <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
+    <script type="text/javascript" src="image.template.js"></script>
+    <script id="image-template" type="text/x-handlebars-template">
+      <img src="{{src}}" />
+      <h1><b>Totally different image template</b></h1>
+    </script>
     <!-- Image widget assets -->
     <style>
       .widget {
@@ -27,11 +32,6 @@
         text-align: right;
       }
     </style>
-    <script id="image-template" type="text/x-handlebars-template">
-      <h1>{{title}}</h1>
-      <img src="{{src}}" alt="{{alt}}" />
-      <p class="credit">{{credit}}</p>
-    </script>
   </head>
   <body>
     <div id="widget" class="widget"></div>
@@ -62,7 +62,7 @@
 
       // Instigate new instance of ImageWidget, with overridden defaults.
       var imageWidget = new ImageWidget({
-        template: "#image-template",
+        template: Handlebars.templates['image.hbs'],
         credit: "Photo by Placekitten"
       });
 
