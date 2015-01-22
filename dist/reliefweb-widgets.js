@@ -275,6 +275,9 @@ TimelineWidget.prototype.link = function(elements) {
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
 
+    $('select[name="month"]', $element).val(now.format('MMM')).selectric('refresh');
+    $('select[name="year"]', $element).val(now.format('YYYY')).selectric('refresh');
+
     $element.find('.timeline-widget-pager--current').text(timelineState.currentFormatted);
   }
 
@@ -302,7 +305,6 @@ TimelineWidget.prototype.link = function(elements) {
   init();
 
   $('.timeline-widget-pager--item, .timeline-widget-dropdown--list-item', $element).click(function(){
-    console.log($(this).html(), $(this).attr('data-slide'));
     timelineState.currentIndex = $(this).attr('data-slide');
     paint();
   });
@@ -314,8 +316,27 @@ TimelineWidget.prototype.link = function(elements) {
   });
 
   // Close popup.
-  $('.timeline-widget-dropdown--item').click(function(){
+  $('.timeline-widget-dropdown--item', $element).click(function(){
     $('.timeline-widget--dropdown--wrapper').removeClass('open');
+  });
+
+  $('.timeline-widget--dropdown-controls select', $element).on('selectric-change', function(element) {
+    var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
+    var current = moment(currentString, 'MMM YYYY').unix();
+    var itemTime;
+    var val;
+
+
+    for (var i = 0; i < timelineContent.length; i++) {
+      val = timelineContent[i];
+      itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
+
+      if (current < itemTime) {
+        timelineState.currentIndex = i;
+        paint();
+        break;
+      }
+    }
   });
 
   // Update other sliders based on main.
