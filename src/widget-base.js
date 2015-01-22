@@ -6,7 +6,7 @@
 
 var _ = require('lodash'),
     d3 = require('d3'),
-    Handlebars = require('Handlebars');
+    Handlebars = require('handlebars');
 
 var config = require('./util/config-manager');
 var junkDrawer = require('./util/junk-drawer');

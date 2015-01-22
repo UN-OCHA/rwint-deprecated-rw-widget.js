@@ -1,6 +1,6 @@
 "use strict";
 
-var Handlebars = require('Handlebars'),
+var Handlebars = require('handlebars'),
     moment = require('moment');
 
 //  format an ISO date using Moment.js
