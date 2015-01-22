@@ -1,0 +1,54 @@
+<div class="widget-river">
+  <header>
+    <h3>I want content from</h3>
+    <select>
+      <option>This week</option>
+      <option>This month</option>
+      <option>This year</option>
+    </select>
+  </header>
+  <div class="results clearfix">
+    <div class="graph">
+      <ul class="river-tabs clearfix">
+        {{#content}}
+          <li>
+            <span class="number">{{count}}</span>
+            <div class="river-widget--dropdown">
+              <div class="river-widget--dropdown-heading">
+                <span class="{{icon}}"></span> {{title}}
+              </div>
+              <div class="river-widget--dropdown--wrapper">
+                <span class="un-icon-damage_destroyed close"></span>
+                <div class="river-widget--dropdown--container">
+                  <ul class="slidee">
+                    <li>
+                      <div class="filters">
+                        <h5>Filter Results</h5>
+                        <ul>
+                          {{#filters}}
+                            <li><a href="">{{.}}</a></li>
+                          {{/filters}}
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        {{/content}}
+      </ul>
+      <div class="placeholder">
+        <img src="../../img/river-graph-placeholder.png">
+      </div>
+    </div>
+    <div class="filters hidden">
+      <h5>Filter Results</h5>
+      <ul>
+        {{#defaultFilters}}
+          <li><a href="">{{.}}</a></li>
+        {{/defaultFilters}}
+      </ul>
+    </div>
+  </div>
+</div>
