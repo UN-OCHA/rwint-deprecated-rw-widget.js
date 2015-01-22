@@ -3370,13 +3370,14 @@ input[type="search"] {
   /* line 1, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown {
     position: absolute;
-    top: 1.5em;
+    top: 0.5em;
     right: 0.5em;
     z-index: 10;
   }
 }
-/* line 13, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--wrapper {
+
+/* line 14, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--wrapper {
   -moz-transition-property: max-height, opacity;
   -o-transition-property: max-height, opacity;
   -webkit-transition-property: max-height, opacity;
@@ -3399,8 +3400,8 @@ input[type="search"] {
   overflow: hidden;
   z-index: 100;
 }
-/* line 26, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--wrapper:before {
+/* line 27, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--wrapper:before {
   display: block;
   position: absolute;
   width: 0;
@@ -3414,22 +3415,23 @@ input[type="search"] {
   bottom: 100%;
 }
 @media (min-width: 43.75em) {
-  /* line 13, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget--dropdown .timeline-widget--dropdown--wrapper {
+  /* line 14, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown--wrapper {
     position: relative;
     top: 0.875em;
     width: 22.5em;
     height: auto;
   }
 }
-/* line 39, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--wrapper.open {
+/* line 40, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--wrapper.open {
   max-height: 100em;
   opacity: 1;
   overflow: visible;
 }
-/* line 46, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown-heading {
+
+/* line 47, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown-heading {
   width: 100%;
   padding: 0.625em 2em;
   float: right;
@@ -3440,20 +3442,21 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 46, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget--dropdown .timeline-widget--dropdown-heading {
+  /* line 47, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown-heading {
     width: auto;
   }
 }
-/* line 61, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown-controls {
+
+/* line 62, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown-controls {
   position: relative;
   height: 3.4375em;
   padding: 0.625em 2em;
   background: #2E4455;
 }
 /* line 68, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown-controls .close {
+.timeline-widget--dropdown-controls .close {
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
@@ -3468,43 +3471,68 @@ input[type="search"] {
   cursor: pointer;
 }
 /* line 78, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown-controls .form-select {
+.timeline-widget--dropdown-controls .form-select {
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
   *zoom: 1;
   *display: inline;
 }
-/* line 82, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container {
+
+/* line 83, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--container {
   height: 100%;
   padding: 0 0.9375em 0 1.875em;
   background: url("../../images/dropdown-bk-img.png");
 }
 @media (min-width: 43.75em) {
-  /* line 82, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget--dropdown .timeline-widget--dropdown--container {
+  /* line 83, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown--container {
     height: 20.3125em;
+    border-bottom: 2px solid #375573;
   }
 }
-/* line 90, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container ul {
+/* line 92, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--container ul {
   padding: 0.875em 0;
   border-left: 0.25em solid #375573;
 }
-/* line 95, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container li {
+/* line 97, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--container .timeline-widget--dot {
+  position: absolute;
+  top: 20%;
+  left: -3.4375em;
+  background: #6c9acd;
+  border: 0.25em solid #f5f5f5;
+}
+/* line 104, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--container .timeline-widget--dot .timeline-widget--dot--date {
+  width: 1.875em;
+  margin: auto;
+  text-align: center;
+  padding-left: 0.125em;
+  padding-top: 0.25em;
+}
+/* line 113, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--container .active .timeline-widget--dot {
+  background: #375573;
+  border-color: #cccccc;
+}
+
+/* line 120, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-dropdown--list-item {
   position: relative;
   background: white;
-  border: 1px solid #cccccc;
+  border: 1px solid #8c8e93;
   position: relative;
   margin-bottom: 0.875em;
-  margin-left: 1.375em;
+  margin-left: 2em;
   padding: 0.5em;
   text-align: right;
+  color: #4d515b;
 }
 /* line 94, ../scss/global/mixins/_general.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container li:after, .timeline-widget--dropdown .timeline-widget--dropdown--container li:before {
+.timeline-widget-dropdown--list-item:after, .timeline-widget-dropdown--list-item:before {
   right: 100%;
   top: 50%;
   border: solid transparent;
@@ -3515,54 +3543,85 @@ input[type="search"] {
   pointer-events: none;
 }
 /* line 120, ../scss/global/mixins/_general.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container li:after {
+.timeline-widget-dropdown--list-item:after {
   border-right-color: white;
   border-width: 0.625em;
   margin-top: -0.625em;
 }
 /* line 143, ../scss/global/mixins/_general.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container li:before {
-  border-right-color: #cccccc;
+.timeline-widget-dropdown--list-item:before {
+  border-right-color: #8c8e93;
   border-width: 0.6875em;
   margin-top: -0.6875em;
 }
-/* line 104, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown .timeline-widget--dropdown--container .timeline-widget--dot {
+/* line 129, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-dropdown--list-item.active {
+  position: relative;
+  background: white;
+  border: 1px solid #375573;
+}
+/* line 94, ../scss/global/mixins/_general.scss */
+.timeline-widget-dropdown--list-item.active:after, .timeline-widget-dropdown--list-item.active:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
   position: absolute;
-  top: 36%;
-  left: -2.0625em;
-  background: #6c9acd;
+  pointer-events: none;
+}
+/* line 120, ../scss/global/mixins/_general.scss */
+.timeline-widget-dropdown--list-item.active:after {
+  border-right-color: white;
+  border-width: 0.625em;
+  margin-top: -0.625em;
+}
+/* line 143, ../scss/global/mixins/_general.scss */
+.timeline-widget-dropdown--list-item.active:before {
+  border-right-color: #375573;
+  border-width: 0.6875em;
+  margin-top: -0.6875em;
 }
 
-/* line 113, ../scss/components/organisms/_timeline-widget.scss */
+/* line 134, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown--month, .timeline-widget--dropdown--end-of-line {
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  color: #8c8e93;
+  margin: 0.5em;
+}
+
+/* line 146, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames-wrapper {
   margin: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 113, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 146, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-frames-wrapper {
     margin: 0 3.75em;
   }
 }
 @media (min-width: 85em) {
-  /* line 113, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 146, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-frames-wrapper {
     margin: 0;
   }
 }
 
-/* line 125, ../scss/components/organisms/_timeline-widget.scss */
+/* line 158, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames {
   width: 100%;
 }
-/* line 128, ../scss/components/organisms/_timeline-widget.scss */
+/* line 161, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames ul {
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 135, ../scss/components/organisms/_timeline-widget.scss */
+/* line 168, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-frames .timeline-widget-item {
   height: 100%;
   margin: 0;
@@ -3570,7 +3629,7 @@ input[type="search"] {
   float: left;
 }
 
-/* line 143, ../scss/components/organisms/_timeline-widget.scss */
+/* line 176, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget {
   position: relative;
   max-width: 73.4375em;
@@ -3578,13 +3637,14 @@ input[type="search"] {
   padding: 0 0.5em;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
-/* line 150, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget--controls {
+
+/* line 184, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--controls {
   position: relative;
 }
-/* line 153, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget--controls .next,
-.timeline-widget .timeline-widget--controls .prev {
+/* line 187, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--controls .next,
+.timeline-widget--controls .prev {
   position: absolute;
   top: 4.0625em;
   border: none;
@@ -3592,24 +3652,20 @@ input[type="search"] {
   z-index: 10;
 }
 @media (min-width: 43.75em) {
-  /* line 153, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget--controls .next,
-  .timeline-widget .timeline-widget--controls .prev {
-    -moz-border-radius: 3.125em;
-    -webkit-border-radius: 3.125em;
-    border-radius: 3.125em;
+  /* line 187, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--controls .next,
+  .timeline-widget--controls .prev {
     top: 16.25em;
     width: 3.125em;
     height: 3.125em;
-    border: 0.0625em solid #f5f5f5;
   }
 }
-/* line 170, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget--controls .next {
+/* line 202, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--controls .next {
   right: 0;
 }
-/* line 173, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget--controls .next .arrow {
+/* line 205, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--controls .next .arrow {
   display: block;
   position: absolute;
   width: 0;
@@ -3624,8 +3680,8 @@ input[type="search"] {
   right: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 173, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget--controls .next .arrow {
+  /* line 205, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--controls .next .arrow {
     display: block;
     position: absolute;
     width: 0;
@@ -3639,12 +3695,12 @@ input[type="search"] {
     right: 1em;
   }
 }
-/* line 187, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget--controls .prev {
+/* line 219, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--controls .prev {
   left: 0;
 }
-/* line 190, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget--controls .prev .arrow {
+/* line 222, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--controls .prev .arrow {
   display: block;
   position: absolute;
   width: 0;
@@ -3659,8 +3715,8 @@ input[type="search"] {
   left: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 190, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget--controls .prev .arrow {
+  /* line 222, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--controls .prev .arrow {
     display: block;
     position: absolute;
     width: 0;
@@ -3675,45 +3731,49 @@ input[type="search"] {
   }
 }
 @media (min-width: 85em) {
-  /* line 205, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget--controls .next {
+  /* line 237, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--controls .next {
     right: -6.375em;
   }
-  /* line 209, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget--controls .prev {
+  /* line 241, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--controls .prev {
     left: -6.375em;
   }
 }
-/* line 215, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--headline {
+
+/* line 247, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--headline {
   margin: 0 2.5em;
 }
 @media (min-width: 43.75em) {
-  /* line 215, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--headline {
+  /* line 247, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--headline {
     margin: 0;
     font-size: 31.25px;
   }
 }
-/* line 224, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--header {
+
+/* line 256, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--header {
   padding-top: 0.5em;
 }
-/* line 228, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--title {
+
+/* line 260, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--title {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: bold;
   line-height: normal;
 }
 @media (min-width: 43.75em) {
-  /* line 228, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--title {
+  /* line 260, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--title {
     font-size: 31.25px;
   }
 }
-/* line 239, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--category {
+
+/* line 271, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--category {
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
@@ -3725,16 +3785,16 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 239, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--category {
+  /* line 271, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--category {
     margin-right: 20px;
     padding: 0.375em 0.625em;
     background: #ed5759;
     color: white;
   }
 }
-/* line 253, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--category .arrow {
+/* line 285, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--category .arrow {
   display: block;
   position: absolute;
   width: 0;
@@ -3750,13 +3810,14 @@ input[type="search"] {
   right: -0.75em;
 }
 @media (min-width: 43.75em) {
-  /* line 253, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--category .arrow {
+  /* line 285, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--category .arrow {
     display: block;
   }
 }
-/* line 266, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--date {
+
+/* line 298, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--date {
   display: block;
   color: #665695;
   font-size: 16px;
@@ -3764,8 +3825,8 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 266, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--date {
+  /* line 298, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--date {
     display: inline-block;
     vertical-align: middle;
     *vertical-align: auto;
@@ -3774,9 +3835,10 @@ input[type="search"] {
     font-size: 24px;
   }
 }
+
 @media screen and (min-width: 700px) {
-  /* line 283, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--content .grid--item:nth-of-type(2n+1) {
+  /* line 315, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--content .grid--item:nth-of-type(2n+1) {
     width: 59.52907%;
     float: left;
     margin-right: -100%;
@@ -3784,8 +3846,8 @@ input[type="search"] {
     clear: none;
     clear: both;
   }
-  /* line 287, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--content .grid--item:nth-of-type(2n+2) {
+  /* line 319, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--content .grid--item:nth-of-type(2n+2) {
     width: 36.79176%;
     float: right;
     margin-left: 0;
@@ -3793,13 +3855,13 @@ input[type="search"] {
     clear: none;
   }
 }
-/* line 294, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content a {
+/* line 326, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content a {
   font-weight: bold;
   text-transform: none;
 }
-/* line 299, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .btn {
+/* line 331, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .btn {
   width: 100%;
   background: #665695;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
@@ -3807,98 +3869,97 @@ input[type="search"] {
   font-weight: normal;
   text-decoration: none;
 }
-/* line 308, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--image {
+/* line 340, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--image {
   position: relative;
 }
-/* line 312, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons {
+/* line 344, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--image--icons {
   position: absolute;
   top: 0;
   left: 0;
   font-size: 16px;
 }
-/* line 318, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons a {
+/* line 350, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--image--icons a {
   border: none;
   color: white;
   text-transform: uppercase;
+  text-shadow: none;
 }
-/* line 323, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--view-more {
+/* line 356, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--view-more {
   background: #ed5759;
 }
-/* line 327, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--country {
+/* line 360, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--country {
   padding: 0 0.1875em;
   background: #375573;
 }
-/* line 334, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--description {
+/* line 367, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--description {
   padding-top: 0.625em;
   color: #4d515b;
   font-family: "skolar", serif;
 }
 @media (min-width: 43.75em) {
-  /* line 334, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--content .timeline-widget-item--description {
+  /* line 367, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--content .timeline-widget-item--description {
     padding-top: 4em;
   }
 }
-/* line 343, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-item--content .timeline-widget-item--description p {
+/* line 375, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-item--content .timeline-widget-item--description p {
   display: none;
 }
 @media (min-width: 43.75em) {
-  /* line 343, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-item--content .timeline-widget-item--description p {
+  /* line 375, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-item--content .timeline-widget-item--description p {
     display: block;
   }
 }
-/* line 354, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-pager {
+
+/* line 386, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-pager {
   position: relative;
   width: 100%;
-  height: 1.25em;
   margin-top: 2.5em;
-  background: url("../../images/pager-bk-img.png") repeat-x #97dcf7;
+  padding-bottom: 10px;
+  background: url("../../images/pager-bk-img.png") repeat-x 0 0.875em;
 }
-@media (min-width: 43.75em) {
-  /* line 354, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-pager {
-    height: 7.5em;
-  }
-}
-/* line 365, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-pager ul {
+/* line 393, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-pager ul {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 370, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-pager ul li {
+/* line 399, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-pager li {
   display: inline;
   height: 100%;
   float: left;
 }
-/* line 375, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item {
-  max-width: 14.375em;
+
+/* line 406, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-pager--item {
+  max-width: 16.25em;
   margin: 0 auto;
 }
-/* line 379, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content {
+
+/* line 411, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-pager--item-content {
   position: relative;
   background: white;
   border: 1px solid #cccccc;
+  color: #4d515b;
   display: none;
-  margin-top: 0.9375em;
+  margin: 0.9375em 0.3125em 0 0.3125em;
   padding: 0.625em;
   border: 0.0625em solid #cccccc;
   text-align: center;
 }
 /* line 94, ../scss/global/mixins/_general.scss */
-.timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content:after, .timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content:before {
+.timeline-widget-pager--item-content:after, .timeline-widget-pager--item-content:before {
   bottom: 100%;
   left: 50%;
   border: solid transparent;
@@ -3909,25 +3970,56 @@ input[type="search"] {
   pointer-events: none;
 }
 /* line 120, ../scss/global/mixins/_general.scss */
-.timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content:after {
+.timeline-widget-pager--item-content:after {
   border-bottom-color: white;
   border-width: 0.625em;
   margin-left: -0.625em;
 }
 /* line 143, ../scss/global/mixins/_general.scss */
-.timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content:before {
+.timeline-widget-pager--item-content:before {
   border-bottom-color: #cccccc;
   border-width: 0.6875em;
   margin-left: -0.6875em;
 }
+/* line 419, ../scss/components/organisms/_timeline-widget.scss */
+.active .timeline-widget-pager--item-content {
+  position: relative;
+  background: white;
+  border: 1px solid #665695;
+  color: #4d515b;
+}
+/* line 94, ../scss/global/mixins/_general.scss */
+.active .timeline-widget-pager--item-content:after, .active .timeline-widget-pager--item-content:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+/* line 120, ../scss/global/mixins/_general.scss */
+.active .timeline-widget-pager--item-content:after {
+  border-bottom-color: white;
+  border-width: 0.625em;
+  margin-left: -0.625em;
+}
+/* line 143, ../scss/global/mixins/_general.scss */
+.active .timeline-widget-pager--item-content:before {
+  border-bottom-color: #665695;
+  border-width: 0.6875em;
+  margin-left: -0.6875em;
+}
 @media (min-width: 43.75em) {
-  /* line 379, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget .timeline-widget-pager ul li .timeline-widget-pager--item .timeline-widget-pager--item-content {
+  /* line 411, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-pager--item-content {
     display: block;
   }
 }
-/* line 396, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget .timeline-widget-pager--current {
+
+/* line 429, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-pager--current {
   width: 100%;
   margin: auto;
   padding: 0.625em;
@@ -3938,16 +4030,31 @@ input[type="search"] {
   text-transform: uppercase;
 }
 
-/* line 408, ../scss/components/organisms/_timeline-widget.scss */
+/* line 440, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dot {
-  -moz-border-radius: 16px;
-  -webkit-border-radius: 16px;
-  border-radius: 16px;
-  width: 1em;
-  height: 1em;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  width: 2.5em;
+  height: 2.5em;
   margin: 0 auto;
-  border: 0.25em solid #f5f5f5;
+  border: 0.375em solid #e6e6f5;
+  background: #a993e1;
+  font-weight: bold;
+  color: white;
+}
+/* line 449, ../scss/components/organisms/_timeline-widget.scss */
+.active .timeline-widget--dot {
   background: #665695;
+  border-color: #a993e1;
+}
+/* line 453, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dot .timeline-widget--dot--date {
+  width: 30px;
+  margin: auto;
+  text-align: center;
+  padding-right: 2px;
+  padding-top: 2px;
 }
 
 /* No files to import found in pages/**\/* */

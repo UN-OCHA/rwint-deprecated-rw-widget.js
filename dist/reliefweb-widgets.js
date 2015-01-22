@@ -115,6 +115,27 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
+TimelineWidget.prototype.compile = function(elements) {
+  var timelineItems = this.config('timeline-items');
+
+  timelineItems.forEach(function(val, key, items) {
+    var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+    var myDate = moment(val['date-full'], 'DD MMM YYYY');
+    items[key]['date-month'] = myDate.format('MMMM');
+    items[key]['date-day'] = myDate.format('DD');
+    items[key]['date-year'] = myDate.format('YYYY');
+    items[key]['new-month'] = prevMonth !== myDate.month();
+  });
+
+  this.config('timeline-items', timelineItems);
+
+  this.template(function(content) {
+    elements
+      .classed('rw-widget', true)
+      .html(content);
+  });
+};
+
 TimelineWidget.prototype.link = function(elements) {
   var timelineState = {};
   var timelineContent = this.config('timeline-items');
@@ -280,7 +301,8 @@ TimelineWidget.prototype.link = function(elements) {
 
   init();
 
-  $('.timeline-widget-pager--item, .timeline-widget-dropdown--item', $element).click(function(){
+  $('.timeline-widget-pager--item, .timeline-widget-dropdown--list-item', $element).click(function(){
+    console.log($(this).html(), $(this).attr('data-slide'));
     timelineState.currentIndex = $(this).attr('data-slide');
     paint();
   });
