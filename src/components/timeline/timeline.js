@@ -21,7 +21,7 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
-TimelineWidget.prototype.compile = function(elements) {
+TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
   var rw = new ReliefWebAPI();
   rw.post('reports')
@@ -32,21 +32,24 @@ TimelineWidget.prototype.compile = function(elements) {
       'conditions': [
         {
           'field': 'headline'
+        },
+        {
+          'field': 'country',
+          'value': widget.config('countries'),
+          'operator': 'OR'
         }
       ]
     }})
     .end(function(err, res) {
       if (!err) {
         var timelineItems = [];
-        console.log(res);
         res.body.data.forEach(function(val, key) {
-          console.log("val", val);
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
           var item = {
             title: val.fields.headline.title,
             country: val.fields.primary_country.name,
             "long-desc": val.fields.headline.summary,
-            "short-desc": val.fields.headline.summary,
+            "short-desc": val.fields.headline.title,
             "url": val.fields.url
           };
 
@@ -57,7 +60,6 @@ TimelineWidget.prototype.compile = function(elements) {
           }
 
           var time = moment(val.fields.date.original,  moment.ISO_8601);
-          console.log("time", time.unix());
           item['date-full'] = time.format('DD MMM YYYY');
           item['date-month'] = time.format('MMMM');
           item['date-day'] = time.format('DD');
@@ -67,13 +69,14 @@ TimelineWidget.prototype.compile = function(elements) {
           timelineItems.push(item);
         });
 
-        console.log("ITEMS", timelineItems);
         widget.config('timeline-items', timelineItems);
 
         widget.template(function(content) {
           elements
             .classed('rw-widget', true)
             .html(content);
+
+          next();
         });
       }
     });

@@ -24,7 +24,7 @@ var CrisisOverviewWidget = function(opts) {
 
 CrisisOverviewWidget.prototype = new WidgetBase();
 
-CrisisOverviewWidget.prototype.compile = function(elements) {
+CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   var that = this;
   if (config.configFile) {
@@ -47,6 +47,8 @@ CrisisOverviewWidget.prototype.compile = function(elements) {
         .classed('rw-widget', true)
         .classed('rw-widget-image', true)
         .html(content);
+
+      next();
     });
   }
 };
@@ -116,7 +118,7 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
-TimelineWidget.prototype.compile = function(elements) {
+TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
   var rw = new ReliefWebAPI();
   rw.post('reports')
@@ -127,21 +129,24 @@ TimelineWidget.prototype.compile = function(elements) {
       'conditions': [
         {
           'field': 'headline'
+        },
+        {
+          'field': 'country',
+          'value': widget.config('countries'),
+          'operator': 'OR'
         }
       ]
     }})
     .end(function(err, res) {
       if (!err) {
         var timelineItems = [];
-        console.log(res);
         res.body.data.forEach(function(val, key) {
-          console.log("val", val);
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
           var item = {
             title: val.fields.headline.title,
             country: val.fields.primary_country.name,
             "long-desc": val.fields.headline.summary,
-            "short-desc": val.fields.headline.summary,
+            "short-desc": val.fields.headline.title,
             "url": val.fields.url
           };
 
@@ -152,7 +157,6 @@ TimelineWidget.prototype.compile = function(elements) {
           }
 
           var time = moment(val.fields.date.original,  moment.ISO_8601);
-          console.log("time", time.unix());
           item['date-full'] = time.format('DD MMM YYYY');
           item['date-month'] = time.format('MMMM');
           item['date-day'] = time.format('DD');
@@ -162,13 +166,14 @@ TimelineWidget.prototype.compile = function(elements) {
           timelineItems.push(item);
         });
 
-        console.log("ITEMS", timelineItems);
         widget.config('timeline-items', timelineItems);
 
         widget.template(function(content) {
           elements
             .classed('rw-widget', true)
             .html(content);
+
+          next();
         });
       }
     });
@@ -626,16 +631,13 @@ widgetBase.prototype.has = function(key) {
 
 widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
-  this.compile(elements);
+  var widget = this;
 
-  var that = this;
-
-  // @TODO: THIS IS A HACK. NEED A METHOD TO CALL TO TRIGGER LINK, WHEN COMPILE NEEDS TO LOAD DATA.
-  setTimeout(function() {
+  this.compile(elements, function() {
     if (!junkDrawer.isNode()) {
-      that.link(elements);
+      widget.link(elements);
     }
-  }, 1000);
+  });
 };
 
 /**
@@ -648,11 +650,13 @@ widgetBase.prototype.render = function(selector) {
  * @param elements - D3 object with pre-selected elements.
  */
 
-widgetBase.prototype.compile = function(elements) {
+widgetBase.prototype.compile = function(elements, next) {
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
       .html(content);
+
+    next();
   });
 };
 

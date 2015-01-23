@@ -56,16 +56,13 @@ widgetBase.prototype.has = function(key) {
 
 widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
-  this.compile(elements);
+  var widget = this;
 
-  var that = this;
-
-  // @TODO: THIS IS A HACK. NEED A METHOD TO CALL TO TRIGGER LINK, WHEN COMPILE NEEDS TO LOAD DATA.
-  setTimeout(function() {
+  this.compile(elements, function() {
     if (!junkDrawer.isNode()) {
-      that.link(elements);
+      widget.link(elements);
     }
-  }, 1000);
+  });
 };
 
 /**
@@ -78,11 +75,13 @@ widgetBase.prototype.render = function(selector) {
  * @param elements - D3 object with pre-selected elements.
  */
 
-widgetBase.prototype.compile = function(elements) {
+widgetBase.prototype.compile = function(elements, next) {
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
       .html(content);
+
+    next();
   });
 };
 
