@@ -5,6 +5,7 @@ var d3 = require('d3');
 var WidgetBase = require('../../widget-base');
 var $ = require('jquery');
 var moment = require('moment');
+var ReliefWebAPI = require('reliefweb');
 
 var TimelineWidget = function(opts) {
   var config = {
@@ -21,24 +22,74 @@ var TimelineWidget = function(opts) {
 TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements) {
-  var timelineItems = this.config('timeline-items');
+  var widget = this;
+  var rw = new ReliefWebAPI();
+  rw.post('reports')
+    .fields(['date', 'headline', 'primary_country', 'url'], [])
+    .sort('date.original', 'desc')
+    .send({filter: {
+      'operator': 'AND',
+      'conditions': [
+        {
+          'field': 'headline'
+        }
+      ]
+    }})
+    .end(function(err, res) {
+      if (!err) {
+        var timelineItems = [];
+        console.log(res);
+        res.body.data.forEach(function(val, key) {
+          console.log("val", val);
+          var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+          var item = {
+            title: val.fields.headline.title,
+            country: val.fields.primary_country.name,
+            "long-desc": val.fields.headline.summary,
+            "short-desc": val.fields.headline.summary,
+            "url": val.fields.url
+          };
 
-  timelineItems.forEach(function(val, key, items) {
-    var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-    var myDate = moment(val['date-full'], 'DD MMM YYYY');
-    items[key]['date-month'] = myDate.format('MMMM');
-    items[key]['date-day'] = myDate.format('DD');
-    items[key]['date-year'] = myDate.format('YYYY');
-    items[key]['new-month'] = prevMonth !== myDate.month();
-  });
+          if (val.fields.headline.image) {
+            item["img-src"] = val.fields.headline.image.url;
+          } else {
+            // @TODO: Default image
+          }
 
-  this.config('timeline-items', timelineItems);
+          var time = moment(val.fields.date.original,  moment.ISO_8601);
+          console.log("time", time.unix());
+          item['date-full'] = time.format('DD MMM YYYY');
+          item['date-month'] = time.format('MMMM');
+          item['date-day'] = time.format('DD');
+          item['date-year'] = time.format('YYYY');
+          item['new-month'] = prevMonth !== time.month();
 
-  this.template(function(content) {
-    elements
-      .classed('rw-widget', true)
-      .html(content);
-  });
+          timelineItems.push(item);
+        });
+
+        console.log("ITEMS", timelineItems);
+        widget.config('timeline-items', timelineItems);
+
+        widget.template(function(content) {
+          elements
+            .classed('rw-widget', true)
+            .html(content);
+        });
+      }
+    });
+
+  //var timelineItems = this.config('timeline-items');
+  //
+  //timelineItems.forEach(function(val, key, items) {
+  //  var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+  //  var myDate = moment(val['date-full'], 'DD MMM YYYY');
+  //  items[key]['date-month'] = myDate.format('MMMM');
+  //  items[key]['date-day'] = myDate.format('DD');
+  //  items[key]['date-year'] = myDate.format('YYYY');
+  //  items[key]['new-month'] = prevMonth !== myDate.month();
+  //});
+  //
+  //this.config('timeline-items', timelineItems);
 };
 
 TimelineWidget.prototype.link = function(elements) {

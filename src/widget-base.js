@@ -58,9 +58,14 @@ widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
   this.compile(elements);
 
-  if (!junkDrawer.isNode()) {
-    this.link(elements);
-  }
+  var that = this;
+
+  // @TODO: THIS IS A HACK. NEED A METHOD TO CALL TO TRIGGER LINK, WHEN COMPILE NEEDS TO LOAD DATA.
+  setTimeout(function() {
+    if (!junkDrawer.isNode()) {
+      that.link(elements);
+    }
+  }, 1000);
 };
 
 /**
