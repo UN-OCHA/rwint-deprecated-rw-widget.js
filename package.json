@@ -34,7 +34,7 @@
   },
   "browserify-shim": {
     "d3": "global:d3",
-    "Handlebars": "global:Handlebars",
+    "handlebars": "global:Handlebars",
     "lodash": "global:_",
     "moment": "global:moment",
     "reliefweb": "global:reliefweb"
