@@ -24,7 +24,7 @@ var CrisisOverviewWidget = function(opts) {
 
 CrisisOverviewWidget.prototype = new WidgetBase();
 
-CrisisOverviewWidget.prototype.compile = function(elements) {
+CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   var that = this;
   if (config.configFile) {
@@ -47,6 +47,8 @@ CrisisOverviewWidget.prototype.compile = function(elements) {
         .classed('rw-widget', true)
         .classed('rw-widget-image', true)
         .html(content);
+
+      next();
     });
   }
 };
@@ -64,7 +66,7 @@ function titleAdjust(title) {
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],2:[function(require,module,exports){
+},{"../../widget-base":8}],2:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -91,7 +93,319 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":7}],3:[function(require,module,exports){
+},{"../../widget-base":8}],3:[function(require,module,exports){
+(function (global){
+"use strict";
+
+var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
+var WidgetBase = require('../../widget-base');
+var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
+var moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
+var ReliefWebAPI = (typeof window !== "undefined" ? window.reliefweb : typeof global !== "undefined" ? global.reliefweb : null);
+
+var TimelineWidget = function(opts) {
+  var config = {
+    title: "Timeline",
+    template: "timeline.hbs"
+  };
+
+  opts = (opts) ? opts : {};
+
+  config = _.defaults(opts, config);
+  WidgetBase.call(this, config);
+};
+
+TimelineWidget.prototype = new WidgetBase();
+
+TimelineWidget.prototype.compile = function(elements, next) {
+  var widget = this;
+  var rw = new ReliefWebAPI();
+  rw.post('reports')
+    .fields(['date', 'headline', 'primary_country', 'url'], [])
+    .sort('date.original', 'desc')
+    .send({filter: {
+      'operator': 'AND',
+      'conditions': [
+        {
+          'field': 'headline'
+        },
+        {
+          'field': 'country',
+          'value': widget.config('countries'),
+          'operator': 'OR'
+        }
+      ]
+    }})
+    .end(function(err, res) {
+      if (!err) {
+        var timelineItems = [];
+        res.body.data.forEach(function(val, key) {
+          var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+          var item = {
+            title: val.fields.headline.title,
+            country: val.fields.primary_country.name,
+            "long-desc": val.fields.headline.summary,
+            "short-desc": val.fields.headline.title,
+            "url": val.fields.url
+          };
+
+          if (val.fields.headline.image) {
+            item["img-src"] = val.fields.headline.image.url;
+          } else {
+            // @TODO: Default image
+          }
+
+          var time = moment(val.fields.date.original,  moment.ISO_8601);
+          item['date-full'] = time.format('DD MMM YYYY');
+          item['date-month'] = time.format('MMMM');
+          item['date-day'] = time.format('DD');
+          item['date-year'] = time.format('YYYY');
+          item['new-month'] = prevMonth !== time.month();
+
+          timelineItems.push(item);
+        });
+
+        widget.config('timeline-items', timelineItems);
+
+        widget.template(function(content) {
+          elements
+            .classed('rw-widget', true)
+            .html(content);
+
+          next();
+        });
+      }
+    });
+
+  //var timelineItems = this.config('timeline-items');
+  //
+  //timelineItems.forEach(function(val, key, items) {
+  //  var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+  //  var myDate = moment(val['date-full'], 'DD MMM YYYY');
+  //  items[key]['date-month'] = myDate.format('MMMM');
+  //  items[key]['date-day'] = myDate.format('DD');
+  //  items[key]['date-year'] = myDate.format('YYYY');
+  //  items[key]['new-month'] = prevMonth !== myDate.month();
+  //});
+  //
+  //this.config('timeline-items', timelineItems);
+};
+
+TimelineWidget.prototype.link = function(elements) {
+  var timelineState = {};
+  var timelineContent = this.config('timeline-items');
+
+  var $element = $(elements[0][0]); // @TODO, grab any potential element selected.
+  var $frame,
+      $item,
+      margin;
+
+  var $sly,
+      $slyPager,
+      $slyDropdown;
+
+  function findClosestTimelineContent() {
+    var now = moment().unix();
+    var closestIndex = 0;
+    var closestIndexDistance;
+
+    timelineContent.forEach(function(val, key) {
+      var itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
+      if (closestIndexDistance === undefined || Math.abs(now - itemTime) < closestIndexDistance) {
+        closestIndexDistance = Math.abs(now - itemTime);
+        closestIndex = key;
+      }
+    });
+
+    return closestIndex;
+  }
+
+  function init() {
+    timelineState.currentIndex = findClosestTimelineContent();
+    var now = moment(timelineContent[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    timelineState.currentYear = now.format('YYYY');
+    timelineState.currentMonth = now.format('M');
+    timelineState.currentFormatted = now.format('YYYY MMMM');
+
+    populateOverlaySelectors();
+
+    $('select', $element).selectric();
+    // Initialize Sly Sliders.
+    $frame = $('.timeline-widget-frames', $element);
+    $item = $('.timeline-widget-item', $element);
+    margin = '40px';
+
+    // Set initial widths.
+    adjustTimelineWidth($frame.width());
+    $item.css({ marginRight : margin});
+
+    // Control resizing.
+    $(window).resize(function(e) {
+      adjustTimelineWidth($frame.width());
+    });
+
+    // Main slider.
+    $sly = new Sly($frame, {
+      horizontal: 1,
+      itemNav: 'forceCentered',
+      smart: 1,
+      activateMiddle: 1,
+      mouseDragging: 1,
+      touchDragging: 1,
+      releaseSwing: 1,
+      startAt: timelineState.currentIndex,
+      scrollBy: 1,
+      speed: 200,
+      elasticBounds: 1,
+      dragHandle: 1,
+      dynamicHandle: 1,
+      clickBar: 1,
+
+      // Buttons
+      prev: $('.prev'),
+      next: $('.next')
+    }).init();
+
+    // Pager.
+    $slyPager = new Sly($('.timeline-widget-pager', $element), {
+      horizontal: 1,
+      itemNav: 'forceCentered',
+      smart: 1,
+      activateMiddle: 1,
+      mouseDragging: 1,
+      touchDragging: 1,
+      releaseSwing: 1,
+      startAt: timelineState.currentIndex,
+      scrollBy: 1,
+      speed: 200,
+      elasticBounds: 1,
+      dragHandle: 1,
+      dynamicHandle: 1,
+      clickBar: 1
+    }).init();
+
+    // Dropdowns.
+    $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
+      itemNav: 'basic',
+      smart: 1,
+      activateOn: 'click',
+      mouseDragging: 1,
+      touchDragging: 1,
+      releaseSwing: 1,
+      startAt: timelineState.currentIndex,
+      scrollBy: 1,
+      activatePageOn: 'click',
+      speed: 300,
+      elasticBounds: 1,
+      dragHandle: 1,
+      dynamicHandle: 1,
+      clickBar: 1
+    }).init();
+
+    paint();
+  }
+
+  function populateOverlaySelectors() {
+    var months = moment.months();
+    var monthsShort = moment.monthsShort('-MMM-');
+    var $monthSelector = $('select[name="month"]', $element);
+
+    months.forEach(function(val, key) {
+      $monthSelector.append('<option value="' + monthsShort[key] + '">' + val + '</option>');
+    });
+
+    var $yearSelector = $('select[name="year"]', $element);
+    var year = timelineState.currentYear;
+    for (var i = 0; i < 5; i++) {
+      $yearSelector.append('<option value="' + year + '">' + year + '</option>');
+      year--;
+    }
+  }
+
+  function paint() {
+    slideTo(timelineState.currentIndex);
+
+    var now = moment(timelineContent[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    timelineState.currentYear = now.format('YYYY');
+    timelineState.currentMonth = now.format('M');
+    timelineState.currentFormatted = now.format('YYYY MMMM');
+
+    $('select[name="month"]', $element).val(now.format('MMM')).selectric('refresh');
+    $('select[name="year"]', $element).val(now.format('YYYY')).selectric('refresh');
+
+    $element.find('.timeline-widget-pager--current').text(timelineState.currentFormatted);
+  }
+
+  function slideTo(index) {
+    var $sliderPos = $sly.getPos(index);
+    $sly.slideTo($sliderPos.center);
+
+    var $pagerPos = $slyPager.getPos(index);
+    $slyPager.slideTo($pagerPos.center);
+
+    var $dropDownPos = $slyDropdown.getPos(index);
+    $slyDropdown.slideTo($dropDownPos.start);
+  }
+
+  function adjustTimelineWidth(width) {
+    $item.width(width);
+    $('.timeline-widget-pager li', $element).width(Math.floor(width/3));
+
+    if ($sly && $slyPager) {
+      $sly.reload();
+      $slyPager.reload();
+    }
+  }
+
+  init();
+
+  $('.timeline-widget-pager--item, .timeline-widget-dropdown--list-item', $element).click(function(){
+    timelineState.currentIndex = $(this).attr('data-slide');
+    paint();
+  });
+
+  // Open popup.
+  $('.timeline-widget--dropdown-heading, .close', $element).click(function(){
+    $('.timeline-widget--dropdown--wrapper').toggleClass('open');
+    $slyDropdown.reload();
+  });
+
+  // Close popup.
+  $('.timeline-widget-dropdown--item', $element).click(function(){
+    $('.timeline-widget--dropdown--wrapper').removeClass('open');
+  });
+
+  $('.timeline-widget--dropdown-controls select', $element).on('selectric-change', function(element) {
+    var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
+    var current = moment(currentString, 'MMM YYYY').unix();
+    var itemTime;
+    var val;
+
+
+    for (var i = 0; i < timelineContent.length; i++) {
+      val = timelineContent[i];
+      itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
+
+      if (current < itemTime) {
+        timelineState.currentIndex = i;
+        paint();
+        break;
+      }
+    }
+  });
+
+  // Update other sliders based on main.
+  $sly.on('moveStart', function(){
+    timelineState.currentIndex = $sly.rel.activeItem;
+    paint();
+  });
+};
+
+module.exports = TimelineWidget;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../widget-base":8}],4:[function(require,module,exports){
 "use strict";
 
 /**
@@ -106,11 +420,13 @@ require('./util/handlebar-extensions');
 var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
+var TimelineWidget = require('./components/timeline/timeline');
 
 var widgetRegistry = require('./util/config-manager')();
 
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
+widgetRegistry.config('timeline', TimelineWidget);
 
 module.exports = {
   widget: function(name, opts) {
@@ -131,7 +447,7 @@ module.exports = {
   }
 };
 
-},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./util/config-manager":4,"./util/handlebar-extensions":5,"./widget-base":7}],4:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./components/timeline/timeline":3,"./util/config-manager":5,"./util/handlebar-extensions":6,"./widget-base":8}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -217,7 +533,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -239,7 +555,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * @file
  *
@@ -255,7 +571,7 @@ module.exports = {
   isNode: isNode
 };
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -315,11 +631,13 @@ widgetBase.prototype.has = function(key) {
 
 widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
-  this.compile(elements);
+  var widget = this;
 
-  if (!junkDrawer.isNode()) {
-    this.link(elements);
-  }
+  this.compile(elements, function() {
+    if (!junkDrawer.isNode()) {
+      widget.link(elements);
+    }
+  });
 };
 
 /**
@@ -332,11 +650,13 @@ widgetBase.prototype.render = function(selector) {
  * @param elements - D3 object with pre-selected elements.
  */
 
-widgetBase.prototype.compile = function(elements) {
+widgetBase.prototype.compile = function(elements, next) {
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
       .html(content);
+
+    next();
   });
 };
 
@@ -394,5 +714,5 @@ widgetBase.prototype.template = function(callback) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":4,"./util/junk-drawer":6}]},{},[3])(3)
+},{"./util/config-manager":5,"./util/junk-drawer":7}]},{},[4])(4)
 });

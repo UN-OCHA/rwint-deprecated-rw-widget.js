@@ -56,11 +56,13 @@ widgetBase.prototype.has = function(key) {
 
 widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
-  this.compile(elements);
+  var widget = this;
 
-  if (!junkDrawer.isNode()) {
-    this.link(elements);
-  }
+  this.compile(elements, function() {
+    if (!junkDrawer.isNode()) {
+      widget.link(elements);
+    }
+  });
 };
 
 /**
@@ -73,11 +75,13 @@ widgetBase.prototype.render = function(selector) {
  * @param elements - D3 object with pre-selected elements.
  */
 
-widgetBase.prototype.compile = function(elements) {
+widgetBase.prototype.compile = function(elements, next) {
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
       .html(content);
+
+    next();
   });
 };
 
