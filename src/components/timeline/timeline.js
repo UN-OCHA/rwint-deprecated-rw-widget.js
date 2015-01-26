@@ -5,12 +5,13 @@ var d3 = require('d3');
 var WidgetBase = require('../../widget-base');
 var $ = require('jquery');
 var moment = require('moment');
-var ReliefWebAPI = require('reliefweb');
+var reliefweb = require('reliefweb');
 
 var TimelineWidget = function(opts) {
   var config = {
     title: "Timeline",
-    template: "timeline.hbs"
+    template: "timeline.hbs",
+    countries: []
   };
 
   opts = (opts) ? opts : {};
@@ -23,23 +24,32 @@ TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
-  var rw = reliefweb.client();
-  rw.post('reports')
-    .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
-    .send({filter: {
+  var filters = {
+      filter: {
       'operator': 'AND',
       'conditions': [
         {
           'field': 'headline'
-        },
-        {
-          'field': 'country',
-          'value': widget.config('countries'),
-          'operator': 'OR'
         }
       ]
-    }})
+    }
+  };
+
+  var countries = widget.config('countries');
+
+  if (Array.isArray(countries) && countries.length) {
+    filters.filter.conditions.push({
+      'field': 'country',
+      'value': countries,
+      'operator': 'OR'
+    });
+  }
+
+  var rw = reliefweb.client();
+  rw.post('reports')
+    .fields(['date', 'headline', 'primary_country', 'url'], [])
+    .sort('date.original', 'desc')
+    .send(filters)
     .end(function(err, res) {
       if (!err) {
         var timelineItems = [];
