@@ -12,11 +12,8 @@ require('./util/handlebar-extensions');
 var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
-<<<<<<< HEAD
 var RiverWidget = require('./components/river/river');
-=======
 var TimelineWidget = require('./components/timeline/timeline');
->>>>>>> master
 
 var widgetRegistry = require('./util/config-manager')();
 

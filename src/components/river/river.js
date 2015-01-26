@@ -23,7 +23,7 @@ RiverWidget.prototype.link = function(elements) {
   var $element = $(elements[0][0]);
   function init() {
 
-    //$('select', $element).selectric();
+    $('select', $element).selectric();
 
     // Open popup.
     $('.river-widget--dropdown-heading, .close').click(function(){
