@@ -22,7 +22,7 @@ var CrisisOverviewWidget = function(opts) {
 
 CrisisOverviewWidget.prototype = new WidgetBase();
 
-CrisisOverviewWidget.prototype.compile = function(elements) {
+CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   var that = this;
   if (config.configFile) {
@@ -45,6 +45,8 @@ CrisisOverviewWidget.prototype.compile = function(elements) {
         .classed('rw-widget', true)
         .classed('rw-widget-image', true)
         .html(content);
+
+      next();
     });
   }
 };

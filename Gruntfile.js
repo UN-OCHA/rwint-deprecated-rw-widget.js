@@ -75,7 +75,7 @@ module.exports = function (grunt) {
     },
   });
 
-  grunt.registerTask('default', ['connect:watch', 'watch:dist']);
+  grunt.registerTask('default', ['browserify:dist', 'copy:base', 'connect:watch', 'watch:dist']);
   grunt.registerTask('test', ['mochaTest:dist']);
   grunt.registerTask('lint', ['jshint:all']);
   grunt.registerTask('build', ['browserify:dist']);

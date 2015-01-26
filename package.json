@@ -28,16 +28,18 @@
   "dependencies": {
     "d3": "^3.5.3",
     "handlebars": "^2.0.0",
+    "jquery": "^2.1.3",
     "lodash": "^2.4.1",
     "moment": "^2.8.4",
     "reliefweb": "git+ssh://git@github.com:reliefweb/reliefweb.js"
   },
   "browserify-shim": {
     "d3": "global:d3",
-    "Handlebars": "global:Handlebars",
+    "handlebars": "global:Handlebars",
     "lodash": "global:_",
     "moment": "global:moment",
-    "reliefweb": "global:reliefweb"
+    "reliefweb": "global:reliefweb",
+    "jquery": "global:$"
   },
   "browserify": {
     "transform": [
