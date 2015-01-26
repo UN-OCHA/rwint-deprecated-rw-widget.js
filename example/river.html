@@ -24,68 +24,62 @@
   riverWidget = ReliefwebWidgets.widget('river', {
     template: Handlebars.templates['river.hbs'],
     defaultFilters: [
-      "Sitreps",
-      "Needs Assessments",
-      "Education",
-      "Emergency Shelter",
-      "Emergency Telecommunications",
-      "Food Security",
-      "Health",
-      "Logistics",
-      "Nutrition",
-      "Protection"
+      {
+        linkTitle: "Sitreps",
+        location: ""
+      },
+      {
+        linkTitle: "Needs Assessments",
+        location: ""
+      },
+      {
+        linkTitle: "Education",
+        location: ""
+      },
+      {
+        linkTitle: "Emergency Shelter",
+        location: ""
+      },
+      {
+        linkTitle: "Emergency Telecommunications",
+        location: ""
+      },
+      {
+        linkTitle: "Food Security",
+        location: ""
+      },
+      {
+        linkTitle: "Health",
+        location: ""
+      },
+      {
+        linkTitle: "Logistics",
+        location: ""
+      },
+      {
+        linkTitle: "Nutrition",
+        location: ""
+      },
+      {
+        linkTitle: "Protection",
+        location: ""
+      }
     ],
     content: [
       {
         title: "REPORTS",
         icon: "un-icon-product_type_report",
-        count: "1,332",
-        filters: [
-          "Sitreps",
-          "Needs Assessments",
-          "Education",
-          "Emergency Shelter",
-          "Emergency Telecommunications",
-          "Food Security",
-          "Health",
-          "Logistics",
-          "Nutrition",
-          "Protection"
-        ]
+        count: "1,332"
       },
       {
         title: "MAPS + INFOGRAPHICS",
         icon: "un-icon-activity_deployment",
-        count: "314",
-        filters: [
-          "Sitreps",
-          "Needs Assessments",
-          "Education",
-          "Emergency Shelter",
-          "Emergency Telecommunications",
-          "Food Security",
-          "Health",
-          "Logistics",
-          "Nutrition",
-          "Protection"
-        ]
+        count: "314"
       },
       {
         title: "JOBS",
         icon: "un-icon-product_type_map",
-        count: "42",
-        filters: [
-          "Sitreps",
-          "Needs Assessments",
-          "Education",
-          "Emergency Shelter",
-          "Emergency Telecommunications",
-          "Food Security",
-          "Health",
-          "Logistics",
-          "Nutrition",
-          "Protection"
-        ]
+        count: "42"
       }
     ]
   });

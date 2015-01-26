@@ -10,30 +10,16 @@
   <div class="widget-river--results clearfix">
     <div class="widget-river--results--graph">
       <ul class="widget-river--results-tabs clearfix">
+        {{#content}}
         <li class="widget-river--results--item">
-          <span class="widget-river--results--number">1,332</span>
+          <span class="widget-river--results--number">{{count}}</span>
 
           <div class="widget-river--results--type">
-            <span class="un-icon-product_type_report"></span>
-            Reports
+            <span class="{{icon}}"></span>
+            {{title}}
           </div>
         </li>
-        <li class="widget-river--results--item">
-          <span class="widget-river--results--number">314</span>
-
-          <div class="widget-river--results--type">
-            <span class="un-icon-activity_deployment"></span>
-            Maps + Infographics
-          </div>
-        </li>
-        <li class="widget-river--results--item">
-          <span class="widget-river--results--number">42</span>
-
-          <div class="widget-river--results--type">
-            <span class="un-icon-product_type_map"></span>
-            Jobs
-          </div>
-        </li>
+        {{/content}}
       </ul>
       <div class="placeholder">
 
@@ -86,16 +72,9 @@
     <div class="widget-river--filters">
       <h5>Filter Results <span class="close"></span></h5>
       <ul>
-        <li><a href="">Sitreps</a></li>
-        <li><a href="">Needs Assessments</a></li>
-        <li><a href="">Education</a></li>
-        <li><a href="">Emergency Shelter</a></li>
-        <li><a href="">Emergency Telecommunications</a></li>
-        <li><a href="">Food Security</a></li>
-        <li><a href="">Health</a></li>
-        <li><a href="">Logistics</a></li>
-        <li><a href="">Nutrition</a></li>
-        <li><a href="">Protection</a></li>
+        {{#defaultFilters}}
+        <li><a href="{{location}}">{{linkTitle}}</a></li>
+        {{/defaultFilters}}
       </ul>
     </div>
   </div>
