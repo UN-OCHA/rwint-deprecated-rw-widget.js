@@ -23,7 +23,7 @@ TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
-  var rw = new ReliefWebAPI();
+  var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
     .sort('date.original', 'desc')
