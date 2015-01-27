@@ -123,13 +123,13 @@ RiverWidget.prototype.link = function(elements) {
     $('select', $element).selectric();
 
     // Open popup.
-    $('.river-widget--dropdown-heading, .close').click(function(){
-      $('.river-widget--dropdown--wrapper').toggleClass('open');
+    $('.river-widget--dropdown-heading, .close', $element).click(function(){
+      $('.river-widget--dropdown--wrapper', $element).toggleClass('open');
     });
 
     // Close popup.
-    $('.river-widget-dropdown--item').click(function(){
-      $('.river-widget--dropdown--wrapper').removeClass('open');
+    $('.river-widget-dropdown--item', $element).click(function(){
+      $('.river-widget--dropdown--wrapper', $element).removeClass('open');
     });
   }
 
