@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Widget creation</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF8">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
+  <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+  <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
+  <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+  <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
+  <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
+  <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
+  <script type="text/javascript" src="river.template.js"></script>
+
+</head>
+<body>
+<div id="widget" class="widget"></div>
+
+<script type="text/javascript">
+
+  riverWidget = ReliefwebWidgets.widget('river', {
+    template: Handlebars.templates['river.hbs'],
+    defaultFilters: [
+      {
+        linkTitle: "Sitreps",
+        location: ""
+      },
+      {
+        linkTitle: "Needs Assessments",
+        location: ""
+      },
+      {
+        linkTitle: "Education",
+        location: ""
+      },
+      {
+        linkTitle: "Emergency Shelter",
+        location: ""
+      },
+      {
+        linkTitle: "Emergency Telecommunications",
+        location: ""
+      },
+      {
+        linkTitle: "Food Security",
+        location: ""
+      },
+      {
+        linkTitle: "Health",
+        location: ""
+      },
+      {
+        linkTitle: "Logistics",
+        location: ""
+      },
+      {
+        linkTitle: "Nutrition",
+        location: ""
+      },
+      {
+        linkTitle: "Protection",
+        location: ""
+      }
+    ],
+    content: [
+      {
+        title: "REPORTS",
+        icon: "un-icon-product_type_report",
+        count: "1,332"
+      },
+      {
+        title: "MAPS + INFOGRAPHICS",
+        icon: "un-icon-activity_deployment",
+        count: "314"
+      },
+      {
+        title: "JOBS",
+        icon: "un-icon-product_type_map",
+        count: "42"
+      }
+    ]
+  });
+  riverWidget.render('#widget');
+</script>
+<!-- Typekit -->
+<script src="//use.typekit.net/pqs1mrp.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+</body>
+</html>

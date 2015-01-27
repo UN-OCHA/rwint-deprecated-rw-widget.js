@@ -12,12 +12,14 @@ require('./util/handlebar-extensions');
 var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
+var RiverWidget = require('./components/river/river');
 var TimelineWidget = require('./components/timeline/timeline');
 
 var widgetRegistry = require('./util/config-manager')();
 
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
+widgetRegistry.config('river', RiverWidget);
 widgetRegistry.config('timeline', TimelineWidget);
 
 module.exports = {
