@@ -21,12 +21,42 @@ var RiverWidget = function(opts) {
 RiverWidget.prototype = new WidgetBase();
 
 RiverWidget.prototype.compile = function(elements, next) {
-  // TODO: Filter by dates.
-  // TODO: Grab this from select.
+  var widget = this;
+  widget.update("weeks", elements, next);
+};
+
+RiverWidget.prototype.link = function(elements, next) {
+
+  var $element = $(elements[0][0]);
+  var widget = this;
+  function init() {
+
+    $('select', $element).selectric();
+
+    // Open popup.
+    $('.river-widget--dropdown-heading, .close').click(function(){
+      $('.river-widget--dropdown--wrapper').toggleClass('open');
+    });
+
+    // Close popup.
+    $('.river-widget-dropdown--item').click(function(){
+      $('.river-widget--dropdown--wrapper').removeClass('open');
+    });
+
+    $('.widget-river--header select', $element).on('selectric-change', function(element) {
+      var period = $(this).val();
+      widget.update(period, elements, next);
+    });
+  }
+
+  init();
+};
+
+RiverWidget.prototype.update = function(period, elements, next) {
 
   var widget = this;
   var currentDate = moment().utc().format();
-  var fromDate = moment().utc().subtract(1, 'weeks').format();
+  var fromDate = moment().utc().subtract(1, period).format();
   var countries = widget.config('countries');
   var preset = {preset: "analysis"};
 
@@ -110,28 +140,6 @@ RiverWidget.prototype.compile = function(elements, next) {
 
     next();
   });
-
-};
-
-RiverWidget.prototype.link = function(elements) {
-
-  var $element = $(elements[0][0]);
-  function init() {
-
-    $('select', $element).selectric();
-
-    // Open popup.
-    $('.river-widget--dropdown-heading, .close').click(function(){
-      $('.river-widget--dropdown--wrapper').toggleClass('open');
-    });
-
-    // Close popup.
-    $('.river-widget-dropdown--item').click(function(){
-      $('.river-widget--dropdown--wrapper').removeClass('open');
-    });
-  }
-
-  init();
 };
 
 module.exports = RiverWidget;
