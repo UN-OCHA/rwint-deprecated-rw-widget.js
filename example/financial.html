@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Financial</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
+    <script type="text/javascript" src="../bower_components/sly/dist/sly.js"></script>
+    <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
+    <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
+    <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
+    <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
+    <script type="text/javascript" src="financial.template.js"></script>
+  </head>
+  <body>
+    <div id="widget" class="widget"></div>
+
+    <script type="text/javascript">
+      var financialWidget = ReliefwebWidgets.widget('financial', {
+        template: Handlebars.templates['financial.hbs'],
+        dataSources: [
+            {
+                dataItemTitle: "Iraq"
+            },
+            {
+                dataItemTitle: "Syria Regional Refugee Response Plan"
+            },
+            {
+                dataItemTitle: "Syria Humanitarian Assistance Response Plan"
+            },
+        ],
+        dataItemTitleCurrent: "Syria Regional Refugee Response Plan"
+      });
+      financialWidget.render('#widget');
+    </script>
+    <!-- Typekit -->
+    <script src="//use.typekit.net/pqs1mrp.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+  </body>
+</html>
