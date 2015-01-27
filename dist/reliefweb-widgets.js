@@ -88,6 +88,26 @@ var FinancialWidget = function(opts) {
 
 FinancialWidget.prototype = new WidgetBase();
 
+FinancialWidget.prototype.link = function(elements) {
+
+  function init() {
+    populateYearSelector();
+  }
+
+  function populateYearSelector() {
+    var $yearSelector = $('select[name="time-chooser"]');
+    var year = 2015;
+    var selected = '';
+    for (var i = 0; i < 5; i++) {
+      selected = (year == 2015) ? 'selected' : '';
+      $yearSelector.append('<option value="' + year + '"' + selected + '>' + year + '</option>');
+      year--;
+    }
+  }
+
+  init();
+};
+
 module.exports = FinancialWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
