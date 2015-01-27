@@ -29,7 +29,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
       'operator': 'AND',
       'conditions': [
         {
-          'field': 'headline'
+          'field': 'headline.featured'
         }
       ]
     }
