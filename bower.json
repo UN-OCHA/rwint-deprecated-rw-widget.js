@@ -33,6 +33,9 @@
   "overrides": {
     "lodash": {
       "main": "dist/lodash.compat.min.js"
+    },
+    "sly": {
+      "main": "dist/sly.min.js"
     }
   }
 }
