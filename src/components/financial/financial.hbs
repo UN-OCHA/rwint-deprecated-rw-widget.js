@@ -1,17 +1,13 @@
 <div class="financial-widget" id="widget-financial">
   <!--<h1 class="financial-widget--title"><i class="un-icon-activity_financing"></i> Financial</h1>-->
   <div class="financial-widget--data-source-chooser">
-      <a href="" class="financial-widget--data-source">Iraq</a>
-      <a href="" class="financial-widget--data-source active">Syria Regional Refugee Response&nbsp;Plan</a>
-      <a href="" class="financial-widget--data-source">Syria Humanitarian Assistance Response&nbsp;Plan</a>
+      {{#dataSources}}
+      <a href="" class="financial-widget--data-source">{{ dataItemTitle }}</a>
+      {{/dataSources}}
   </div>
   <div class="financial-widget--time">
-      <h1>Syria Regional Refugee Response&nbsp;Plan</h1>
+      <h1>{{ dataItemTitleCurrent }}</h1>
       <select class="financial-widget--time-select" name="time-chooser" id="">
-          <option value="2012">2012</option>
-          <option value="2013">2013</option>
-          <option value="2014">2014</option>
-          <option value="2015" selected>2015</option>
       </select>
   </div>
   <div class="financial-widget--percent-funded">
