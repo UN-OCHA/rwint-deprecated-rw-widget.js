@@ -13,12 +13,14 @@ var widgetBase = require('./widget-base');
 var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
 var TimelineWidget = require('./components/timeline/timeline');
+var FinancialWidget = require('./components/financial/financial');
 
 var widgetRegistry = require('./util/config-manager')();
 
 widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 widgetRegistry.config('timeline', TimelineWidget);
+widgetRegistry.config('financial', FinancialWidget);
 
 module.exports = {
   widget: function(name, opts) {
