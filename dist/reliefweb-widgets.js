@@ -158,9 +158,9 @@ RiverWidget.prototype.compile = function(elements, next) {
       icon: "un-icon-product_type_report"
     },
     {
-      type: "reports",
+      type: "maps",
       title: "MAPS + INFOGRAPHICS",
-      icon: "un-icon-activity_deployment",
+      icon: "un-icon-activity_deployment"
     },
     {
       type: "jobs",
@@ -169,9 +169,26 @@ RiverWidget.prototype.compile = function(elements, next) {
     }
   ];
 
-
   riverContent.forEach(function(val, key){
-    rw.post(val.type)
+
+    // Remove Map/Infographic filter.
+    // TODO: Make this more elegant.
+    filters.filter.conditions.splice(2, 1 );
+
+    var type;
+    if (val.type == "maps") {
+      type = "reports";
+      filters.filter.conditions.push({
+        "field": "format.name",
+        "value": ["Map", "Infographic"],
+        "operator": "OR"
+      });
+    }
+    else {
+      type = val.type;
+    }
+
+    rw.post(type)
       .send(preset)
       .send(filters)
       .end(function(err, res) {
