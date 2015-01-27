@@ -51,7 +51,32 @@ function titleAdjust(title) {
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],2:[function(require,module,exports){
+},{"../../widget-base":10}],2:[function(require,module,exports){
+(function (global){
+"use strict";
+
+var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var WidgetBase = require('../../widget-base');
+var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
+
+var FinancialWidget = function(opts) {
+  var config = {
+    title: "Financial",
+    template: "financial.hbs"
+  };
+
+  opts = (opts) ? opts : {};
+
+  config = _.defaults(opts, config);
+  WidgetBase.call(this, config);
+};
+
+FinancialWidget.prototype = new WidgetBase();
+
+module.exports = FinancialWidget;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../widget-base":10}],3:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -78,7 +103,7 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],3:[function(require,module,exports){
+},{"../../widget-base":10}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -124,7 +149,7 @@ RiverWidget.prototype.link = function(elements) {
 module.exports = RiverWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],4:[function(require,module,exports){
+},{"../../widget-base":10}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -446,7 +471,7 @@ TimelineWidget.prototype.link = function(elements) {
 module.exports = TimelineWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],5:[function(require,module,exports){
+},{"../../widget-base":10}],6:[function(require,module,exports){
 "use strict";
 
 /**
@@ -463,6 +488,7 @@ var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
 var RiverWidget = require('./components/river/river');
 var TimelineWidget = require('./components/timeline/timeline');
+var FinancialWidget = require('./components/financial/financial');
 
 var widgetRegistry = require('./util/config-manager')();
 
@@ -470,6 +496,7 @@ widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 widgetRegistry.config('river', RiverWidget);
 widgetRegistry.config('timeline', TimelineWidget);
+widgetRegistry.config('financial', FinancialWidget);
 
 module.exports = {
   widget: function(name, opts) {
@@ -490,7 +517,7 @@ module.exports = {
   }
 };
 
-},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./components/river/river":3,"./components/timeline/timeline":4,"./util/config-manager":6,"./util/handlebar-extensions":7,"./widget-base":9}],6:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/financial/financial":2,"./components/image/image":3,"./components/river/river":4,"./components/timeline/timeline":5,"./util/config-manager":7,"./util/handlebar-extensions":8,"./widget-base":10}],7:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -576,7 +603,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -598,7 +625,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @file
  *
@@ -614,7 +641,7 @@ module.exports = {
   isNode: isNode
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -772,5 +799,5 @@ widgetBase.prototype.template = function(callback) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":6,"./util/junk-drawer":8}]},{},[5])(5)
+},{"./util/config-manager":7,"./util/junk-drawer":9}]},{},[6])(6)
 });
