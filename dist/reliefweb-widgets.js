@@ -26,31 +26,16 @@ CrisisOverviewWidget.prototype = new WidgetBase();
 
 CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
-  var that = this;
-  if (config.configFile) {
-    d3.json(config.configFile, function(e, res) {
-      for (var key in res) {
-        that.config(key, res[key]);
-      }
-      _compile(elements);
-    });
-  } else {
-    _compile(elements);
-  }
+  this.config('adjustedTitle', titleAdjust(config.title));
 
-  function _compile(el) {
-    var config = that.config();
-    that.config('adjustedTitle', titleAdjust(config.title));
+  this.template(function(content) {
+    elements
+      .classed('rw-widget', true)
+      .classed('rw-widget-image', true)
+      .html(content);
 
-    that.template(function(content) {
-      el
-        .classed('rw-widget', true)
-        .classed('rw-widget-image', true)
-        .html(content);
-
-      next();
-    });
-  }
+    next();
+  });
 };
 
 function titleAdjust(title) {
@@ -691,11 +676,26 @@ widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
   var widget = this;
 
-  this.compile(elements, function() {
+  this._compile(elements, function() {
     if (!junkDrawer.isNode()) {
       widget.link(elements);
     }
   });
+};
+
+widgetBase.prototype._compile = function(elements, next) {
+  var config = this.config();
+  var that = this;
+  if (config.configFile) {
+    d3.json(config.configFile, function(e, res) {
+      for (var key in res) {
+        that.config(key, res[key]);
+      }
+      that.compile(elements, next);
+    });
+  } else {
+    this.compile(elements, next);
+  }
 };
 
 /**
