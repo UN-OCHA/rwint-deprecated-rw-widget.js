@@ -22,60 +22,16 @@ RiverWidget.prototype = new WidgetBase();
 
 RiverWidget.prototype.compile = function(elements, next) {
   var widget = this;
-  var currentDate = moment().utc().format();
-  var fromDate = moment().utc().subtract(1, "weeks").format();
-  var countries = widget.config('countries');
-  var preset = {preset: "analysis"};
-
-  var filters = {
-    filter: {
-      'operator': 'AND',
-      'conditions': [
-        {
-          "field": "date.created",
-          "value": {
-            "from": fromDate,
-            "to": currentDate
-          }
-        }
-      ]
-    }
-  };
-
-  if (Array.isArray(countries) && countries.length) {
-    filters.filter.conditions.push({
-      'field': 'country',
-      'value': countries,
-      'operator': 'OR'
-    });
-  }
-
-  var rw = reliefweb.client();
-  var riverContent = [
-    {
-      type: "reports",
-      title: "REPORTS",
-      icon: "un-icon-product_type_report"
-    },
-    {
-      type: "maps",
-      title: "MAPS + INFOGRAPHICS",
-      icon: "un-icon-activity_deployment"
-    },
-    {
-      type: "jobs",
-      title: "JOBS",
-      icon: "un-icon-product_type_map"
-    }
-  ];
+  widget.prepare("weeks");
 
   var count = 0;
-  riverContent.forEach(function(val, key){
-    filters.filter.conditions.splice(2, 1 );
+  var rw = reliefweb.client();
+  widget.content.forEach(function(val, key){
+    widget.filters.filter.conditions.splice(2, 1 );
     var type;
     if (val.type == "maps") {
       type = "reports";
-      filters.filter.conditions.push({
+      widget.filters.filter.conditions.push({
         "field": "format.name",
         "value": ["Map", "Infographic"],
         "operator": "OR"
@@ -86,16 +42,14 @@ RiverWidget.prototype.compile = function(elements, next) {
     }
 
     rw.post(type)
-      .send(preset)
-      .send(filters)
+      .send({preset: "analysis"})
+      .send(widget.filters)
       .end(function(err, res) {
         if (!err) {
           count++;
-          riverContent[key].count = res.body.totalCount;
-          if (count == riverContent.length) {
-            widget.config('content', riverContent);
-            console.log(widget.config());
-
+          widget.content[key].count = res.body.totalCount;
+          if (count == widget.content.length) {
+            widget.config('content', widget.content);
             widget.template(function(content) {
               elements
                 .classed('rw-widget', true)
@@ -128,11 +82,103 @@ RiverWidget.prototype.link = function(elements, next) {
     });
 
     $('.widget-river--header select', $element).on('selectric-change', function(element) {
-      // Update the counts here.
+      var period = $(this).val();
+      widget.prepare(period);
+
+      var count = 0;
+      var rw = reliefweb.client();
+      widget.content.forEach(function(val, key){
+        widget.filters.filter.conditions.splice(2, 1 );
+        var type;
+        if (val.type == "maps") {
+          type = "reports";
+          widget.filters.filter.conditions.push({
+            "field": "format.name",
+            "value": ["Map", "Infographic"],
+            "operator": "OR"
+          });
+        }
+        else {
+          type = val.type;
+        }
+
+        rw.post(type)
+          .send({preset: "analysis"})
+          .send(widget.filters)
+          .end(function(err, res) {
+            if (!err) {
+              count++;
+              widget.content[key].count = res.body.totalCount;
+              if (count == widget.content.length) {
+                paint(widget.content);
+              }
+            }
+          });
+      });
+    });
+  }
+
+  function paint(updatedContent) {
+    $('li.widget-river--results--item .widget-river--results--number').each(function(index) {
+      $(this).html(updatedContent[index].count);
     });
   }
 
   init();
 };
+
+RiverWidget.prototype.prepare = function(period) {
+  var widget = this;
+  var currentDate = moment().utc().format();
+  var fromDate = moment().utc().subtract(1, period).format();
+  var countries = widget.config('countries');
+
+  var filters = {
+    filter: {
+      'operator': 'AND',
+      'conditions': [
+        {
+          "field": "date.created",
+          "value": {
+            "from": fromDate,
+            "to": currentDate
+          }
+        }
+      ]
+    }
+  };
+
+  if (Array.isArray(countries) && countries.length) {
+    filters.filter.conditions.push({
+      'field': 'country',
+      'value': countries,
+      'operator': 'OR'
+    });
+  }
+
+  widget.filters = filters;
+
+  widget.content = [
+    {
+      type: "reports",
+      title: "REPORTS",
+      icon: "un-icon-product_type_report"
+    },
+    {
+      type: "maps",
+      title: "MAPS + INFOGRAPHICS",
+      icon: "un-icon-activity_deployment"
+    },
+    {
+      type: "jobs",
+      title: "JOBS",
+      icon: "un-icon-product_type_map"
+    }
+  ];
+};
+
+function paint() {
+
+}
 
 module.exports = RiverWidget;
