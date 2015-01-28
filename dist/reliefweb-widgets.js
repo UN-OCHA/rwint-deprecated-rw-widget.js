@@ -119,44 +119,16 @@ RiverWidget.prototype = new WidgetBase();
 
 RiverWidget.prototype.compile = function(elements, next) {
   var widget = this;
-  widget.prepare("weeks");
 
-  var count = 0;
-  var rw = reliefweb.client();
-  widget.content.forEach(function(val, key){
-    widget.filters.filter.conditions.splice(2, 1 );
-    var type;
-    if (val.type == "maps") {
-      type = "reports";
-      widget.filters.filter.conditions.push({
-        "field": "format.name",
-        "value": ["Map", "Infographic"],
-        "operator": "OR"
-      });
-    }
-    else {
-      type = val.type;
-    }
+  widget.getData("weeks", function(updatedContent){
+    widget.config('content', updatedContent);
+    widget.template(function(content) {
+      elements
+        .classed('rw-widget', true)
+        .html(content);
 
-    rw.post(type)
-      .send({preset: "analysis"})
-      .send(widget.filters)
-      .end(function(err, res) {
-        if (!err) {
-          count++;
-          widget.content[key].count = res.body.totalCount;
-          if (count == widget.content.length) {
-            widget.config('content', widget.content);
-            widget.template(function(content) {
-              elements
-                .classed('rw-widget', true)
-                .html(content);
-
-              next();
-            });
-          }
-        }
-      });
+      next();
+    });
   });
 };
 
@@ -180,37 +152,8 @@ RiverWidget.prototype.link = function(elements, next) {
 
     $('.widget-river--header select', $element).on('selectric-change', function(element) {
       var period = $(this).val();
-      widget.prepare(period);
-
-      var count = 0;
-      var rw = reliefweb.client();
-      widget.content.forEach(function(val, key){
-        widget.filters.filter.conditions.splice(2, 1 );
-        var type;
-        if (val.type == "maps") {
-          type = "reports";
-          widget.filters.filter.conditions.push({
-            "field": "format.name",
-            "value": ["Map", "Infographic"],
-            "operator": "OR"
-          });
-        }
-        else {
-          type = val.type;
-        }
-
-        rw.post(type)
-          .send({preset: "analysis"})
-          .send(widget.filters)
-          .end(function(err, res) {
-            if (!err) {
-              count++;
-              widget.content[key].count = res.body.totalCount;
-              if (count == widget.content.length) {
-                paint(widget.content);
-              }
-            }
-          });
+      widget.getData(period, function(updatedContent){
+        paint(updatedContent);
       });
     });
   }
@@ -224,7 +167,7 @@ RiverWidget.prototype.link = function(elements, next) {
   init();
 };
 
-RiverWidget.prototype.prepare = function(period) {
+RiverWidget.prototype.getData = function (period, updatePage) {
   var widget = this;
   var currentDate = moment().utc().format();
   var fromDate = moment().utc().subtract(1, period).format();
@@ -253,9 +196,7 @@ RiverWidget.prototype.prepare = function(period) {
     });
   }
 
-  widget.filters = filters;
-
-  widget.content = [
+  var content = [
     {
       type: "reports",
       title: "REPORTS",
@@ -272,11 +213,38 @@ RiverWidget.prototype.prepare = function(period) {
       icon: "un-icon-product_type_map"
     }
   ];
+
+  var count = 0;
+  var rw = reliefweb.client();
+  content.forEach(function(val, key){
+    filters.filter.conditions.splice(2, 1 );
+    var type;
+    if (val.type == "maps") {
+      type = "reports";
+      filters.filter.conditions.push({
+        "field": "format.name",
+        "value": ["Map", "Infographic"],
+        "operator": "OR"
+      });
+    }
+    else {
+      type = val.type;
+    }
+
+    rw.post(type)
+      .send({preset: "analysis"})
+      .send(filters)
+      .end(function(err, res) {
+        if (!err) {
+          count++;
+          content[key].count = res.body.totalCount;
+          if (count == content.length) {
+            updatePage(content);
+          }
+        }
+      });
+  });
 };
-
-function paint() {
-
-}
 
 module.exports = RiverWidget;
 
