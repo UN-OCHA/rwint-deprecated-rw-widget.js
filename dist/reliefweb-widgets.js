@@ -191,6 +191,8 @@ RiverWidget.prototype.compile = function(elements, next) {
           riverContent[key].count = res.body.totalCount;
           if (count == riverContent.length) {
             widget.config('content', riverContent);
+            console.log(widget.config());
+
             widget.template(function(content) {
               elements
                 .classed('rw-widget', true)
@@ -229,6 +231,9 @@ RiverWidget.prototype.link = function(elements, next) {
 
   init();
 };
+
+module.exports = RiverWidget;
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"../../widget-base":9}],4:[function(require,module,exports){
 (function (global){
