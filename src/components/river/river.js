@@ -22,41 +22,8 @@ RiverWidget.prototype = new WidgetBase();
 
 RiverWidget.prototype.compile = function(elements, next) {
   var widget = this;
-  widget.update("weeks", elements, next);
-};
-
-RiverWidget.prototype.link = function(elements, next) {
-
-  var $element = $(elements[0][0]);
-  var widget = this;
-  function init() {
-
-    $('select', $element).selectric();
-
-    // Open popup.
-    $('.river-widget--dropdown-heading, .close').click(function(){
-      $('.river-widget--dropdown--wrapper').toggleClass('open');
-    });
-
-    // Close popup.
-    $('.river-widget-dropdown--item').click(function(){
-      $('.river-widget--dropdown--wrapper').removeClass('open');
-    });
-
-    $('.widget-river--header select', $element).on('selectric-change', function(element) {
-      var period = $(this).val();
-      widget.update(period, elements, next);
-    });
-  }
-
-  init();
-};
-
-RiverWidget.prototype.update = function(period, elements, next) {
-
-  var widget = this;
   var currentDate = moment().utc().format();
-  var fromDate = moment().utc().subtract(1, period).format();
+  var fromDate = moment().utc().subtract(1, "weeks").format();
   var countries = widget.config('countries');
   var preset = {preset: "analysis"};
 
@@ -102,12 +69,9 @@ RiverWidget.prototype.update = function(period, elements, next) {
     }
   ];
 
+  var count = 0;
   riverContent.forEach(function(val, key){
-
-    // Remove Map/Infographic filter.
-    // TODO: Make this more elegant.
     filters.filter.conditions.splice(2, 1 );
-
     var type;
     if (val.type == "maps") {
       type = "reports";
@@ -125,21 +89,46 @@ RiverWidget.prototype.update = function(period, elements, next) {
       .send(preset)
       .send(filters)
       .end(function(err, res) {
-        riverContent[key].count = res.body.totalCount;
+        if (!err) {
+          count++;
+          riverContent[key].count = res.body.totalCount;
+          if (count == riverContent.length) {
+            widget.config('content', riverContent);
+            widget.template(function(content) {
+              elements
+                .classed('rw-widget', true)
+                .html(content);
+
+              next();
+            });
+          }
+        }
       });
-  });
-
-  console.log(riverContent);
-  widget.config('content', riverContent);
-  console.log(widget.config());
-
-  widget.template(function(content) {
-    elements
-      .classed('rw-widget', true)
-      .html(content);
-
-    next();
   });
 };
 
-module.exports = RiverWidget;
+RiverWidget.prototype.link = function(elements, next) {
+
+  var $element = $(elements[0][0]);
+  var widget = this;
+  function init() {
+
+    $('select', $element).selectric();
+
+    // Open popup.
+    $('.river-widget--dropdown-heading, .close').click(function(){
+      $('.river-widget--dropdown--wrapper').toggleClass('open');
+    });
+
+    // Close popup.
+    $('.river-widget-dropdown--item').click(function(){
+      $('.river-widget--dropdown--wrapper').removeClass('open');
+    });
+
+    $('.widget-river--header select', $element).on('selectric-change', function(element) {
+      // Update the counts here.
+    });
+  }
+
+  init();
+};
