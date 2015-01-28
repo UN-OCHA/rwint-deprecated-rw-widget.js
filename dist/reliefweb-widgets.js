@@ -26,31 +26,16 @@ CrisisOverviewWidget.prototype = new WidgetBase();
 
 CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
-  var that = this;
-  if (config.configFile) {
-    d3.json(config.configFile, function(e, res) {
-      for (var key in res) {
-        that.config(key, res[key]);
-      }
-      _compile(elements);
-    });
-  } else {
-    _compile(elements);
-  }
+  this.config('adjustedTitle', titleAdjust(config.title));
 
-  function _compile(el) {
-    var config = that.config();
-    that.config('adjustedTitle', titleAdjust(config.title));
+  this.template(function(content) {
+    elements
+      .classed('rw-widget', true)
+      .classed('rw-widget-image', true)
+      .html(content);
 
-    that.template(function(content) {
-      el
-        .classed('rw-widget', true)
-        .classed('rw-widget-image', true)
-        .html(content);
-
-      next();
-    });
-  }
+    next();
+  });
 };
 
 function titleAdjust(title) {
@@ -66,7 +51,52 @@ function titleAdjust(title) {
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],2:[function(require,module,exports){
+},{"../../widget-base":10}],2:[function(require,module,exports){
+(function (global){
+"use strict";
+
+var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
+var WidgetBase = require('../../widget-base');
+var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
+
+var FinancialWidget = function(opts) {
+  var config = {
+    title: "Financial",
+    template: "financial.hbs"
+  };
+
+  opts = (opts) ? opts : {};
+
+  config = _.defaults(opts, config);
+  WidgetBase.call(this, config);
+};
+
+FinancialWidget.prototype = new WidgetBase();
+
+FinancialWidget.prototype.link = function(elements) {
+
+  function init() {
+    populateYearSelector();
+  }
+
+  function populateYearSelector() {
+    var $yearSelector = $('select[name="time-chooser"]');
+    var year = 2015;
+    var selected = '';
+    for (var i = 0; i < 5; i++) {
+      selected = (year == 2015) ? 'selected' : '';
+      $yearSelector.append('<option value="' + year + '"' + selected + '>' + year + '</option>');
+      year--;
+    }
+  }
+
+  init();
+};
+
+module.exports = FinancialWidget;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"../../widget-base":10}],3:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -93,7 +123,7 @@ ImageWidget.prototype = new WidgetBase();
 module.exports = ImageWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],3:[function(require,module,exports){
+},{"../../widget-base":10}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -253,7 +283,7 @@ RiverWidget.prototype.getData = function (period, updatePage) {
 module.exports = RiverWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],4:[function(require,module,exports){
+},{"../../widget-base":10}],5:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -286,7 +316,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
       'operator': 'AND',
       'conditions': [
         {
-          'field': 'headline'
+          'field': 'headline.featured'
         }
       ]
     }
@@ -575,7 +605,7 @@ TimelineWidget.prototype.link = function(elements) {
 module.exports = TimelineWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":9}],5:[function(require,module,exports){
+},{"../../widget-base":10}],6:[function(require,module,exports){
 "use strict";
 
 /**
@@ -592,6 +622,7 @@ var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
 var RiverWidget = require('./components/river/river');
 var TimelineWidget = require('./components/timeline/timeline');
+var FinancialWidget = require('./components/financial/financial');
 
 var widgetRegistry = require('./util/config-manager')();
 
@@ -599,6 +630,7 @@ widgetRegistry.config('image', ImageWidget);
 widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
 widgetRegistry.config('river', RiverWidget);
 widgetRegistry.config('timeline', TimelineWidget);
+widgetRegistry.config('financial', FinancialWidget);
 
 module.exports = {
   widget: function(name, opts) {
@@ -619,7 +651,7 @@ module.exports = {
   }
 };
 
-},{"./components/crisis-overview/crisis-overview":1,"./components/image/image":2,"./components/river/river":3,"./components/timeline/timeline":4,"./util/config-manager":6,"./util/handlebar-extensions":7,"./widget-base":9}],6:[function(require,module,exports){
+},{"./components/crisis-overview/crisis-overview":1,"./components/financial/financial":2,"./components/image/image":3,"./components/river/river":4,"./components/timeline/timeline":5,"./util/config-manager":7,"./util/handlebar-extensions":8,"./widget-base":10}],7:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -705,7 +737,7 @@ var config = function() {
 module.exports = config;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -727,7 +759,7 @@ Handlebars.registerHelper('dateFormat', function(context, block) {
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * @file
  *
@@ -743,7 +775,7 @@ module.exports = {
   isNode: isNode
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -805,11 +837,26 @@ widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
   var widget = this;
 
-  this.compile(elements, function() {
+  this._compile(elements, function() {
     if (!junkDrawer.isNode()) {
       widget.link(elements);
     }
   });
+};
+
+widgetBase.prototype._compile = function(elements, next) {
+  var config = this.config();
+  var that = this;
+  if (config.configFile) {
+    d3.json(config.configFile, function(e, res) {
+      for (var key in res) {
+        that.config(key, res[key]);
+      }
+      that.compile(elements, next);
+    });
+  } else {
+    this.compile(elements, next);
+  }
 };
 
 /**
@@ -886,5 +933,5 @@ widgetBase.prototype.template = function(callback) {
 module.exports = widgetBase;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":6,"./util/junk-drawer":8}]},{},[5])(5)
+},{"./util/config-manager":7,"./util/junk-drawer":9}]},{},[6])(6)
 });

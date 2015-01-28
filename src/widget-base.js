@@ -58,11 +58,26 @@ widgetBase.prototype.render = function(selector) {
   var elements = d3.selectAll(selector);
   var widget = this;
 
-  this.compile(elements, function() {
+  this._compile(elements, function() {
     if (!junkDrawer.isNode()) {
       widget.link(elements);
     }
   });
+};
+
+widgetBase.prototype._compile = function(elements, next) {
+  var config = this.config();
+  var that = this;
+  if (config.configFile) {
+    d3.json(config.configFile, function(e, res) {
+      for (var key in res) {
+        that.config(key, res[key]);
+      }
+      that.compile(elements, next);
+    });
+  } else {
+    this.compile(elements, next);
+  }
 };
 
 /**

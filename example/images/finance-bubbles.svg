@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="421px" height="714px" viewBox="0 0 421 714" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>finance-bubbles</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="finance-bubbles" sketch:type="MSLayerGroup" transform="translate(-3.000000, 0.000000)">
+            <g id="Page-1">
+                <g id="cluster-bubbles">
+                    <g id="scale">
+                        <path d="M44.5,0.5 L44.5,713.938171" id="percent-line" stroke="#979797" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,356.5 L423.501312,356.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,1.5 L423.501312,1.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,712.5 L423.501312,712.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,640.5 L423.501312,640.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,569.5 L423.501312,569.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,498.5 L423.501312,498.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,427.5 L423.501312,427.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,285.5 L423.501312,285.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,214.5 L423.501312,214.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,143.5 L423.501312,143.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <path d="M45.5,72.5 L423.501312,72.5" id="Line" stroke="#E7E7E7" stroke-linecap="square" sketch:type="MSShapeGroup"></path>
+                        <text id="100%" fill="#000000" sketch:type="MSTextLayer" font-family="Futura PT" font-size="16" font-weight="313" sketch:alignment="middle">
+                            <tspan x="0.692" y="16">100%</tspan>
+                        </text>
+                        <text id="0%" fill="#000000" sketch:type="MSTextLayer" font-family="Futura PT" font-size="16" font-weight="313" sketch:alignment="middle">
+                            <tspan x="15.776" y="709">0%</tspan>
+                        </text>
+                        <text id="50%" fill="#000000" sketch:type="MSTextLayer" font-family="Futura PT" font-size="16" font-weight="313" sketch:alignment="middle">
+                            <tspan x="7.732" y="364">50%</tspan>
+                        </text>
+                        <text id="25%" fill="#000000" sketch:type="MSTextLayer" font-family="Futura PT" font-size="16" font-weight="313" sketch:alignment="middle">
+                            <tspan x="8.028" y="542">25%</tspan>
+                        </text>
+                        <text id="75%" fill="#000000" sketch:type="MSTextLayer" font-family="Futura PT" font-size="16" font-weight="313" sketch:alignment="middle">
+                            <tspan x="8.436" y="185">75%</tspan>
+                        </text>
+                    </g>
+                    <g id="clusters" transform="translate(67.000000, 36.000000)">
+                        <g id="food-agriculture" transform="translate(164.000000, 283.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="88" cy="88" r="88"></circle>
+                            <g id="Food-&amp;-Agriculture" transform="translate(32.000000, 84.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.352" y="16">Food &amp; Agriculture</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="etc" transform="translate(119.000000, 371.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="15.5" cy="15.5" r="15.5"></circle>
+                            <g id="ETC" transform="translate(3.000000, 5.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.348" y="16">ETC</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="nutrition" transform="translate(15.000000, 182.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="41.5" cy="41.5" r="41.5"></circle>
+                            <g id="Nutrition" transform="translate(13.000000, 35.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.7829375" y="16">Nutrition</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="nfi-shelter" transform="translate(92.000000, 436.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="50" cy="50" r="50"></circle>
+                            <g id="NFI-&amp;-Shelter" transform="translate(6.000000, 41.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="1.336375" y="16">NFI &amp; Shelter</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster5" transform="translate(177.000000, 0.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="66" cy="66" r="66"></circle>
+                            <g id="Cluster5" transform="translate(38.000000, 59.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.152" y="16">Cluster5</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster6" transform="translate(86.000000, 92.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="48.5" cy="48.5" r="48.5"></circle>
+                            <g id="Cluster6" transform="translate(22.000000, 41.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.8629375" y="16">Cluster6</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster7" transform="translate(22.000000, 577.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="26" cy="20" r="20"></circle>
+                            <g id="Cluster7" transform="translate(0.000000, 9.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.8629375" y="16">Cluster7</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster8" transform="translate(0.000000, 331.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="51.5" cy="51.5" r="51.5"></circle>
+                            <g id="Cluster8" transform="translate(27.000000, 45.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.8629375" y="16">Cluster8</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster9" transform="translate(243.000000, 511.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="24" cy="24" r="24"></circle>
+                            <g id="Cluster9" transform="translate(0.000000, 15.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.8629375" y="16">Cluster9</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster10" transform="translate(133.000000, 569.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="30.5" cy="28.5" r="28.5"></circle>
+                            <g id="Cluster10" transform="translate(0.000000, 19.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.37371875" y="16">Cluster10</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster11" transform="translate(60.000000, 267.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="28.5" cy="18.5" r="18.5"></circle>
+                            <g id="Cluster11" transform="translate(0.000000, 8.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.66971875" y="16">Cluster11</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="cluster12" transform="translate(110.000000, 206.000000)">
+                            <circle id="Oval" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="49" cy="49" r="49"></circle>
+                            <g id="Cluster12" transform="translate(14.000000, 42.000000)" sketch:alignment="middle" font-size="16" font-family="Futura PT" fill="#000000" sketch:type="MSTextLayer" font-weight="313">
+                                <text>
+                                    <tspan x="0.5697188" y="16">Cluster12</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="detail-overlay" transform="translate(45.000000, 0.000000)">
+                        <rect id="Rectangle-1" fill-opacity="0.8" fill="#D8D8D8" sketch:type="MSShapeGroup" x="0" y="0" width="363" height="714"></rect>
+                        <circle id="Oval-13" stroke="#979797" stroke-width="5" fill="#D8D8D8" sketch:type="MSShapeGroup" cx="184" cy="254" r="160"></circle>
+                        <g id="Nutrition" transform="translate(122.000000, 210.000000)" font-weight="313" font-family="Futura PT" fill="#000000" sketch:alignment="middle" font-size="16" sketch:type="MSTextLayer">
+                            <text id="18.5-Million-Funded">
+                                <tspan x="8.748" y="82">18.5 Million Funded</tspan>
+                            </text>
+                            <text id="30.0-Million-Requested">
+                                <tspan x="0.732" y="60">30.0 Million Requested</tspan>
+                            </text>
+                            <text id="62%-Covered">
+                                <tspan x="25.332" y="38">62% Covered</tspan>
+                            </text>
+                            <text>
+                                <tspan x="36.072" y="16">Nutrition</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
