@@ -44,13 +44,13 @@ RiverWidget.prototype.link = function(elements, next) {
     $('select', $element).selectric();
 
     // Open popup.
-    $('.river-widget--dropdown-heading, .close').click(function(){
-      $('.river-widget--dropdown--wrapper').toggleClass('open');
+    $('.widget-river--results--item, .close').click(function(){
+      $('.widget-river--filters').toggleClass('open');
     });
 
     // Close popup.
-    $('.river-widget-dropdown--item').click(function(){
-      $('.river-widget--dropdown--wrapper').removeClass('open');
+    $('.close').click(function(){
+      $('.widget-river--filters').removeClass('open');
     });
 
     $('.widget-river--header select', $element).on('selectric-change', function(element) {
@@ -140,13 +140,17 @@ RiverWidget.prototype.getData = function (period, updatePage) {
       .end(function(err, res) {
         if (!err) {
           count++;
-          content[key].count = res.body.totalCount;
+          content[key].count = addCommas(res.body.totalCount);
           if (count == content.length) {
             updatePage(content);
           }
         }
       });
   });
+
+  function addCommas(intNum) {
+    return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+  }
 };
 
 module.exports = RiverWidget;
