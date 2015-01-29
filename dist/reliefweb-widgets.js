@@ -214,7 +214,6 @@ RiverWidget.prototype.getChart = function(period) {
   }
 
   function prepareData() {
-    // TODO: Grab all dates in this timeperiod if not present then insert 0;
     // TODO: Aggregate results per month;
     var content = widget.config('content');
     var timePeriod = widget.config('timePeriod');
@@ -224,26 +223,33 @@ RiverWidget.prototype.getChart = function(period) {
     // Get each day in given time period.
     var timePeriodDays = [];
     for (var d = from; d <= now; d.setDate(d.getDate() + 1)) {
-      timePeriodDays.push(moment(d).utc().format());
+      timePeriodDays.push(moment(d).utc().format("MM-DD-YYYY"));
     }
 
-    console.log(timePeriodDays);
-    console.log(content[0].graphData);
     var data = [];
     data.max = 0;
 
     content.forEach(function(val, key){
       data[val.type] = [];
 
+      var gData = [];
       val.graphData.forEach(function(rawData){
         var dates = moment(rawData.value).utc().format("MM-DD-YYYY");
         var total = rawData.count / val.count * 100;
-
         if (total > data.max) {
           data.max = total;
         }
+        gData.push({date: dates, total: total});
+      });
 
-        data[val.type].push({date: dates, total: total});
+      // If graph data exist for the day insert it, otherwise leave it blank.
+      timePeriodDays.forEach(function(day, key){
+        var index = _.findIndex(gData, { 'date': day });
+        if (index == -1) {
+          data[val.type].push({date: day, total: 0});
+        } else {
+          data[val.type].push(gData[index]);
+        }
       });
     });
 
