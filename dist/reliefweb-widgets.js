@@ -194,11 +194,15 @@ RiverWidget.prototype.link = function(elements, next) {
 
   function paint(updatedContent) {
     $('li.widget-river--results--item .widget-river--results--number').each(function(index) {
-      $(this).html(updatedContent[index].count);
+      $(this).html(addCommas(updatedContent[index].count));
     });
 
     $('#chart').html("");
     widget.getChart();
+  }
+
+  function addCommas(intNum) {
+    return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
   }
 
   init();
@@ -214,7 +218,6 @@ RiverWidget.prototype.getChart = function(period) {
   }
 
   function prepareData() {
-    // TODO: Fix Month view.
     var content = widget.config('content');
     var timePeriod = widget.config('timePeriod');
     var now = new Date(timePeriod.endDate);
@@ -287,13 +290,22 @@ RiverWidget.prototype.getChart = function(period) {
     var ticks;
     var tickformat;
 
-    if (timePeriod.duration == "years") {
-      ticks = d3.time.months;
-      tickformat = d3.time.format('%b %Y');
-    }
-    else {
-      ticks = d3.time.days;
-      tickformat = d3.time.format('%d %b');
+
+    switch (timePeriod.duration) {
+      case "weeks":
+        ticks = d3.time.days;
+        tickformat = d3.time.format('%d %b');
+        break;
+
+      case "months":
+        ticks = d3.time.days;
+        tickformat = d3.time.format('%d');
+        break;
+
+      case "years":
+        ticks = d3.time.months;
+        tickformat = d3.time.format('%b %Y');
+        break;
     }
 
     var xAxis = d3.svg.axis()
@@ -453,10 +465,6 @@ RiverWidget.prototype.getData = function(period, updatePage) {
         }
       });
   });
-
-  function addCommas(intNum) {
-    return (intNum + '').replace(/(\d)(?=(\d{3})+$)/g, '$1,');
-  }
 };
 
 module.exports = RiverWidget;
