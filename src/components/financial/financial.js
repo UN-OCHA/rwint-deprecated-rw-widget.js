@@ -83,6 +83,10 @@ FinancialWidget.prototype.link = function(elements) {
   function init() {
     populateYearSelector();
 
+    // Set first item active and populate the bar.
+    $('.financial-widget--data-source-chooser :first-child').toggleClass('active');
+    populateBar();
+
     $('.financial-widget--data-source').click(function(e){
       var selected = this.text;
 
@@ -90,9 +94,7 @@ FinancialWidget.prototype.link = function(elements) {
       setTitle(selected);
 
       // Set data for selected source.
-      var selectedSource = calculatedDataSources[selected];
-      setCovered(selectedSource.fundingTotal, selectedSource.percentageRaised);
-      setRequested(selectedSource.currentRequirementTotal);
+      setBar(selected);
 
       // Toggle active class.
       $('.financial-widget--data-source').removeClass('active');
@@ -113,6 +115,11 @@ FinancialWidget.prototype.link = function(elements) {
     }
   }
 
+  function populateBar() {
+    var first = Object.keys(calculatedDataSources)[0];
+    setBar(first);
+  }
+
   function setTitle(value) {
     $('.financial-widget--time h1').text(value);
   }
@@ -127,6 +134,12 @@ FinancialWidget.prototype.link = function(elements) {
 
   function setRequested(value) {
     $('.financial-widget--percent-funded .requested').html('$' + value + ' Requested');
+  }
+
+  function setBar(value) {
+    var selectedSource = calculatedDataSources[value];
+    setCovered(selectedSource.fundingTotal, selectedSource.percentageRaised);
+    setRequested(selectedSource.currentRequirementTotal);
   }
 
   init();
