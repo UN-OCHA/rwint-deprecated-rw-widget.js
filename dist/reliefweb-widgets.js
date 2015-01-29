@@ -214,7 +214,7 @@ RiverWidget.prototype.getChart = function(period) {
   }
 
   function prepareData() {
-    // TODO: Aggregate results per month;
+    // TODO: Fix Month view.
     var content = widget.config('content');
     var timePeriod = widget.config('timePeriod');
     var now = new Date(timePeriod.endDate);
@@ -239,18 +239,29 @@ RiverWidget.prototype.getChart = function(period) {
         if (total > data.max) {
           data.max = total;
         }
-        gData.push({date: dates, total: total});
-      });
-
-      // If graph data exist for the day insert it, otherwise leave it blank.
-      timePeriodDays.forEach(function(day, key){
-        var index = _.findIndex(gData, { 'date': day });
-        if (index == -1) {
-          data[val.type].push({date: day, total: 0});
+        if (timePeriod.duration != "years") {
+          gData.push({date: dates, total: total});
         } else {
-          data[val.type].push(gData[index]);
+          data[val.type].push({date: dates, total: total});
         }
       });
+
+      if (timePeriod.duration != "years") {
+        // If graph data exist for the day insert it, otherwise leave it blank.
+        timePeriodDays.forEach(function (day, key) {
+          var index = _.findIndex(gData, {'date': day});
+          if (index == -1) {
+            data[val.type].push({date: day, total: 0});
+          } else {
+            data[val.type].push(gData[index]);
+          }
+        });
+      } else {
+        // If using years and there are more than 12 months remove the first.
+        if (data[val.type].length > 12) {
+          data[val.type].shift();
+        }
+      }
     });
 
     data.max = Math.ceil((data.max + 1) / 5) * 5;
@@ -278,7 +289,7 @@ RiverWidget.prototype.getChart = function(period) {
 
     if (timePeriod.duration == "years") {
       ticks = d3.time.months;
-      tickformat = d3.time.format('%b');
+      tickformat = d3.time.format('%b %Y');
     }
     else {
       ticks = d3.time.days;
@@ -336,59 +347,6 @@ RiverWidget.prototype.getChart = function(period) {
       .attr("d", valueline(data.reports))
       .attr('stroke-width', 7)
       .attr('fill', 'none');
-
-    /*var startDate = data.jobs[0].dates;
-    var vis = d3.select('#visualisation'),
-      width = 1000,
-      height = 500,
-      margin = {
-        top: 20,
-        right: 20,
-        bottom: 20,
-        left: 50
-      },
-      xRange = d3.time.scale()
-        .domain([new Date(data.jobs[0].dates), d3.time.day.offset(new Date(data.jobs[data.jobs.length - 1].dates), 1)])
-        .rangeRound([margin.left, width - margin.right]),
-      yRange = d3.scale.linear()
-        .domain([0, 100])
-        .range([height - margin.top - margin.bottom, 0]),
-      xAxis = d3.svg.axis()
-        .scale(xRange)
-        .orient('bottom')
-        .ticks(d3.time.days, 1)
-        .tickFormat(d3.time.format('%a %d'))
-        .tickSize(1),
-      yAxis = d3.svg.axis()
-        .scale(yRange)
-        .tickSize(1)
-        .orient('left')
-        .tickSubdivide(true);
-
-    vis.append('svg:g')
-      .attr('class', 'x axis')
-      .attr('transform', 'translate(0,' + (height - margin.bottom - margin.top) + ')')
-      .call(xAxis);
-
-    vis.append('svg:g')
-      .attr('class', 'y axis')
-      .attr('transform', 'translate(' + (margin.left) + ',0)')
-      .call(yAxis);
-
-    var lineFunc = d3.svg.line()
-      .x(function(d) {
-        return xRange(Date(d.dates));
-      })
-      .y(function(d) {
-        return yRange(d.total);
-      })
-      .interpolate('linear');
-
-    vis.append('svg:path')
-      .attr('d', lineFunc(data.maps))
-      .attr('stroke', 'blue')
-      .attr('stroke-width', 2)
-      .attr('fill', 'none');*/
   }
 
   init();
@@ -400,6 +358,11 @@ RiverWidget.prototype.getData = function(period, updatePage) {
   var fromDate = moment().utc().subtract(1, period).format();
   var countries = widget.config('countries');
 
+  var interval = "day";
+  if (period == "years") {
+    interval = "month";
+  }
+
   widget.config('timePeriod', {
     duration: period,
     startDate: moment(fromDate).utc().format("MM-DD-YYYY"),
@@ -410,7 +373,7 @@ RiverWidget.prototype.getData = function(period, updatePage) {
     facets: [
       {
         "field": "date.created",
-        "interval": "day"
+        "interval": interval
       }
     ]
   };
