@@ -20,8 +20,6 @@ var FinancialWidget = function(opts) {
 FinancialWidget.prototype = new WidgetBase();
 
 FinancialWidget.prototype.link = function(elements) {
-  console.log("D3", d3);
-
   function init() {
     populateYearSelector();
 
@@ -105,8 +103,9 @@ FinancialWidget.prototype.link = function(elements) {
       "pledges": 0.0
     }];
 
-    var w = 960,
-        h = 500;
+    var margin = {top: 0, bottom: 20, left: 20, right: 20},
+        w = 960 - margin.top - margin.bottom,
+        h = 500 - margin.left - margin.right;
 
     var bubbleSizeScale = d3.scale.linear()
       .domain(d3.extent(sampleData, function(val) {return val.funding;}))
@@ -129,18 +128,43 @@ FinancialWidget.prototype.link = function(elements) {
       return {
         title: titleCleanup(sampleData[i].name),
         fundingPercentage: fundingPercentage,
+        requested: sampleData[i].original_requirement,
+        funded: sampleData[i].funding,
         r: bubbleSizeScale(sampleData[i].funding),
         x: bubblePlacementScale(fundingPercentage),
-        y: Math.random() * h
+        y: h / 2 + ((Math.random() * 4) - 2)
       };
+    }).sort(function(a, b) {
+      return b.fundingPercentage - a.fundingPercentage;
     });
 
     var svg = elements.select('#finance-bubbles')
       .append("svg")
       .attr({
-        "width": w,
-        "height": h
+        "width": w + margin.left + margin.right,
+        "height": h + margin.top + margin.bottom
       });
+
+    var xAxis = d3.svg.axis()
+      .scale(bubblePlacementScale)
+      .tickValues([0, 0.25, 0.5, 0.75, 1])
+      .tickFormat(function(d) {
+        return (d * 100) + "%";
+      })
+      .orient("bottom");
+
+    var canvas = svg.append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    canvas.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + (h) + ")")
+      .call(xAxis);
+
+    canvas.append("g")
+      .attr("class", "grid")
+      .attr("transform", "translate(0,0)")
+      .call(xAxis.orient("top").tickFormat("").innerTickSize(-h).outerTickSize(0).tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]));
 
     var force = d3.layout.force()
       .gravity(0.02)
@@ -150,7 +174,7 @@ FinancialWidget.prototype.link = function(elements) {
 
     force.start();
 
-    var cluster = svg.selectAll(".cluster-bubble")
+    var cluster = canvas.selectAll(".cluster-bubble")
       .data(nodes)
       .enter()
       .append("g")
@@ -159,7 +183,7 @@ FinancialWidget.prototype.link = function(elements) {
         'small': bubbleNeedsSmallClass
       })
       .on('click', function(d) {
-        console.log("data", d);
+        addClusterOverlay(d);
       });
 
     cluster.append("circle")
@@ -184,16 +208,16 @@ FinancialWidget.prototype.link = function(elements) {
       nodes.forEach(function(o, i) {
         o.x += (bubblePlacementScale(o.fundingPercentage) - o.x) * k;
 
-        if (o.x + o.r > h) {
-          o.x -= 5 * k;
+        if (o.x + o.r > w) {
+          o.x -= 50 * k;
         } else if (o.x - o.r < 0) {
-          o.x += 5 * k;
+          o.x += 50 * k;
         }
 
-        if (o.y + o.r > w) {
-          o.y -= 5 * k;
+        if (o.y + o.r > h) {
+          o.y -= 50 * k;
         } else if (o.y - o.r < 0) {
-          o.y += 5 * k;
+          o.y += 50 * k;
         }
 
         q.visit(collide(o));
@@ -224,6 +248,89 @@ FinancialWidget.prototype.link = function(elements) {
         }
         return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
       };
+    }
+
+    function addClusterOverlay(node) {
+      var percentageFormatter = d3.format("%"),
+          fundingFormatter = d3.format("$s");
+
+      var overlay = svg.append("g")
+        .attr("id", "detail-overlay")
+        .style("display", "block");
+
+      overlay.append("rect")
+        .classed("detail--block", true)
+        .attr({
+          "x": 0,
+          "y": 0,
+          "width": w + margin.left + margin.right,
+          "height": h + margin.top + margin.bottom
+        });
+
+      overlay.append("circle")
+        .classed("detail--info", true)
+        .attr({
+          "stroke-width": 5,
+          cx: w / 2,
+          cy: h / 2,
+          r: (w < h) ? (w / 2) - 10 : (h / 2) - 10
+        });
+
+      var textContainer = overlay.append("g")
+        .classed("detail--text", true);
+
+      textContainer.append("text")
+        .classed("detail--title", true)
+        .attr({
+          "text-anchor": "middle"
+        })
+        .text(node.title);
+
+      textContainer.append("text")
+        .attr({
+          "text-anchor": "middle",
+          "transform": "translate(0,20)"
+        })
+        .text(percentageFormatter(node.fundingPercentage) + " funded");
+
+      textContainer.append("text")
+        .attr({
+          "text-anchor": "middle",
+          "transform": "translate(0,40)"
+        })
+        .text(fundingFormatter(node.requested) + " Requested");
+
+      textContainer.append("text")
+        .attr({
+          "text-anchor": "middle",
+          "transform": "translate(0,60)"
+        })
+        .text(fundingFormatter(node.funded) + " Funded");
+
+      var bbox = textContainer.node().getBBox(),
+        xTrans = ((w / 2)) + 10,
+        yTrans = ((h / 2) - (bbox.height / 2) + margin.top) + 10;
+
+      textContainer.attr({
+        "transform": "translate(" + xTrans + "," + yTrans + ")"
+      });
+
+      overlay.append("rect")
+        .attr({
+          "x": 0,
+          "y": 0,
+          "width": w + margin.left + margin.right,
+          "height": h + margin.top + margin.bottom,
+          "fill": "none"
+        })
+        .style("pointer-events", "all")
+        .on("click", function() {
+          removeClusterOverlay();
+        });
+    }
+
+    function removeClusterOverlay() {
+      d3.select('#detail-overlay').remove();
     }
   }
 
