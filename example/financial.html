@@ -14,14 +14,38 @@
     <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
     <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
     <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
-    <script type="text/javascript" src="financial.template.js"></script>
+    <script id="financial-template" type="text/x-handlebars-template">
+      <div class="financial-widget">
+      <!--<h1 class="financial-widget--title"><i class="un-icon-activity_financing"></i> Financial</h1>-->
+      <div class="financial-widget--data-source-chooser">
+      {{#dataSources}}
+      <a href="" class="financial-widget--data-source">{{ dataItemTitle }}</a>
+      {{/dataSources}}
+      </div>
+      <div class="financial-widget--time">
+      <h1>{{ dataItemTitleCurrent }}</h1>
+      <select class="financial-widget--time-select" name="time-chooser" id="">
+      </select>
+      </div>
+      <div class="financial-widget--percent-funded">
+      <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span></div>
+      <div class="financial-widget--percent-funded--amount requested ">$3.74B Requested</div>
+      </div>
+      <div class="financial-widget--cluster-funding">
+      <h2>Requirements &amp; Funding Per Cluster</h2>
+      <div id="finance-bubbles"></div>
+      </div>
+      <footer class="financial-widget--sources">Data Source <cite><a href="">Financial Tracking Service</a></cite></footer>
+      <footer class="financial-widget--explore"><a href="">Explore Funding Documents via ReliefWeb</a></footer>
+      </div>
+    </script>
   </head>
   <body>
     <div id="widget" class="widget"></div>
 
     <script type="text/javascript">
       var financialWidget = ReliefwebWidgets.widget('financial', {
-        template: Handlebars.templates['financial.hbs'],
+        template: '#financial-template',
         dataSources: [
             {
                 dataItemTitle: "Iraq"
@@ -31,7 +55,7 @@
             },
             {
                 dataItemTitle: "Syria Humanitarian Assistance Response Plan"
-            },
+            }
         ],
         dataItemTitleCurrent: "Syria Regional Refugee Response Plan"
       });
