@@ -23,9 +23,14 @@ FinancialWidget.prototype.link = function(elements) {
   function init() {
     populateYearSelector();
 
-    // Set title.
     $('.financial-widget--data-source').click(function(e){
+      // Set the title.
       setTitle(this.text);
+
+      // Toggle active class.
+      $('.financial-widget--data-source').removeClass('active');
+      $(this).toggleClass('active');
+
       e.preventDefault();
     });
   }
