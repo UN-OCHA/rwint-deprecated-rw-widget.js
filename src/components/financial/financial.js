@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var WidgetBase = require('../../widget-base');
 var $ = require('jquery');
+var moment = require('moment');
 
 var FinancialWidget = function(opts) {
   var config = {
@@ -19,20 +20,29 @@ var FinancialWidget = function(opts) {
 FinancialWidget.prototype = new WidgetBase();
 
 FinancialWidget.prototype.link = function(elements) {
-
   function init() {
     populateYearSelector();
+
+    // Set title.
+    $('.financial-widget--data-source').click(function(e){
+      setTitle(this.text);
+      e.preventDefault();
+    });
   }
 
   function populateYearSelector() {
     var $yearSelector = $('select[name="time-chooser"]');
-    var year = 2015;
+    var currentYear = moment().format('YYYY');
     var selected = '';
     for (var i = 0; i < 5; i++) {
-      selected = (year == 2015) ? 'selected' : '';
-      $yearSelector.append('<option value="' + year + '"' + selected + '>' + year + '</option>');
-      year--;
+      selected = (currentYear == 2015) ? 'selected' : '';
+      $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
+      currentYear--;
     }
+  }
+
+  function setTitle(value) {
+    $('.financial-widget--time h1').text(value);
   }
 
   init();
