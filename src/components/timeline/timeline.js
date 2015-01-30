@@ -6,6 +6,7 @@ var WidgetBase = require('../../widget-base');
 var $ = require('jquery');
 var moment = require('moment');
 var reliefweb = require('reliefweb');
+var Handlebars = require('handlebars');
 
 var TimelineWidget = function(opts) {
   var config = {
@@ -24,8 +25,38 @@ TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
+
+  widget.getData(0, function(timelineItems) {
+    widget.config('timeline-items', timelineItems);
+
+    widget.template(function(content) {
+      elements
+        .classed('rw-widget', true)
+        .html(content);
+
+      next();
+    });
+  });
+
+
+  //var timelineItems = this.config('timeline-items');
+  //
+  //timelineItems.forEach(function(val, key, items) {
+  //  var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+  //  var myDate = moment(val['date-full'], 'DD MMM YYYY');
+  //  items[key]['date-month'] = myDate.format('MMMM');
+  //  items[key]['date-day'] = myDate.format('DD');
+  //  items[key]['date-year'] = myDate.format('YYYY');
+  //  items[key]['new-month'] = prevMonth !== myDate.month();
+  //});
+  //
+  //this.config('timeline-items', timelineItems);
+};
+
+TimelineWidget.prototype.getData = function(offset, updatePage) {
+  var widget = this;
   var filters = {
-      filter: {
+    filter: {
       'operator': 'AND',
       'conditions': [
         {
@@ -50,8 +81,10 @@ TimelineWidget.prototype.compile = function(elements, next) {
     .fields(['date', 'headline', 'primary_country', 'url'], [])
     .sort('date.original', 'desc')
     .send(filters)
+    .send({offset: offset})
     .end(function(err, res) {
       if (!err) {
+        var count = 0;
         var timelineItems = [];
         res.body.data.forEach(function(val, key) {
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
@@ -77,35 +110,18 @@ TimelineWidget.prototype.compile = function(elements, next) {
           item['new-month'] = prevMonth !== time.month();
 
           timelineItems.push(item);
-        });
 
-        widget.config('timeline-items', timelineItems);
-
-        widget.template(function(content) {
-          elements
-            .classed('rw-widget', true)
-            .html(content);
-
-          next();
+          count++;
+          if (count == res.body.data.length) {
+            updatePage(timelineItems);
+          }
         });
       }
     });
-
-  //var timelineItems = this.config('timeline-items');
-  //
-  //timelineItems.forEach(function(val, key, items) {
-  //  var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-  //  var myDate = moment(val['date-full'], 'DD MMM YYYY');
-  //  items[key]['date-month'] = myDate.format('MMMM');
-  //  items[key]['date-day'] = myDate.format('DD');
-  //  items[key]['date-year'] = myDate.format('YYYY');
-  //  items[key]['new-month'] = prevMonth !== myDate.month();
-  //});
-  //
-  //this.config('timeline-items', timelineItems);
 };
 
-TimelineWidget.prototype.link = function(elements) {
+TimelineWidget.prototype.link = function(elements, next) {
+  var widget = this;
   var timelineState = {};
   var timelineContent = this.config('timeline-items');
 
@@ -311,8 +327,37 @@ TimelineWidget.prototype.link = function(elements) {
   // Update other sliders based on main.
   $sly.on('moveStart', function(){
     timelineState.currentIndex = $sly.rel.activeItem;
+    lazyLoad();
     paint();
   });
+
+  function lazyLoad() {
+    if (timelineState.currentIndex == ($sly.items.length - 1)) {
+      widget.getData($sly.items.length, function(timelineItems) {
+        widget.config('timeline-items', timelineItems);
+
+        timelineItems.forEach(function(item){
+          var frameTemplate = Handlebars.compile($("#timeline-item-partial").html());
+          $sly.add(frameTemplate(item));
+
+          var pagerTemplate = Handlebars.compile($("#timeline-pager-item-partial").html());
+          $slyPager.add(pagerTemplate(item));
+
+          var dropdownTemplate = Handlebars.compile($("#timeline-dropdown-item-partial").html());
+          $slyDropdown.add(dropdownTemplate(item));
+        });
+
+        $frame = $('.timeline-widget-frames');
+        var $newItems = $('.timeline-widget-item');
+
+        // Set initial widths.
+        $newItems.width($frame.width());
+        $newItems.css({ marginRight : margin});
+
+        $sly.reload();
+      });
+    }
+  }
 };
 
 module.exports = TimelineWidget;
