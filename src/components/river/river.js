@@ -211,6 +211,12 @@ RiverWidget.prototype.getChart = function(period) {
     var yAxis = d3.svg.axis()
       .scale(y)
       .orient('left')
+      .tickFormat(function(n){
+        if (n === 0) {
+          return "";
+        }
+        return n + "%";
+      })
       .tickSize(-width + margin.left + margin.right, 0, 0)
       .tickPadding(8);
 
