@@ -268,6 +268,9 @@ RiverWidget.prototype.compile = function(elements, next) {
       next();
     });
 
+    var timePeriod = widget.config('timePeriod');
+    var range = moment(timePeriod.startDate).utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("Do MMMM YYYY");
+    $('.widget-river--results--graph .graph--heading').html(range);
     widget.getChart();
   });
 };
@@ -317,6 +320,7 @@ RiverWidget.prototype.link = function(elements, next) {
     });
 
     $('.widget-river--filters ul').html(links);
+    $('.widget-river--filters--title .tab').html(currentTab.title);
 
   }
 
@@ -324,6 +328,10 @@ RiverWidget.prototype.link = function(elements, next) {
     $('li.widget-river--results--item .widget-river--results--number').each(function(index) {
       $(this).html(addCommas(updatedContent[index].count));
     });
+
+    var timePeriod = widget.config('timePeriod');
+    var range = moment(timePeriod.startDate).utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("Do MMMM YYYY");
+    $('.widget-river--results--graph .graph--heading').html(range);
 
     $('#chart').html("");
     widget.getChart();
@@ -338,12 +346,20 @@ RiverWidget.prototype.link = function(elements, next) {
 
 RiverWidget.prototype.getChart = function(period) {
   var widget = this;
+  var data;
 
   function init() {
-    var data = prepareData();
-
+    data = prepareData();
     renderChart(data);
   }
+
+  // TODO: Rebuild the chart with new x-axis.
+  /*
+  $(window).resize(function() {
+    $('#chart').html("");
+    renderChart(data);
+  });
+  */
 
   function prepareData() {
     var content = widget.config('content');
@@ -458,6 +474,8 @@ RiverWidget.prototype.getChart = function(period) {
       .attr('class', 'chart')
       .attr("preserveAspectRatio", "xMinYMin meet")
       .attr("viewBox", "0 0 " + width + " " + height)
+      //.attr("width", width)
+      //.attr("height", height)
       .append('g')
       .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
 
