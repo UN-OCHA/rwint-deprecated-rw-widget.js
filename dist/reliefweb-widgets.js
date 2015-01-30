@@ -161,6 +161,9 @@ RiverWidget.prototype.compile = function(elements, next) {
       next();
     });
 
+    var timePeriod = widget.config('timePeriod');
+    var range = moment(timePeriod.startDate).utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("Do MMMM YYYY");
+    $('.widget-river--results--graph .graph--heading').html(range);
     widget.getChart();
   });
 };
@@ -205,11 +208,13 @@ RiverWidget.prototype.link = function(elements, next) {
     var currentTab = content[index];
     var links = "";
 
+    console.log(currentTab);
     currentTab.filters.forEach(function(filter){
       links += '<li><a href="' + filter.location + '">'+ filter.linkTitle + '</a></li>';
     });
 
     $('.widget-river--filters ul').html(links);
+    $('.widget-river--filters--title .tab').html(currentTab.title);
 
   }
 
@@ -217,6 +222,10 @@ RiverWidget.prototype.link = function(elements, next) {
     $('li.widget-river--results--item .widget-river--results--number').each(function(index) {
       $(this).html(addCommas(updatedContent[index].count));
     });
+
+    var timePeriod = widget.config('timePeriod');
+    var range = moment(timePeriod.startDate).utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("Do MMMM YYYY");
+    $('.widget-river--results--graph .graph--heading').html(range);
 
     $('#chart').html("");
     widget.getChart();
