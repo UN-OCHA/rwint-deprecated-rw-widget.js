@@ -294,9 +294,7 @@ RiverWidget.prototype.getChart = function(period) {
 
   function renderChart(data) {
     var timePeriod = widget.config('timePeriod');
-    //TODO: Add grid.
-
-    var margin = {top: 40, right: 20, bottom: 40, left:50},
+    var margin = {top: 40, right: 30, bottom: 40, left:50},
       width = $('#chart').parent().width(),
       height = 500;
 
@@ -319,8 +317,8 @@ RiverWidget.prototype.getChart = function(period) {
         break;
 
       case "months":
-        ticks = d3.time.days;
-        tickformat = d3.time.format('%d');
+        ticks = d3.time.weeks;
+        tickformat = d3.time.format('%d %b');
         break;
 
       case "years":
@@ -334,13 +332,13 @@ RiverWidget.prototype.getChart = function(period) {
       .orient('bottom')
       .ticks(ticks, 1)
       .tickFormat(tickformat)
-      .tickSize(1)
+      .tickSize(-height + margin.top + margin.bottom, 0, 0)
       .tickPadding(8);
 
     var yAxis = d3.svg.axis()
       .scale(y)
       .orient('left')
-      .tickSize(1)
+      .tickSize(-width + margin.left + margin.right, 0, 0)
       .tickPadding(8);
 
     var svg = d3.select('#chart')
