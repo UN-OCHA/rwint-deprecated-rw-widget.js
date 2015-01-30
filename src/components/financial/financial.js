@@ -20,96 +20,25 @@ var FinancialWidget = function(opts) {
 FinancialWidget.prototype = new WidgetBase();
 
 FinancialWidget.prototype.link = function(elements) {
+  var widget = this,
+      config = widget.config();
+
+  var chartState = {
+    direction: ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical'
+  };
+
   function init() {
     populateYearSelector();
 
-    var sampleData = [{
-      "name": "CLUSTER NOT YET SPECIFIED",
-      "current_requirement": 0.0,
-      "original_requirement": 0.0,
-      "funding": 235341626.0,
-      "pledges": 0.0
-    }, {
-      "name": "COORDINATION",
-      "current_requirement": 50814214.0,
-      "original_requirement": 50814214.0,
-      "funding": 22261415.0,
-      "pledges": 0.0
-    }, {
-      "name": "EARLY RECOVERY AND LIVELIHOODS",
-      "current_requirement": 71054434.0,
-      "original_requirement": 71054434.0,
-      "funding": 13880484.0,
-      "pledges": 0.0
-    }, {
-      "name": "EDUCATION",
-      "current_requirement": 103163335.0,
-      "original_requirement": 103163335.0,
-      "funding": 39294677.0,
-      "pledges": 0.0
-    }, {
-      "name": "EMERGENCY TELECOMMUNICATIONS (ETC)",
-      "current_requirement": 1584010.0,
-      "original_requirement": 1584010.0,
-      "funding": 947887.0,
-      "pledges": 0.0
-    }, {
-      "name": "FOOD AND AGRICULTURE",
-      "current_requirement": 1118741037.0,
-      "original_requirement": 1118741037.0,
-      "funding": 537436935.0,
-      "pledges": 44136.0
-    }, {
-      "name": "HEALTH",
-      "current_requirement": 233376172.0,
-      "original_requirement": 233376172.0,
-      "funding": 103801571.0,
-      "pledges": 0.0
-    }, {
-      "name": "LOGISTICS",
-      "current_requirement": 12060910.0,
-      "original_requirement": 12060910.0,
-      "funding": 5576718.0,
-      "pledges": 0.0
-    }, {
-      "name": "NON-FOOD ITEMS (NFIs) AND SHELTER",
-      "current_requirement": 420903819.0,
-      "original_requirement": 420903819.0,
-      "funding": 29859588.0,
-      "pledges": 41614.0
-    }, {
-      "name": "NUTRITION",
-      "current_requirement": 29999820.0,
-      "original_requirement": 29999820.0,
-      "funding": 23062685.0,
-      "pledges": 0.0
-    }, {
-      "name": "PROTECTION AND COMMUNITY SERVICES",
-      "current_requirement": 73493864.0,
-      "original_requirement": 73493864.0,
-      "funding": 22035159.0,
-      "pledges": 0.0
-    }, {
-      "name": "STAFF SAFETY SERVICES",
-      "current_requirement": 6183984.0,
-      "original_requirement": 6183984.0,
-      "funding": 2466833.0,
-      "pledges": 0.0
-    }, {
-      "name": "WASH",
-      "current_requirement": 154773755.0,
-      "original_requirement": 154773755.0,
-      "funding": 45742146.0,
-      "pledges": 0.0
-    }];
+    var sampleData = config.dataSources[0].clusters;
 
-    var margin = {top: 0, bottom: 20, left: 20, right: 20},
-        w = 960 - margin.top - margin.bottom,
-        h = 500 - margin.left - margin.right;
+    var margin = {top: 20, bottom: 20, left: 50, right: 50},
+        w = $('#finance-bubbles').width() - margin.left - margin.right,
+        h = 500 - margin.top - margin.bottom;
 
     var bubbleSizeScale = d3.scale.linear()
       .domain(d3.extent(sampleData, function(val) {return val.funding;}))
-      .range([10, 150]);
+      .range([1000, 40000]);
 
     var bubblePlacementScale = d3.scale.linear()
       .domain([0, 1])
@@ -120,8 +49,32 @@ FinancialWidget.prototype.link = function(elements) {
     };
 
     var titleCleanup = function(title) {
-      return title.toLowerCase();
+      return title;
     };
+
+    var windowResize = function() {
+      w = $('#finance-bubbles').width() - margin.left - margin.right;
+      chartState.direction = ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical';
+
+      force.size([w, h]);
+      force.start();
+
+      if (chartState.direction == 'horizontal') {
+        bubblePlacementScale.range([0, w]);
+        canvas.select(".grid").style('display', 'block').call(gridXAxis);
+        canvas.select(".axis.x").style('display', 'block').call(xAxis);
+        canvas.select(".axis.y").style('display', 'none');
+      } else {
+        bubblePlacementScale.range([h, 0]);
+        canvas.select(".axis.x").style('display', 'none');
+        canvas.select(".grid").style('display', 'none');
+        canvas.select(".axis.y").style('display', 'block').call(yAxis);
+      }
+    };
+
+    $(window).resize(function() {
+      windowResize();
+    });
 
     var nodes = d3.range(sampleData.length).map(function(i) {
       var fundingPercentage = (sampleData[i].current_requirement) ? sampleData[i].funding / sampleData[i].current_requirement : 0;
@@ -130,7 +83,7 @@ FinancialWidget.prototype.link = function(elements) {
         fundingPercentage: fundingPercentage,
         requested: sampleData[i].original_requirement,
         funded: sampleData[i].funding,
-        r: bubbleSizeScale(sampleData[i].funding),
+        r: Math.sqrt(bubbleSizeScale(sampleData[i].funding) / Math.PI),
         x: bubblePlacementScale(fundingPercentage),
         y: h / 2 + ((Math.random() * 4) - 2)
       };
@@ -153,18 +106,44 @@ FinancialWidget.prototype.link = function(elements) {
       })
       .orient("bottom");
 
+    var yAxis = d3.svg.axis()
+      .scale(bubblePlacementScale)
+      .tickValues([0, 0.25, 0.5, 0.75, 1])
+      .tickFormat(function(d) {
+        return (d * 100) + "%";
+      })
+      .orient("left");
+
+    var gridXAxis = d3.svg.axis()
+      .scale(bubblePlacementScale)
+      .orient("top").tickFormat("")
+      .innerTickSize(-h)
+      .outerTickSize(0)
+      .tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]);
+
     var canvas = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     canvas.append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(0," + (h) + ")")
+      .classed({
+        "x": true,
+        "axis": true
+      })
+      .attr("transform", "translate(0," + h + ")")
       .call(xAxis);
+
+    canvas.append("g")
+      .classed({
+        "y": true,
+        "axis": true
+      })
+      .attr("transform", "translate(0,0)")
+      .call(yAxis);
 
     canvas.append("g")
       .attr("class", "grid")
       .attr("transform", "translate(0,0)")
-      .call(xAxis.orient("top").tickFormat("").innerTickSize(-h).outerTickSize(0).tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]));
+      .call(gridXAxis);
 
     var force = d3.layout.force()
       .gravity(0.02)
