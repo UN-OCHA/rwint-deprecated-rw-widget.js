@@ -139,25 +139,70 @@ FinancialWidget.prototype.link = function(elements) {
       calculatedDataSources = config.calculatedDataSources;
 
   var chartState = {
-    direction: ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical'
+    direction: ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical',
+    currentSection: 0
   };
 
   function init() {
     populateYearSelector();
 
-    var sampleData = config.dataSources[0].clusters;
+    chartInit();
 
-    var margin = {top: 20, bottom: 20, left: 50, right: 50},
-        w = $('#finance-bubbles').width() - margin.left - margin.right,
-        h = 500 - margin.top - margin.bottom;
+    // Set first item active and populate the bar.
+    $('.financial-widget--data-source-chooser :first-child', $element).toggleClass('active');
+    populateBar();
+
+    $('.financial-widget--data-source', $element).click(function(e){
+      e.preventDefault();
+      var selected = this.text;
+      chartState.currentSection = _.findKey(config.dataSources, function(val) {return val.dataItemTitle == selected;});
+
+      if (config.dataSources[chartState.currentSection].clusters.length <= 1) {
+        $('.financial-widget--cluster-funding', $element).hide();
+      } else {
+        $('.financial-widget--cluster-funding', $element).show();
+      }
+
+      chartInit();
+
+      // Set the title.
+      setTitle(selected);
+
+      // Set data for selected source.
+      setBar(selected);
+
+      // Toggle active class.
+      $('.financial-widget--data-source').removeClass('active');
+      $(this).toggleClass('active');
+    });
+  }
+
+  function chartInit() {
+    var sampleData = config.dataSources[chartState.currentSection].clusters;
+
+    $('#finance-bubbles', $element).empty();
+
+    if (sampleData.length <= 1) {
+      return;
+    }
+
+    var margin = {top: 20, bottom: 20, left: 50, right: 20},
+      w = $('#finance-bubbles', $element).width() - margin.left - margin.right,
+      h = (chartState.direction == 'horizontal') ? 500 : 680;
+
+    h = h - margin.top - margin.bottom;
+
+    var maxBubbleRadius = (chartState.direction == 'horizontal') ? 25000 : 4000;
 
     var bubbleSizeScale = d3.scale.linear()
       .domain(d3.extent(sampleData, function(val) {return val.funding;}))
-      .range([1000, 40000]);
+      .range([1000, maxBubbleRadius]);
+
+    var bubblePlacementRange = (chartState.direction == 'horizontal') ? [0, w] : [h, 0];
 
     var bubblePlacementScale = d3.scale.linear()
       .domain([0, 1])
-      .range([0, w]);
+      .range(bubblePlacementRange);
 
     var bubbleNeedsSmallClass = function(d) {
       return d.r < 50;
@@ -168,22 +213,60 @@ FinancialWidget.prototype.link = function(elements) {
     };
 
     var windowResize = function() {
-      w = $('#finance-bubbles').width() - margin.left - margin.right;
+      var axisSwitch = false,
+        oldDirection = chartState.direction;
+
+      w = $('#finance-bubbles').width();
+      svg.attr("width", w);
+      w = w - margin.left - margin.right;
+
       chartState.direction = ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical';
 
-      force.size([w, h]);
-      force.start();
+      axisSwitch = (chartState.direction !== oldDirection);
+
+      var maxBubbleRadius = (chartState.direction == 'horizontal') ? 25000 : 4000;
+      bubbleSizeScale.range([1000, maxBubbleRadius]);
+
+      gridYAxis.innerTickSize(-w);
+
+      if (axisSwitch) {
+        h = (chartState.direction == "horizontal") ? 500 : 680;
+        svg.attr("height", h);
+        h = h - margin.top - margin.bottom;
+
+        gridXAxis.innerTickSize(-h);
+
+        nodes.forEach(function(val, key) {
+          nodes[key].r = Math.sqrt(bubbleSizeScale(val.funded) / Math.PI);
+          nodes[key].x = (chartState.direction == 'horizontal') ? bubblePlacementScale(val.fundingPercentage) : w / 2 + ((Math.random() * 4) - 2);
+          nodes[key].y = (chartState.direction == 'horizontal') ? h / 2 + ((Math.random() * 4) - 2) : bubblePlacementScale(val.fundingPercentage);
+        });
+
+        cluster.selectAll("circle")
+          .attr({
+            r: function(d) {return d.r;}
+          });
+
+        cluster.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
+      }
+
+      if (force) {
+        force.size([w, h]);
+        force.start();
+      }
 
       if (chartState.direction == 'horizontal') {
         bubblePlacementScale.range([0, w]);
-        canvas.select(".grid").style('display', 'block').call(gridXAxis);
-        canvas.select(".axis.x").style('display', 'block').call(xAxis);
+        canvas.select(".grid.x").style('display', 'block').call(gridXAxis);
+        canvas.select(".axis.x").attr("transform", "translate(0," + h + ")").style('display', 'block').call(xAxis);
         canvas.select(".axis.y").style('display', 'none');
+        canvas.select(".grid.y").style('display', 'none');
       } else {
         bubblePlacementScale.range([h, 0]);
         canvas.select(".axis.x").style('display', 'none');
-        canvas.select(".grid").style('display', 'none');
+        canvas.select(".grid.x").style('display', 'none');
         canvas.select(".axis.y").style('display', 'block').call(yAxis);
+        canvas.select(".grid.y").style('display', 'block').call(gridYAxis);
       }
     };
 
@@ -199,8 +282,8 @@ FinancialWidget.prototype.link = function(elements) {
         requested: sampleData[i].original_requirement,
         funded: sampleData[i].funding,
         r: Math.sqrt(bubbleSizeScale(sampleData[i].funding) / Math.PI),
-        x: bubblePlacementScale(fundingPercentage),
-        y: h / 2 + ((Math.random() * 4) - 2)
+        x: (chartState.direction == 'horizontal') ? bubblePlacementScale(fundingPercentage) : w / 2 + ((Math.random() * 4) - 2),
+        y: (chartState.direction == 'horizontal') ? h / 2 + ((Math.random() * 4) - 2) : bubblePlacementScale(fundingPercentage)
       };
     }).sort(function(a, b) {
       return b.fundingPercentage - a.fundingPercentage;
@@ -236,6 +319,13 @@ FinancialWidget.prototype.link = function(elements) {
       .outerTickSize(0)
       .tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]);
 
+    var gridYAxis = d3.svg.axis()
+      .scale(bubblePlacementScale)
+      .orient("left").tickFormat("")
+      .innerTickSize(-w)
+      .outerTickSize(0)
+      .tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]);
+
     var canvas = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -256,17 +346,26 @@ FinancialWidget.prototype.link = function(elements) {
       .call(yAxis);
 
     canvas.append("g")
-      .attr("class", "grid")
+      .classed({
+        "x": true,
+        "grid": true
+      })
       .attr("transform", "translate(0,0)")
       .call(gridXAxis);
 
+    canvas.append("g")
+      .classed({
+        "y": true,
+        "grid": true
+      })
+      .attr("transform", "translate(0,0)")
+      .call(gridYAxis);
+
     var force = d3.layout.force()
-      .gravity(0.02)
+      .gravity(0)
       .friction(0.8)
       .nodes(nodes)
       .size([w, h]);
-
-    force.start();
 
     var cluster = canvas.selectAll(".cluster-bubble")
       .data(nodes)
@@ -276,6 +375,7 @@ FinancialWidget.prototype.link = function(elements) {
         'cluster-bubble': true,
         'small': bubbleNeedsSmallClass
       })
+      .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; })
       .on('click', function(d) {
         addClusterOverlay(d);
       });
@@ -295,23 +395,33 @@ FinancialWidget.prototype.link = function(elements) {
         }
       });
 
+    windowResize();
+
     force.on("tick", function(e) {
       var q = d3.geom.quadtree(nodes),
-          k = e.alpha * 0.1;
+        k = e.alpha * 0.1;
 
       nodes.forEach(function(o, i) {
-        o.x += (bubblePlacementScale(o.fundingPercentage) - o.x) * k;
-
-        if (o.x + o.r > w) {
-          o.x -= 50 * k;
-        } else if (o.x - o.r < 0) {
-          o.x += 50 * k;
+        if (chartState.direction == 'horizontal') {
+          o.x += (bubblePlacementScale(o.fundingPercentage) - o.x) * k;
+          // pull towards middle of chart
+          o.y = (o.y > h / 2) ? o.y - (3 * k) : o.y + (3 * k);
+        } else {
+          o.y += (bubblePlacementScale(o.fundingPercentage) - o.y) * k;
+          // pull towards middle of chart
+          o.x = (o.x > w / 2) ? o.x - k : o.x + k;
         }
 
-        if (o.y + o.r > h) {
-          o.y -= 50 * k;
+        if (o.x + o.r > w) {
+          o.x -= 400 * k;
+        } else if (o.x - o.r < 0) {
+          o.x += 400 * k;
+        }
+
+        if (o.y + o.r + 20 > h) {
+          o.y -= 400 * k;
         } else if (o.y - o.r < 0) {
-          o.y += 50 * k;
+          o.y += 400 * k;
         }
 
         q.visit(collide(o));
@@ -331,7 +441,11 @@ FinancialWidget.prototype.link = function(elements) {
           var x = node.x - quad.point.x,
             y = node.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            r = node.r + quad.point.r + 15; // 15 is padding between boxes
+            r = node.r + quad.point.r;
+
+          // add padding
+          r += (chartState.direction == 'horizontal') ? 40 : 20;
+
           if (l < r) {
             l = (l - r) / l * 0.5;
             node.x -= x *= l;
@@ -345,8 +459,8 @@ FinancialWidget.prototype.link = function(elements) {
     }
 
     function addClusterOverlay(node) {
-      var percentageFormatter = d3.format("%"),
-          fundingFormatter = d3.format("$s");
+      var percentageFormatter = d3.format("%");
+      var fundingPrefix;
 
       var overlay = svg.append("g")
         .attr("id", "detail-overlay")
@@ -387,19 +501,21 @@ FinancialWidget.prototype.link = function(elements) {
         })
         .text(percentageFormatter(node.fundingPercentage) + " funded");
 
+      fundingPrefix = d3.formatPrefix(node.requested);
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
           "transform": "translate(0,40)"
         })
-        .text(fundingFormatter(node.requested) + " Requested");
+        .text(fundingPrefix.scale(node.requested).toFixed(2) + fundingPrefix.symbol + " Requested");
 
+      fundingPrefix = d3.formatPrefix(node.funded);
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
           "transform": "translate(0,60)"
         })
-        .text(fundingFormatter(node.funded) + " Funded");
+        .text(fundingPrefix.scale(node.funded).toFixed(2) + fundingPrefix.symbol + " Funded");
 
       var bbox = textContainer.node().getBBox(),
         xTrans = ((w / 2)) + 10,
@@ -426,26 +542,6 @@ FinancialWidget.prototype.link = function(elements) {
     function removeClusterOverlay() {
       d3.select('#detail-overlay').remove();
     }
-
-    // Set first item active and populate the bar.
-    $('.financial-widget--data-source-chooser :first-child').toggleClass('active');
-    populateBar();
-
-    $('.financial-widget--data-source').click(function(e){
-      var selected = this.text;
-
-      // Set the title.
-      setTitle(selected);
-
-      // Set data for selected source.
-      setBar(selected);
-
-      // Toggle active class.
-      $('.financial-widget--data-source').removeClass('active');
-      $(this).toggleClass('active');
-
-      e.preventDefault();
-    });
   }
 
   function populateYearSelector() {
