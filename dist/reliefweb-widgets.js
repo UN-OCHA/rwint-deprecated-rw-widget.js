@@ -169,13 +169,18 @@ RiverWidget.prototype.link = function(elements, next) {
 
   var $element = $(elements[0][0]);
   var widget = this;
+  var content = widget.config('content');
+
   function init() {
 
     $('select', $element).selectric();
 
     // Open popup.
-    $('.widget-river--results--item, .close').click(function(){
-      $('.widget-river--filters').toggleClass('open');
+    $('.widget-river--results--item').click(function(){
+      var icon = $(this).find('.widget-river--results--type span').attr('class');
+      rebuildFilters(icon);
+
+      $('.widget-river--filters').addClass('open');
     });
 
     // Close popup.
@@ -190,6 +195,22 @@ RiverWidget.prototype.link = function(elements, next) {
         paint(updatedContent);
       });
     });
+
+    // Set initial value for filters
+    rebuildFilters(content[0].icon);
+  }
+
+  function rebuildFilters(icon) {
+    var index = _.findIndex(content, {'icon': icon});
+    var currentTab = content[index];
+    var links = "";
+
+    currentTab.filters.forEach(function(filter){
+      links += '<li><a href="' + filter.location + '">'+ filter.linkTitle + '</a></li>';
+    });
+
+    $('.widget-river--filters ul').html(links);
+
   }
 
   function paint(updatedContent) {
@@ -369,6 +390,7 @@ RiverWidget.prototype.getData = function(period, updatePage) {
   var currentDate = moment().utc().format();
   var fromDate = moment().utc().subtract(1, period).format();
   var countries = widget.config('countries');
+  var content = widget.config('content');
 
   var interval = "day";
   if (period == "years") {
@@ -389,24 +411,6 @@ RiverWidget.prototype.getData = function(period, updatePage) {
       }
     ]
   };
-
-  var content = [
-    {
-      type: "reports",
-      title: "REPORTS",
-      icon: "un-icon-product_type_report"
-    },
-    {
-      type: "maps",
-      title: "MAPS + INFOGRAPHICS",
-      icon: "un-icon-activity_deployment"
-    },
-    {
-      type: "jobs",
-      title: "JOBS",
-      icon: "un-icon-product_type_map"
-    }
-  ];
 
   var count = 0;
   var rw = reliefweb.client();
