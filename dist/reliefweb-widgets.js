@@ -315,7 +315,6 @@ RiverWidget.prototype.link = function(elements, next) {
     var currentTab = content[index];
     var links = "";
 
-    console.log(currentTab);
     currentTab.filters.forEach(function(filter){
       links += '<li><a href="' + filter.location + '">'+ filter.linkTitle + '</a></li>';
     });
