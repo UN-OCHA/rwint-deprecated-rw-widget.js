@@ -1,161 +1,256 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Financial</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF8">
-    <link rel="stylesheet" href="css/styles.css" />
-    <style>
-      .grid line {
-        stroke: #CCC;
-      }
+<head>
+  <title>Financial</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF8">
+  <link rel="stylesheet" href="css/styles.css"/>
+  <style>
+    .grid line {
+      stroke: #CCC;
+    }
 
-      .axis .domain {
-        fill: none;
-        stroke: #CCC;
-      }
+    .axis .domain {
+      fill: none;
+      stroke: #CCC;
+    }
 
-      .axis line {
-        stroke: #CCC;
-      }
-    </style>
-    <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
-    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
-    <script type="text/javascript" src="../bower_components/sly/dist/sly.js"></script>
-    <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
-    <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
-    <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
-    <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
-    <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
-    <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
-    <script id="financial-template" type="text/x-handlebars-template">
-      <div class="financial-widget">
+    .axis line {
+      stroke: #CCC;
+    }
+  </style>
+  <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
+  <script type="text/javascript" src="../bower_components/sly/dist/sly.js"></script>
+  <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+  <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
+  <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+  <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
+  <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
+  <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
+  <script id="financial-template" type="text/x-handlebars-template">
+    <div class="financial-widget">
       <!--<h1 class="financial-widget--title"><i class="un-icon-activity_financing"></i> Financial</h1>-->
       <div class="financial-widget--data-source-chooser">
-      {{#dataSources}}
-      <a href="" class="financial-widget--data-source">{{ dataItemTitle }}</a>
-      {{/dataSources}}
+        {{#dataSources}}
+        <a href="" class="financial-widget--data-source">{{ dataItemTitle }}</a>
+        {{/dataSources}}
       </div>
       <div class="financial-widget--time">
-      <h1>{{ dataItemTitleCurrent }}</h1>
-      <select class="financial-widget--time-select" name="time-chooser" id="">
-      </select>
+        <h1>{{ dataItemTitleCurrent }}</h1>
+        <select class="financial-widget--time-select" name="time-chooser" id="">
+        </select>
       </div>
       <div class="financial-widget--percent-funded">
-      <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span></div>
-      <div class="financial-widget--percent-funded--amount requested ">$3.74B Requested</div>
+        <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span>
+        </div>
+        <div class="financial-widget--percent-funded--amount requested ">$3.74B Requested</div>
       </div>
       <div class="financial-widget--cluster-funding">
-      <h2>Requirements &amp; Funding Per Cluster</h2>
-      <div id="finance-bubbles"></div>
-      </div>
-      <footer class="financial-widget--sources">Data Source <cite><a href="">Financial Tracking Service</a></cite></footer>
-      <footer class="financial-widget--explore"><a href="">Explore Funding Documents via ReliefWeb</a></footer>
-      </div>
-    </script>
-  </head>
-  <body>
-    <div id="widget" class="widget"></div>
+        <h2>Requirements &amp; Funding Per Cluster</h2>
 
-    <script type="text/javascript">
-      var financialWidget = ReliefwebWidgets.widget('financial', {
-        template: '#financial-template',
-        dataSources: [
-            {
-              dataItemTitle: "Iraq",
-              clusters: [{
-                "name": "CLUSTER NOT YET SPECIFIED",
-                "current_requirement": 0.0,
-                "original_requirement": 0.0,
-                "funding": 235341626.0,
-                "pledges": 0.0
-              }, {
-                "name": "COORDINATION",
-                "current_requirement": 50814214.0,
-                "original_requirement": 50814214.0,
-                "funding": 22261415.0,
-                "pledges": 0.0
-              }, {
-                "name": "EARLY RECOVERY AND LIVELIHOODS",
-                "current_requirement": 71054434.0,
-                "original_requirement": 71054434.0,
-                "funding": 13880484.0,
-                "pledges": 0.0
-              }, {
-                "name": "EDUCATION",
-                "current_requirement": 103163335.0,
-                "original_requirement": 103163335.0,
-                "funding": 39294677.0,
-                "pledges": 0.0
-              }, {
-                "name": "EMERGENCY TELECOMMUNICATIONS (ETC)",
-                "current_requirement": 1584010.0,
-                "original_requirement": 1584010.0,
-                "funding": 947887.0,
-                "pledges": 0.0
-              }, {
-                "name": "FOOD AND AGRICULTURE",
-                "current_requirement": 1118741037.0,
-                "original_requirement": 1118741037.0,
-                "funding": 537436935.0,
-                "pledges": 44136.0
-              }, {
-                "name": "HEALTH",
-                "current_requirement": 233376172.0,
-                "original_requirement": 233376172.0,
-                "funding": 103801571.0,
-                "pledges": 0.0
-              }, {
-                "name": "LOGISTICS",
-                "current_requirement": 12060910.0,
-                "original_requirement": 12060910.0,
-                "funding": 5576718.0,
-                "pledges": 0.0
-              }, {
-                "name": "NON-FOOD ITEMS (NFIs) AND SHELTER",
-                "current_requirement": 420903819.0,
-                "original_requirement": 420903819.0,
-                "funding": 29859588.0,
-                "pledges": 41614.0
-              }, {
-                "name": "NUTRITION",
-                "current_requirement": 29999820.0,
-                "original_requirement": 29999820.0,
-                "funding": 23062685.0,
-                "pledges": 0.0
-              }, {
-                "name": "PROTECTION AND COMMUNITY SERVICES",
-                "current_requirement": 73493864.0,
-                "original_requirement": 73493864.0,
-                "funding": 22035159.0,
-                "pledges": 0.0
-              }, {
-                "name": "STAFF SAFETY SERVICES",
-                "current_requirement": 6183984.0,
-                "original_requirement": 6183984.0,
-                "funding": 2466833.0,
-                "pledges": 0.0
-              }, {
-                "name": "WASH",
-                "current_requirement": 154773755.0,
-                "original_requirement": 154773755.0,
-                "funding": 45742146.0,
-                "pledges": 0.0
-              }]
-            },
-            {
-                dataItemTitle: "Syria Regional Refugee Response Plan"
-            },
-            {
-                dataItemTitle: "Syria Humanitarian Assistance Response Plan"
-            }
-        ],
-        dataItemTitleCurrent: "Syria Regional Refugee Response Plan"
-      });
-      financialWidget.render('#widget');
-    </script>
-    <!-- Typekit -->
-    <script src="//use.typekit.net/pqs1mrp.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
-  </body>
+        <div id="finance-bubbles"></div>
+      </div>
+      <footer class="financial-widget--sources">Data Source <cite><a href="">Financial Tracking Service</a></cite>
+      </footer>
+      <footer class="financial-widget--explore"><a href="">Explore Funding Documents via ReliefWeb</a></footer>
+    </div>
+  </script>
+</head>
+<body>
+<div id="widget" class="widget"></div>
+
+<script type="text/javascript">
+  var financialWidget = ReliefwebWidgets.widget('financial', {
+    template: '#financial-template',
+    dataSources: [
+      {
+        dataItemTitle: "Iraq",
+        clusters: [{
+          "name": "CAMP COORDINATION AND CAMP MANAGEMENT (CCCM)",
+          "current_requirement": 32488735.0,
+          "original_requirement": 0.0,
+          "funding": 0.0,
+          "pledges": 0.0
+        }, {
+          "name": "CLUSTER NOT YET SPECIFIED",
+          "current_requirement": 0.0,
+          "original_requirement": 0.0,
+          "funding": 166676847.0,
+          "pledges": 50000.0
+        }, {
+          "name": "COORDINATION AND SUPPORT SERVICES",
+          "current_requirement": 24216949.0,
+          "original_requirement": 0.0,
+          "funding": 5156690.0,
+          "pledges": 1000000.0
+        }, {
+          "name": "EDUCATION",
+          "current_requirement": 154256764.0,
+          "original_requirement": 6000000.0,
+          "funding": 15364197.0,
+          "pledges": 0.0
+        }, {
+          "name": "EMERGENCY TELECOMMUNICATIONS",
+          "current_requirement": 1511782.0,
+          "original_requirement": 0.0,
+          "funding": 763159.0,
+          "pledges": 0.0
+        }, {
+          "name": "FOOD SECURITY",
+          "current_requirement": 512119533.0,
+          "original_requirement": 25160000.0,
+          "funding": 204010333.0,
+          "pledges": 0.0
+        }, {
+          "name": "HEALTH",
+          "current_requirement": 314231723.0,
+          "original_requirement": 25000000.0,
+          "funding": 95509273.0,
+          "pledges": 0.0
+        }, {
+          "name": "LOGISTICS",
+          "current_requirement": 3569680.0,
+          "original_requirement": 321000.0,
+          "funding": 2298201.0,
+          "pledges": 0.0
+        }, {
+          "name": "MULTI-SECTOR REFUGEES",
+          "current_requirement": 0.0,
+          "original_requirement": 0.0,
+          "funding": 0.0,
+          "pledges": 0.0
+        }, {
+          "name": "PROTECTION",
+          "current_requirement": 212095062.0,
+          "original_requirement": 11325000.0,
+          "funding": 61107331.0,
+          "pledges": 0.0
+        }, {
+          "name": "SHELTER/NFI",
+          "current_requirement": 753519061.0,
+          "original_requirement": 29936377.0,
+          "funding": 193272645.0,
+          "pledges": 0.0
+        }, {
+          "name": "SOCIAL COHESION AND SUSTAINABLE LIVELIHOODS",
+          "current_requirement": 63773602.0,
+          "original_requirement": 0.0,
+          "funding": 8926800.0,
+          "pledges": 0.0
+        }, {
+          "name": "WASH",
+          "current_requirement": 158526468.0,
+          "original_requirement": 6000000.0,
+          "funding": 38780193.0,
+          "pledges": 0.0
+        }],
+        source: "http://fts.unocha.org/api/v1/cluster/appeal/983.json"
+      },
+      {
+        dataItemTitle: "Syria Regional Refugee Response Plan",
+        clusters: [{
+          "name": "MULTI-SECTOR",
+          "current_requirement": 3740654701.0,
+          "original_requirement": 4264717711.0,
+          "funding": 2321442541.0,
+          "pledges": 16857738.0
+        }],
+        source: "http://fts.unocha.org/api/v1/cluster/appeal/1048.json"
+      },
+      {
+        dataItemTitle: "Syria Humanitarian Assistance Response Plan",
+        clusters: [{
+          "name": "CLUSTER NOT YET SPECIFIED",
+          "current_requirement": 0.0,
+          "original_requirement": 0.0,
+          "funding": 235341626.0,
+          "pledges": 0.0
+        }, {
+          "name": "COORDINATION",
+          "current_requirement": 50814214.0,
+          "original_requirement": 50814214.0,
+          "funding": 22261415.0,
+          "pledges": 0.0
+        }, {
+          "name": "EARLY RECOVERY AND LIVELIHOODS",
+          "current_requirement": 71054434.0,
+          "original_requirement": 71054434.0,
+          "funding": 13880484.0,
+          "pledges": 0.0
+        }, {
+          "name": "EDUCATION",
+          "current_requirement": 103163335.0,
+          "original_requirement": 103163335.0,
+          "funding": 39294677.0,
+          "pledges": 0.0
+        }, {
+          "name": "EMERGENCY TELECOMMUNICATIONS (ETC)",
+          "current_requirement": 1584010.0,
+          "original_requirement": 1584010.0,
+          "funding": 947887.0,
+          "pledges": 0.0
+        }, {
+          "name": "FOOD AND AGRICULTURE",
+          "current_requirement": 1118741037.0,
+          "original_requirement": 1118741037.0,
+          "funding": 537436935.0,
+          "pledges": 44136.0
+        }, {
+          "name": "HEALTH",
+          "current_requirement": 233376172.0,
+          "original_requirement": 233376172.0,
+          "funding": 103801571.0,
+          "pledges": 0.0
+        }, {
+          "name": "LOGISTICS",
+          "current_requirement": 12060910.0,
+          "original_requirement": 12060910.0,
+          "funding": 5576718.0,
+          "pledges": 0.0
+        }, {
+          "name": "NON-FOOD ITEMS (NFIs) AND SHELTER",
+          "current_requirement": 420903819.0,
+          "original_requirement": 420903819.0,
+          "funding": 29859588.0,
+          "pledges": 41614.0
+        }, {
+          "name": "NUTRITION",
+          "current_requirement": 29999820.0,
+          "original_requirement": 29999820.0,
+          "funding": 23062685.0,
+          "pledges": 0.0
+        }, {
+          "name": "PROTECTION AND COMMUNITY SERVICES",
+          "current_requirement": 73493864.0,
+          "original_requirement": 73493864.0,
+          "funding": 22035159.0,
+          "pledges": 0.0
+        }, {
+          "name": "STAFF SAFETY SERVICES",
+          "current_requirement": 6183984.0,
+          "original_requirement": 6183984.0,
+          "funding": 2466833.0,
+          "pledges": 0.0
+        }, {
+          "name": "WASH",
+          "current_requirement": 154773755.0,
+          "original_requirement": 154773755.0,
+          "funding": 45742146.0,
+          "pledges": 0.0
+        }],
+        source: "http://fts.unocha.org/api/v1/cluster/appeal/1044.json"
+      }
+    ],
+    dataItemTitleCurrent: "Syria Regional Refugee Response Plan"
+  });
+  financialWidget.render('#widget');
+</script>
+<!-- Typekit -->
+<script src="//use.typekit.net/pqs1mrp.js"></script>
+<script>try {
+  Typekit.load();
+} catch (e) {
+}</script>
+</body>
 </html>
