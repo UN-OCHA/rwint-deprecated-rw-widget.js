@@ -320,6 +320,9 @@ FinancialWidget.prototype.link = function(elements) {
         'cluster-bubble': true,
         'small': bubbleNeedsSmallClass
       })
+      .style({
+        "cursor": "pointer"
+      })
       .attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; })
       .on('click', function(d) {
         addClusterOverlay(d);
