@@ -242,9 +242,20 @@ FinancialWidget.prototype.link = function(elements) {
           nodes[key].y = (chartState.direction == 'horizontal') ? h / 2 + ((Math.random() * 4) - 2) : bubblePlacementScale(val.fundingPercentage);
         });
 
+        cluster.classed({
+            'small': bubbleNeedsSmallClass
+          });
+
         cluster.selectAll("circle")
           .attr({
             r: function(d) {return d.r;}
+          });
+
+        cluster.selectAll("text")
+          .attr({
+            transform: function(d) {
+              return (bubbleNeedsSmallClass(d)) ? "translate(0," + (d.r + 16) + ")" : '';
+            }
           });
 
         cluster.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")"; });
@@ -398,6 +409,9 @@ FinancialWidget.prototype.link = function(elements) {
         }
       });
 
+    cluster.selectAll("text")
+      .call(wrap, 200);
+
     windowResize();
 
     force.on("tick", function(e) {
@@ -544,6 +558,33 @@ FinancialWidget.prototype.link = function(elements) {
 
     function removeClusterOverlay() {
       d3.select('#detail-overlay').remove();
+    }
+
+    function wrap(text, width) {
+      text.each(function() {
+        var text = d3.select(this),
+          words = text.text().split(/\s+/).reverse(),
+          word,
+          line = [],
+          lineNumber = 0,
+          lineHeight = 20, // px
+          y = text.attr("y"),
+          dy = 0,
+          tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+
+        word = words.pop();
+        while (word) {
+          line.push(word);
+          tspan.text(line.join(" "));
+          if (tspan.node().getComputedTextLength() > width) {
+            line.pop();
+            tspan.text(line.join(" "));
+            line = [word];
+            tspan = text.append("tspan").attr("x", 0).attr("y", y).attr("y", ++lineNumber * lineHeight + dy + "px").text(word);
+          }
+          word = words.pop();
+        }
+      });
     }
   }
 
