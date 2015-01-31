@@ -705,7 +705,7 @@ RiverWidget.prototype.link = function(elements, next) {
     var links = "";
 
     currentTab.filters.forEach(function(filter){
-      links += '<li><a href="' + filter.location + '">'+ filter.linkTitle + '</a></li>';
+      links += '<li><a href="' + filter.location + '" target="_blank">'+ filter.linkTitle + '</a></li>';
     });
 
     $('.widget-river--filters ul').html(links);
