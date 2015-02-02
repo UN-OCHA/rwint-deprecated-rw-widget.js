@@ -535,9 +535,10 @@ FinancialWidget.prototype.link = function(elements) {
 
   function populateYearSelector() {
     var $yearSelector = $('select[name="time-chooser"]', $element);
-    var currentYear = moment().format('YYYY');
+    // We are not pulling any 2015 data at this time. Start with 2014.
+    var currentYear = moment().subtract(1, "years").format('YYYY');
     var selected = '';
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 4; i++) {
       selected = (currentYear == 2015) ? 'selected' : '';
       $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
       currentYear--;
