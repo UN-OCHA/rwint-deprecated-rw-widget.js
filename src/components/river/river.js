@@ -98,7 +98,12 @@ RiverWidget.prototype.link = function(elements, next) {
     });
 
     var timePeriod = widget.config('timePeriod');
-    var range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY");
+    var range = "";
+    if (timePeriod.duration == "years") {
+      range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("MMMM YYYY");
+    } else {
+      range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY");
+    }
     $('.widget-river--results--graph .graph--heading').html(range);
 
     $('#chart').html("");
@@ -169,11 +174,6 @@ RiverWidget.prototype.getChart = function(period) {
             data[val.type].push(gData[index]);
           }
         });
-      } else {
-        // If using years and there are more than 12 months remove the first.
-        if (data[val.type].length > 12) {
-          data[val.type].shift();
-        }
       }
     });
 

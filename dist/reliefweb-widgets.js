@@ -590,9 +590,10 @@ FinancialWidget.prototype.link = function(elements) {
 
   function populateYearSelector() {
     var $yearSelector = $('select[name="time-chooser"]', $element);
-    var currentYear = moment().format('YYYY');
+    // We are not pulling any 2015 data at this time. Start with 2014.
+    var currentYear = moment().subtract(1, "years").format('YYYY');
     var selected = '';
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 4; i++) {
       selected = (currentYear == 2015) ? 'selected' : '';
       $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
       currentYear--;
@@ -762,7 +763,12 @@ RiverWidget.prototype.link = function(elements, next) {
     });
 
     var timePeriod = widget.config('timePeriod');
-    var range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY");
+    var range = "";
+    if (timePeriod.duration == "years") {
+      range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("MMMM YYYY");
+    } else {
+      range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY");
+    }
     $('.widget-river--results--graph .graph--heading').html(range);
 
     $('#chart').html("");
@@ -833,11 +839,6 @@ RiverWidget.prototype.getChart = function(period) {
             data[val.type].push(gData[index]);
           }
         });
-      } else {
-        // If using years and there are more than 12 months remove the first.
-        if (data[val.type].length > 12) {
-          data[val.type].shift();
-        }
       }
     });
 
@@ -1210,7 +1211,6 @@ TimelineWidget.prototype.link = function(elements) {
       touchDragging: 1,
       releaseSwing: 1,
       startAt: timelineState.currentIndex,
-      scrollBy: 1,
       speed: 200,
       elasticBounds: 1,
       dragHandle: 1,
@@ -1232,7 +1232,6 @@ TimelineWidget.prototype.link = function(elements) {
       touchDragging: 1,
       releaseSwing: 1,
       startAt: timelineState.currentIndex,
-      scrollBy: 1,
       speed: 200,
       elasticBounds: 1,
       dragHandle: 1,
@@ -1249,7 +1248,6 @@ TimelineWidget.prototype.link = function(elements) {
       touchDragging: 1,
       releaseSwing: 1,
       startAt: timelineState.currentIndex,
-      scrollBy: 1,
       activatePageOn: 'click',
       speed: 300,
       elasticBounds: 1,
