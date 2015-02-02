@@ -13,7 +13,7 @@
     <script type="text/javascript" src="image.template.js"></script>
     <script id="image-template" type="text/x-handlebars-template">
       <img src="{{src}}" />
-      <h1><b>Totally different image template</b></h1>
+      <h1><b>{{title}}</b></h1>
     </script>
     <!-- Image widget assets -->
     <style>
@@ -59,6 +59,23 @@
 
       // Inherit WidgetBase methods.
       ImageWidget.prototype = new WidgetBase();
+
+      ImageWidget.prototype.compile = function(elements, next) {
+        var title = this.config('title');
+        this.config('title', 'Adjusted Title: ' + title);
+
+        this.template(function(content) {
+          elements
+              .classed('rw-widget', true)
+              .html(content);
+
+          next();
+        });
+      };
+
+      ImageWidget.prototype.link = function(elements) {
+        elements.append("p").text("This text added after initial render.");
+      };
 
       // Instigate new instance of ImageWidget, with overridden defaults.
       var imageWidget = new ImageWidget({
