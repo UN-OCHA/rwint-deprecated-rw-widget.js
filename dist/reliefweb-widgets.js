@@ -699,7 +699,7 @@ RiverWidget.prototype.compile = function(elements, next) {
     });
 
     var timePeriod = widget.config('timePeriod');
-    var range = moment(timePeriod.startDate).utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("Do MMMM YYYY");
+    var range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY");
     $('.widget-river--results--graph .graph--heading').html(range);
     widget.getChart();
   });
@@ -762,12 +762,11 @@ RiverWidget.prototype.link = function(elements, next) {
     });
 
     var timePeriod = widget.config('timePeriod');
-
     var range = "";
     if (timePeriod.duration == "years") {
-      range = moment(timePeriod.startDate).utc().format("MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("MMMM YYYY");
+      range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("MMMM YYYY");
     } else {
-      range = moment(timePeriod.startDate).utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate).utc().format("Do MMMM YYYY");
+      range = moment(timePeriod.startDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY") + " - " + moment(timePeriod.endDate, "MM-DD-YYYY").utc().format("Do MMMM YYYY");
     }
     $('.widget-river--results--graph .graph--heading').html(range);
 
@@ -791,24 +790,22 @@ RiverWidget.prototype.getChart = function(period) {
     renderChart(data);
   }
 
-  // TODO: Rebuild the chart with new x-axis.
-  /*
   $(window).resize(function() {
     $('#chart').html("");
     renderChart(data);
   });
-  */
 
   function prepareData() {
     var content = widget.config('content');
     var timePeriod = widget.config('timePeriod');
-    var now = new Date(timePeriod.endDate);
-    var from = new Date(timePeriod.startDate);
+    var now = moment(timePeriod.endDate, "MM-DD-YYYY");
+    var from = moment(timePeriod.startDate, "MM-DD-YYYY");
+
 
     // Get each day in given time period.
     var timePeriodDays = [];
-    for (var d = from; d <= now; d.setDate(d.getDate() + 1)) {
-      timePeriodDays.push(moment(d).utc().format("MM-DD-YYYY"));
+    for (var d = from; d.isBefore(now); d.add(1, 'day')) {
+      timePeriodDays.push(d.utc().format("MM-DD-YYYY"));
     }
 
     var data = [];
@@ -819,7 +816,7 @@ RiverWidget.prototype.getChart = function(period) {
 
       var gData = [];
       val.graphData.forEach(function(rawData){
-        var dates = moment(rawData.value).utc().format("MM-DD-YYYY");
+        var dates = moment(rawData.value, moment.ISO_8601).utc().format("MM-DD-YYYY");
         var total = rawData.count / val.count * 100;
         if (total > data.max) {
           data.max = total;
@@ -855,7 +852,7 @@ RiverWidget.prototype.getChart = function(period) {
       height = 500;
 
     var x = d3.time.scale()
-      .domain([new Date(timePeriod.startDate), new Date(timePeriod.endDate)])
+      .domain([moment(timePeriod.startDate, "MM-DD-YYYY").toDate(), moment(timePeriod.endDate, "MM-DD-YYYY").toDate()])
       .rangeRound([0, width - margin.left - margin.right]);
 
     var y = d3.scale.linear()
@@ -887,7 +884,12 @@ RiverWidget.prototype.getChart = function(period) {
       .scale(x)
       .orient('bottom')
       .ticks(ticks, 1)
-      .tickFormat(tickformat)
+      .tickFormat(function(d, i) {
+        if ($(window).width() < 400) {
+          return (i % 2) ? '' : tickformat(d);
+        }
+        return tickformat(d);
+      })
       .tickSize(-height + margin.top + margin.bottom, 0, 0)
       .tickPadding(8);
 
@@ -922,7 +924,7 @@ RiverWidget.prototype.getChart = function(period) {
       .call(yAxis);
 
     var valueline = d3.svg.line()
-      .x(function(d) { return x(new Date(d.date)); })
+      .x(function(d) { return x(moment(d.date, "MM-DD-YYYY").toDate()); })
       .y(function(d) { return y(d.total); });
 
     svg.append("path")
@@ -961,8 +963,8 @@ RiverWidget.prototype.getData = function(period, updatePage) {
 
   widget.config('timePeriod', {
     duration: period,
-    startDate: moment(fromDate).utc().format("MM-DD-YYYY"),
-    endDate: moment(currentDate).utc().format("MM-DD-YYYY")
+    startDate: moment(fromDate, moment.ISO_8601).utc().format("MM-DD-YYYY"),
+    endDate: moment(currentDate, moment.ISO_8601).utc().format("MM-DD-YYYY")
   });
 
   var factets = {
