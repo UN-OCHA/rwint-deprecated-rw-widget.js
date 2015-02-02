@@ -750,6 +750,8 @@ RiverWidget.prototype.link = function(elements, next) {
     });
 
     $('.widget-river--filters ul').html(links);
+    $('.widget-river--filters').removeClass("results--item--reports results--item--maps results--item--jobs");
+    $('.widget-river--filters').addClass("results--item--" + currentTab.type);
     $('.widget-river--filters--title .tab').html(currentTab.title);
 
   }
