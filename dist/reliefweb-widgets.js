@@ -752,6 +752,13 @@ RiverWidget.prototype.link = function(elements, next) {
 
     $('.widget-river--filters ul').html(links);
     $('.widget-river--filters').removeClass("results--item--reports results--item--maps results--item--jobs");
+
+    // TODO: We will need to adjust the scss to account for different filters. This is just a work-around for the sake
+    // of the hackathon demo.
+    if (currentTab.type == "disasters") {
+      currentTab.type = "jobs";
+    }
+
     $('.widget-river--filters').addClass("results--item--" + currentTab.type);
     $('.widget-river--filters--title .tab').html(currentTab.title);
 
@@ -1027,7 +1034,6 @@ RiverWidget.prototype.getData = function(period, updatePage) {
       .sort('date.created', 'asc')
       .end(function(err, res) {
         if (!err) {
-          console.log(res);
           count++;
           // TODO: Check to make sure values exists before setting.
           content[key].count = res.body.totalCount;
