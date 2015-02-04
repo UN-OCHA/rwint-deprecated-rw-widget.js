@@ -1067,18 +1067,28 @@ TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
+
+  var countries = widget.config('countries');
+  var disaster = widget.config('disaster');
+  var startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
+  var limit = widget.config('limit');
+
   var filters = {
       filter: {
       'operator': 'AND',
       'conditions': [
         {
           'field': 'headline.featured'
+        },
+        {
+          "field": "date.original",
+          "value": {
+            "from":  startDate
+          }
         }
       ]
     }
   };
-
-  var countries = widget.config('countries');
 
   if (Array.isArray(countries) && countries.length) {
     filters.filter.conditions.push({
@@ -1088,14 +1098,24 @@ TimelineWidget.prototype.compile = function(elements, next) {
     });
   }
 
+  if (Array.isArray(disaster) && disaster.length) {
+    filters.filter.conditions.push({
+      'field': 'disaster',
+      'value': disaster,
+      'operator': 'OR'
+    });
+  }
+
   var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
     .sort('date.original', 'desc')
     .send(filters)
+    .send({limit: limit})
     .end(function(err, res) {
       if (!err) {
         var timelineItems = [];
+        console.log(res);
         res.body.data.forEach(function(val, key) {
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
           var item = {
