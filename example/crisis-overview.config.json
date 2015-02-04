@@ -8,39 +8,43 @@
   "content": {
     "syria": {
       "title": "Syria",
-      "content": "<p>The conflict in Syria is now in its fourth year and the humanitarian situation continues to worsen. There were major changes in conflict dynamics over 2014, both in terms of warring factions’ control over territory and in terms of the fault lines of the conflict.</p><p>The conflict has killed over 195,000 people and caused large-scale displacement. More people are in camps than last year, and more non-displaced are in need of humanitarian assistance. The country has also experienced severe drought, impacting the availability of safe water and the health status of the population, as well as reducing agricultural output and local food production. Protection concerns are widespread. WASH and access to food are high priorities as well as access to health services. Humanitarian needs in areas under prolonged and ongoing siege are particularly high as access to food, basic services, and livelihoods is obstructed.</p>",
-      "indicator": {
-        "data": [
-          {
-            "figure": "4",
-            "quantifier": "million",
-            "description": "Refugees"
-          },
-          {
-            "figure": "7.5",
-            "quantifier": "million",
-            "description": "Internally Displaced"
-          }
-        ]
-      }
+      "content": "<p>The conflict in Syria is now in its fourth year and the humanitarian situation continues to worsen. There were major changes in conflict dynamics over 2014, both in terms of warring factions’ control over territory and in terms of the fault lines of the conflict.</p><p>The conflict has killed over 195,000 people and caused large-scale displacement. More people are in camps than last year, and more non-displaced are in need of humanitarian assistance. The country has also experienced severe drought, impacting the availability of safe water and the health status of the population, as well as reducing agricultural output and local food production. Protection concerns are widespread. WASH and access to food are high priorities as well as access to health services. Humanitarian needs in areas under prolonged and ongoing siege are particularly high as access to food, basic services, and livelihoods is obstructed.</p>"
     },
     "iraq": {
       "title": "Iraq",
-      "content": "<p>The Islamic State insurgency has compounded an already fragile political situation, leading to a level 3 humanitarian crisis and international military intervention. In 2014, four massive waves of internal displacement have taken place: Anbar in January, Mosul in June, Sinjar in August and Hit in October. Priority humanitarian needs are food, water, shelter, and fuel. Protection and the risk of disease outbreak are also concerns. Iraq now hosts one of the largest internally displaced populations in the world. Host communities are increasingly stretched.</p>",
-      "indicator": {
-        "data": [
-          {
-            "figure": "3",
-            "quantifier": "million",
-            "description": "Refugees"
-          },
-          {
-            "figure": "6.25",
-            "quantifier": "million",
-            "description": "Internally Displaced"
-          }
-        ]
-      }
+      "content": "<p>The Islamic State insurgency has compounded an already fragile political situation, leading to a level 3 humanitarian crisis and international military intervention. In 2014, four massive waves of internal displacement have taken place: Anbar in January, Mosul in June, Sinjar in August and Hit in October. Priority humanitarian needs are food, water, shelter, and fuel. Protection and the risk of disease outbreak are also concerns. Iraq now hosts one of the largest internally displaced populations in the world. Host communities are increasingly stretched.</p>"
     }
-  }
+  },
+  "indicators": [
+    {
+      "title": "foo",
+      "data": [
+        {
+          "figure": "4",
+          "quantifier": "million",
+          "description": "Refugees"
+        },
+        {
+          "figure": "7.5",
+          "quantifier": "million",
+          "description": "Internally Displaced"
+        }
+      ]
+    },
+    {
+      "title": "bar",
+      "data": [
+        {
+          "figure": "3",
+          "quantifier": "million",
+          "description": "Refugees"
+        },
+        {
+          "figure": "6.25",
+          "quantifier": "million",
+          "description": "Internally Displaced"
+        }
+      ]
+    }
+  ]
 }
