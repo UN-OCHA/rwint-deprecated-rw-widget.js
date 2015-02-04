@@ -273,23 +273,21 @@ RiverWidget.prototype.getChart = function(period) {
       .y(function(d) { return y(d.total); });
 
     // TODO: Fix css class names that are jacked.
-    svg.append("path")
-      .attr("class", "graph-maps")
-      .attr("d", valueline(data.disasters))
-      .attr('stroke-width', 7)
-      .attr('fill', 'none');
 
-    svg.append("path")
-      .attr("class", "graph-jobs")
-      .attr("d", valueline(data.maps))
-      .attr('stroke-width', 7)
-      .attr('fill', 'none');
+    delete data.max;
+    _.keys(data).forEach(function(val){
+      var type = val;
+      if (val == "disasters") {
+        type = "jobs";
+      }
 
-    svg.append("path")
-      .attr("class", "graph-reports")
-      .attr("d", valueline(data.reports))
-      .attr('stroke-width', 7)
-      .attr('fill', 'none');
+      svg.append("path")
+        .attr("class", "graph-" + type)
+        .attr("d", valueline(data[val]))
+        .attr('stroke-width', 7)
+        .attr('fill', 'none');
+    });
+
   }
 
   init();
