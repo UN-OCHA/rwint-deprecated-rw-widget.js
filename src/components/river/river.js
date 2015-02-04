@@ -87,6 +87,13 @@ RiverWidget.prototype.link = function(elements, next) {
 
     $('.widget-river--filters ul').html(links);
     $('.widget-river--filters').removeClass("results--item--reports results--item--maps results--item--jobs");
+
+    // TODO: We will need to adjust the scss to account for different filters. This is just a work-around for the sake
+    // of the hackathon demo.
+    if (currentTab.type == "disasters") {
+      currentTab.type = "jobs";
+    }
+
     $('.widget-river--filters').addClass("results--item--" + currentTab.type);
     $('.widget-river--filters--title .tab').html(currentTab.title);
 
@@ -151,18 +158,20 @@ RiverWidget.prototype.getChart = function(period) {
       data[val.type] = [];
 
       var gData = [];
-      val.graphData.forEach(function(rawData){
-        var dates = moment(rawData.value, moment.ISO_8601).utc().format("MM-DD-YYYY");
-        var total = rawData.count / val.count * 100;
-        if (total > data.max) {
-          data.max = total;
-        }
-        if (timePeriod.duration != "years") {
-          gData.push({date: dates, total: total});
-        } else {
-          data[val.type].push({date: dates, total: total});
-        }
-      });
+      if (val.graphData) {
+        val.graphData.forEach(function (rawData) {
+          var dates = moment(rawData.value, moment.ISO_8601).utc().format("MM-DD-YYYY");
+          var total = rawData.count / val.count * 100;
+          if (total > data.max) {
+            data.max = total;
+          }
+          if (timePeriod.duration != "years") {
+            gData.push({date: dates, total: total});
+          } else {
+            data[val.type].push({date: dates, total: total});
+          }
+        });
+      }
 
       if (timePeriod.duration != "years") {
         // If graph data exist for the day insert it, otherwise leave it blank.
@@ -263,14 +272,15 @@ RiverWidget.prototype.getChart = function(period) {
       .x(function(d) { return x(moment(d.date, "MM-DD-YYYY").toDate()); })
       .y(function(d) { return y(d.total); });
 
+    // TODO: Fix css class names that are jacked.
     svg.append("path")
-      .attr("class", "graph-jobs")
-      .attr("d", valueline(data.jobs))
+      .attr("class", "graph-maps")
+      .attr("d", valueline(data.disasters))
       .attr('stroke-width', 7)
       .attr('fill', 'none');
 
     svg.append("path")
-      .attr("class", "graph-maps")
+      .attr("class", "graph-jobs")
       .attr("d", valueline(data.maps))
       .attr('stroke-width', 7)
       .attr('fill', 'none');
