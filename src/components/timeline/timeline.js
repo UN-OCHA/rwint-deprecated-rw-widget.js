@@ -28,7 +28,11 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
   var startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
-  var limit = widget.config('limit');
+  var limit = 10;
+
+  if (widget.has('limit')) {
+    limit = widget.config('limit');
+  }
 
   var filters = {
       filter: {
@@ -72,7 +76,6 @@ TimelineWidget.prototype.compile = function(elements, next) {
     .end(function(err, res) {
       if (!err) {
         var timelineItems = [];
-        console.log(res);
         res.body.data.forEach(function(val, key) {
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
           var item = {

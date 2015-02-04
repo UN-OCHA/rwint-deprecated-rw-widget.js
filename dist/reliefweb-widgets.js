@@ -938,23 +938,21 @@ RiverWidget.prototype.getChart = function(period) {
       .y(function(d) { return y(d.total); });
 
     // TODO: Fix css class names that are jacked.
-    svg.append("path")
-      .attr("class", "graph-maps")
-      .attr("d", valueline(data.disasters))
-      .attr('stroke-width', 7)
-      .attr('fill', 'none');
 
-    svg.append("path")
-      .attr("class", "graph-jobs")
-      .attr("d", valueline(data.maps))
-      .attr('stroke-width', 7)
-      .attr('fill', 'none');
+    delete data.max;
+    _.keys(data).forEach(function(val){
+      var type = val;
+      if (val == "disasters") {
+        type = "jobs";
+      }
 
-    svg.append("path")
-      .attr("class", "graph-reports")
-      .attr("d", valueline(data.reports))
-      .attr('stroke-width', 7)
-      .attr('fill', 'none');
+      svg.append("path")
+        .attr("class", "graph-" + type)
+        .attr("d", valueline(data[val]))
+        .attr('stroke-width', 7)
+        .attr('fill', 'none');
+    });
+
   }
 
   init();
@@ -1081,7 +1079,11 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
   var startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
-  var limit = widget.config('limit');
+  var limit = 10;
+
+  if (widget.has('limit')) {
+    limit = widget.config('limit');
+  }
 
   var filters = {
       filter: {
@@ -1125,7 +1127,6 @@ TimelineWidget.prototype.compile = function(elements, next) {
     .end(function(err, res) {
       if (!err) {
         var timelineItems = [];
-        console.log(res);
         res.body.data.forEach(function(val, key) {
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
           var item = {
