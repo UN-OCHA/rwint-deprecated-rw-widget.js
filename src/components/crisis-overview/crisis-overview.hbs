@@ -1,8 +1,11 @@
 <div class="overview-widget">
   <h1 class="overview-widget--title"><span><i class="un-icon-crisis_conflict"></i>{{{adjustedTitle}}}</span></h1>
+  {{#if map}}
   <div class="overview-widget--map">
     <img src="{{map.src}}" alt="{{map.alt}}" />
   </div>
+  {{/if}}
+  {{#if content}}
   <div class="overview-widget--description">
     <div class="accordion-set">
       {{#each content}}
@@ -14,17 +17,19 @@
       {{/each}}
     </div>
   </div>
+  {{/if}}
+  {{#if indicators}}
   <div class="overview-widget--tabs tab-set">
-    {{#each content}}
+    {{#each indicators}}
     <input type="radio" name="tab" id="tab-{{@index}}" class="tab-set--tab"{{#if @index}}{{else}} checked="checked"{{/if}}/>
     <label for="tab-{{@index}}">{{this.title}}</label>
     {{/each}}
     <div class="tab-set--content">
-      {{#each content}}
+      {{#each indicators}}
       <div id="tab-body-{{@index}}" class="tab-set--body">
         <h2>{{this.title}}</h2>
         <i class="un-icon-crisis_population_displacement"></i>
-        {{#each this.indicator.data}}
+        {{#each this.data}}
         <div class="refugees">
           <h3><span class="figure">{{this.figure}}</span> {{this.quantifier}}</h3>
           <p>{{this.description}}</p>
@@ -34,5 +39,6 @@
       {{/each}}
     </div>
   </div>
+  {{/if}}
   <footer class="overview-widget--sources">{{{dataSource}}}</footer>
 </div>
