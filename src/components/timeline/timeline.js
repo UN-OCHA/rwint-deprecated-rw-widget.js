@@ -8,6 +8,7 @@ var moment = require('moment');
 var reliefweb = require('reliefweb');
 
 // load template
+
 require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {

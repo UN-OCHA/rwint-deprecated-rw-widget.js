@@ -1238,6 +1238,7 @@ var moment = (typeof window !== "undefined" ? window.moment : typeof global !== 
 var reliefweb = (typeof window !== "undefined" ? window.reliefweb : typeof global !== "undefined" ? global.reliefweb : null);
 
 // load template
+
 require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {
