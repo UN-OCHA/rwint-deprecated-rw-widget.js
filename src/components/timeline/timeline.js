@@ -2,10 +2,13 @@
 
 var _ = require('lodash');
 var d3 = require('d3');
-var WidgetBase = require('../../widget-base');
+var WidgetBase = require('beat-blocks').helpers.widgetBase;
 var $ = require('jquery');
 var moment = require('moment');
 var reliefweb = require('reliefweb');
+
+// load template
+require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {

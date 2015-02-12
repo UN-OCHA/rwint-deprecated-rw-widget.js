@@ -12,16 +12,15 @@
   <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
   <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
   <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
+  <script type="text/javascript" src="../bower_components/beat-blocks/dist/beat-blocks.js"></script>
   <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
-  <script type="text/javascript" src="river.template.js"></script>
 </head>
 <body>
 <div id="widget" class="widget"></div>
 
-
 <script type="text/javascript">
 
-  riverWidget = ReliefwebWidgets.widget('river', {
+  riverWidget = BeatBlocks.widget('river', {
     template: Handlebars.templates['river.hbs'],
     countries: [
       "Syria",

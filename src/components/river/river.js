@@ -1,11 +1,14 @@
 "use strict";
 
 var _ = require('lodash');
-var WidgetBase = require('../../widget-base');
+var WidgetBase = require('beat-blocks').helpers.widgetBase;
 var $ = require('jquery');
 var moment = require('moment');
 var reliefweb = require('reliefweb');
 var d3 = require('d3');
+
+// load template
+require('./river.hbs.js');
 
 var RiverWidget = function(opts) {
   var config = {
