@@ -42,17 +42,15 @@
         </select>
       </div>
       <div class="financial-widget--percent-funded">
-        <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span>
-        </div>
+        <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span></div>
         <div class="financial-widget--percent-funded--amount requested ">$3.74B Requested</div>
       </div>
       <div class="financial-widget--cluster-funding">
         <h2>Requirements &amp; Funding Per Cluster</h2>
-
         <div id="finance-bubbles"></div>
       </div>
-      <footer class="financial-widget--explore"><a href="">Explore Funding Documents via ReliefWeb</a></footer>
-      <footer class="financial-widget--sources">Data Source <cite><a href="">Financial Tracking Service</a></cite></footer>
+      <footer class="financial-widget--explore"><a href="{{ fundingDocumentURL }}" target="_top">Explore Funding Documents via ReliefWeb</a></footer>
+      <footer class="financial-widget--sources">Data Source <cite><a href="{{ dataSourceURL }}" target="_top">Financial Tracking Service</a></cite></footer>
     </div>
   </script>
 </head>
@@ -62,6 +60,8 @@
 <script type="text/javascript">
   var financialWidget = ReliefwebWidgets.widget('financial', {
     template: '#financial-template',
+    fundingDocumentURL: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F4)_!(S1242)_!(S1741)_!(S1255)_!(PC254)_!(S4304)#content",
+    dataSourceURL: "http://fts.unocha.org",
     dataSources: [
       {
         dataItemTitle: "Iraq",
