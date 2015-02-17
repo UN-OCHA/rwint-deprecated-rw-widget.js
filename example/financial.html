@@ -50,7 +50,7 @@
         <div id="finance-bubbles"></div>
       </div>
       <footer class="financial-widget--explore"><a href="{{ fundingDocumentURL }}" target="_top">Explore Funding Documents via ReliefWeb</a></footer>
-      <footer class="financial-widget--sources">Data Source <cite><a href="{{ dataSourceURL }}" target="_top">Financial Tracking Service</a></cite></footer>
+      <footer class="financial-widget--sources">Data Source <cite><a href="" target="_top">Financial Tracking Service</a></cite></footer>
     </div>
   </script>
 </head>
@@ -61,10 +61,10 @@
   var financialWidget = ReliefwebWidgets.widget('financial', {
     template: '#financial-template',
     fundingDocumentURL: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F4)_!(S1242)_!(S1741)_!(S1255)_!(PC254)_!(S4304)#content",
-    dataSourceURL: "http://fts.unocha.org",
     dataSources: [
       {
         dataItemTitle: "Iraq",
+        dataSourceURL: "http://fts.unocha.org/reports/daily/OCHA_R32sum_A983.PDF",
         clusters: [{
           "name": "CAMP COORDINATION AND CAMP MANAGEMENT (CCCM)",
           "current_requirement": 32488735.0,
@@ -148,6 +148,7 @@
       },
       {
         dataItemTitle: "Syria Regional Refugee Response Plan",
+        dataSourceURL: "http://fts.unocha.org/reports/daily/ocha_R32sum_A1090___13_February_2015_(16_19).pdf",
         clusters: [{
           "name": "MULTI-SECTOR",
           "current_requirement": 3740654701.0,
@@ -159,6 +160,7 @@
       },
       {
         dataItemTitle: "Syria Humanitarian Assistance Response Plan",
+        dataSourceURL: "http://fts.unocha.org/pageloader.aspx?page=special-syriancrisis",
         clusters: [{
           "name": "CLUSTER NOT YET SPECIFIED",
           "current_requirement": 0.0,

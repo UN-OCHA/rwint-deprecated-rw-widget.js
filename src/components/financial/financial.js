@@ -75,6 +75,10 @@ FinancialWidget.prototype.compile = function(elements, next) {
 
     next();
   });
+
+  // Set the initial dataSourceURL
+  var dataSourceURL = dataSources[0].dataSourceURL;
+  $('.financial-widget--sources a').attr('href', dataSourceURL);
 };
 
 FinancialWidget.prototype.link = function(elements) {
@@ -119,6 +123,10 @@ FinancialWidget.prototype.link = function(elements) {
       // Toggle active class.
       $('.financial-widget--data-source').removeClass('active');
       $(this).toggleClass('active');
+
+      // Set the dataSourceURL
+      var dataSourceURL = config.dataSources[chartState.currentSection].dataSourceURL;
+      $('.financial-widget--sources a').attr('href', dataSourceURL);
     });
   }
 
