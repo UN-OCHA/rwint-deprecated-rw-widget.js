@@ -24,9 +24,9 @@
   "scripts": {
     "build": "grunt --verbose"
   },
-  "main": "src/reliefweb-widgets.js",
+  "main": "src/rw-widgets.js",
   "dependencies": {
-    "beat-blocks": "https://bitbucket.org/phase2tech/beat-blocks/get/0.1.0.tar.gz",
+    "beat-blocks": "https://github.com/phase2/beat-blocks/archive/0.1.2.tar.gz",
     "d3": "^3.5.3",
     "handlebars": "^2.0.0",
     "jquery": "^2.1.3",

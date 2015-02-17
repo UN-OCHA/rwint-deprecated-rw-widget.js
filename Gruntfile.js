@@ -32,8 +32,8 @@ module.exports = function (grunt) {
     browserify: {
       options: {},
       dist: {
-        src: './src/reliefweb-widgets.js',
-        dest: './dist/reliefweb-widgets.js'
+        src: './src/rw-widgets.js',
+        dest: './dist/rw-widgets.js'
       }
     },
     connect: {
@@ -79,7 +79,6 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['browserify:dist', 'copy:base', 'connect:watch', 'watch:dist']);
-  grunt.registerTask('test', ['']);
   grunt.registerTask('lint', ['jshint:all']);
   grunt.registerTask('build', ['browserify:dist']);
   grunt.registerTask('serve', ['copy:base', 'connect:standalone']);
