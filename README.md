@@ -1,6 +1,6 @@
 #Relief-Web Widget library
 
-![npm dependencies](https://david-dm.org/reliefweb/rw-widget.js.svg) ![npm dev dependencies](https://david-dm.org/reliefweb/rw-widget.js/dev-status.svg)
+[![npm dependencies](https://david-dm.org/reliefweb/rw-widget.js.svg)](https://david-dm.org/reliefweb/rw-widget.js) [![npm dev dependencies](https://david-dm.org/reliefweb/rw-widget.js/dev-status.svg)](https://david-dm.org/reliefweb/rw-widget.js)
 
 ##Global Build Dependencies
 
