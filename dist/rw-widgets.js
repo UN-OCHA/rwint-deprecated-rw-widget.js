@@ -1304,7 +1304,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
+    .sort('date.original', 'asc')
     .send(filters)
     .send({limit: limit})
     .end(function(err, res) {
