@@ -1,65 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Financial</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF8">
-  <link rel="stylesheet" href="css/styles.css"/>
-  <style>
-    .grid line {
-      stroke: #CCC;
-    }
+    <title>Financial</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <link rel="stylesheet" href="css/styles.css"/>
+    <style>
+        .grid line {
+            stroke: #CCC;
+        }
 
-    .axis .domain {
-      fill: none;
-      stroke: #CCC;
-    }
+        .axis .domain {
+            fill: none;
+            stroke: #CCC;
+        }
 
-    .axis line {
-      stroke: #CCC;
-    }
-  </style>
-  <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
-  <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
-  <script type="text/javascript" src="../bower_components/sly/dist/sly.js"></script>
-  <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
-  <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
-  <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
-  <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
-  <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
-  <script type="text/javascript" src="../dist/reliefweb-widgets.js"></script>
-  <script id="financial-template" type="text/x-handlebars-template">
-    <div class="financial-widget">
-      <!--<h1 class="financial-widget--title"><i class="un-icon-activity_financing"></i> Financial</h1>-->
-      <div class="financial-widget--data-source-chooser">
-        {{#dataSources}}
-        <a href="" class="financial-widget--data-source">{{ dataItemTitle }}</a>
-        {{/dataSources}}
-      </div>
-      <div class="financial-widget--time">
-        <h1>{{ dataItemTitleCurrent }}</h1>
-        <select class="financial-widget--time-select" name="time-chooser" id="">
-        </select>
-      </div>
-      <div class="financial-widget--percent-funded">
-        <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span></div>
-        <div class="financial-widget--percent-funded--amount requested ">$3.74B Requested</div>
-      </div>
-      <div class="financial-widget--cluster-funding">
-        <h2>Requirements &amp; Funding Per Cluster</h2>
-        <div id="finance-bubbles"></div>
-      </div>
-      <footer class="financial-widget--explore"><a href="{{ fundingDocumentURL }}" target="_top">Explore Funding Documents via ReliefWeb</a></footer>
-      <footer class="financial-widget--sources">Data Source <cite><a href="" target="_top">Financial Tracking Service</a></cite></footer>
-    </div>
-  </script>
+        .axis line {
+            stroke: #CCC;
+        }
+    </style>
+    <script type="text/javascript" src="../bower_components/d3/d3.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="../bower_components/jquery-selectric/dist/jquery.selectric.js"></script>
+    <script type="text/javascript" src="../bower_components/sly/dist/sly.js"></script>
+    <script type="text/javascript" src="../bower_components/moment/moment.js"></script>
+    <script type="text/javascript" src="../bower_components/handlebars/handlebars.js"></script>
+    <script type="text/javascript" src="../bower_components/lodash/dist/lodash.js"></script>
+    <script type="text/javascript" src="../bower_components/superagent/superagent.js"></script>
+    <script type="text/javascript" src="../bower_components/reliefweb.js/lib/reliefweb.js"></script>
+    <script type="text/javascript" src="../bower_components/beat-blocks/dist/beat-blocks.js"></script>
+    <script type="text/javascript" src="../dist/rw-widgets.js"></script>
 </head>
 <body>
 <div id="widget" class="widget"></div>
 
 <script type="text/javascript">
-  var financialWidget = ReliefwebWidgets.widget('financial', {
-    template: '#financial-template',
+  var financialWidget = BeatBlocks.widget('financial', {
+    template: Handlebars.templates['financial.hbs'],
     fundingDocumentURL: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F4)_!(S1242)_!(S1741)_!(S1255)_!(PC254)_!(S4304)#content",
     dataSources: [
       {
@@ -249,7 +225,7 @@
 <!-- Typekit -->
 <script src="//use.typekit.net/pqs1mrp.js"></script>
 <script>try {
-  Typekit.load();
+    Typekit.load();
 } catch (e) {
 }</script>
 </body>

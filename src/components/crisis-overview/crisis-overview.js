@@ -2,7 +2,10 @@
 
 var _ = require('lodash');
 var d3 = require('d3');
-var WidgetBase = require('../../widget-base');
+var WidgetBase = require('beat-blocks').helpers.widgetBase;
+
+// load template
+require('./crisis-overview.hbs.js');
 
 var CrisisOverviewWidget = function(opts) {
   var config = {
@@ -29,7 +32,6 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
-      .classed('rw-widget-image', true)
       .html(content);
 
     next();

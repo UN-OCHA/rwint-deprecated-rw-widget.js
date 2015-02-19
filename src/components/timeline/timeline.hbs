@@ -24,9 +24,18 @@
         <div class="timeline-widget--dropdown--container">
           <ul class="slidee">
             {{#timeline-items}}
-            <li>
-              <div class="timeline-widget--dot"></div>
-              <div class="timeline-widget-dropdown--item" data-slide="{{ @index }}">
+            {{#new-month}}
+            <li class="timeline-widget--dropdown--month" data-isMonth="true">
+              {{ date-month }} - {{ date-year }}
+            </li>
+            {{/new-month}}
+            <li class="timeline-widget-dropdown--list-item" data-slide="{{ @index }}">
+              <div class="timeline-widget--dot">
+                <div class="timeline-widget--dot--date">
+                  {{ date-day }}
+                </div>
+              </div>
+              <div class="timeline-widget-dropdown--item">
                 {{ short-desc }}
               </div>
             </li>
@@ -50,15 +59,15 @@
             <div class="timeline-widget-item--content clearfix">
               <div class="timeline-widget-item--image grid--item">
                 <div class="timeline-widget-item--image--icons">
-                  <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img.png"></a>
+                  <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img--yellow.png"></a>
                   <a class="timeline-widget-item--image--country">{{ country }}</a>
                 </div>
-                <img src="../../images/timeline-img.png">
+                <img src="{{img-src}}">
               </div>
               <div class="timeline-widget-item--description grid--item">
                 {{{long-desc}}}
                 <div class="timeline-widget-item-link">
-                  <a class="btn" href="{{ url }}"><span class="un-icon-product_type_report"></span> Read full report</a>
+                  <a class="btn" href="{{ url }}" target="_top"><span class="un-icon-product_type_report"></span> Read full report</a>
                 </div>
               </div>
             </div>
@@ -68,24 +77,6 @@
         <div class="clear-both"></div>
       </div><!-- .timeline-widget-frames -->
     </div><!-- .timeline-widget-frames-wrapper -->
-
-    <div class="timeline-widget-pager">
-      <ul class="">
-        {{#timeline-items}}
-        <li>
-          <div class="timeline-widget-pager--item" data-slide="{{ @index }}">
-            <div class="timeline-widget--dot"></div>
-            <div class="timeline-widget-pager--item-content">
-              {{ short-desc }}
-            </div>
-          </div>
-        </li>
-        {{/timeline-items}}
-      </ul>
-      <div class="clear-both"></div>
-    </div><!-- .timeline-widget-pager -->
-    <div class="timeline-widget-pager--current"></div>
-
   </div>
 
 </div>

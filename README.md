@@ -1,5 +1,7 @@
 #Relief-Web Widget library
 
+[![npm dependencies](https://david-dm.org/reliefweb/rw-widget.js.svg)](https://david-dm.org/reliefweb/rw-widget.js) [![npm dev dependencies](https://david-dm.org/reliefweb/rw-widget.js/dev-status.svg)](https://david-dm.org/reliefweb/rw-widget.js)
+
 ##Global Build Dependencies
 
 - [node/npm](http://nodejs.org/) - For package management
@@ -13,8 +15,6 @@ In root directory of the repo...
 
     npm install
     bower install
-
-@TODO: Script this
 
 ##Development
 

@@ -1,10 +1,102 @@
-!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.ReliefwebWidgets=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['crisis-overview.hbs'] = template({"1":function(depth0,helpers,partials,data) {
+    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "  <div class=\"overview-widget--map\">\n    <img src=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.map : depth0)) != null ? stack1.src : stack1), depth0))
+    + "\" alt=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.map : depth0)) != null ? stack1.alt : stack1), depth0))
+    + "\" />\n  </div>\n";
+},"3":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return "  <div class=\"overview-widget--description\">\n    <div class=\"accordion-set\">\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.content : depth0),{"name":"each","hash":{},"fn":this.program(4, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    </div>\n  </div>\n";
+},"4":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, alias4=this.lambda;
+
+  return "      <input type=\"checkbox\" id=\""
+    + alias3(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"key","hash":{},"data":data}) : helper)))
+    + "\" class=\"accordion-set--check\""
+    + ((stack1 = helpers['if'].call(depth0,(data && data.index),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.program(7, data, 0),"data":data})) != null ? stack1 : "")
+    + ">\n      <label for=\""
+    + alias3(((helper = (helper = helpers.key || (data && data.key)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"key","hash":{},"data":data}) : helper)))
+    + "\" class=\"accordion-set--label\"><h2>"
+    + alias3(alias4((depth0 != null ? depth0.title : depth0), depth0))
+    + "</h2></label>\n      <div class=\"accordion-set--content\" data-eq-pts=\"cols2: 500\">\n        "
+    + ((stack1 = alias4((depth0 != null ? depth0.content : depth0), depth0)) != null ? stack1 : "")
+    + "\n      </div>\n";
+},"5":function(depth0,helpers,partials,data) {
+    return "";
+},"7":function(depth0,helpers,partials,data) {
+    return " checked=\"checked\"";
+},"9":function(depth0,helpers,partials,data) {
+    var stack1;
+
+  return "  <div class=\"overview-widget--tabs tab-set\">\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.indicators : depth0),{"name":"each","hash":{},"fn":this.program(10, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    <div class=\"tab-set--content\">\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.indicators : depth0),{"name":"each","hash":{},"fn":this.program(12, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    </div>\n  </div>\n";
+},"10":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
+  return "    <input type=\"radio\" name=\"tab\" id=\"tab-"
+    + alias3(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\" class=\"tab-set--tab\""
+    + ((stack1 = helpers['if'].call(depth0,(data && data.index),{"name":"if","hash":{},"fn":this.program(5, data, 0),"inverse":this.program(7, data, 0),"data":data})) != null ? stack1 : "")
+    + "/>\n    <label for=\"tab-"
+    + alias3(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\">"
+    + alias3(this.lambda((depth0 != null ? depth0.title : depth0), depth0))
+    + "</label>\n";
+},"12":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=this.escapeExpression;
+
+  return "      <div id=\"tab-body-"
+    + alias1(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\" class=\"tab-set--body\">\n        <h2>"
+    + alias1(this.lambda((depth0 != null ? depth0.title : depth0), depth0))
+    + "</h2>\n        <i class=\"un-icon-crisis_population_displacement\"></i>\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":this.program(13, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "      </div>\n";
+},"13":function(depth0,helpers,partials,data) {
+    var alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "        <div class=\"refugees\">\n          <h3><span class=\"figure\">"
+    + alias2(alias1((depth0 != null ? depth0.figure : depth0), depth0))
+    + "</span> "
+    + alias2(alias1((depth0 != null ? depth0.quantifier : depth0), depth0))
+    + "</h3>\n          <p>"
+    + alias2(alias1((depth0 != null ? depth0.description : depth0), depth0))
+    + "</p>\n        </div>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function";
+
+  return "<div class=\"overview-widget\">\n  <h1 class=\"overview-widget--title\"><span><i class=\"un-icon-crisis_conflict\"></i>"
+    + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span></h1>\n"
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.map : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.content : depth0),{"name":"if","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.indicators : depth0),{"name":"if","hash":{},"fn":this.program(9, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "  <footer class=\"overview-widget--sources\">"
+    + ((stack1 = ((helper = (helper = helpers.dataSource || (depth0 != null ? depth0.dataSource : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataSource","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</footer>\n</div>\n";
+},"useData":true});
+})();
+},{}],2:[function(require,module,exports){
 (function (global){
 "use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
 var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
-var WidgetBase = require('../../widget-base');
+var WidgetBase = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null).helpers.widgetBase;
+
+// load template
+require('./crisis-overview.hbs.js');
 
 var CrisisOverviewWidget = function(opts) {
   var config = {
@@ -31,7 +123,6 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
-      .classed('rw-widget-image', true)
       .html(content);
 
     next();
@@ -51,15 +142,38 @@ function titleAdjust(title) {
 module.exports = CrisisOverviewWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":10}],2:[function(require,module,exports){
+},{"./crisis-overview.hbs.js":1}],3:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['financial.hbs'] = template({"1":function(depth0,helpers,partials,data) {
+    var helper;
+
+  return "    <a href=\"\" class=\"financial-widget--data-source\">"
+    + this.escapeExpression(((helper = (helper = helpers.dataItemTitle || (depth0 != null ? depth0.dataItemTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"dataItemTitle","hash":{},"data":data}) : helper)))
+    + "</a>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
+  "<div class=\"financial-widget\">\n  <!--<h1 class=\"financial-widget--title\"><i class=\"un-icon-activity_financing\"></i> Financial</h1>-->\n  <div class=\"financial-widget--data-source-chooser\">\n";
+  stack1 = ((helper = (helper = helpers.dataSources || (depth0 != null ? depth0.dataSources : depth0)) != null ? helper : alias1),(options={"name":"dataSources","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
+  if (!helpers.dataSources) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "  </div>\n  <div class=\"financial-widget--time\">\n    <h1>"
+    + this.escapeExpression(((helper = (helper = helpers.dataItemTitleCurrent || (depth0 != null ? depth0.dataItemTitleCurrent : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataItemTitleCurrent","hash":{},"data":data}) : helper)))
+    + "</h1>\n    <select class=\"financial-widget--time-select\" name=\"time-chooser\" id=\"\">\n    </select>\n  </div>\n  <div class=\"financial-widget--percent-funded\">\n    <div class=\"financial-widget--percent-funded--amount covered \">$2.12B Funded <span class=\"percent\">57% <span>covered</span></span>\n    </div>\n    <div class=\"financial-widget--percent-funded--amount requested \">$3.74B Requested</div>\n  </div>\n  <div class=\"financial-widget--cluster-funding\">\n    <h2>Requirements &amp; Funding Per Cluster</h2>\n\n    <div id=\"finance-bubbles\"></div>\n  </div>\n  <footer class=\"financial-widget--explore\"><a href=\"\">Explore Funding Documents via ReliefWeb</a></footer>\n  <footer class=\"financial-widget--sources\">Data Source <cite><a href=\"\">Financial Tracking Service</a></cite></footer>\n</div>\n";
+},"useData":true});
+})();
+},{}],4:[function(require,module,exports){
 (function (global){
 "use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
-var WidgetBase = require('../../widget-base');
+var WidgetBase = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null).helpers.widgetBase;
 var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
 var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
 var moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
+
+// load template
+require('./financial.hbs.js');
 
 var FinancialWidget = function(opts) {
   var config = {
@@ -642,43 +756,41 @@ FinancialWidget.prototype.link = function(elements) {
 module.exports = FinancialWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":10}],3:[function(require,module,exports){
+},{"./financial.hbs.js":3}],5:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['river.hbs'] = template({"1":function(depth0,helpers,partials,data) {
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
+  return "        <li class=\"widget-river--results--item\">\n          <span class=\"widget-river--results--number\">"
+    + alias3(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"count","hash":{},"data":data}) : helper)))
+    + "</span>\n\n          <div class=\"widget-river--results--type\">\n            <span class=\""
+    + alias3(((helper = (helper = helpers.icon || (depth0 != null ? depth0.icon : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"icon","hash":{},"data":data}) : helper)))
+    + "\"></span>\n            "
+    + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\n          </div>\n        </li>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, options, buffer = 
+  "<div class=\"widget-river\">\n  <header class=\"widget-river--header\">\n    <h1 class=\"widget-river--title\">I want content from</h1>\n    <select>\n      <option value=\"weeks\" >This week</option>\n      <option value=\"months\">This month</option>\n      <option value=\"years\">This year</option>\n    </select>\n  </header>\n  <div class=\"widget-river--results clearfix\">\n    <div class=\"widget-river--results--graph\">\n      <ul class=\"widget-river--results-tabs clearfix\">\n";
+  stack1 = ((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"content","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
+  if (!helpers.content) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "      </ul>\n      <div class=\"placeholder\">\n        <p class=\"graph--heading\"></p>\n        <svg id=\"chart\"></svg>\n      </div>\n    </div>\n    <div class=\"widget-river--filters\">\n      <h5 class=\"widget-river--filters--title\">Filter Results:  <span class=\"tab\">Reports</span> <span class=\"close\"></span></h5>\n      <ul></ul>\n    </div>\n  </div>\n</div>\n";
+},"useData":true});
+})();
+},{}],6:[function(require,module,exports){
 (function (global){
 "use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
-var WidgetBase = require('../../widget-base');
-
-var ImageWidget = function(opts) {
-  var config = {
-    title: "Image Widget",
-    template: "image.hbs",
-    src: "https://placekitten.com/g/350/150",
-    alt: "Cat",
-    credit: ""
-  };
-
-  opts = (opts) ? opts : {};
-
-  config = _.defaults(opts, config);
-  WidgetBase.call(this, config);
-};
-
-ImageWidget.prototype = new WidgetBase();
-
-module.exports = ImageWidget;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":10}],4:[function(require,module,exports){
-(function (global){
-"use strict";
-
-var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
-var WidgetBase = require('../../widget-base');
+var WidgetBase = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null).helpers.widgetBase;
 var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
 var moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
 var reliefweb = (typeof window !== "undefined" ? window.reliefweb : typeof global !== "undefined" ? global.reliefweb : null);
 var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
+
+// load template
+require('./river.hbs.js');
 
 var RiverWidget = function(opts) {
   var config = {
@@ -1055,16 +1167,69 @@ RiverWidget.prototype.getData = function(period, updatePage) {
 module.exports = RiverWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":10}],5:[function(require,module,exports){
+},{"./river.hbs.js":5}],7:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data) {
+  var stack1, helper, options, functionType="function", helperMissing=helpers.helperMissing, blockHelperMissing=helpers.blockHelperMissing, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "";
+  stack1 = ((helper = (helper = helpers['new-month'] || (depth0 != null ? depth0['new-month'] : depth0)) != null ? helper : helperMissing),(options={"name":"new-month","hash":{},"fn":this.program(2, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
+  if (!helpers['new-month']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "            <li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
+    + escapeExpression(lambda((data && data.index), depth0))
+    + "\">\n              <div class=\"timeline-widget--dot\">\n                <div class=\"timeline-widget--dot--date\">\n                  "
+    + escapeExpression(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-day","hash":{},"data":data}) : helper)))
+    + "\n                </div>\n              </div>\n              <div class=\"timeline-widget-dropdown--item\">\n                "
+    + escapeExpression(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"short-desc","hash":{},"data":data}) : helper)))
+    + "\n              </div>\n            </li>\n";
+},"2":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "            <li class=\"timeline-widget--dropdown--month\" data-isMonth=\"true\">\n              "
+    + escapeExpression(((helper = (helper = helpers['date-month'] || (depth0 != null ? depth0['date-month'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-month","hash":{},"data":data}) : helper)))
+    + " - "
+    + escapeExpression(((helper = (helper = helpers['date-year'] || (depth0 != null ? depth0['date-year'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-year","hash":{},"data":data}) : helper)))
+    + "\n            </li>\n";
+},"4":function(depth0,helpers,partials,data) {
+  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + escapeExpression(((helper = (helper = helpers['date-full'] || (depth0 != null ? depth0['date-full'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-full","hash":{},"data":data}) : helper)))
+    + "</div>\n              </div>\n              <h1 class=\"timeline-widget-item--title\">"
+    + escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"title","hash":{},"data":data}) : helper)))
+    + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content clearfix\">\n              <div class=\"timeline-widget-item--image grid--item\">\n                <div class=\"timeline-widget-item--image--icons\">\n                  <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                  <a class=\"timeline-widget-item--image--country\">"
+    + escapeExpression(((helper = (helper = helpers.country || (depth0 != null ? depth0.country : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"country","hash":{},"data":data}) : helper)))
+    + "</a>\n                </div>\n                <img src=\""
+    + escapeExpression(((helper = (helper = helpers['img-src'] || (depth0 != null ? depth0['img-src'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"img-src","hash":{},"data":data}) : helper)))
+    + "\">\n              </div>\n              <div class=\"timeline-widget-item--description grid--item\">\n                ";
+  stack1 = ((helper = (helper = helpers['long-desc'] || (depth0 != null ? depth0['long-desc'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"long-desc","hash":{},"data":data}) : helper));
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
+    + escapeExpression(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"url","hash":{},"data":data}) : helper)))
+    + "\" target=\"_top\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, helper, options, functionType="function", helperMissing=helpers.helperMissing, blockHelperMissing=helpers.blockHelperMissing, buffer = "<div class=\"timeline-widget-wrapper\">\n  <div class=\"timeline-widget\">\n\n    <div class=\"timeline-widget--controls\">\n      <button class=\"prev\"><div class=\"arrow\"></div></button>\n      <button class=\"next\"><div class=\"arrow\"></div></button>\n    </div><!-- .timeline-widget--controls -->\n\n    <div class=\"timeline-widget--dropdown\">\n      <div class=\"timeline-widget--dropdown-heading\">\n        <span class=\"un-icon-product_type_report\"></span> Timeline - Calendar</div>\n      <div class=\"clear-both\"></div>\n      <div class=\"timeline-widget--dropdown--wrapper\">\n        <div class=\"timeline-widget--dropdown-controls\">\n          <div class=\"form-select\">\n            <select name=\"year\">\n            </select>\n          </div>\n          <div class=\"form-select\">\n            <select name=\"month\"></select>\n          </div>\n          <span class=\"close\"></span>\n        </div>\n        <div class=\"timeline-widget--dropdown--container\">\n          <ul class=\"slidee\">\n";
+  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : helperMissing),(options={"name":"timeline-items","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
+  if (!helpers['timeline-items']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
+  if (stack1 != null) { buffer += stack1; }
+  buffer += "          </ul>\n        </div>\n      </div>\n    </div><!-- .timeline-widget--controls -->\n\n    <div class=\"timeline-widget-frames-wrapper\">\n      <div class=\"timeline-widget-frames\">\n        <ul class=\"slidee\">\n";
+  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : helperMissing),(options={"name":"timeline-items","hash":{},"fn":this.program(4, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
+  if (!helpers['timeline-items']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "        </ul>\n        <div class=\"clear-both\"></div>\n      </div><!-- .timeline-widget-frames -->\n    </div><!-- .timeline-widget-frames-wrapper -->\n  </div>\n\n</div>\n";
+},"useData":true});
+})();
+},{}],8:[function(require,module,exports){
 (function (global){
 "use strict";
 
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
 var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
-var WidgetBase = require('../../widget-base');
+var WidgetBase = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null).helpers.widgetBase;
 var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
 var moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
 var reliefweb = (typeof window !== "undefined" ? window.reliefweb : typeof global !== "undefined" ? global.reliefweb : null);
+
+// load template
+
+require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {
@@ -1129,7 +1294,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
+    .sort('date.original', 'asc')
     .send(filters)
     .send({limit: limit})
     .end(function(err, res) {
@@ -1197,7 +1362,6 @@ TimelineWidget.prototype.link = function(elements) {
       margin;
 
   var $sly,
-      $slyPager,
       $slyDropdown;
 
   function findClosestTimelineContent() {
@@ -1261,23 +1425,6 @@ TimelineWidget.prototype.link = function(elements) {
       next: $('.next')
     }).init();
 
-    // Pager.
-    $slyPager = new Sly($('.timeline-widget-pager', $element), {
-      horizontal: 1,
-      itemNav: 'forceCentered',
-      smart: 1,
-      activateMiddle: 1,
-      mouseDragging: 1,
-      touchDragging: 1,
-      releaseSwing: 1,
-      startAt: timelineState.currentIndex,
-      speed: 200,
-      elasticBounds: 1,
-      dragHandle: 1,
-      dynamicHandle: 1,
-      clickBar: 1
-    }).init();
-
     // Dropdowns.
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
@@ -1286,6 +1433,7 @@ TimelineWidget.prototype.link = function(elements) {
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
+      scrollBy: 1,
       startAt: timelineState.currentIndex,
       activatePageOn: 'click',
       speed: 300,
@@ -1333,9 +1481,6 @@ TimelineWidget.prototype.link = function(elements) {
     var $sliderPos = $sly.getPos(index);
     $sly.slideTo($sliderPos.center);
 
-    var $pagerPos = $slyPager.getPos(index);
-    $slyPager.slideTo($pagerPos.center);
-
     var $dropDownPos = $slyDropdown.getPos(index);
     $slyDropdown.slideTo($dropDownPos.start);
   }
@@ -1344,9 +1489,8 @@ TimelineWidget.prototype.link = function(elements) {
     $item.width(width);
     $('.timeline-widget-pager li', $element).width(Math.floor(width/3));
 
-    if ($sly && $slyPager) {
+    if ($sly) {
       $sly.reload();
-      $slyPager.reload();
     }
   }
 
@@ -1397,7 +1541,8 @@ TimelineWidget.prototype.link = function(elements) {
 module.exports = TimelineWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../../widget-base":10}],6:[function(require,module,exports){
+},{"./timeline.hbs.js":7}],9:[function(require,module,exports){
+(function (global){
 "use strict";
 
 /**
@@ -1405,325 +1550,20 @@ module.exports = TimelineWidget;
  * context, mostly useful in a browser setting.
  */
 
-// Utilities
-require('./util/handlebar-extensions');
+var BeatBlocks = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null);
 
 // Widgets
-var widgetBase = require('./widget-base');
-var ImageWidget = require('./components/image/image');
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
 var RiverWidget = require('./components/river/river');
 var TimelineWidget = require('./components/timeline/timeline');
 var FinancialWidget = require('./components/financial/financial');
 
-var widgetRegistry = require('./util/config-manager')();
+BeatBlocks.addWidgetToRegistry('crisis-overview', CrisisOverviewWidget);
+BeatBlocks.addWidgetToRegistry('river', RiverWidget);
+BeatBlocks.addWidgetToRegistry('timeline', TimelineWidget);
+BeatBlocks.addWidgetToRegistry('financial', FinancialWidget);
 
-widgetRegistry.config('image', ImageWidget);
-widgetRegistry.config('crisis-overview', CrisisOverviewWidget);
-widgetRegistry.config('river', RiverWidget);
-widgetRegistry.config('timeline', TimelineWidget);
-widgetRegistry.config('financial', FinancialWidget);
-
-module.exports = {
-  widget: function(name, opts) {
-    var Widget = widgetRegistry.config(name);
-    if (Widget) {
-      return new Widget(opts);
-    }
-    throw new Error("Can't find '" + name + "' widget.");
-  },
-  addWidgetToRegistry: function(name, widget) {
-    widgetRegistry.config(name, widget);
-  },
-  listWidgets: function() {
-    return widgetRegistry.list();
-  },
-  helpers: {
-    widgetBase: widgetBase
-  }
-};
-
-},{"./components/crisis-overview/crisis-overview":1,"./components/financial/financial":2,"./components/image/image":3,"./components/river/river":4,"./components/timeline/timeline":5,"./util/config-manager":7,"./util/handlebar-extensions":8,"./widget-base":10}],7:[function(require,module,exports){
-(function (global){
-"use strict";
-
-/**
- * @file: Configuration object. Allows for getting and setting of various properties.
- */
-
-var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
-
-var config = function() {
-  var _config = {};
-
-  /**
-   * Shortcut method for .config().
-   * @see .config();
-   */
-  var myConfig = function() {
-    return configMethod.apply(this, arguments);
-  };
-
-  /**
-   * Config get/setter
-   * @param - Accepts 0, 1 or 2 parameters
-   *
-   * .config() - Load config object.
-   * .config(obj) - Sets multiple config options.
-   * .config(string) - Loads a single config item based on key
-   * .config(string, string) - Sets a string
-   *
-   * @returns {*}
-   *   .config() - Returns object.
-   *   .config(obj) - Returns resulting config object.
-   *   .config(string) - Returns single config object.
-   *   .config(string, string) - Returns resulting config object.
-   */
-  myConfig.config = function () {
-    return configMethod.apply(this, arguments);
-  };
-
-  /**
-   * @see .config().
-   */
-  function configMethod() {
-    if (arguments.length === 0) {
-      return _.cloneDeep(_config);
-    }
-
-    if (arguments.length === 1) {
-      if (_.isObject(arguments[0])) {
-        _config = _.defaults(arguments[0], _config);
-        return _.cloneDeep(_config);
-      } else if (_.isString(arguments[0])) {
-        return _config[arguments[0]];
-      }
-    }
-
-    if (arguments.length === 2) {
-      _config[arguments[0]] = arguments[1];
-      return _.cloneDeep(_config);
-    }
-  }
-
-  /**
-   *
-   * @param key
-   * @returns {*|boolean}
-   */
-  myConfig.has = function(key) {
-    return _config.hasOwnProperty(key);
-  };
-
-  /**
-   *
-   * @returns {*}
-   */
-  myConfig.list = function() {
-    return _.keys(_config);
-  };
-
-  return myConfig;
-};
-
-module.exports = config;
+module.exports = {};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
-(function (global){
-"use strict";
-
-var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null),
-    moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
-
-//  format an ISO date using Moment.js
-//  http://momentjs.com/
-//  moment syntax example: moment(Date("2011-07-18T15:50:52")).format("MMMM YYYY")
-//  usage: {{#dateFormat creation_date format="MMMM YYYY"}}
-Handlebars.registerHelper('dateFormat', function(context, block) {
-  if (global.moment) {
-    var f = block.hash.format || "MMM Do, YYYY";
-    var myDate = new Date(context);
-    return moment(myDate).format(f);
-  } else {
-    return context;   //  moment plugin not available. return data as is.
-  }
-});
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],9:[function(require,module,exports){
-/**
- * @file
- *
- * Utility functions/methods that don't fit anywhere else.
- */
-
-
-var isNode = function() {
-  return window === undefined;
-};
-
-module.exports = {
-  isNode: isNode
-};
-
-},{}],10:[function(require,module,exports){
-(function (global){
-"use strict";
-
-/**
- * @file: Contains the base functionality that we want with all widgets.
- */
-
-var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null),
-    d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null),
-    Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null);
-
-var config = require('./util/config-manager');
-var junkDrawer = require('./util/junk-drawer');
-
-/**
- * Constructor.
- * @param opts
- *   Options to pass to .config()
- */
-
-var widgetBase = function(opts) {
-  this._config = config();
-
-  if (opts) {
-    this.config(opts);
-  }
-};
-
-/**
- * Config get/setter
- * @param [opts] - Options for config.
- * @returns {*}
- *   .config() - Returns config object.
- *   .config(obj) - Returns this for chaining.
- */
-
-widgetBase.prototype.config = function() {
-  var _return = this._config.apply(this, arguments);
-
-  // chainable
-  return (_return) ? _return : this;
-};
-
-widgetBase.prototype.has = function(key) {
-  return this._config.has(key);
-};
-
-/**
- * Main render method. This should be the primary method that devs use
- * to trigger a component render.
- *
- * @param selector (string) - See https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_Started/Selectors
- * for valid css selectors.
- *
- * @return - Nothing
- */
-
-widgetBase.prototype.render = function(selector) {
-  var elements = d3.selectAll(selector);
-  var widget = this;
-
-  this._compile(elements, function() {
-    if (!junkDrawer.isNode()) {
-      widget.link(elements);
-    }
-  });
-};
-
-widgetBase.prototype._compile = function(elements, next) {
-  var config = this.config();
-  var that = this;
-  if (config.configFile) {
-    d3.json(config.configFile, function(e, res) {
-      for (var key in res) {
-        that.config(key, res[key]);
-      }
-      that.compile(elements, next);
-    });
-  } else {
-    this.compile(elements, next);
-  }
-};
-
-/**
- * Renders the markup of a widget. Should only be used to set the initial state
- * of a widget. See .link() for ways to add interactivity to component.
- *
- * As a convention, this code should be runnable both server-side and in the browser.
- * Only override if you need to adjust how the markup is being processed.
- *
- * @param elements - D3 object with pre-selected elements.
- */
-
-widgetBase.prototype.compile = function(elements, next) {
-  this.template(function(content) {
-    elements
-      .classed('rw-widget', true)
-      .html(content);
-
-    next();
-  });
-};
-
-/**
- * Provides a way to adjust a component after initial rendering. This method should be
- * overridden whenever a component needs to provide interactivity.
- *
- * @param elements - D3 object with pre-selected elements.
- */
-
-widgetBase.prototype.link = function(elements) {};
-
-/**
- * Default templating method. Uses Handlebars (http://handlebarsjs.com/) to render
- * content. Functionality differs depending on what's being passed in via the
- * config.template option.
- *
- * Note that you probably shouldn't load this directly, but instead rely on the render method.
- *
- * If config.template is a method, the template is assumed to be a pre-compiled
- * Handlebars template (see http://handlebarsjs.com/precompilation.html)
- *
- * If config.template is a string, and it starts with a '#', the template is assumed
- * to be an inline template inside a script tag and loaded from there.
- *
- * Otherwise, config.template is assumed to be a url and the template is loaded from
- * the external file.
- *
- * @param callback - A method to call once the Handlebars template method is prepared.
- */
-
-widgetBase.prototype.template = function(callback) {
-  var config = this.config();
-
-  if (config.template) {
-    if (typeof config.template === "function") {
-      callback(config.template(config));
-    } else {
-      if (config.template.charAt(0) === '#') {
-        var content = d3.select(config.template).html();
-        var template = Handlebars.compile(content);
-        callback(template(config));
-      } else {
-        d3.text(config.template, function(res) {
-          var template = Handlebars.compile(res);
-          callback(template(config));
-        });
-      }
-    }
-  } else {
-    throw new Error("No widget template specified.");
-  }
-};
-
-module.exports = widgetBase;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./util/config-manager":7,"./util/junk-drawer":9}]},{},[6])(6)
-});
+},{"./components/crisis-overview/crisis-overview":2,"./components/financial/financial":4,"./components/river/river":6,"./components/timeline/timeline":8}]},{},[9]);

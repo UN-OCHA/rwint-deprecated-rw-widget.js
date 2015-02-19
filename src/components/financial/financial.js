@@ -1,10 +1,13 @@
 "use strict";
 
 var _ = require('lodash');
-var WidgetBase = require('../../widget-base');
+var WidgetBase = require('beat-blocks').helpers.widgetBase;
 var $ = require('jquery');
 var d3 = require('d3');
 var moment = require('moment');
+
+// load template
+require('./financial.hbs.js');
 
 var FinancialWidget = function(opts) {
   var config = {

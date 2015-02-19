@@ -2,10 +2,14 @@
 
 var _ = require('lodash');
 var d3 = require('d3');
-var WidgetBase = require('../../widget-base');
+var WidgetBase = require('beat-blocks').helpers.widgetBase;
 var $ = require('jquery');
 var moment = require('moment');
 var reliefweb = require('reliefweb');
+
+// load template
+
+require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {
@@ -70,7 +74,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
+    .sort('date.original', 'asc')
     .send(filters)
     .send({limit: limit})
     .end(function(err, res) {
@@ -138,7 +142,6 @@ TimelineWidget.prototype.link = function(elements) {
       margin;
 
   var $sly,
-      $slyPager,
       $slyDropdown;
 
   function findClosestTimelineContent() {
@@ -202,23 +205,6 @@ TimelineWidget.prototype.link = function(elements) {
       next: $('.next')
     }).init();
 
-    // Pager.
-    $slyPager = new Sly($('.timeline-widget-pager', $element), {
-      horizontal: 1,
-      itemNav: 'forceCentered',
-      smart: 1,
-      activateMiddle: 1,
-      mouseDragging: 1,
-      touchDragging: 1,
-      releaseSwing: 1,
-      startAt: timelineState.currentIndex,
-      speed: 200,
-      elasticBounds: 1,
-      dragHandle: 1,
-      dynamicHandle: 1,
-      clickBar: 1
-    }).init();
-
     // Dropdowns.
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
@@ -227,6 +213,7 @@ TimelineWidget.prototype.link = function(elements) {
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
+      scrollBy: 1,
       startAt: timelineState.currentIndex,
       activatePageOn: 'click',
       speed: 300,
@@ -274,9 +261,6 @@ TimelineWidget.prototype.link = function(elements) {
     var $sliderPos = $sly.getPos(index);
     $sly.slideTo($sliderPos.center);
 
-    var $pagerPos = $slyPager.getPos(index);
-    $slyPager.slideTo($pagerPos.center);
-
     var $dropDownPos = $slyDropdown.getPos(index);
     $slyDropdown.slideTo($dropDownPos.start);
   }
@@ -285,9 +269,8 @@ TimelineWidget.prototype.link = function(elements) {
     $item.width(width);
     $('.timeline-widget-pager li', $element).width(Math.floor(width/3));
 
-    if ($sly && $slyPager) {
+    if ($sly) {
       $sly.reload();
-      $slyPager.reload();
     }
   }
 
