@@ -213,6 +213,7 @@ TimelineWidget.prototype.link = function(elements) {
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
+      scrollBy: 1,
       startAt: timelineState.currentIndex,
       activatePageOn: 'click',
       speed: 300,
