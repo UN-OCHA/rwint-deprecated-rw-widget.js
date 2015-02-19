@@ -75,7 +75,7 @@ templates['crisis-overview.hbs'] = template({"1":function(depth0,helpers,partial
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function";
 
-  return "<div class=\"overview-widget\">\n  <h1 class=\"overview-widget--title\"><span><i class=\"un-icon-crisis_conflict\"></i>"
+  return "<div class=\"overview-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-crisis_conflict widget-title--icon\"></i>"
     + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</span></h1>\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.map : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")

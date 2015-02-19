@@ -13,7 +13,7 @@ require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {
-    title: "Timeline",
+    title: "Crisis Timeline",
     template: "timeline.hbs",
     countries: []
   };
@@ -28,6 +28,9 @@ TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
+
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
 
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
@@ -118,18 +121,15 @@ TimelineWidget.prototype.compile = function(elements, next) {
       }
     });
 
-  //var timelineItems = this.config('timeline-items');
-  //
-  //timelineItems.forEach(function(val, key, items) {
-  //  var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-  //  var myDate = moment(val['date-full'], 'DD MMM YYYY');
-  //  items[key]['date-month'] = myDate.format('MMMM');
-  //  items[key]['date-day'] = myDate.format('DD');
-  //  items[key]['date-year'] = myDate.format('YYYY');
-  //  items[key]['new-month'] = prevMonth !== myDate.month();
-  //});
-  //
-  //this.config('timeline-items', timelineItems);
+  function titleAdjust(title) {
+    var snippet = '<span class="word[[counter]]">[[word]]</span>';
+    var words = title.split(' ');
+    var adjustedTitle = '';
+    for (var i = 0; i < words.length; i++) {
+      adjustedTitle += snippet.replace('[[counter]]', i + 1).replace('[[word]]', words[i]);
+    }
+    return adjustedTitle;
+  }
 };
 
 TimelineWidget.prototype.link = function(elements) {

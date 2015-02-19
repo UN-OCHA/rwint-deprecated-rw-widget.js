@@ -76,7 +76,7 @@ templates['crisis-overview.hbs'] = template({"1":function(depth0,helpers,partial
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, alias1=helpers.helperMissing, alias2="function";
 
-  return "<div class=\"overview-widget\">\n  <h1 class=\"overview-widget--title\"><span><i class=\"un-icon-crisis_conflict\"></i>"
+  return "<div class=\"overview-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-crisis_conflict widget-title--icon\"></i>"
     + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
     + "</span></h1>\n"
     + ((stack1 = helpers['if'].call(depth0,(depth0 != null ? depth0.map : depth0),{"name":"if","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
@@ -152,14 +152,20 @@ templates['financial.hbs'] = template({"1":function(depth0,helpers,partials,data
     + this.escapeExpression(((helper = (helper = helpers.dataItemTitle || (depth0 != null ? depth0.dataItemTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"dataItemTitle","hash":{},"data":data}) : helper)))
     + "</a>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
-  "<div class=\"financial-widget\">\n  <!--<h1 class=\"financial-widget--title\"><i class=\"un-icon-activity_financing\"></i> Financial</h1>-->\n  <div class=\"financial-widget--data-source-chooser\">\n";
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = 
+  "<div class=\"financial-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-activity_financing widget-title--icon\"></i>"
+    + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span></h1>\n  <div class=\"financial-widget--data-source-chooser\">\n";
   stack1 = ((helper = (helper = helpers.dataSources || (depth0 != null ? depth0.dataSources : depth0)) != null ? helper : alias1),(options={"name":"dataSources","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
   if (!helpers.dataSources) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   return buffer + "  </div>\n  <div class=\"financial-widget--time\">\n    <h1>"
-    + this.escapeExpression(((helper = (helper = helpers.dataItemTitleCurrent || (depth0 != null ? depth0.dataItemTitleCurrent : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataItemTitleCurrent","hash":{},"data":data}) : helper)))
-    + "</h1>\n    <select class=\"financial-widget--time-select\" name=\"time-chooser\" id=\"\">\n    </select>\n  </div>\n  <div class=\"financial-widget--percent-funded\">\n    <div class=\"financial-widget--percent-funded--amount covered \">$2.12B Funded <span class=\"percent\">57% <span>covered</span></span>\n    </div>\n    <div class=\"financial-widget--percent-funded--amount requested \">$3.74B Requested</div>\n  </div>\n  <div class=\"financial-widget--cluster-funding\">\n    <h2>Requirements &amp; Funding Per Cluster</h2>\n\n    <div id=\"finance-bubbles\"></div>\n  </div>\n  <footer class=\"financial-widget--explore\"><a href=\"\">Explore Funding Documents via ReliefWeb</a></footer>\n  <footer class=\"financial-widget--sources\">Data Source <cite><a href=\"\">Financial Tracking Service</a></cite></footer>\n</div>\n";
+    + alias3(((helper = (helper = helpers.dataItemTitleCurrent || (depth0 != null ? depth0.dataItemTitleCurrent : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataItemTitleCurrent","hash":{},"data":data}) : helper)))
+    + "</h1>\n    <select class=\"financial-widget--time-select\" name=\"time-chooser\" id=\"\">\n    </select>\n  </div>\n  <div class=\"financial-widget--percent-funded\">\n    <div class=\"financial-widget--percent-funded--amount covered\">$2.12B Funded <span class=\"percent\">57% <span>covered</span></span>\n    </div>\n    <div class=\"financial-widget--percent-funded--amount requested \">$3.74B Requested</div>\n  </div>\n  <div class=\"financial-widget--cluster-funding\">\n    <h2>Requirements &amp; Funding Per Cluster</h2>\n    <div id=\"finance-bubbles\"></div>\n  </div>\n  <footer class=\"financial-widget--explore\"><a href=\""
+    + alias3(((helper = (helper = helpers.fundingDocumentURL || (depth0 != null ? depth0.fundingDocumentURL : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fundingDocumentURL","hash":{},"data":data}) : helper)))
+    + "\" target=\"_top\">Explore Funding Documents via ReliefWeb</a></footer>\n  <footer class=\"financial-widget--sources\">Data Source <cite><a href=\""
+    + alias3(((helper = (helper = helpers.dataSourceURL || (depth0 != null ? depth0.dataSourceURL : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataSourceURL","hash":{},"data":data}) : helper)))
+    + "\" target=\"_top\">Financial Tracking Service</a></cite></footer>\n</div>\n";
 },"useData":true});
 })();
 },{}],4:[function(require,module,exports){
@@ -177,7 +183,7 @@ require('./financial.hbs.js');
 
 var FinancialWidget = function(opts) {
   var config = {
-    title: "Financial",
+    title: "Financial Support",
     template: "financial.hbs"
   };
 
@@ -237,6 +243,9 @@ FinancialWidget.prototype.compile = function(elements, next) {
 
   this.config('calculatedDataSources', calculatedDataSources);
 
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
+
   widget.template(function(content) {
     elements
       .classed('rw-widget', true)
@@ -249,6 +258,16 @@ FinancialWidget.prototype.compile = function(elements, next) {
   var dataSourceURL = dataSources[0].dataSourceURL;
   $('.financial-widget--sources a').attr('href', dataSourceURL);
 };
+
+function titleAdjust(title) {
+  var snippet = '<span class="word[[counter]]">[[word]]</span>';
+  var words = title.split(' ');
+  var adjustedTitle = '';
+  for (var i = 0; i < words.length; i++) {
+    adjustedTitle += snippet.replace('[[counter]]', i + 1).replace('[[word]]', words[i]);
+  }
+  return adjustedTitle;
+}
 
 FinancialWidget.prototype.link = function(elements) {
   var widget = this,
@@ -770,9 +789,11 @@ templates['river.hbs'] = template({"1":function(depth0,helpers,partials,data) {
     + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
     + "\n          </div>\n        </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, helper, options, buffer = 
-  "<div class=\"widget-river\">\n  <header class=\"widget-river--header\">\n    <h1 class=\"widget-river--title\">I want content from</h1>\n    <select>\n      <option value=\"weeks\" >This week</option>\n      <option value=\"months\">This month</option>\n      <option value=\"years\">This year</option>\n    </select>\n  </header>\n  <div class=\"widget-river--results clearfix\">\n    <div class=\"widget-river--results--graph\">\n      <ul class=\"widget-river--results-tabs clearfix\">\n";
-  stack1 = ((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : helpers.helperMissing),(options={"name":"content","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === "function" ? helper.call(depth0,options) : helper));
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
+  "<div class=\"widget-river\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-product_type_report widget-title--icon\"></i>"
+    + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span></h1>\n  <header class=\"widget-river--header\">\n    <h1 class=\"widget-river--title\">I want content from</h1>\n    <select>\n      <option value=\"weeks\" >This week</option>\n      <option value=\"months\">This month</option>\n      <option value=\"years\">This year</option>\n    </select>\n  </header>\n  <div class=\"widget-river--results clearfix\">\n    <div class=\"widget-river--results--graph\">\n      <ul class=\"widget-river--results-tabs clearfix\">\n";
+  stack1 = ((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : alias1),(options={"name":"content","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
   if (!helpers.content) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   return buffer + "      </ul>\n      <div class=\"placeholder\">\n        <p class=\"graph--heading\"></p>\n        <svg id=\"chart\"></svg>\n      </div>\n    </div>\n    <div class=\"widget-river--filters\">\n      <h5 class=\"widget-river--filters--title\">Filter Results:  <span class=\"tab\">Reports</span> <span class=\"close\"></span></h5>\n      <ul></ul>\n    </div>\n  </div>\n</div>\n";
@@ -794,7 +815,7 @@ require('./river.hbs.js');
 
 var RiverWidget = function(opts) {
   var config = {
-    title: "River Widget",
+    title: "More Information",
     template: "river.hbs"
   };
 
@@ -808,6 +829,9 @@ RiverWidget.prototype = new WidgetBase();
 
 RiverWidget.prototype.compile = function(elements, next) {
   var widget = this;
+
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
 
   widget.getData("weeks", function(updatedContent){
     widget.config('content', updatedContent);
@@ -824,6 +848,16 @@ RiverWidget.prototype.compile = function(elements, next) {
     $('.widget-river--results--graph .graph--heading').html(range);
     widget.getChart();
   });
+
+  function titleAdjust(title) {
+    var snippet = '<span class="word[[counter]]">[[word]]</span>';
+    var words = title.split(' ');
+    var adjustedTitle = '';
+    for (var i = 0; i < words.length; i++) {
+      adjustedTitle += snippet.replace('[[counter]]', i + 1).replace('[[word]]', words[i]);
+    }
+    return adjustedTitle;
+  }
 };
 
 RiverWidget.prototype.link = function(elements, next) {
@@ -1171,47 +1205,53 @@ module.exports = RiverWidget;
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data) {
-  var stack1, helper, options, functionType="function", helperMissing=helpers.helperMissing, blockHelperMissing=helpers.blockHelperMissing, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "";
-  stack1 = ((helper = (helper = helpers['new-month'] || (depth0 != null ? depth0['new-month'] : depth0)) != null ? helper : helperMissing),(options={"name":"new-month","hash":{},"fn":this.program(2, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
-  if (!helpers['new-month']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression, buffer = "";
+
+  stack1 = ((helper = (helper = helpers['new-month'] || (depth0 != null ? depth0['new-month'] : depth0)) != null ? helper : alias1),(options={"name":"new-month","hash":{},"fn":this.program(2, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
+  if (!helpers['new-month']) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   return buffer + "            <li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
-    + escapeExpression(lambda((data && data.index), depth0))
+    + alias3(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
     + "\">\n              <div class=\"timeline-widget--dot\">\n                <div class=\"timeline-widget--dot--date\">\n                  "
-    + escapeExpression(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-day","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-day","hash":{},"data":data}) : helper)))
     + "\n                </div>\n              </div>\n              <div class=\"timeline-widget-dropdown--item\">\n                "
-    + escapeExpression(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"short-desc","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"short-desc","hash":{},"data":data}) : helper)))
     + "\n              </div>\n            </li>\n";
 },"2":function(depth0,helpers,partials,data) {
-  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
   return "            <li class=\"timeline-widget--dropdown--month\" data-isMonth=\"true\">\n              "
-    + escapeExpression(((helper = (helper = helpers['date-month'] || (depth0 != null ? depth0['date-month'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-month","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers['date-month'] || (depth0 != null ? depth0['date-month'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-month","hash":{},"data":data}) : helper)))
     + " - "
-    + escapeExpression(((helper = (helper = helpers['date-year'] || (depth0 != null ? depth0['date-year'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-year","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers['date-year'] || (depth0 != null ? depth0['date-year'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-year","hash":{},"data":data}) : helper)))
     + "\n            </li>\n";
 },"4":function(depth0,helpers,partials,data) {
-  var stack1, helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, buffer = "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
-    + escapeExpression(((helper = (helper = helpers['date-full'] || (depth0 != null ? depth0['date-full'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-full","hash":{},"data":data}) : helper)))
+    var stack1, helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
+  return "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + alias3(((helper = (helper = helpers['date-full'] || (depth0 != null ? depth0['date-full'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-full","hash":{},"data":data}) : helper)))
     + "</div>\n              </div>\n              <h1 class=\"timeline-widget-item--title\">"
-    + escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"title","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content clearfix\">\n              <div class=\"timeline-widget-item--image grid--item\">\n                <div class=\"timeline-widget-item--image--icons\">\n                  <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                  <a class=\"timeline-widget-item--image--country\">"
-    + escapeExpression(((helper = (helper = helpers.country || (depth0 != null ? depth0.country : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"country","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers.country || (depth0 != null ? depth0.country : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"country","hash":{},"data":data}) : helper)))
     + "</a>\n                </div>\n                <img src=\""
-    + escapeExpression(((helper = (helper = helpers['img-src'] || (depth0 != null ? depth0['img-src'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"img-src","hash":{},"data":data}) : helper)))
-    + "\">\n              </div>\n              <div class=\"timeline-widget-item--description grid--item\">\n                ";
-  stack1 = ((helper = (helper = helpers['long-desc'] || (depth0 != null ? depth0['long-desc'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"long-desc","hash":{},"data":data}) : helper));
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
-    + escapeExpression(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"url","hash":{},"data":data}) : helper)))
+    + alias3(((helper = (helper = helpers['img-src'] || (depth0 != null ? depth0['img-src'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"img-src","hash":{},"data":data}) : helper)))
+    + "\">\n              </div>\n              <div class=\"timeline-widget-item--description grid--item\">\n                "
+    + ((stack1 = ((helper = (helper = helpers['long-desc'] || (depth0 != null ? depth0['long-desc'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"long-desc","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
+    + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"url","hash":{},"data":data}) : helper)))
     + "\" target=\"_top\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, options, functionType="function", helperMissing=helpers.helperMissing, blockHelperMissing=helpers.blockHelperMissing, buffer = "<div class=\"timeline-widget-wrapper\">\n  <div class=\"timeline-widget\">\n\n    <div class=\"timeline-widget--controls\">\n      <button class=\"prev\"><div class=\"arrow\"></div></button>\n      <button class=\"next\"><div class=\"arrow\"></div></button>\n    </div><!-- .timeline-widget--controls -->\n\n    <div class=\"timeline-widget--dropdown\">\n      <div class=\"timeline-widget--dropdown-heading\">\n        <span class=\"un-icon-product_type_report\"></span> Timeline - Calendar</div>\n      <div class=\"clear-both\"></div>\n      <div class=\"timeline-widget--dropdown--wrapper\">\n        <div class=\"timeline-widget--dropdown-controls\">\n          <div class=\"form-select\">\n            <select name=\"year\">\n            </select>\n          </div>\n          <div class=\"form-select\">\n            <select name=\"month\"></select>\n          </div>\n          <span class=\"close\"></span>\n        </div>\n        <div class=\"timeline-widget--dropdown--container\">\n          <ul class=\"slidee\">\n";
-  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : helperMissing),(options={"name":"timeline-items","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
-  if (!helpers['timeline-items']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", alias3=helpers.blockHelperMissing, buffer = 
+  "<div class=\"timeline-widget-wrapper\">\n  <div class=\"timeline-widget\">\n    <h1 class=\"widget-title\"><span><i class=\"un-icon-product_type_calendar widget-title--icon\"></i>"
+    + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span></h1>\n    <div class=\"timeline-widget--controls\">\n      <button class=\"prev\"><div class=\"arrow\"></div></button>\n      <button class=\"next\"><div class=\"arrow\"></div></button>\n    </div><!-- .timeline-widget--controls -->\n\n    <div class=\"timeline-widget--dropdown\">\n      <div class=\"timeline-widget--dropdown-heading\">\n        <span class=\"un-icon-product_type_report\"></span> Timeline - Calendar</div>\n      <div class=\"clear-both\"></div>\n      <div class=\"timeline-widget--dropdown--wrapper\">\n        <div class=\"timeline-widget--dropdown-controls\">\n          <div class=\"form-select\">\n            <select name=\"year\">\n            </select>\n          </div>\n          <div class=\"form-select\">\n            <select name=\"month\"></select>\n          </div>\n          <span class=\"close\"></span>\n        </div>\n        <div class=\"timeline-widget--dropdown--container\">\n          <ul class=\"slidee\">\n";
+  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : alias1),(options={"name":"timeline-items","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
+  if (!helpers['timeline-items']) { stack1 = alias3.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   buffer += "          </ul>\n        </div>\n      </div>\n    </div><!-- .timeline-widget--controls -->\n\n    <div class=\"timeline-widget-frames-wrapper\">\n      <div class=\"timeline-widget-frames\">\n        <ul class=\"slidee\">\n";
-  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : helperMissing),(options={"name":"timeline-items","hash":{},"fn":this.program(4, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
-  if (!helpers['timeline-items']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
+  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : alias1),(options={"name":"timeline-items","hash":{},"fn":this.program(4, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
+  if (!helpers['timeline-items']) { stack1 = alias3.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
   return buffer + "        </ul>\n        <div class=\"clear-both\"></div>\n      </div><!-- .timeline-widget-frames -->\n    </div><!-- .timeline-widget-frames-wrapper -->\n  </div>\n\n</div>\n";
 },"useData":true});
@@ -1233,7 +1273,7 @@ require('./timeline.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {
-    title: "Timeline",
+    title: "Crisis Timeline",
     template: "timeline.hbs",
     countries: []
   };
@@ -1248,6 +1288,9 @@ TimelineWidget.prototype = new WidgetBase();
 
 TimelineWidget.prototype.compile = function(elements, next) {
   var widget = this;
+
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
 
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
@@ -1338,18 +1381,15 @@ TimelineWidget.prototype.compile = function(elements, next) {
       }
     });
 
-  //var timelineItems = this.config('timeline-items');
-  //
-  //timelineItems.forEach(function(val, key, items) {
-  //  var prevMonth = (key !== 0) ? moment(items[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-  //  var myDate = moment(val['date-full'], 'DD MMM YYYY');
-  //  items[key]['date-month'] = myDate.format('MMMM');
-  //  items[key]['date-day'] = myDate.format('DD');
-  //  items[key]['date-year'] = myDate.format('YYYY');
-  //  items[key]['new-month'] = prevMonth !== myDate.month();
-  //});
-  //
-  //this.config('timeline-items', timelineItems);
+  function titleAdjust(title) {
+    var snippet = '<span class="word[[counter]]">[[word]]</span>';
+    var words = title.split(' ');
+    var adjustedTitle = '';
+    for (var i = 0; i < words.length; i++) {
+      adjustedTitle += snippet.replace('[[counter]]', i + 1).replace('[[word]]', words[i]);
+    }
+    return adjustedTitle;
+  }
 };
 
 TimelineWidget.prototype.link = function(elements) {
