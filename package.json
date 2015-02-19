@@ -1,7 +1,7 @@
 {
   "name": "rw-widgets",
   "repository": "https://github.com/reliefweb/rw-widget.js.git",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "devDependencies": {
     "browserify-shim": "^3.8.2",
     "grunt": "^0.4.5",

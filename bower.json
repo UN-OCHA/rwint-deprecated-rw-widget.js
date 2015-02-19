@@ -1,6 +1,6 @@
 {
   "name": "rw-widgets",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "authors": [
     "Brandon Morrison <brandon@brandonmorrison.com>"
   ],
@@ -32,9 +32,6 @@
     "mocha": "~2.1.0"
   },
   "overrides": {
-    "lodash": {
-      "main": "dist/lodash.compat.min.js"
-    },
     "sly": {
       "main": "dist/sly.min.js"
     }
