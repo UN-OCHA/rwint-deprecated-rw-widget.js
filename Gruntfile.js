@@ -76,10 +76,17 @@ module.exports = function (grunt) {
         ]
       }
     },
+    uglify: {
+      dist: {
+        files: {
+          "dist/rw-widgets.min.js": ["dist/rw-widgets.js"]
+        }
+      }
+    }
   });
 
-  grunt.registerTask('default', ['browserify:dist', 'copy:base', 'connect:watch', 'watch:dist']);
   grunt.registerTask('lint', ['jshint:all']);
-  grunt.registerTask('build', ['browserify:dist']);
+  grunt.registerTask('build', ['browserify:dist', 'uglify:dist']);
   grunt.registerTask('serve', ['copy:base', 'connect:standalone']);
+  grunt.registerTask('default', ['build', 'copy:base', 'connect:watch', 'watch:dist']);
 };
