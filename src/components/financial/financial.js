@@ -11,7 +11,7 @@ require('./financial.hbs.js');
 
 var FinancialWidget = function(opts) {
   var config = {
-    title: "Financial",
+    title: "Financial Support",
     template: "financial.hbs"
   };
 
@@ -71,6 +71,9 @@ FinancialWidget.prototype.compile = function(elements, next) {
 
   this.config('calculatedDataSources', calculatedDataSources);
 
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
+
   widget.template(function(content) {
     elements
       .classed('rw-widget', true)
@@ -83,6 +86,16 @@ FinancialWidget.prototype.compile = function(elements, next) {
   var dataSourceURL = dataSources[0].dataSourceURL;
   $('.financial-widget--sources a').attr('href', dataSourceURL);
 };
+
+function titleAdjust(title) {
+  var snippet = '<span class="word[[counter]]">[[word]]</span>';
+  var words = title.split(' ');
+  var adjustedTitle = '';
+  for (var i = 0; i < words.length; i++) {
+    adjustedTitle += snippet.replace('[[counter]]', i + 1).replace('[[word]]', words[i]);
+  }
+  return adjustedTitle;
+}
 
 FinancialWidget.prototype.link = function(elements) {
   var widget = this,

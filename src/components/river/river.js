@@ -12,7 +12,7 @@ require('./river.hbs.js');
 
 var RiverWidget = function(opts) {
   var config = {
-    title: "River Widget",
+    title: "More Information",
     template: "river.hbs"
   };
 
@@ -26,6 +26,9 @@ RiverWidget.prototype = new WidgetBase();
 
 RiverWidget.prototype.compile = function(elements, next) {
   var widget = this;
+
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
 
   widget.getData("weeks", function(updatedContent){
     widget.config('content', updatedContent);
@@ -42,6 +45,16 @@ RiverWidget.prototype.compile = function(elements, next) {
     $('.widget-river--results--graph .graph--heading').html(range);
     widget.getChart();
   });
+
+  function titleAdjust(title) {
+    var snippet = '<span class="word[[counter]]">[[word]]</span>';
+    var words = title.split(' ');
+    var adjustedTitle = '';
+    for (var i = 0; i < words.length; i++) {
+      adjustedTitle += snippet.replace('[[counter]]', i + 1).replace('[[word]]', words[i]);
+    }
+    return adjustedTitle;
+  }
 };
 
 RiverWidget.prototype.link = function(elements, next) {
