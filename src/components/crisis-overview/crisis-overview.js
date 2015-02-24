@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var d3 = require('d3');
+var $ = require('jquery');
 var WidgetBase = require('beat-blocks').helpers.widgetBase;
 
 // load template
@@ -47,5 +48,10 @@ function titleAdjust(title) {
   }
   return adjustedTitle;
 }
+
+CrisisOverviewWidget.prototype.link = function(elements) {
+  // Open links in a new tab.
+  $('.overview-widget a').attr('target', '_blank');
+};
 
 module.exports = CrisisOverviewWidget;

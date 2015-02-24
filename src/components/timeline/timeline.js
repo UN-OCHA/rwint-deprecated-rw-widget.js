@@ -144,6 +144,9 @@ TimelineWidget.prototype.link = function(elements) {
   var $sly,
       $slyDropdown;
 
+  // Open links in a new tab.
+  $('.timeline-widget-frames li a').attr('target', '_blank');
+
   function findClosestTimelineContent() {
     var now = moment().unix();
     var closestIndex = 0;
