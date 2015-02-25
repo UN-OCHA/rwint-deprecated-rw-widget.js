@@ -1,22 +1,22 @@
-#Relief-Web Widget library
+# Relief-Web Widget library
 
 [![npm dependencies](https://david-dm.org/reliefweb/rw-widget.js.svg)](https://david-dm.org/reliefweb/rw-widget.js) [![npm dev dependencies](https://david-dm.org/reliefweb/rw-widget.js/dev-status.svg)](https://david-dm.org/reliefweb/rw-widget.js)
 
-##Global Build Dependencies
+## Global Build Dependencies
 
 - [node/npm](http://nodejs.org/) - For package management
 - [bower](http://bower.io/) - For client-side package management
 - [grunt](http://gruntjs.com/) - For automation
 - [browserify](http://browserify.org/) - For bundling various src files into a single distribution
 
-##Install
+## Install
 
 In root directory of the repo...
 
     npm install
     bower install
 
-##Development
+## Development
 
 For development, be sure to have the default grunt task running during develop so that the bundled
 distribution is built. This also runs a code linter and unit tests on watch.
@@ -27,7 +27,7 @@ Other helper grunt commands are
     grunt build
     grunt test
 
-##Widget structure
+## Widget structure
 
 Widgets have a number of methods that make up a widget object. Understanding what each of these methods do is
 helpful in understanding how to create new and unique widgets. It's helpful to examine src/widget-base.js to
@@ -35,7 +35,7 @@ get a better understanding of the specifics of how widgets behave.
 
 At their core, a widget is a template file and a simple javascript object.
 
-###Helpful methods
+### Helpful methods
 
 - .config() - Widget configuration get/setter
   Accepts 0, 1 or 2 parameters
@@ -57,7 +57,8 @@ At their core, a widget is a template file and a simple javascript object.
 
 - .template() - The actual rendering method for a widget. By default, widgets use Handlebars.js for templating purposes.
 
-##Creating a new widget
+## Creating a new widget
 
 The rw-widget library allows for developers to create additional widgets that can be registered to the library.
 Check the exapmle/custom-widget.html file for an example of how to define a custom widget.
+
