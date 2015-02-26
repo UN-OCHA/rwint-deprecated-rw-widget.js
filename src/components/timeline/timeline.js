@@ -171,7 +171,7 @@ TimelineWidget.prototype.link = function(elements) {
 
     $('select', $element).selectric();
     // Initialize Sly Sliders.
-    $frame = $('.timeline-widget-frames', $element);
+    $frame = $('.timeline-widget--frames', $element);
     $item = $('.timeline-widget-item', $element);
     margin = '40px';
 
@@ -253,30 +253,29 @@ TimelineWidget.prototype.link = function(elements) {
 
     $('select[name="month"]', $element).val(now.format('MMM')).selectric('refresh');
     $('select[name="year"]', $element).val(now.format('YYYY')).selectric('refresh');
-
-    $element.find('.timeline-widget-pager--current').text(timelineState.currentFormatted);
   }
 
   function slideTo(index) {
     var $sliderPos = $sly.getPos(index);
     $sly.slideTo($sliderPos.center);
+    $sly.activate(index);
 
     var $dropDownPos = $slyDropdown.getPos(index);
     $slyDropdown.slideTo($dropDownPos.start);
+    $slyDropdown.activate(index);
   }
 
   function adjustTimelineWidth(width) {
     $item.width(width);
-    $('.timeline-widget-pager li', $element).width(Math.floor(width/3));
 
-    if ($sly) {
+    setTimeout(function() {
       $sly.reload();
-    }
+    }, 1);
   }
 
   init();
 
-  $('.timeline-widget-pager--item, .timeline-widget-dropdown--list-item', $element).click(function(){
+  $('.timeline-widget-dropdown--list-item', $element).click(function(){
     timelineState.currentIndex = $(this).attr('data-slide');
     paint();
   });
@@ -309,6 +308,11 @@ TimelineWidget.prototype.link = function(elements) {
         break;
       }
     }
+  });
+
+  $('.form-today', $element).click(function() {
+    timelineState.currentIndex = findClosestTimelineContent();
+    paint();
   });
 
   // Update other sliders based on main.

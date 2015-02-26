@@ -534,7 +534,7 @@ a {
   text-decoration: none;
   background-position: 100% 97%;
   background-repeat-y: no-repeat;
-  background-size: 50% 1px;
+  background-size: 50% 100%;
   -moz-transition: color 0.3s ease-in-out;
   -o-transition: color 0.3s ease-in-out;
   -webkit-transition: color 0.3s ease-in-out;
@@ -804,6 +804,11 @@ textarea {
 blockquote {
   margin-left: 0;
   margin-right: 0;
+}
+
+/* line 100, ../scss/base/_base.scss */
+button {
+  outline: none;
 }
 
 /* ==========================================================================
@@ -3061,8 +3066,16 @@ input[type="search"] {
     margin-top: 68px;
   }
 }
-
 /* line 18, ../scss/components/molecules/_header.scss */
+.crisis-page--header-nav .wf-loading h1, .crisis-page--header-nav .wf-loading .text {
+  visibility: hidden;
+}
+/* line 23, ../scss/components/molecules/_header.scss */
+.crisis-page--header-nav .wf-active h1, .crisis-page--header-nav .wf-active .text {
+  visibility: visible;
+}
+
+/* line 29, ../scss/components/molecules/_header.scss */
 .crisis-page--header {
   padding: 0 0.5rem;
   background-color: #f5f5f5;
@@ -3070,14 +3083,14 @@ input[type="search"] {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 37.5em) {
-  /* line 18, ../scss/components/molecules/_header.scss */
+  /* line 29, ../scss/components/molecules/_header.scss */
   .crisis-page--header {
     display: table;
     width: 100%;
   }
 }
 
-/* line 29, ../scss/components/molecules/_header.scss */
+/* line 40, ../scss/components/molecules/_header.scss */
 .rw--name-logo {
   font-size: 16px;
   font-size: 1rem;
@@ -3096,7 +3109,7 @@ input[type="search"] {
   line-height: 4.25;
 }
 
-/* line 39, ../scss/components/molecules/_header.scss */
+/* line 50, ../scss/components/molecules/_header.scss */
 .crisis-page--title {
   font-size: 16px;
   font-size: 1rem;
@@ -3111,7 +3124,7 @@ input[type="search"] {
   font-size: 1.25rem;
 }
 @media (min-width: 30em) {
-  /* line 39, ../scss/components/molecules/_header.scss */
+  /* line 50, ../scss/components/molecules/_header.scss */
   .crisis-page--title {
     position: absolute;
     top: 12px;
@@ -3122,7 +3135,7 @@ input[type="search"] {
   }
 }
 
-/* line 58, ../scss/components/molecules/_header.scss */
+/* line 69, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label {
   display: block;
   position: relative;
@@ -3132,44 +3145,44 @@ input[type="search"] {
   line-height: 4.25;
   text-transform: uppercase;
 }
-/* line 66, ../scss/components/molecules/_header.scss */
+/* line 77, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label .text {
   display: block;
   position: relative;
   margin-top: -9px;
   line-height: 1;
 }
-/* line 72, ../scss/components/molecules/_header.scss */
+/* line 83, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label svg {
   position: relative;
   left: 2px;
 }
-/* line 75, ../scss/components/molecules/_header.scss */
+/* line 86, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label svg .brady-button {
   fill: #a993e1;
 }
 
-/* line 81, ../scss/components/molecules/_header.scss */
+/* line 92, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger {
   display: none;
 }
-/* line 86, ../scss/components/molecules/_header.scss */
+/* line 97, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger:checked + .crisis-page--navigation li a {
   height: 42px;
 }
-/* line 92, ../scss/components/molecules/_header.scss */
+/* line 103, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger:checked + .crisis-page--navigation li.crisis-page--widget-nav--item ~ .crisis-page--external-nav--item a {
   height: 66px;
   padding-top: 1.5em;
 }
 
-/* line 103, ../scss/components/molecules/_header.scss */
+/* line 114, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation {
   width: 100vw;
   line-height: 2.75;
 }
 @media (min-width: 37.5em) {
-  /* line 103, ../scss/components/molecules/_header.scss */
+  /* line 114, ../scss/components/molecules/_header.scss */
   .crisis-page--navigation {
     position: absolute;
     top: 100%;
@@ -3184,7 +3197,7 @@ input[type="search"] {
     clear: none;
   }
 }
-/* line 117, ../scss/components/molecules/_header.scss */
+/* line 128, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation a {
   text-decoration: none;
   text-shadow: none;
@@ -3231,12 +3244,12 @@ input[type="search"] {
   background-image: none;
 }
 @media (min-width: 37.5em) {
-  /* line 117, ../scss/components/molecules/_header.scss */
+  /* line 128, ../scss/components/molecules/_header.scss */
   .crisis-page--navigation a {
     margin: 0;
   }
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(1) a {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
@@ -3244,11 +3257,11 @@ input[type="search"] {
   transition-delay: 0s;
   background-color: #f9f9f9;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(1) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(2) a {
   -moz-transition-delay: 0.025s;
   -o-transition-delay: 0.025s;
@@ -3256,11 +3269,11 @@ input[type="search"] {
   transition-delay: 0.025s;
   background-color: #f3f3f4;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(2) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(3) a {
   -moz-transition-delay: 0.05s;
   -o-transition-delay: 0.05s;
@@ -3268,11 +3281,11 @@ input[type="search"] {
   transition-delay: 0.05s;
   background-color: #edeeee;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(3) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(4) a {
   -moz-transition-delay: 0.075s;
   -o-transition-delay: 0.075s;
@@ -3280,11 +3293,11 @@ input[type="search"] {
   transition-delay: 0.075s;
   background-color: #e8e8e9;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(4) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(5) a {
   -moz-transition-delay: 0.1s;
   -o-transition-delay: 0.1s;
@@ -3292,11 +3305,11 @@ input[type="search"] {
   transition-delay: 0.1s;
   background-color: #e2e2e4;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(5) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(6) a {
   -moz-transition-delay: 0.125s;
   -o-transition-delay: 0.125s;
@@ -3304,11 +3317,11 @@ input[type="search"] {
   transition-delay: 0.125s;
   background-color: #dcddde;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(6) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(7) a {
   -moz-transition-delay: 0.15s;
   -o-transition-delay: 0.15s;
@@ -3316,11 +3329,11 @@ input[type="search"] {
   transition-delay: 0.15s;
   background-color: #d6d7d9;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(7) a:hover {
   background-color: white;
 }
-/* line 137, ../scss/components/molecules/_header.scss */
+/* line 148, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(8) a {
   -moz-transition-delay: 0.175s;
   -o-transition-delay: 0.175s;
@@ -3328,7 +3341,7 @@ input[type="search"] {
   transition-delay: 0.175s;
   background-color: #d1d1d3;
 }
-/* line 141, ../scss/components/molecules/_header.scss */
+/* line 152, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(8) a:hover {
   background-color: white;
 }
@@ -3900,7 +3913,8 @@ input[type="search"] {
   -moz-column-gap: 2em;
   -webkit-column-gap: 2em;
   column-gap: 2em;
-  padding: 0 0.5em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 /* line 68, ../scss/global/mixins/_general.scss */
 .overview-widget--description .accordion-set--content[data-eq-state="cols2"] {
@@ -3977,10 +3991,9 @@ input[type="search"] {
   /* line 126, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--tabs {
     margin-top: 0;
-    background-color: #f5f5f5;
   }
 }
-/* line 134, ../scss/components/organisms/_overview-widget.scss */
+/* line 133, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label {
   -moz-transition-property: background-color, color;
   -o-transition-property: background-color, color;
@@ -4002,7 +4015,7 @@ input[type="search"] {
   flex-basis: 33%;
   position: relative;
 }
-/* line 144, ../scss/components/organisms/_overview-widget.scss */
+/* line 143, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label:before {
   -moz-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
@@ -4022,42 +4035,42 @@ input[type="search"] {
   z-index: 10;
   opacity: 0;
 }
-/* line 154, ../scss/components/organisms/_overview-widget.scss */
+/* line 153, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label {
   background-color: #a993e1;
   color: white;
 }
-/* line 157, ../scss/components/organisms/_overview-widget.scss */
+/* line 156, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label:before {
   opacity: 1;
 }
-/* line 162, ../scss/components/organisms/_overview-widget.scss */
+/* line 161, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--content {
   position: relative;
   width: 100%;
   background-color: #665695;
 }
-/* line 167, ../scss/components/organisms/_overview-widget.scss */
+/* line 166, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body {
   padding: 1em 0.5em;
 }
-/* line 172, ../scss/components/organisms/_overview-widget.scss */
+/* line 171, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 {
   margin-bottom: 0;
   color: #a993e1;
   line-height: 1;
   text-transform: lowercase;
 }
-/* line 177, ../scss/components/organisms/_overview-widget.scss */
+/* line 176, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 .figure {
   color: white;
   font-weight: bold;
 }
-/* line 181, ../scss/components/organisms/_overview-widget.scss */
+/* line 180, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 + p {
   color: white;
 }
-/* line 186, ../scss/components/organisms/_overview-widget.scss */
+/* line 185, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .un-icon-crisis_population_displacement {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
   opacity: 0.1;
@@ -4068,7 +4081,7 @@ input[type="search"] {
   text-align: center;
 }
 
-/* line 197, ../scss/components/organisms/_overview-widget.scss */
+/* line 196, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--sources {
   margin: 1em 0;
   color: #cccccc;
@@ -4428,23 +4441,57 @@ input[type="search"] {
   stroke: #665695;
 }
 
-/* line 1, ../scss/components/organisms/_timeline-widget.scss */
+/* line 2, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--frames {
+  width: 100%;
+}
+
+@media (min-width: 43.75em) {
+  /* line 8, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown {
+    width: 47.61905%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+  }
+
+  /* line 11, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--frames {
+    width: 47.61905%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+  }
+}
+@media (min-width: 53.75em) {
+  /* line 18, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown {
+    width: 36.79176%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+  }
+
+  /* line 21, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--frames {
+    width: 59.52907%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+  }
+}
+/* line 28, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown {
   position: relative;
   top: auto;
   right: auto;
 }
-@media (min-width: 43.75em) {
-  /* line 1, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget--dropdown {
-    position: absolute;
-    top: 0.5em;
-    right: 0.5em;
-    z-index: 10;
-  }
-}
 
-/* line 14, ../scss/components/organisms/_timeline-widget.scss */
+/* line 34, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--wrapper {
   -moz-transition-property: max-height, opacity;
   -o-transition-property: max-height, opacity;
@@ -4468,7 +4515,7 @@ input[type="search"] {
   overflow: hidden;
   z-index: 100;
 }
-/* line 27, ../scss/components/organisms/_timeline-widget.scss */
+/* line 47, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--wrapper:before {
   display: block;
   position: absolute;
@@ -4483,24 +4530,43 @@ input[type="search"] {
   bottom: 100%;
 }
 @media (min-width: 43.75em) {
-  /* line 14, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 47, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown--wrapper:before {
+    display: none;
+  }
+}
+@media (min-width: 43.75em) {
+  /* line 34, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown--wrapper {
     position: relative;
-    top: 0.875em;
-    width: 22.5em;
     height: auto;
     opacity: 1;
     overflow: visible;
   }
 }
-/* line 42, ../scss/components/organisms/_timeline-widget.scss */
+/* line 63, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--wrapper.open {
   max-height: 100em;
   opacity: 1;
   overflow: visible;
 }
 
-/* line 49, ../scss/components/organisms/_timeline-widget.scss */
+/* line 70, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-dropdown--item-date {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  float: right;
+  border: 1px solid #d9e2ed;
+  background-color: #eef0f3;
+  font-size: 12.8px;
+}
+
+/* line 78, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget-dropdown--item-desc {
+  clear: both;
+}
+
+/* line 82, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-heading {
   width: 100%;
   padding: 0.625em 2em;
@@ -4512,21 +4578,36 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 49, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 82, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown-heading {
-    width: auto;
     display: none;
+    width: auto;
   }
 }
+/* line 98, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown-heading .button-arrow {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  color: transparent;
+  content: '.';
+  border-width: 0.66em 0.5em 0 0.5em;
+  border-color: #a993e1 transparent transparent transparent;
+  margin-right: 0.5rem;
+  display: inline-block;
+  position: relative;
+}
 
-/* line 65, ../scss/components/organisms/_timeline-widget.scss */
+/* line 106, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls {
   position: relative;
   height: 3.4375em;
   padding: 0.625em 2em;
   background: #2E4455;
 }
-/* line 71, ../scss/components/organisms/_timeline-widget.scss */
+/* line 112, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls .close {
   display: inline-block;
   vertical-align: middle;
@@ -4541,7 +4622,13 @@ input[type="search"] {
   background-size: 0.9375em;
   cursor: pointer;
 }
-/* line 81, ../scss/components/organisms/_timeline-widget.scss */
+@media (min-width: 43.75em) {
+  /* line 112, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--dropdown-controls .close {
+    display: none;
+  }
+}
+/* line 125, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls .form-select {
   display: inline-block;
   vertical-align: middle;
@@ -4549,83 +4636,50 @@ input[type="search"] {
   *zoom: 1;
   *display: inline;
 }
+/* line 128, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown-controls .form-today {
+  position: relative;
+  top: -11px;
+  height: 36px;
+  margin-left: 0.5em;
+  border: none;
+  background-color: #6c9acd;
+  color: white;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+/* line 138, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--dropdown-controls .form-today:hover {
+  background-color: #a993e1;
+}
 
-/* line 86, ../scss/components/organisms/_timeline-widget.scss */
+/* line 144, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--container {
   height: 100%;
+  height: calc(100vh - 55px);
   padding: 0 0.9375em 0 1.875em;
   background-image: url('../images/diagonal-pinstripes.png');
+  overflow: hidden;
 }
 @media (min-width: 43.75em) {
-  /* line 86, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 144, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown--container {
-    height: 20.3125em;
-    border-bottom: 2px solid #375573;
+    height: calc(100vh - 55px - 62px);
   }
 }
-/* line 95, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown--container ul {
-  padding: 0.875em 0;
-  border-left: 0.25em solid #375573;
-}
-/* line 100, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown--container .timeline-widget--dot {
-  position: absolute;
-  top: 20%;
-  left: -3.4375em;
-  background: #6c9acd;
-  border: 0.25em solid #f5f5f5;
-}
-/* line 107, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown--container .timeline-widget--dot .timeline-widget--dot--date {
-  width: 1.875em;
-  margin: auto;
-  text-align: center;
-  padding-left: 0.125em;
-  padding-top: 0.25em;
-}
-/* line 116, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget--dropdown--container .active .timeline-widget--dot {
-  background: #375573;
-  border-color: #cccccc;
-}
 
-/* line 123, ../scss/components/organisms/_timeline-widget.scss */
+/* line 155, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-dropdown--list-item {
   position: relative;
   background: white;
   border: 1px solid #8c8e93;
   position: relative;
   margin-bottom: 0.875em;
-  margin-left: 2em;
   padding: 0.5em;
-  text-align: right;
   color: #4d515b;
+  text-align: right;
 }
-/* line 94, ../scss/global/mixins/_general.scss */
-.timeline-widget-dropdown--list-item:after, .timeline-widget-dropdown--list-item:before {
-  right: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-/* line 120, ../scss/global/mixins/_general.scss */
-.timeline-widget-dropdown--list-item:after {
-  border-right-color: white;
-  border-width: 0.625em;
-  margin-top: -0.625em;
-}
-/* line 143, ../scss/global/mixins/_general.scss */
-.timeline-widget-dropdown--list-item:before {
-  border-right-color: #8c8e93;
-  border-width: 0.6875em;
-  margin-top: -0.6875em;
-}
-/* line 132, ../scss/components/organisms/_timeline-widget.scss */
+/* line 162, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-dropdown--list-item.active {
   position: relative;
   background: white;
@@ -4642,80 +4696,66 @@ input[type="search"] {
   position: absolute;
   pointer-events: none;
 }
-/* line 120, ../scss/global/mixins/_general.scss */
+/* line 117, ../scss/global/mixins/_general.scss */
 .timeline-widget-dropdown--list-item.active:after {
   border-right-color: white;
   border-width: 0.625em;
   margin-top: -0.625em;
 }
-/* line 143, ../scss/global/mixins/_general.scss */
+/* line 137, ../scss/global/mixins/_general.scss */
 .timeline-widget-dropdown--list-item.active:before {
   border-right-color: #375573;
   border-width: 0.6875em;
   margin-top: -0.6875em;
 }
 
-/* line 137, ../scss/components/organisms/_timeline-widget.scss */
+/* line 168, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--month, .timeline-widget--dropdown--end-of-line {
+  margin: 0.5em;
   border: none;
+  color: #8c8e93;
   text-align: center;
   text-transform: uppercase;
-  color: #8c8e93;
-  margin: 0.5em;
 }
 
-/* line 149, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget-frames-wrapper {
-  margin: 0;
-}
-@media (min-width: 43.75em) {
-  /* line 149, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget-frames-wrapper {
-    margin: 0 3.75em;
-  }
-}
-
-/* line 156, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget-frames {
-  width: 100%;
-}
-/* line 158, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget-frames ul {
+/* line 184, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--frames ul {
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 164, ../scss/components/organisms/_timeline-widget.scss */
-.timeline-widget-frames .timeline-widget-item {
+/* line 190, ../scss/components/organisms/_timeline-widget.scss */
+.timeline-widget--frames .timeline-widget-item {
   height: 100%;
   margin: 0;
   padding: 0;
   float: left;
 }
 
-/* line 172, ../scss/components/organisms/_timeline-widget.scss */
+/* line 198, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget {
   position: relative;
   margin: 0 auto;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
 
-/* line 178, ../scss/components/organisms/_timeline-widget.scss */
+/* line 204, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls {
   position: relative;
 }
-/* line 181, ../scss/components/organisms/_timeline-widget.scss */
+/* line 207, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next,
 .timeline-widget--controls .prev {
   position: absolute;
   top: 4.0625em;
+  padding: 0;
   border: none;
   background: white;
   z-index: 10;
 }
 @media (min-width: 43.75em) {
-  /* line 181, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 207, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next,
   .timeline-widget--controls .prev {
     top: 16.25em;
@@ -4723,16 +4763,23 @@ input[type="search"] {
     height: 3.125em;
   }
 }
-/* line 195, ../scss/components/organisms/_timeline-widget.scss */
+/* line 222, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next.disabled,
 .timeline-widget--controls .prev.disabled {
   display: none;
 }
-/* line 200, ../scss/components/organisms/_timeline-widget.scss */
+@media (min-width: 43.75em) {
+  /* line 207, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget--controls .next,
+  .timeline-widget--controls .prev {
+    display: none;
+  }
+}
+/* line 230, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next {
   right: 0;
 }
-/* line 203, ../scss/components/organisms/_timeline-widget.scss */
+/* line 233, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next .arrow {
   display: block;
   position: absolute;
@@ -4748,16 +4795,16 @@ input[type="search"] {
   right: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 203, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 233, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next .arrow {
     display: none;
   }
 }
-/* line 215, ../scss/components/organisms/_timeline-widget.scss */
+/* line 245, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .prev {
   left: 0;
 }
-/* line 218, ../scss/components/organisms/_timeline-widget.scss */
+/* line 248, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .prev .arrow {
   display: block;
   position: absolute;
@@ -4773,54 +4820,56 @@ input[type="search"] {
   left: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 218, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 248, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .prev .arrow {
     display: none;
   }
 }
 @media (min-width: 85em) {
-  /* line 231, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 261, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next {
     right: -6.375em;
   }
-  /* line 235, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 265, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .prev {
     left: -6.375em;
   }
 }
 
-/* line 241, ../scss/components/organisms/_timeline-widget.scss */
+/* line 271, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--headline {
   margin: 0 2.5em;
 }
 @media (min-width: 43.75em) {
-  /* line 241, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 271, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--headline {
     margin: 0;
     font-size: 31.25px;
   }
 }
 
-/* line 250, ../scss/components/organisms/_timeline-widget.scss */
+/* line 280, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--header {
   padding-top: 0.5em;
 }
 
-/* line 254, ../scss/components/organisms/_timeline-widget.scss */
+/* line 284, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--title {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: bold;
   line-height: normal;
 }
 @media (min-width: 43.75em) {
-  /* line 254, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 284, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--title {
     font-size: 31.25px;
   }
 }
 
-/* line 265, ../scss/components/organisms/_timeline-widget.scss */
+/* line 295, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--category {
   display: inline-block;
   vertical-align: middle;
@@ -4833,7 +4882,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 265, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 295, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--category {
     margin-right: 20px;
     padding: 0.375em 0.625em;
@@ -4841,7 +4890,7 @@ input[type="search"] {
     color: white;
   }
 }
-/* line 279, ../scss/components/organisms/_timeline-widget.scss */
+/* line 309, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--category .arrow {
   display: block;
   position: absolute;
@@ -4858,13 +4907,13 @@ input[type="search"] {
   right: -0.75em;
 }
 @media (min-width: 43.75em) {
-  /* line 279, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 309, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--category .arrow {
     display: block;
   }
 }
 
-/* line 292, ../scss/components/organisms/_timeline-widget.scss */
+/* line 322, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--date {
   display: block;
   color: #665695;
@@ -4873,7 +4922,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 292, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 322, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--date {
     display: inline-block;
     vertical-align: middle;
@@ -4884,90 +4933,80 @@ input[type="search"] {
   }
 }
 
-@media screen and (min-width: 700px) {
-  /* line 309, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget-item--content .grid--item:nth-of-type(2n+1) {
-    width: 59.52907%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0;
-    clear: none;
-    clear: both;
-  }
-  /* line 313, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget-item--content .grid--item:nth-of-type(2n+2) {
-    width: 36.79176%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
-  }
-}
-/* line 320, ../scss/components/organisms/_timeline-widget.scss */
+/* line 336, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content a {
   font-weight: bold;
   text-transform: none;
 }
-/* line 325, ../scss/components/organisms/_timeline-widget.scss */
+/* line 341, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .btn {
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: relative;
+  left: 50%;
   width: 100%;
+  max-width: 61.8034%;
   background: #665695;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
   text-decoration: none;
 }
-/* line 334, ../scss/components/organisms/_timeline-widget.scss */
+/* line 354, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image {
   position: relative;
 }
-/* line 338, ../scss/components/organisms/_timeline-widget.scss */
+/* line 358, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons {
   position: absolute;
   top: 0;
   left: 0;
   font-size: 16px;
 }
-/* line 344, ../scss/components/organisms/_timeline-widget.scss */
+/* line 364, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons a {
   border: none;
   color: white;
-  text-transform: uppercase;
   text-shadow: none;
+  text-transform: uppercase;
 }
-/* line 350, ../scss/components/organisms/_timeline-widget.scss */
+/* line 369, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--view-more {
   background: #f5c655;
 }
-/* line 354, ../scss/components/organisms/_timeline-widget.scss */
+/* line 373, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--country {
   padding: 0 0.1875em;
   background: #375573;
 }
-/* line 361, ../scss/components/organisms/_timeline-widget.scss */
+/* line 380, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--description {
-  padding-top: 0.625em;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-top: 1.5em;
   color: #4d515b;
   font-family: "skolar", serif;
 }
 @media (min-width: 43.75em) {
-  /* line 361, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 380, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--content .timeline-widget-item--description {
-    padding-top: 4em;
+    margin-top: 2.25em;
   }
 }
-/* line 369, ../scss/components/organisms/_timeline-widget.scss */
+/* line 388, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--description p {
   display: none;
 }
 @media (min-width: 43.75em) {
-  /* line 369, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 388, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--content .timeline-widget-item--description p {
     display: block;
   }
 }
 
-/* line 380, ../scss/components/organisms/_timeline-widget.scss */
+/* line 397, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager {
   position: relative;
   width: 100%;
@@ -4975,35 +5014,35 @@ input[type="search"] {
   padding-bottom: 10px;
   background: url('../images/pager-bk-img.png') repeat-x 0 0.875em;
 }
-/* line 387, ../scss/components/organisms/_timeline-widget.scss */
+/* line 404, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager ul {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 393, ../scss/components/organisms/_timeline-widget.scss */
+/* line 410, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager li {
   display: inline;
   height: 100%;
   float: left;
 }
 
-/* line 400, ../scss/components/organisms/_timeline-widget.scss */
+/* line 417, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager--item {
   max-width: 16.25em;
   margin: 0 auto;
 }
 
-/* line 405, ../scss/components/organisms/_timeline-widget.scss */
+/* line 422, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager--item-content {
   position: relative;
   background: white;
   border: 1px solid #cccccc;
-  color: #4d515b;
   display: none;
   margin: 0.9375em 0.3125em 0 0.3125em;
   padding: 0.625em;
   border: 0.0625em solid #cccccc;
+  color: #4d515b;
   text-align: center;
 }
 /* line 94, ../scss/global/mixins/_general.scss */
@@ -5017,19 +5056,25 @@ input[type="search"] {
   position: absolute;
   pointer-events: none;
 }
-/* line 120, ../scss/global/mixins/_general.scss */
+/* line 117, ../scss/global/mixins/_general.scss */
 .timeline-widget-pager--item-content:after {
   border-bottom-color: white;
   border-width: 0.625em;
   margin-left: -0.625em;
 }
-/* line 143, ../scss/global/mixins/_general.scss */
+/* line 137, ../scss/global/mixins/_general.scss */
 .timeline-widget-pager--item-content:before {
   border-bottom-color: #cccccc;
   border-width: 0.6875em;
   margin-left: -0.6875em;
 }
-/* line 413, ../scss/components/organisms/_timeline-widget.scss */
+@media (min-width: 43.75em) {
+  /* line 422, ../scss/components/organisms/_timeline-widget.scss */
+  .timeline-widget-pager--item-content {
+    display: block;
+  }
+}
+/* line 433, ../scss/components/organisms/_timeline-widget.scss */
 .active .timeline-widget-pager--item-content {
   position: relative;
   background: white;
@@ -5047,26 +5092,20 @@ input[type="search"] {
   position: absolute;
   pointer-events: none;
 }
-/* line 120, ../scss/global/mixins/_general.scss */
+/* line 117, ../scss/global/mixins/_general.scss */
 .active .timeline-widget-pager--item-content:after {
   border-bottom-color: white;
   border-width: 0.625em;
   margin-left: -0.625em;
 }
-/* line 143, ../scss/global/mixins/_general.scss */
+/* line 137, ../scss/global/mixins/_general.scss */
 .active .timeline-widget-pager--item-content:before {
   border-bottom-color: #665695;
   border-width: 0.6875em;
   margin-left: -0.6875em;
 }
-@media (min-width: 43.75em) {
-  /* line 405, ../scss/components/organisms/_timeline-widget.scss */
-  .timeline-widget-pager--item-content {
-    display: block;
-  }
-}
 
-/* line 423, ../scss/components/organisms/_timeline-widget.scss */
+/* line 439, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager--current {
   width: 100%;
   margin: auto;
@@ -5078,7 +5117,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 
-/* line 434, ../scss/components/organisms/_timeline-widget.scss */
+/* line 450, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dot {
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
@@ -5088,21 +5127,21 @@ input[type="search"] {
   margin: 0 auto;
   border: 0.375em solid #e6e6f5;
   background: #a993e1;
-  font-weight: bold;
   color: white;
+  font-weight: bold;
 }
-/* line 443, ../scss/components/organisms/_timeline-widget.scss */
+/* line 459, ../scss/components/organisms/_timeline-widget.scss */
 .active .timeline-widget--dot {
-  background: #665695;
   border-color: #a993e1;
+  background: #665695;
 }
-/* line 447, ../scss/components/organisms/_timeline-widget.scss */
+/* line 463, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dot .timeline-widget--dot--date {
   width: 30px;
   margin: auto;
-  text-align: center;
-  padding-right: 2px;
   padding-top: 2px;
+  padding-right: 2px;
+  text-align: center;
 }
 
 /* No files to import found in pages/**\/* */
