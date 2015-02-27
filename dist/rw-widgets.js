@@ -1250,7 +1250,7 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
   if (stack1 != null) { buffer += stack1; }
   return buffer + "          <li class=\"timeline-widget--dropdown--end-of-line\">No More Entries</li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"timeline-widget--frames\">\n    <ul class=\"slidee\">\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0['timeline-items'] : depth0),{"name":"each","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "    </ul>\n    <div class=\"clear\"></div>\n  </div>\n</div>";
+    + "    </ul>\n  </div>\n  <div class=\"clear-both\"></div>\n</div>";
 },"useData":true});
 })();
 },{}],8:[function(require,module,exports){
