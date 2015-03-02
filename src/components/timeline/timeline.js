@@ -269,6 +269,14 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function adjustTimelineWidth(width) {
+    // Fix for iOS mobile browser. For some reason, Sly will cause the browser window to dramatically
+    // increase in width. This interacts poorly with our implementation of pym.js, which causes a feedback
+    // loop in which the widget gets scaled to infinite width.
+    if (window.screen.width < width) {
+      width = window.screen.width;
+    }
+
+    $('timeline-widget', $element).width(width);
     $item.width(width);
 
     setTimeout(function() {
