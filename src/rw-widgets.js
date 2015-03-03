@@ -9,12 +9,12 @@ var BeatBlocks = require('beat-blocks');
 
 // Widgets
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
-var RiverWidget = require('./components/river/river');
+//var RiverWidget = require('./components/river/river');
 var TimelineWidget = require('./components/timeline/timeline');
 var FinancialWidget = require('./components/financial/financial');
 
 BeatBlocks.addWidgetToRegistry('crisis-overview', CrisisOverviewWidget);
-BeatBlocks.addWidgetToRegistry('river', RiverWidget);
+//BeatBlocks.addWidgetToRegistry('river', RiverWidget);
 BeatBlocks.addWidgetToRegistry('timeline', TimelineWidget);
 BeatBlocks.addWidgetToRegistry('financial', FinancialWidget);
 
