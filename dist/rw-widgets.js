@@ -874,7 +874,6 @@ RiverWidget.prototype.link = function(elements, next) {
     paint();
   }
 
-
   function paint(updatedContent) {
     rw.post('reports')
       .send({'limit': 4})
@@ -894,11 +893,13 @@ RiverWidget.prototype.link = function(elements, next) {
             };
           });
 
+          var count = 0;
+
           var items = _.reduce(data, function(acc, value) {
             return acc + Handlebars.templates['river-item.hbs'](value);
           }, '');
 
-          $('.filters-content--item').empty().html(items);
+          $('.filters-content--items', $element).empty().html(items);
         }
       });
   }
