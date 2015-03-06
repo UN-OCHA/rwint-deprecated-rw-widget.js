@@ -333,7 +333,7 @@ FinancialWidget.prototype.link = function(elements) {
       return;
     }
 
-    var margin = {top: 20, bottom: 20, left: 50, right: 20},
+    var margin = {top: 20, bottom: 20, left: 50, right: 50},
       w = $('#finance-bubbles', $element).width() - margin.left - margin.right,
       h = (chartState.direction == 'horizontal') ? 500 : 680;
 
@@ -418,12 +418,14 @@ FinancialWidget.prototype.link = function(elements) {
         canvas.select(".grid.x").style('display', 'block').call(gridXAxis);
         canvas.select(".axis.x").attr("transform", "translate(0," + h + ")").style('display', 'block').call(xAxis);
         canvas.select(".axis.y").style('display', 'none');
+        canvas.select(".axis.yright").style('display', 'none');
         canvas.select(".grid.y").style('display', 'none');
       } else {
         bubblePlacementScale.range([h, 0]);
         canvas.select(".axis.x").style('display', 'none');
         canvas.select(".grid.x").style('display', 'none');
         canvas.select(".axis.y").style('display', 'block').call(yAxis);
+        canvas.select(".axis.yright").attr("transform", "translate(" + w + ",0)").style('display', 'block').call(yAxisRight);
         canvas.select(".grid.y").style('display', 'block').call(gridYAxis);
       }
     };
@@ -470,6 +472,14 @@ FinancialWidget.prototype.link = function(elements) {
       })
       .orient("left");
 
+    var yAxisRight = d3.svg.axis()
+      .scale(bubblePlacementScale)
+      .tickValues([0, 0.25, 0.5, 0.75, 1])
+      .tickFormat(function(d) {
+        return (d * 100) + "%";
+      })
+      .orient("right");
+
     var gridXAxis = d3.svg.axis()
       .scale(bubblePlacementScale)
       .orient("top").tickFormat("")
@@ -502,6 +512,14 @@ FinancialWidget.prototype.link = function(elements) {
       })
       .attr("transform", "translate(0,0)")
       .call(yAxis);
+
+    canvas.append("g")
+      .classed({
+        "yright": true,
+        "axis": true
+      })
+      .attr("transform", "translate(" + w + ",0)")
+      .call(yAxisRight);
 
     canvas.append("g")
       .classed({
