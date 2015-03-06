@@ -416,12 +416,15 @@ FinancialWidget.prototype.link = function(elements) {
       if (chartState.direction == 'horizontal') {
         bubblePlacementScale.range([0, w]);
         canvas.select(".grid.x").style('display', 'block').call(gridXAxis);
+        canvas.select(".axis.x-top").style('display', 'block').call(xAxisTop);
         canvas.select(".axis.x").attr("transform", "translate(0," + h + ")").style('display', 'block').call(xAxis);
         canvas.select(".axis.y").style('display', 'none');
         canvas.select(".grid.y").style('display', 'none');
       } else {
         bubblePlacementScale.range([h, 0]);
+        canvas.select(".axis.x-top").style('display', 'none');
         canvas.select(".axis.x").style('display', 'none');
+        canvas.select(".grid.x").style('display', 'none');
         canvas.select(".grid.x").style('display', 'none');
         canvas.select(".axis.y").style('display', 'block').call(yAxis);
         canvas.select(".grid.y").style('display', 'block').call(gridYAxis);
@@ -453,6 +456,14 @@ FinancialWidget.prototype.link = function(elements) {
         "width": w + margin.left + margin.right,
         "height": h + margin.top + margin.bottom
       });
+
+    var xAxisTop = d3.svg.axis()
+      .scale(bubblePlacementScale)
+      .tickValues([0, 0.25, 0.5, 0.75, 1])
+      .tickFormat(function(d) {
+        return (d * 100) + "%";
+      })
+      .orient("top");
 
     var xAxis = d3.svg.axis()
       .scale(bubblePlacementScale)
@@ -494,6 +505,14 @@ FinancialWidget.prototype.link = function(elements) {
       })
       .attr("transform", "translate(0," + h + ")")
       .call(xAxis);
+
+    canvas.append("g")
+      .classed({
+        "x-top": true,
+        "axis": true
+      })
+      .attr("transform", "translate(0,0)")
+      .call(xAxisTop);
 
     canvas.append("g")
       .classed({
