@@ -52,18 +52,30 @@ RiverWidget.prototype.compile = function(elements, next) {
   }
 };
 
-RiverWidget.prototype.link = function(elements, next) {
+RiverWidget.prototype.link = function(elements) {
 
   var $element = $(elements[0][0]);
   var widget = this;
-  var content = widget.config('content');
+  var filters = widget.config('filters');
   var rw = reliefweb.client();
 
   function init() {
-    paint();
+    _(filters).forEach(function(filter) {
+      getDataAndRender(filter.id, filter.filters);
+    });
+
+    $element.find('.accordion-set--label').click(function() {
+      // Accordion is absolutely positioned, which means it won't play well with pym.js.
+      var that = this;
+      setTimeout(function() {
+        var $accordian = $('#' + $(that).attr('for') + '-accordion');
+        var height = $accordian.find('.widget-river--filters-content').height() + 75;
+        $('.widget-river--results').height(height);
+      }, 1);
+    });
   }
 
-  function paint(updatedContent) {
+  function getDataAndRender(filterId, filterData) {
     rw.post('reports')
       .send({'limit': 4})
       .send({
@@ -71,6 +83,7 @@ RiverWidget.prototype.link = function(elements, next) {
           'include': ["title", "source", "date"]
         }
       })
+      .send({"filter": filterData})
       .sort('date.created', 'desc')
       .end(function(err, res) {
         if (!err) {
@@ -88,98 +101,12 @@ RiverWidget.prototype.link = function(elements, next) {
             return acc + Handlebars.templates['river-item.hbs'](value);
           }, '');
 
-          $('.filters-content--items', $element).empty().html(items);
+          $('#' + filterId + '-accordion .filters-content--items', $element).empty().html(items);
         }
       });
   }
 
   init();
-};
-
-RiverWidget.prototype.getData = function(period, updatePage) {
-  var widget = this;
-  var currentDate = moment().utc().format();
-  var fromDate = moment().utc().subtract(1, period).format();
-  var countries = widget.config('countries');
-  var content = widget.config('content');
-
-  var interval = "day";
-  if (period == "years") {
-    interval = "month";
-  }
-
-  widget.config('timePeriod', {
-    duration: period,
-    startDate: moment(fromDate, moment.ISO_8601).utc().format("MM-DD-YYYY"),
-    endDate: moment(currentDate, moment.ISO_8601).utc().format("MM-DD-YYYY")
-  });
-
-  var factets = {
-    facets: [
-      {
-        "field": "date.created",
-        "interval": interval
-      }
-    ]
-  };
-
-  var count = 0;
-  var rw = reliefweb.client();
-  content.forEach(function(val, key) {
-
-    var type;
-    var filters = {
-      filter: {
-        'operator': 'AND',
-        'conditions': [
-          {
-            "field": "date.created",
-            "value": {
-              "from": fromDate,
-              "to": currentDate
-            }
-          }
-        ]
-      }
-    };
-
-    if (Array.isArray(countries) && countries.length) {
-      filters.filter.conditions.push({
-        'field': 'country.name',
-        'value': countries,
-        'operator': 'OR'
-      });
-    }
-
-    if (val.type == "maps") {
-      type = "reports";
-      filters.filter.conditions.push({
-        "field": "format.name",
-        "value": ["Map", "Infographic"],
-        "operator": "OR"
-      });
-    }
-    else {
-      type = val.type;
-    }
-
-    rw.post(type)
-      .send({preset: "analysis", limit: 0})
-      .send(factets)
-      .send(filters)
-      .sort('date.created', 'asc')
-      .end(function(err, res) {
-        if (!err) {
-          count++;
-          // TODO: Check to make sure values exists before setting.
-          content[key].count = res.body.totalCount;
-          content[key].graphData = res.body.embedded.facets["date.created"].data;
-          if (count == content.length) {
-            updatePage(content);
-          }
-        }
-      });
-  });
 };
 
 module.exports = RiverWidget;
