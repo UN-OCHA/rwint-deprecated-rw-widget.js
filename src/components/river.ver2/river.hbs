@@ -4,357 +4,359 @@
 
     <div class="accordion-set widget-river--filters results--item--reports">
       <h5 class="widget-river--filters--title">Filter Results:  <span class="tab">Reports</span> <span class="close"></span></h5>
-      <!--Item 1-->
-      <input type="radio" name="river" id="situation-reports" class="accordion-set--check"/>
-      <label for="situation-reports" class="accordion-set--label">Situation Reports</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Situation Reports</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">25 February 2015</div>
-              <h3 class="filters-content--item-title">Factsheet Syrian Crisis - January 2015</h3>
 
-              <div class="filters-content--item-source">Swiss Agency for Development and Coopration</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">23 February 2015</div>
-              <h3 class="filters-content--item-title">Jordan Refugee Response - Inter-Agency Winterization Update: Response to Snow Storm Jana, 23rd February 2015</h3>
-
-              <div class="filters-content--item-source">UN High Commissioner for Refugees</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">18 February 2015</div>
-              <h3 class="filters-content--item-title">Syrian refugees: Inter-agency regional update, 18 February 2015</h3>
-
-              <div class="filters-content--item-source">UN High Commissioner for Refugees</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">18 February 2015</div>
-              <h3 class="filters-content--item-title">Syria operations from Turkey, Humanitarian Bulletin Issue 13 | 02-17 Feb 2015</h3>
-
-              <div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
+      {{#each filters}}
+        <input type="radio" name="river" id="{{this.id}}" class="accordion-set--check" />
+        <label for="{{this.id}}" class="accordion-set--label">{{this.title}}</label>
+        <div id="{{this.id}}-accordion" class="accordion-set--content">
+          <div class="widget-river--filters-content">
+            <h2 class="filters-content--title">{{this.title}}</h2>
+            <ul class="filters-content--items">
+            </ul>
+            <a class="filters-content--more btn" href="{{location}}" target="_blank">View full list on ReliefWeb</a>
+          </div>
         </div>
-      </div>
-      <!--Item 2-->
-      <input type="radio" name="river" id="needs-assessments" class="accordion-set--check"/>
-      <label for="needs-assessments" class="accordion-set--label">Needs Assessments</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Needs Assessments</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">An assessment of antenatal care among Syrian refugees in Lebanon</h3>
+      {{/each}}
 
-              <div class="filters-content--item-source">BioMed Central</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">23 February 2015</div>
-              <h3 class="filters-content--item-title">Winterisation assessment in Al Za’atari refugee camp in Jordan - October 2014</h3>
+      <!--<input type="radio" name="river" id="situation-reports" class="accordion-set--check" />-->
+      <!--<label for="situation-reports" class="accordion-set--label">Situation Reports</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Situation Reports</h2>-->
+          <!--<ul class="filters-content--items">-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
 
-              <div class="filters-content--item-source">UN High Commissioner for Refugees, REACH Initiative</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">13 February 2015</div>
-              <h3 class="filters-content--item-title">Economic and social impact assessment of the Syrian conflict and the ISIS crisis</h3>
 
-              <div class="filters-content--item-source">World Bank</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">03 February 2015</div>
-              <h3 class="filters-content--item-title">Understanding livelihoods in northern Syria: how people are coping with repeated shocks, constant change and an uncertain future</h3>
+      <!--&lt;!&ndash;Item 1&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="situation-reports" class="accordion-set--check"/>-->
+      <!--<label for="situation-reports" class="accordion-set--label">Situation Reports</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Situation Reports</h2>-->
+          <!--<ul class="filters-content--items">-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 2&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="needs-assessments" class="accordion-set--check"/>-->
+      <!--<label for="needs-assessments" class="accordion-set--label">Needs Assessments</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Needs Assessments</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">An assessment of antenatal care among Syrian refugees in Lebanon</h3>-->
 
-              <div class="filters-content--item-source">Save the Children</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 3-->
-      <input type="radio" name="river" id="education" class="accordion-set--check"/>
-      <label for="education" class="accordion-set--label">Education</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Education</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">28 February 2015</div>
-              <h3 class="filters-content--item-title">Programmes implemented by the UN Agencies with the contribution of the Italian Government for a total amount of 2.5 million Euro</h3>
+              <!--<div class="filters-content--item-source">BioMed Central</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">23 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Winterisation assessment in Al Za’atari refugee camp in Jordan - October 2014</h3>-->
 
-              <div class="filters-content--item-source">UN Development Programme</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN High Commissioner for Refugees, REACH Initiative</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">13 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Economic and social impact assessment of the Syrian conflict and the ISIS crisis</h3>-->
 
-              <div class="filters-content--item-source">Oxfam</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Japan commits US$ 32.2 million to support Palestine refugees</h3>
+              <!--<div class="filters-content--item-source">World Bank</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">03 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Understanding livelihoods in northern Syria: how people are coping with repeated shocks, constant change and an uncertain future</h3>-->
 
-              <div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>
+              <!--<div class="filters-content--item-source">Save the Children</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 3&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="education" class="accordion-set--check"/>-->
+      <!--<label for="education" class="accordion-set--label">Education</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Education</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">28 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Programmes implemented by the UN Agencies with the contribution of the Italian Government for a total amount of 2.5 million Euro</h3>-->
 
-              <div class="filters-content--item-source">UN Security Council</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 4-->
-      <input type="radio" name="river" id="emergency-shelter" class="accordion-set--check"/>
-      <label for="emergency-shelter" class="accordion-set--label">Emergency Shelter</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Emergency Shelter</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN Development Programme</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">Oxfam</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Syria Response Official Fuel Prices Snapshot (Jan 2014 – Feb 2015)</h3>
+              <!--<div class="filters-content--item-source">Oxfam</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Japan commits US$ 32.2 million to support Palestine refugees</h3>-->
 
-              <div class="filters-content--item-source">World Food Programme, Logistics Cluster</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Inter-Sector Working Group (ISWG) Work Plan: January to June 2015</h3>
+              <!--<div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>-->
 
-              <div class="filters-content--item-source">UN High Commissioner for Refugees</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Japan commits US$ 32.2 million to support Palestine refugees</h3>
+              <!--<div class="filters-content--item-source">UN Security Council</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 4&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="emergency-shelter" class="accordion-set--check"/>-->
+      <!--<label for="emergency-shelter" class="accordion-set--label">Emergency Shelter</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Emergency Shelter</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 5-->
-      <input type="radio" name="river" id="emergency-telecommunications" class="accordion-set--check"/>
-      <label for="emergency-telecommunications" class="accordion-set--label">Emergency Telecommunications</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Emergency Telecommunications</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">28 February 2015</div>
-              <h3 class="filters-content--item-title">Turkey | Syria: Border Crossings Status - 27 February 2015</h3>
+              <!--<div class="filters-content--item-source">Oxfam</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Syria Response Official Fuel Prices Snapshot (Jan 2014 – Feb 2015)</h3>-->
 
-              <div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Syria Crisis: Logistics Cluster Warehouse Capacity as of 23rd February 2015</h3>
+              <!--<div class="filters-content--item-source">World Food Programme, Logistics Cluster</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Inter-Sector Working Group (ISWG) Work Plan: January to June 2015</h3>-->
 
-              <div class="filters-content--item-source">World Food Programme, Logistics Cluster</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Assistant Secretary-General for Humanitarian Affairs and Deputy Emergency Relief Coordinator, Kyung-Wha Kang: Security Council Briefing on Syria - New York, 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN High Commissioner for Refugees</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Japan commits US$ 32.2 million to support Palestine refugees</h3>-->
 
-              <div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">More than 55 responses in January, 2015</h3>
+              <!--<div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 5&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="emergency-telecommunications" class="accordion-set--check"/>-->
+      <!--<label for="emergency-telecommunications" class="accordion-set--label">Emergency Telecommunications</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Emergency Telecommunications</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">28 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Turkey | Syria: Border Crossings Status - 27 February 2015</h3>-->
 
-              <div class="filters-content--item-source">Syrian Arab Red Crescent</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 6-->
-      <input type="radio" name="river" id="food-security" class="accordion-set--check"/>
-      <label for="food-security" class="accordion-set--label">Food Security</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Food Security</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Syria Crisis: Logistics Cluster Warehouse Capacity as of 23rd February 2015</h3>-->
 
-              <div class="filters-content--item-source">Oxfam</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">The crisis in Yarmouk Camp, 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">World Food Programme, Logistics Cluster</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Assistant Secretary-General for Humanitarian Affairs and Deputy Emergency Relief Coordinator, Kyung-Wha Kang: Security Council Briefing on Syria - New York, 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">In Hama, Kirnaz city receives aid for the first time after two years</h3>
+              <!--<div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">More than 55 responses in January, 2015</h3>-->
 
-              <div class="filters-content--item-source">Syrian Arab Red Crescent</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>
+              <!--<div class="filters-content--item-source">Syrian Arab Red Crescent</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 6&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="food-security" class="accordion-set--check"/>-->
+      <!--<label for="food-security" class="accordion-set--label">Food Security</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Food Security</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Security Council</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 7-->
-      <input type="radio" name="river" id="health" class="accordion-set--check"/>
-      <label for="health" class="accordion-set--label">Health</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Health</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Syria’s Medical Community Under Assault</h3>
+              <!--<div class="filters-content--item-source">Oxfam</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">The crisis in Yarmouk Camp, 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">Physicians for Human Rights</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">In Hama, Kirnaz city receives aid for the first time after two years</h3>-->
 
-              <div class="filters-content--item-source">Oxfam</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Palestinian refugee camps in Lebanon and Syria: Red Cross Red Crescent is calling for greater support for refugees</h3>
+              <!--<div class="filters-content--item-source">Syrian Arab Red Crescent</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>-->
 
-              <div class="filters-content--item-source">International Committee of the Red Cross, Palestine Red Crescent Society, International Federation of Red Cross And Red Crescent Societies</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Polio this week as of 25 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN Security Council</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 7&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="health" class="accordion-set--check"/>-->
+      <!--<label for="health" class="accordion-set--label">Health</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Health</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Syria’s Medical Community Under Assault</h3>-->
 
-              <div class="filters-content--item-source">Global Polio Eradication Initiative</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 8-->
-      <input type="radio" name="river" id="logistics" class="accordion-set--check"/>
-      <label for="logistics" class="accordion-set--label">Logistics</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Logistics</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">28 February 2015</div>
-              <h3 class="filters-content--item-title">Turkey | Syria: Border Crossings Status - 27 February 2015</h3>
+              <!--<div class="filters-content--item-source">Physicians for Human Rights</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Syria Crisis: Logistics Cluster Warehouse Capacity as of 23rd February 2015</h3>
+              <!--<div class="filters-content--item-source">Oxfam</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Palestinian refugee camps in Lebanon and Syria: Red Cross Red Crescent is calling for greater support for refugees</h3>-->
 
-              <div class="filters-content--item-source">World Food Programme, Logistics Cluster</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Assistant Secretary-General for Humanitarian Affairs and Deputy Emergency Relief Coordinator, Kyung-Wha Kang: Security Council Briefing on Syria - New York, 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">International Committee of the Red Cross, Palestine Red Crescent Society, International Federation of Red Cross And Red Crescent Societies</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Polio this week as of 25 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">More than 55 responses in January, 2015</h3>
+              <!--<div class="filters-content--item-source">Global Polio Eradication Initiative</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 8&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="logistics" class="accordion-set--check"/>-->
+      <!--<label for="logistics" class="accordion-set--label">Logistics</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Logistics</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">28 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Turkey | Syria: Border Crossings Status - 27 February 2015</h3>-->
 
-              <div class="filters-content--item-source">Syrian Arab Red Crescent</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 9-->
-      <input type="radio" name="river" id="nutrition" class="accordion-set--check"/>
-      <label for="nutrition" class="accordion-set--label">Nutrition</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Nutrition</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Syria Crisis: Logistics Cluster Warehouse Capacity as of 23rd February 2015</h3>-->
 
-              <div class="filters-content--item-source">Oxfam</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">The crisis in Yarmouk Camp, 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">World Food Programme, Logistics Cluster</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Assistant Secretary-General for Humanitarian Affairs and Deputy Emergency Relief Coordinator, Kyung-Wha Kang: Security Council Briefing on Syria - New York, 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">In Hama, Kirnaz city receives aid for the first time after two years</h3>
+              <!--<div class="filters-content--item-source">UN Office for the Coordination of Humanitarian Affairs</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">More than 55 responses in January, 2015</h3>-->
 
-              <div class="filters-content--item-source">Syrian Arab Red Crescent</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">26 February 2015</div>
-              <h3 class="filters-content--item-title">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>
+              <!--<div class="filters-content--item-source">Syrian Arab Red Crescent</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 9&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="nutrition" class="accordion-set--check"/>-->
+      <!--<label for="nutrition" class="accordion-set--label">Nutrition</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Nutrition</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Security Council</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-      <!--Item 10-->
-      <input type="radio" name="river" id="protection" class="accordion-set--check"/>
-      <label for="protection" class="accordion-set--label">Protection</label>
-      <div class="accordion-set--content">
-        <div class="widget-river--filters-content">
-          <h2 class="filters-content--title">Protection</h2>
-          <ul class="filters-content--items">
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">Oxfam</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">The crisis in Yarmouk Camp, 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">Oxfam</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Car bomb kills 11 outside Damascus: monitor</h3>
+              <!--<div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">In Hama, Kirnaz city receives aid for the first time after two years</h3>-->
 
-              <div class="filters-content--item-source">Agence France-Presse</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">Syria’s war continues ‘unabated and with total impunity,’ Security Council told</h3>
+              <!--<div class="filters-content--item-source">Syrian Arab Red Crescent</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">26 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>-->
 
-              <div class="filters-content--item-source">UN News Service</div>
-            </li>
-            <li class="filters-content--item">
-              <div class="filters-content--item-date">27 February 2015</div>
-              <h3 class="filters-content--item-title">The crisis in Yarmouk Camp, 26 February 2015</h3>
+              <!--<div class="filters-content--item-source">UN Security Council</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;Item 10&ndash;&gt;-->
+      <!--<input type="radio" name="river" id="protection" class="accordion-set--check"/>-->
+      <!--<label for="protection" class="accordion-set--label">Protection</label>-->
+      <!--<div class="accordion-set--content">-->
+        <!--<div class="widget-river--filters-content">-->
+          <!--<h2 class="filters-content--title">Protection</h2>-->
+          <!--<ul class="filters-content--items">-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Emergencies updates: 6 to 26 February 2015</h3>-->
 
-              <div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>
-            </li>
-          </ul>
-          <a class="filters-content--more btn" href="">View full list on ReliefWeb</a>
-        </div>
-      </div>
-    </div>
+              <!--<div class="filters-content--item-source">Oxfam</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Car bomb kills 11 outside Damascus: monitor</h3>-->
+
+              <!--<div class="filters-content--item-source">Agence France-Presse</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">Syria’s war continues ‘unabated and with total impunity,’ Security Council told</h3>-->
+
+              <!--<div class="filters-content--item-source">UN News Service</div>-->
+            <!--</li>-->
+            <!--<li class="filters-content--item">-->
+              <!--<div class="filters-content--item-date">27 February 2015</div>-->
+              <!--<h3 class="filters-content--item-title">The crisis in Yarmouk Camp, 26 February 2015</h3>-->
+
+              <!--<div class="filters-content--item-source">UN Relief and Works Agency for Palestine Refugees in the Near East</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+          <!--<a class="filters-content--more btn" href="">View full list on ReliefWeb</a>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
   </div>
 

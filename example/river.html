@@ -19,12 +19,83 @@
 <div id="widget" class="widget"></div>
 
 <script type="text/javascript">
+  var countries = ["Iraq", "Syria"];
 
   riverWidget = BeatBlocks.widget('river', {
     template: Handlebars.templates['river.hbs'],
-    countries: [
-      "Syria",
-      "Iraq"
+    filters: [
+      {
+        id: "situation-reports",
+        title: "Situation reports by UN agencies",
+        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F10)_(ST272)#content",
+        filters: {
+          operator: "AND",
+          conditions: [
+            {
+              "field": "country",
+              "value": countries
+            },
+            {
+              "field": "format.name",
+              "value": "Situation Report"
+            },
+            {
+              "field": "source.type.name",
+              "value": "International Organization"
+            }
+          ]
+        }
+      },
+      {
+        id: "situation-reports-ngo",
+        title: "Situation reports by NGOs",
+        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F10)_(ST274)#content",
+        filters: {
+          operator: "AND",
+          conditions: [
+            {
+              "field": "country",
+              "value": countries
+            },
+            {
+              "field": "format.name",
+              "value": "Situation Report"
+            },
+            {
+              "field": "source.type.name",
+              "value": "Non-governmental Organization"
+            }
+          ]
+        }
+      }
+//      {
+//        linkTitle: "Analysis",
+//        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F3)#content"
+//      },
+//      {
+//        linkTitle: "Assessments",
+//        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F5)#content"
+//      },
+//      {
+//        linkTitle: "Appeals and contributions",
+//        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F4.T4589)_!(PC254)#content"
+//      },
+//      {
+//        linkTitle: "Aid agency news",
+//        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F10)_(ST274)#content"
+//      },
+//      {
+//        linkTitle: "Media news",
+//        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_(ST273)#content"
+//      },
+//      {
+//        linkTitle: "Evaluations and Lessons Learned",
+//        location: "http://reliefweb.int/updates?advanced-search=(C226.C122)_!(PC254)&format=6#content"
+//      },
+//      {
+//        linkTitle: "Reports in Arabic",
+//        location: "http://reliefweb.int/updates?advanced-search=%28C226.C122%29&language=6876#content"
+//      }
     ],
     content: [
       {

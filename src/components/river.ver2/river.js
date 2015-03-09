@@ -56,14 +56,23 @@ RiverWidget.prototype.link = function(elements, next) {
 
   var $element = $(elements[0][0]);
   var widget = this;
-  var content = widget.config('content');
+  var filters = widget.config('filters');
   var rw = reliefweb.client();
 
   function init() {
+    _(filters).forEach(function(filter) {
+      getDataAndRender(filter.id, filter.filters);
+    });
+
+
     paint();
   }
 
-  function paint(updatedContent) {
+  function paint() {
+
+  }
+
+  function getDataAndRender(filterId, filterData) {
     rw.post('reports')
       .send({'limit': 4})
       .send({
@@ -71,6 +80,7 @@ RiverWidget.prototype.link = function(elements, next) {
           'include': ["title", "source", "date"]
         }
       })
+      .send({"filter": filterData})
       .sort('date.created', 'desc')
       .end(function(err, res) {
         if (!err) {
@@ -88,7 +98,7 @@ RiverWidget.prototype.link = function(elements, next) {
             return acc + Handlebars.templates['river-item.hbs'](value);
           }, '');
 
-          $('.filters-content--items', $element).empty().html(items);
+          $('#' + filterId + '-accordion .filters-content--items', $element).empty().html(items);
         }
       });
   }
