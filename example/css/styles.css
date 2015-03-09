@@ -4,7 +4,7 @@
  */
 /*! normalize.css v1.1.0 | MIT License | git.io/normalize */
 /*! normalize.css v1.1.0 | HTML5 Display Definitions | MIT License | git.io/normalize */
-/* line 9, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 9, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 article,
 aside,
 details,
@@ -20,7 +20,7 @@ summary {
   display: block;
 }
 
-/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 26, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 audio,
 canvas,
 video {
@@ -29,19 +29,19 @@ video {
   *zoom: 1;
 }
 
-/* line 39, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 39, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 46, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 46, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 [hidden] {
   display: none;
 }
 
 /*! normalize.css v1.1.0 | Base | MIT License | git.io/normalize */
-/* line 13, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
+/* line 13, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
 html {
   font-size: 100%;
   font-family: sans-serif;
@@ -49,7 +49,7 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-/* line 26, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
+/* line 26, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
 html,
 button,
 input,
@@ -58,101 +58,101 @@ textarea {
   font-family: sans-serif;
 }
 
-/* line 37, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
+/* line 37, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
 body {
   margin: 0;
 }
 
 /*! normalize.css v1.1.0 | Links | MIT License | git.io/normalize */
-/* line 9, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
+/* line 9, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
 a:focus {
   outline: thin dotted;
 }
 
-/* line 15, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
+/* line 15, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
 a:active,
 a:hover {
   outline: 0;
 }
 
 /*! normalize.css v1.1.0 | Typography | MIT License | git.io/normalize */
-/* line 13, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 13, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-/* line 19, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 19, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h2 {
   font-size: 1.5em;
   margin: 0.83em 0;
 }
 
-/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 24, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
 
-/* line 29, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 29, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h4 {
   font-size: 1em;
   margin: 1.33em 0;
 }
 
-/* line 34, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 34, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h5 {
   font-size: 0.83em;
   margin: 1.67em 0;
 }
 
-/* line 39, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 39, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h6 {
   font-size: 0.67em;
   margin: 2.33em 0;
 }
 
-/* line 47, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 47, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
-/* line 53, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 53, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 b,
 strong {
   font-weight: bold;
 }
 
-/* line 59, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 59, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 blockquote {
   margin: 1em 40px;
 }
 
-/* line 66, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 66, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 dfn {
   font-style: italic;
 }
 
-/* line 73, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 73, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
 
-/* line 81, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 81, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 mark {
   background: #ff0;
   color: #000;
 }
 
-/* line 89, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 89, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 p,
 pre {
   margin: 1em 0;
 }
 
-/* line 97, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 97, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 code,
 kbd,
 pre,
@@ -162,36 +162,36 @@ samp {
   font-size: 1em;
 }
 
-/* line 110, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 110, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* line 118, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 118, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
-/* line 127, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 127, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 q {
   quotes: none;
 }
 
-/* line 131, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 131, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 q:before,
 q:after {
   content: '';
   content: none;
 }
 
-/* line 140, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 140, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 small {
   font-size: 80%;
 }
 
-/* line 146, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 146, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 sub,
 sup {
   font-size: 75%;
@@ -200,17 +200,17 @@ sup {
   vertical-align: baseline;
 }
 
-/* line 154, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 154, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 158, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 158, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 sub {
   bottom: -0.25em;
 }
 
-/* line 8, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 8, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 dl,
 menu,
 ol,
@@ -218,19 +218,19 @@ ul {
   margin: 1em 0;
 }
 
-/* line 15, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 15, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 dd {
   margin: 0 0 0 40px;
 }
 
-/* line 21, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 21, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 menu,
 ol,
 ul {
   padding: 0 0 0 40px;
 }
 
-/* line 29, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 29, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 nav ul,
 nav ol {
   list-style: none;
@@ -238,37 +238,37 @@ nav ol {
 }
 
 /*! normalize.css v1.1.0 | Embedded Content | MIT License | git.io/normalize */
-/* line 9, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
+/* line 9, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 18, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
+/* line 18, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
 svg:not(:root) {
   overflow: hidden;
 }
 
 /*! normalize.css v1.1.0 | Figures | MIT License | git.io/normalize */
-/* line 9, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_figures.scss */
+/* line 9, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_figures.scss */
 figure {
   margin: 0;
 }
 
 /*! normalize.css v1.1.0 | Forms | MIT License | git.io/normalize */
-/* line 10, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 10, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 form {
   margin: 0;
 }
 
-/* line 17, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 17, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
 
-/* line 30, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 30, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 legend {
   border: 0;
   padding: 0;
@@ -276,7 +276,7 @@ legend {
   *margin-left: -7px;
 }
 
-/* line 46, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 46, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 input,
 select,
@@ -288,19 +288,19 @@ textarea {
   *vertical-align: middle;
 }
 
-/* line 62, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 62, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 input {
   line-height: normal;
 }
 
-/* line 72, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 72, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 select {
   text-transform: none;
 }
 
-/* line 87, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 87, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -310,13 +310,13 @@ input[type="submit"] {
   *overflow: visible;
 }
 
-/* line 100, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 100, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
 
-/* line 112, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 112, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -325,7 +325,7 @@ input[type="radio"] {
   *width: 13px;
 }
 
-/* line 126, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 126, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
@@ -333,27 +333,27 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 136, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 136, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 143, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 143, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 152, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 152, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
 /*! normalize.css v1.1.0 | Tables | MIT License | git.io/normalize */
-/* line 9, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_tables.scss */
+/* line 9, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_tables.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -544,19 +544,19 @@ a {
 a:focus {
   outline: none;
 }
-/* line 18, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:visited {
   color: #6c9acd;
 }
-/* line 21, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:focus {
   color: #375573;
 }
-/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:hover {
   color: #375573;
 }
-/* line 27, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:active {
   color: #6c9acd;
 }
@@ -614,6 +614,8 @@ a:active {
  *  $px
  *  $root-px
  */
+/* Others
+   ========================================================================== */
 /* ==========================================================================
    Global Extends - Helpers
    ========================================================================== */
@@ -679,7 +681,7 @@ a:active {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 13, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/toolkit-2.6.0/stylesheets/toolkit/_clearfix.scss */
+/* line 13, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/toolkit-2.6.0/stylesheets/toolkit/_clearfix.scss */
 .clearfix:after {
   content: "";
   display: table;
@@ -865,7 +867,7 @@ button {
 /*
  * Documentation: https://github.com/Team-Sass/Singularity/wiki
  */
-/* line 13, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/toolkit-2.6.0/stylesheets/toolkit/_clearfix.scss */
+/* line 13, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/toolkit-2.6.0/stylesheets/toolkit/_clearfix.scss */
 [class*="grid-container--"]:after {
   content: "";
   display: table;
@@ -1288,9 +1290,9 @@ button {
   -moz-osx-font-smoothing: grayscale;
   font-size: 15px;
   text-align: center;
-  padding: 0 20px;
-  height: 40px;
-  line-height: 44px;
+  padding: 0.7em 1.25em;
+  min-height: 40px;
+  line-height: 1.2;
   border-style: solid;
   border-color: white;
   border-width: 0;
@@ -1319,19 +1321,19 @@ button {
   text-shadow: none;
   background-image: none;
 }
-/* line 18, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:visited {
   color: white;
 }
-/* line 21, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:focus {
   color: white;
 }
-/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:hover {
   color: white;
 }
-/* line 27, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:active {
   color: white;
 }
@@ -1395,19 +1397,19 @@ button {
   text-shadow: none;
   background-image: none;
 }
-/* line 18, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:visited {
   color: black;
 }
-/* line 21, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:focus {
   color: black;
 }
-/* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:hover {
   color: black;
 }
-/* line 27, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../../../Users/bmorrison/.rvm/gems/ruby-2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:active {
   color: black;
 }
@@ -3045,6 +3047,41 @@ input[type="search"] {
   display: block;
 }
 
+/* line 22, ../scss/components/molecules/_accordion-set.scss */
+.accordion-set--label {
+  position: relative;
+}
+/* line 24, ../scss/components/molecules/_accordion-set.scss */
+.accordion-set--label:before {
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  color: transparent;
+  content: '.';
+  border-width: 0.5em 0 0.5em 0.66em;
+  border-color: transparent transparent transparent #a993e1;
+  top: 1em;
+  left: 0.5em;
+}
+
+/* line 36, ../scss/components/molecules/_accordion-set.scss */
+.accordion-set--check:checked + .accordion-set--label:before {
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
 /* line 1, ../scss/components/molecules/_header.scss */
 .crisis-page--header-nav {
   position: relative;
@@ -3078,7 +3115,7 @@ input[type="search"] {
 /* line 29, ../scss/components/molecules/_header.scss */
 .crisis-page--header {
   padding: 0 0.5rem;
-  background-color: #f5f5f5;
+  background: #f5f5f5 url('../images/diagonal-pinstripes.png') repeat;
   color: #4d515b;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
@@ -3111,8 +3148,8 @@ input[type="search"] {
 
 /* line 50, ../scss/components/molecules/_header.scss */
 .crisis-page--title {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 20px;
+  font-size: 1.25rem;
   margin: 0;
   padding: 0 0.5rem;
   background-color: #8c8e93;
@@ -3120,8 +3157,6 @@ input[type="search"] {
   font-weight: bold;
   line-height: 2;
   text-transform: uppercase;
-  font-size: 20px;
-  font-size: 1.25rem;
 }
 @media (min-width: 30em) {
   /* line 50, ../scss/components/molecules/_header.scss */
@@ -3135,7 +3170,7 @@ input[type="search"] {
   }
 }
 
-/* line 69, ../scss/components/molecules/_header.scss */
+/* line 68, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label {
   display: block;
   position: relative;
@@ -3145,44 +3180,78 @@ input[type="search"] {
   line-height: 4.25;
   text-transform: uppercase;
 }
-/* line 77, ../scss/components/molecules/_header.scss */
+/* line 76, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label .text {
   display: block;
   position: relative;
   margin-top: -9px;
   line-height: 1;
 }
-/* line 83, ../scss/components/molecules/_header.scss */
+/* line 82, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label svg {
   position: relative;
   left: 2px;
 }
-/* line 86, ../scss/components/molecules/_header.scss */
+/* line 85, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger-label svg .brady-button {
   fill: #a993e1;
 }
+/* line 89, ../scss/components/molecules/_header.scss */
+.crisis-page--navigation--trigger-label #menu-button-close {
+  display: none;
+  height: 68px;
+}
 
-/* line 92, ../scss/components/molecules/_header.scss */
+/* line 95, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation--trigger {
   display: none;
 }
-/* line 97, ../scss/components/molecules/_header.scss */
-.crisis-page--navigation--trigger:checked + .crisis-page--navigation li a {
+/* line 99, ../scss/components/molecules/_header.scss */
+.crisis-page--navigation--trigger:checked ~ .crisis-page--navigation--trigger-label #menu-button {
+  display: none;
+}
+/* line 102, ../scss/components/molecules/_header.scss */
+.crisis-page--navigation--trigger:checked ~ .crisis-page--navigation--trigger-label #menu-button-close {
+  display: block;
+}
+/* line 108, ../scss/components/molecules/_header.scss */
+.crisis-page--navigation--trigger:checked ~ .crisis-page--navigation li a {
   height: 42px;
 }
-/* line 103, ../scss/components/molecules/_header.scss */
-.crisis-page--navigation--trigger:checked + .crisis-page--navigation li.crisis-page--widget-nav--item ~ .crisis-page--external-nav--item a {
+/* line 114, ../scss/components/molecules/_header.scss */
+.crisis-page--navigation--trigger:checked ~ .crisis-page--navigation li.crisis-page--widget-nav--item ~ .crisis-page--external-nav--item a {
   height: 66px;
   padding-top: 1.5em;
 }
 
-/* line 114, ../scss/components/molecules/_header.scss */
+/* line 127, ../scss/components/molecules/_header.scss */
+.crisis-page--external-nav--item a {
+  position: relative;
+}
+/* line 129, ../scss/components/molecules/_header.scss */
+.crisis-page--external-nav--item a:after {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  color: transparent;
+  content: '.';
+  border-width: 0.5em 0 0.5em 0.66em;
+  border-color: transparent transparent transparent #6c9acd;
+  display: inline-block;
+  position: relative;
+  top: 21px;
+  right: -0.5em;
+}
+
+/* line 139, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation {
   width: 100vw;
   line-height: 2.75;
 }
 @media (min-width: 37.5em) {
-  /* line 114, ../scss/components/molecules/_header.scss */
+  /* line 139, ../scss/components/molecules/_header.scss */
   .crisis-page--navigation {
     position: absolute;
     top: 100%;
@@ -3197,7 +3266,7 @@ input[type="search"] {
     clear: none;
   }
 }
-/* line 128, ../scss/components/molecules/_header.scss */
+/* line 153, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation a {
   text-decoration: none;
   text-shadow: none;
@@ -3244,12 +3313,12 @@ input[type="search"] {
   background-image: none;
 }
 @media (min-width: 37.5em) {
-  /* line 128, ../scss/components/molecules/_header.scss */
+  /* line 153, ../scss/components/molecules/_header.scss */
   .crisis-page--navigation a {
     margin: 0;
   }
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(1) a {
   -moz-transition-delay: 0s;
   -o-transition-delay: 0s;
@@ -3257,11 +3326,11 @@ input[type="search"] {
   transition-delay: 0s;
   background-color: #f9f9f9;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(1) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(2) a {
   -moz-transition-delay: 0.025s;
   -o-transition-delay: 0.025s;
@@ -3269,11 +3338,11 @@ input[type="search"] {
   transition-delay: 0.025s;
   background-color: #f3f3f4;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(2) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(3) a {
   -moz-transition-delay: 0.05s;
   -o-transition-delay: 0.05s;
@@ -3281,11 +3350,11 @@ input[type="search"] {
   transition-delay: 0.05s;
   background-color: #edeeee;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(3) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(4) a {
   -moz-transition-delay: 0.075s;
   -o-transition-delay: 0.075s;
@@ -3293,11 +3362,11 @@ input[type="search"] {
   transition-delay: 0.075s;
   background-color: #e8e8e9;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(4) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(5) a {
   -moz-transition-delay: 0.1s;
   -o-transition-delay: 0.1s;
@@ -3305,11 +3374,11 @@ input[type="search"] {
   transition-delay: 0.1s;
   background-color: #e2e2e4;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(5) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(6) a {
   -moz-transition-delay: 0.125s;
   -o-transition-delay: 0.125s;
@@ -3317,11 +3386,11 @@ input[type="search"] {
   transition-delay: 0.125s;
   background-color: #dcddde;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(6) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(7) a {
   -moz-transition-delay: 0.15s;
   -o-transition-delay: 0.15s;
@@ -3329,11 +3398,11 @@ input[type="search"] {
   transition-delay: 0.15s;
   background-color: #d6d7d9;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(7) a:hover {
   background-color: white;
 }
-/* line 148, ../scss/components/molecules/_header.scss */
+/* line 173, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(8) a {
   -moz-transition-delay: 0.175s;
   -o-transition-delay: 0.175s;
@@ -3341,7 +3410,7 @@ input[type="search"] {
   transition-delay: 0.175s;
   background-color: #d1d1d3;
 }
-/* line 152, ../scss/components/molecules/_header.scss */
+/* line 177, ../scss/components/molecules/_header.scss */
 .crisis-page--navigation li:nth-of-type(8) a:hover {
   background-color: white;
 }
@@ -3626,23 +3695,19 @@ input[type="search"] {
   background-image: -moz-linear-gradient(180deg, #f5c655, rgba(255, 255, 255, 0)), -moz-repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #f5d17d 16px, #f5d17d 32px);
   background-image: -webkit-linear-gradient(180deg, #f5c655, rgba(255, 255, 255, 0)), -webkit-repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #f5d17d 16px, #f5d17d 32px);
   background-image: linear-gradient(-90deg, #f5c655, rgba(255, 255, 255, 0)), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #f5d17d 16px, #f5d17d 32px);
-  -moz-transition: width 0.3s ease-in-out;
-  -o-transition: width 0.3s ease-in-out;
-  -webkit-transition: width 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out;
-  width: 0%;
+  width: 0;
   float: left;
   border-right: 4px solid #a993e1;
-  background: #f5c655;
+  background-color: #f5c655;
   background-position: 50% 50%, 50% 50%;
   color: #957128;
 }
-/* line 143, ../scss/components/organisms/_financial-widget.scss */
+/* line 142, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount.requested {
   color: #375573;
   text-align: right;
 }
-/* line 147, ../scss/components/organisms/_financial-widget.scss */
+/* line 146, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount .percent {
   position: absolute;
   top: 5px;
@@ -3652,13 +3717,13 @@ input[type="search"] {
   line-height: 1;
   text-align: right;
 }
-/* line 155, ../scss/components/organisms/_financial-widget.scss */
+/* line 154, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount .percent span {
   display: block;
   font-size: 16px;
 }
 
-/* line 165, ../scss/components/organisms/_financial-widget.scss */
+/* line 164, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--cluster-funding h2 {
   font-size: 24px;
   font-size: 1.5rem;
@@ -3669,81 +3734,98 @@ input[type="search"] {
   color: white;
   line-height: 1.1;
 }
-/* line 174, ../scss/components/organisms/_financial-widget.scss */
+/* line 173, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--cluster-funding svg {
   width: 100%;
 }
 
-/* line 180, ../scss/components/organisms/_financial-widget.scss */
+/* line 179, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles.horizontal {
   display: none;
 }
 @media (min-width: 42.5em) {
-  /* line 184, ../scss/components/organisms/_financial-widget.scss */
+  /* line 183, ../scss/components/organisms/_financial-widget.scss */
   #finance-bubbles.vertical {
     display: none;
   }
-  /* line 187, ../scss/components/organisms/_financial-widget.scss */
+  /* line 186, ../scss/components/organisms/_financial-widget.scss */
   #finance-bubbles.horizontal {
     display: block;
   }
 }
 
-/* line 192, ../scss/components/organisms/_financial-widget.scss */
+/* line 191, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles {
   margin-bottom: 24px;
   padding: 1em 0 1em 0.5em;
   background-color: white;
 }
 /* line 196, ../scss/components/organisms/_financial-widget.scss */
+#finance-bubbles .axis .domain {
+  fill: none;
+  stroke: #cccccc;
+}
+/* line 200, ../scss/components/organisms/_financial-widget.scss */
+#finance-bubbles .axis line {
+  stroke: #cccccc;
+}
+/* line 205, ../scss/components/organisms/_financial-widget.scss */
+#finance-bubbles .grid line {
+  stroke: #cccccc;
+}
+/* line 209, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles text {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
-/* line 200, ../scss/components/organisms/_financial-widget.scss */
+/* line 213, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .scale-line {
   stroke: #cccccc;
 }
-/* line 203, ../scss/components/organisms/_financial-widget.scss */
+/* line 216, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .scale-line--percent {
   fill: #a993e1;
 }
-/* line 207, ../scss/components/organisms/_financial-widget.scss */
+/* line 220, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble text {
   fill: white;
 }
-/* line 210, ../scss/components/organisms/_financial-widget.scss */
+/* line 223, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble circle {
   fill: #a993e1;
 }
-/* line 214, ../scss/components/organisms/_financial-widget.scss */
+/* line 227, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble.small text {
   fill: #665695;
 }
-/* line 219, ../scss/components/organisms/_financial-widget.scss */
+/* line 232, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay {
   display: none;
 }
-/* line 221, ../scss/components/organisms/_financial-widget.scss */
+/* line 234, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--block {
   fill: rgba(255, 255, 255, 0.8);
 }
-/* line 224, ../scss/components/organisms/_financial-widget.scss */
+/* line 237, ../scss/components/organisms/_financial-widget.scss */
+#finance-bubbles #detail-overlay .detail--icon {
+  fill: white;
+}
+/* line 240, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--info {
   fill: #a993e1;
   stroke: #665695;
 }
-/* line 228, ../scss/components/organisms/_financial-widget.scss */
+/* line 244, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--text {
   font-size: 20px;
   fill: white;
 }
-/* line 232, ../scss/components/organisms/_financial-widget.scss */
+/* line 248, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--title {
   font-size: 24px;
 }
 
-/* line 240, ../scss/components/organisms/_financial-widget.scss */
+/* line 256, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -3751,13 +3833,13 @@ input[type="search"] {
   background-color: white;
   align-self: flex-end;
 }
-/* line 245, ../scss/components/organisms/_financial-widget.scss */
+/* line 261, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore {
   position: relative;
   margin-bottom: 0.75em;
   background-color: #a993e1;
 }
-/* line 249, ../scss/components/organisms/_financial-widget.scss */
+/* line 265, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore a {
   text-decoration: none;
   text-shadow: none;
@@ -3784,7 +3866,7 @@ input[type="search"] {
   text-shadow: none;
   background-image: none;
 }
-/* line 253, ../scss/components/organisms/_financial-widget.scss */
+/* line 269, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore:after {
   display: block;
   position: absolute;
@@ -3806,7 +3888,7 @@ input[type="search"] {
 @media (min-width: 37.5em) {
   /* line 4, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--description {
-    width: 59.52907%;
+    width: 47.61905%;
     float: left;
     margin-right: -100%;
     margin-left: 0;
@@ -3815,13 +3897,50 @@ input[type="search"] {
   }
   /* line 8, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--map {
-    width: 36.79176%;
+    width: 47.61905%;
     float: right;
     margin-left: 0;
     margin-right: 0;
     clear: none;
   }
   /* line 11, ../scss/components/organisms/_overview-widget.scss */
+  .overview-widget .overview-widget--tabs {
+    width: 47.61905%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+    clear: right;
+  }
+  /* line 15, ../scss/components/organisms/_overview-widget.scss */
+  .overview-widget .overview-widget--sources {
+    width: 47.61905%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+    clear: right;
+  }
+}
+@media (min-width: 55em) {
+  /* line 23, ../scss/components/organisms/_overview-widget.scss */
+  .overview-widget .overview-widget--description {
+    width: 59.52907%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+    clear: left;
+  }
+  /* line 27, ../scss/components/organisms/_overview-widget.scss */
+  .overview-widget .overview-widget--map {
+    width: 36.79176%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+  }
+  /* line 30, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--tabs {
     width: 36.79176%;
     float: right;
@@ -3830,7 +3949,7 @@ input[type="search"] {
     clear: none;
     clear: right;
   }
-  /* line 15, ../scss/components/organisms/_overview-widget.scss */
+  /* line 34, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget .overview-widget--sources {
     width: 36.79176%;
     float: right;
@@ -3841,7 +3960,7 @@ input[type="search"] {
   }
 }
 
-/* line 23, ../scss/components/organisms/_overview-widget.scss */
+/* line 42, ../scss/components/organisms/_overview-widget.scss */
 .widget-title {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1ZjVmNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #eff0f1 16px, #eff0f1 32px);
   background-size: 100%;
@@ -3861,16 +3980,16 @@ input[type="search"] {
   line-height: 1.2;
   text-transform: uppercase;
 }
-/* line 37, ../scss/components/organisms/_overview-widget.scss */
+/* line 56, ../scss/components/organisms/_overview-widget.scss */
 .widget-title .word1 {
   display: block;
 }
-/* line 40, ../scss/components/organisms/_overview-widget.scss */
+/* line 59, ../scss/components/organisms/_overview-widget.scss */
 .widget-title .word2 {
   display: block;
 }
 
-/* line 45, ../scss/components/organisms/_overview-widget.scss */
+/* line 64, ../scss/components/organisms/_overview-widget.scss */
 .widget-title--icon {
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -3886,19 +4005,19 @@ input[type="search"] {
   line-height: 1.74;
 }
 
-/* line 57, ../scss/components/organisms/_overview-widget.scss */
+/* line 76, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--map {
   border-width: 0 0 1px 0;
   border-style: solid;
   border-color: #060606;
 }
 
-/* line 66, ../scss/components/organisms/_overview-widget.scss */
+/* line 85, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--description h2 {
   font-size: 24px;
   font-size: 1.5rem;
   margin: 0 0 12px;
-  padding: 6px 0.5em;
+  padding: 6px 0.5em 6px 1em;
   border-top: 1px solid #cccccc;
   border-bottom: 2px solid #a993e1;
   background-color: #f5f5f5;
@@ -3906,13 +4025,29 @@ input[type="search"] {
   line-height: 1.41667;
 }
 @media (min-width: 37.5em) {
-  /* line 66, ../scss/components/organisms/_overview-widget.scss */
+  /* line 85, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--description h2 {
     border-top: none;
     background-color: transparent;
   }
 }
-/* line 80, ../scss/components/organisms/_overview-widget.scss */
+@media (min-width: 37.5em) {
+  /* line 100, ../scss/components/organisms/_overview-widget.scss */
+  .overview-widget--description .accordion-set--label:before {
+    display: none;
+  }
+}
+/* line 105, ../scss/components/organisms/_overview-widget.scss */
+.overview-widget--description .accordion-set--label h2 {
+  padding-left: 1em;
+}
+@media (min-width: 37.5em) {
+  /* line 105, ../scss/components/organisms/_overview-widget.scss */
+  .overview-widget--description .accordion-set--label h2 {
+    padding-left: 0.5rem;
+  }
+}
+/* line 112, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--description .accordion-set--content {
   -moz-column-gap: 2em;
   -webkit-column-gap: 2em;
@@ -3928,76 +4063,25 @@ input[type="search"] {
   margin-bottom: 1.5em;
 }
 @media (min-width: 37.5em) {
-  /* line 80, ../scss/components/organisms/_overview-widget.scss */
+  /* line 112, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--description .accordion-set--content {
     max-height: 100em;
   }
 }
 
-/* line 94, ../scss/components/organisms/_overview-widget.scss */
-.accordion-set--label {
-  position: relative;
-}
-/* line 96, ../scss/components/organisms/_overview-widget.scss */
-.accordion-set--label:before {
-  -moz-transition: -moz-transform 0.3s ease-in-out;
-  -o-transition: -o-transform 0.3s ease-in-out;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  color: transparent;
-  content: '.';
-  border-width: 0.5em 0 0.5em 0.66em;
-  border-color: transparent transparent transparent #a993e1;
-  top: 1em;
-  left: 0.5em;
-}
-@media (min-width: 37.5em) {
-  /* line 96, ../scss/components/organisms/_overview-widget.scss */
-  .accordion-set--label:before {
-    display: none;
-  }
-}
-/* line 106, ../scss/components/organisms/_overview-widget.scss */
-.accordion-set--label h2 {
-  padding-left: 1em;
-}
-@media (min-width: 37.5em) {
-  /* line 106, ../scss/components/organisms/_overview-widget.scss */
-  .accordion-set--label h2 {
-    padding-left: 0.5rem;
-  }
-}
-
-/* line 117, ../scss/components/organisms/_overview-widget.scss */
-.accordion-set--check:checked + .accordion-set--label:before {
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-/* line 126, ../scss/components/organisms/_overview-widget.scss */
+/* line 130, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs {
   display: flex;
   margin-top: 1.5em;
   flex-wrap: wrap;
 }
 @media (min-width: 37.5em) {
-  /* line 126, ../scss/components/organisms/_overview-widget.scss */
+  /* line 130, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--tabs {
     margin-top: 0;
   }
 }
-/* line 133, ../scss/components/organisms/_overview-widget.scss */
+/* line 137, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label {
   -moz-transition-property: background-color, color;
   -o-transition-property: background-color, color;
@@ -4019,7 +4103,7 @@ input[type="search"] {
   flex-basis: 33%;
   position: relative;
 }
-/* line 143, ../scss/components/organisms/_overview-widget.scss */
+/* line 147, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label:before {
   -moz-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
@@ -4039,42 +4123,42 @@ input[type="search"] {
   z-index: 10;
   opacity: 0;
 }
-/* line 153, ../scss/components/organisms/_overview-widget.scss */
+/* line 157, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label {
   background-color: #a993e1;
   color: white;
 }
-/* line 156, ../scss/components/organisms/_overview-widget.scss */
+/* line 160, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label:before {
   opacity: 1;
 }
-/* line 161, ../scss/components/organisms/_overview-widget.scss */
+/* line 165, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--content {
   position: relative;
   width: 100%;
   background-color: #665695;
 }
-/* line 166, ../scss/components/organisms/_overview-widget.scss */
+/* line 170, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body {
   padding: 1em 0.5em;
 }
-/* line 171, ../scss/components/organisms/_overview-widget.scss */
+/* line 175, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 {
   margin-bottom: 0;
   color: #a993e1;
   line-height: 1;
   text-transform: lowercase;
 }
-/* line 176, ../scss/components/organisms/_overview-widget.scss */
+/* line 180, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 .figure {
   color: white;
   font-weight: bold;
 }
-/* line 180, ../scss/components/organisms/_overview-widget.scss */
+/* line 184, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 + p {
   color: white;
 }
-/* line 185, ../scss/components/organisms/_overview-widget.scss */
+/* line 189, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .un-icon-crisis_population_displacement {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
   opacity: 0.1;
@@ -4085,36 +4169,37 @@ input[type="search"] {
   text-align: center;
 }
 
-/* line 196, ../scss/components/organisms/_overview-widget.scss */
+/* line 200, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--sources {
   margin: 1em 0;
   color: #cccccc;
 }
 
-/* line 1, ../scss/components/organisms/_river-widget.scss */
+/* line 1, ../scss/components/organisms/_river-re-reimagined-widget.scss */
 .widget-river {
   background: url('../images/diagonal-pinstripes.png') repeat white;
 }
-@media (min-width: 57em) {
-  /* line 6, ../scss/components/organisms/_river-widget.scss */
-  .widget-river .widget-river--results--graph {
-    width: 69.30693%;
-    float: left;
-    margin-right: -100%;
-    margin-left: 0;
-    clear: none;
-  }
-  /* line 9, ../scss/components/organisms/_river-widget.scss */
+/* line 3, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river .widget-river--filters {
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+@media (min-width: 40em) {
+  /* line 3, ../scss/components/organisms/_river-re-reimagined-widget.scss */
   .widget-river .widget-river--filters {
-    width: 29.70297%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
-    clear: none;
+    width: 50%;
+  }
+}
+@media (min-width: 50em) {
+  /* line 3, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river .widget-river--filters {
+    width: 38.1971%;
   }
 }
 
-/* line 16, ../scss/components/organisms/_river-widget.scss */
+/* line 18, ../scss/components/organisms/_river-re-reimagined-widget.scss */
 .widget-river--header {
   font-size: 16px;
   font-size: 1rem;
@@ -4123,7 +4208,7 @@ input[type="search"] {
   border-bottom: 1px solid #cccccc;
   background-color: #f5f5f5;
 }
-/* line 22, ../scss/components/organisms/_river-widget.scss */
+/* line 24, ../scss/components/organisms/_river-re-reimagined-widget.scss */
 .widget-river--header .widget-river--title {
   font-size: 16px;
   font-size: 1rem;
@@ -4138,86 +4223,7 @@ input[type="search"] {
   vertical-align: top;
 }
 
-/* line 37, ../scss/components/organisms/_river-widget.scss */
-.widget-river .selectricWrapper {
-  display: inline-block;
-  position: relative;
-  top: 9px;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #cccccc;
-  background-color: white;
-}
-/* line 44, ../scss/components/organisms/_river-widget.scss */
-.widget-river .selectricWrapper p.label {
-  margin-bottom: 0;
-}
-/* line 47, ../scss/components/organisms/_river-widget.scss */
-.widget-river .selectricWrapper .selectric {
-  background-color: white;
-}
-/* line 50, ../scss/components/organisms/_river-widget.scss */
-.widget-river .selectricWrapper .label {
-  color: black;
-}
-/* line 53, ../scss/components/organisms/_river-widget.scss */
-.widget-river .selectricWrapper .button {
-  color: #a993e1;
-}
-/* line 57, ../scss/components/organisms/_river-widget.scss */
-.widget-river .selectricItems {
-  border-top: 1px solid #cccccc;
-}
-
-/* line 63, ../scss/components/organisms/_river-widget.scss */
-.widget-river--results-tabs > li {
-  width: 100%;
-  padding: 0.625em;
-  color: white;
-}
-/* line 67, ../scss/components/organisms/_river-widget.scss */
-.widget-river--results-tabs > li:nth-child(1) {
-  background-color: #665695;
-}
-/* line 70, ../scss/components/organisms/_river-widget.scss */
-.widget-river--results-tabs > li:nth-child(2) {
-  background-color: #375573;
-}
-/* line 73, ../scss/components/organisms/_river-widget.scss */
-.widget-river--results-tabs > li:nth-child(3) {
-  background-color: #ddb049;
-}
-@media (min-width: 40em) {
-  /* line 63, ../scss/components/organisms/_river-widget.scss */
-  .widget-river--results-tabs > li {
-    width: 33.3%;
-    float: left;
-    text-align: center;
-  }
-}
-/* line 81, ../scss/components/organisms/_river-widget.scss */
-.widget-river--results-tabs > li .widget-river--results--number {
-  font-size: 31.25px;
-  font-size: 1.95313rem;
-  width: 33%;
-  float: left;
-  font-family: "futura-pt", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  line-height: 1.3em;
-  vertical-align: middle;
-}
-@media (min-width: 40em) {
-  /* line 81, ../scss/components/organisms/_river-widget.scss */
-  .widget-river--results-tabs > li .widget-river--results--number {
-    font-size: 61.03516px;
-    font-size: 3.8147rem;
-    display: block;
-    width: auto;
-    float: none;
-    line-height: inherit;
-  }
-}
-
-/* line 101, ../scss/components/organisms/_river-widget.scss */
+/* line 38, ../scss/components/organisms/_river-re-reimagined-widget.scss */
 .widget-river--results--type {
   display: inline-block;
   position: relative;
@@ -4228,7 +4234,7 @@ input[type="search"] {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   white-space: nowrap;
 }
-/* line 110, ../scss/components/organisms/_river-widget.scss */
+/* line 47, ../scss/components/organisms/_river-re-reimagined-widget.scss */
 .widget-river--results--type:after {
   display: block;
   position: absolute;
@@ -4243,15 +4249,438 @@ input[type="search"] {
   right: 0.5rem;
 }
 @media (min-width: 40em) {
-  /* line 101, ../scss/components/organisms/_river-widget.scss */
+  /* line 38, ../scss/components/organisms/_river-re-reimagined-widget.scss */
   .widget-river--results--type {
     display: block;
     width: auto;
   }
 }
 
-/* line 123, ../scss/components/organisms/_river-widget.scss */
+/* line 59, ../scss/components/organisms/_river-re-reimagined-widget.scss */
 .widget-river--filters {
+  width: 100%;
+  margin-bottom: 1.5em;
+  background-color: white;
+}
+/* line 63, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters label {
+  text-decoration: none;
+  text-shadow: none;
+  background-image: none;
+  display: block;
+  position: relative;
+  padding: 0.625em 1.25em;
+  border-bottom: 1px solid #f5f5f5;
+  background: none;
+  background-color: white;
+  color: #375573;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+}
+/* line 136, ../scss/global/mixins/_link.scss */
+.widget-river--filters label:visited {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 140, ../scss/global/mixins/_link.scss */
+.widget-river--filters label:focus {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 144, ../scss/global/mixins/_link.scss */
+.widget-river--filters label:hover {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 148, ../scss/global/mixins/_link.scss */
+.widget-river--filters label:active {
+  text-shadow: none;
+  background-image: none;
+}
+/* line 73, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters label:hover {
+  background-color: #f5f5f5;
+}
+/* line 77, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .accordion-set--label {
+  padding-left: 1.5em;
+}
+/* line 80, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .accordion-set--label {
+  -moz-transition: width 0.3s ease-in-out;
+  -o-transition: width 0.3s ease-in-out;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+  width: 100%;
+}
+@media (min-width: 40em) {
+  /* line 84, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--label:before {
+    -moz-transition-property: -moz-transform, border-color;
+    -o-transition-property: -o-transform, border-color;
+    -webkit-transition-property: -webkit-transform, border-color;
+    transition-property: transform, border-color;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -moz-transition-timing-function: ease-in-out;
+    -o-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+    -moz-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    -moz-transform-origin: 90% 50%;
+    -ms-transform-origin: 90% 50%;
+    -webkit-transform-origin: 90% 50%;
+    transform-origin: 90% 50%;
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    color: transparent;
+    content: '.';
+    border-width: 0.5em 0 0.5em 0.66em;
+    border-color: transparent transparent transparent #a993e1;
+    right: 0.5em;
+    left: auto;
+  }
+}
+@media (min-width: 40em) and (min-width: 50em) {
+  /* line 84, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--label:before {
+    -moz-transform-origin: 75% 50%;
+    -ms-transform-origin: 75% 50%;
+    -webkit-transform-origin: 75% 50%;
+    transform-origin: 75% 50%;
+  }
+}
+
+@media (min-width: 40em) {
+  /* line 99, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--content {
+    -moz-transition: width 0.3s ease-in-out;
+    -o-transition: width 0.3s ease-in-out;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+  }
+}
+/* line 108, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .accordion-set--check:checked + .accordion-set--label {
+  background-color: #f5f5f5;
+}
+@media (min-width: 40em) {
+  /* line 108, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--check:checked + .accordion-set--label {
+    width: calc(100% + 16px);
+  }
+  /* line 112, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--check:checked + .accordion-set--label:before {
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    border-left-color: white;
+  }
+  /* line 116, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
+    position: absolute;
+    top: 79px;
+    right: 1em;
+    height: calc(100% - 79px);
+    background-color: white;
+    overflow: auto;
+  }
+}
+@media (min-width: 40em) {
+  /* line 126, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
+    width: calc(50% - 2em);
+  }
+}
+@media (min-width: 50em) {
+  /* line 126, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
+    width: calc(61.8029% - 2em);
+  }
+}
+/* line 142, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .widget-river--filters-content {
+  padding: 0.5em 0.5em 1.5em 0.5em;
+  background-color: #fafafa;
+}
+@media (min-width: 40em) {
+  /* line 142, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .widget-river--filters-content {
+    background-color: white;
+  }
+}
+/* line 149, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .filters-content--item {
+  margin-bottom: 1.5em;
+}
+/* line 152, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .filters-content--title {
+  font-size: 16px;
+  font-size: 1rem;
+  display: none;
+  margin: 0 0 1.5em;
+  padding: 0 0 0.5em;
+  border-bottom: 1px solid #665695;
+  color: #665695;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+@media (min-width: 40em) {
+  /* line 152, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--filters .filters-content--title {
+    display: block;
+  }
+}
+/* line 165, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .filters-content--item-date {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border: 1px solid #d9e2ed;
+  background-color: #eef0f3;
+  font-size: 12.8px;
+  float: left;
+}
+/* line 168, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .filters-content--item-title {
+  font-size: 20px;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  clear: both;
+  border-bottom: 1px solid #cccccc;
+}
+/* line 174, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .filters-content--item-source {
+  font-size: 12.8px;
+  font-size: 0.8rem;
+  color: #8c8e93;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+/* line 180, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters .filters-content--more {
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  width: 100%;
+  max-width: 61.8034%;
+  background: #665695;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+/* line 185, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--filters--title {
+  font-size: 16px;
+  font-size: 1rem;
+  position: relative;
+  margin: 0;
+  padding: 0.5em 2em;
+  background-color: #375573;
+  color: white;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 195, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.results--item--reports .widget-river--filters--title {
+  background-color: #665695;
+}
+/* line 198, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.results--item--maps .widget-river--filters--title {
+  background-color: #375573;
+}
+/* line 201, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.results--item--jobs .widget-river--filters--title {
+  background-color: #ddb049;
+}
+
+@media (min-width: 40em) {
+  /* line 206, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+  .widget-river--results {
+    margin: 1rem;
+  }
+}
+/* line 210, ../scss/components/organisms/_river-re-reimagined-widget.scss */
+.widget-river--results .widget-river--results--graph {
+  margin-bottom: 1.5em;
+  border: 0.5rem solid #cccccc;
+  background-color: #cccccc;
+}
+
+/* line 1, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph {
+  background: url('../images/diagonal-pinstripes.png') repeat white;
+}
+@media (min-width: 57em) {
+  /* line 6, ../scss/components/organisms/_river-widget.scss */
+  .widget-river-graph .widget-river-graph--results--graph {
+    width: 69.30693%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0;
+    clear: none;
+  }
+  /* line 9, ../scss/components/organisms/_river-widget.scss */
+  .widget-river-graph .widget-river-graph--filters {
+    width: 29.70297%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+  }
+}
+
+/* line 16, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--header {
+  font-size: 16px;
+  font-size: 1rem;
+  position: relative;
+  margin: 0;
+  border-bottom: 1px solid #cccccc;
+  background-color: #f5f5f5;
+}
+/* line 22, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--header .widget-river-graph--title {
+  font-size: 16px;
+  font-size: 1rem;
+  display: inline-block;
+  margin: 0 0.25em 0 0;
+  padding: 0 0.5em 0 1em;
+  background-color: #375573;
+  color: white;
+  font-weight: bold;
+  line-height: 3.375;
+  text-transform: uppercase;
+  vertical-align: top;
+}
+
+/* line 37, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph .selectricWrapper {
+  display: inline-block;
+  position: relative;
+  top: 9px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  background-color: white;
+}
+/* line 44, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph .selectricWrapper p.label {
+  margin-bottom: 0;
+}
+/* line 47, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph .selectricWrapper .selectric {
+  background-color: white;
+}
+/* line 50, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph .selectricWrapper .label {
+  color: black;
+}
+/* line 53, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph .selectricWrapper .button {
+  color: #a993e1;
+}
+/* line 57, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph .selectricItems {
+  border-top: 1px solid #cccccc;
+}
+
+/* line 63, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results-tabs > li {
+  width: 100%;
+  padding: 0.625em;
+  color: white;
+}
+/* line 67, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results-tabs > li:nth-child(1) {
+  background-color: #665695;
+}
+/* line 70, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results-tabs > li:nth-child(2) {
+  background-color: #375573;
+}
+/* line 73, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results-tabs > li:nth-child(3) {
+  background-color: #ddb049;
+}
+@media (min-width: 40em) {
+  /* line 63, ../scss/components/organisms/_river-widget.scss */
+  .widget-river-graph--results-tabs > li {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+  }
+}
+/* line 81, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results-tabs > li .widget-river-graph--results--number {
+  font-size: 31.25px;
+  font-size: 1.95313rem;
+  width: 33%;
+  float: left;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  line-height: 1.3em;
+  vertical-align: middle;
+}
+@media (min-width: 40em) {
+  /* line 81, ../scss/components/organisms/_river-widget.scss */
+  .widget-river-graph--results-tabs > li .widget-river-graph--results--number {
+    font-size: 61.03516px;
+    font-size: 3.8147rem;
+    display: block;
+    width: auto;
+    float: none;
+    line-height: inherit;
+  }
+}
+
+/* line 101, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results--type {
+  display: inline-block;
+  position: relative;
+  width: 67%;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+}
+/* line 110, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--results--type:after {
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  color: transparent;
+  content: '.';
+  border-width: 0.5em 0 0.5em 0.66em;
+  border-color: transparent transparent transparent white;
+  top: 12px;
+  right: 0.5rem;
+}
+@media (min-width: 40em) {
+  /* line 101, ../scss/components/organisms/_river-widget.scss */
+  .widget-river-graph--results--type {
+    display: block;
+    width: auto;
+  }
+}
+
+/* line 123, ../scss/components/organisms/_river-widget.scss */
+.widget-river-graph--filters {
   position: fixed;
   top: 0;
   right: 0;
@@ -4264,14 +4693,14 @@ input[type="search"] {
   z-index: 100;
 }
 /* line 137, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters.open {
+.widget-river-graph--filters.open {
   max-height: 100em;
   opacity: 1;
   overflow: visible;
 }
 @media (min-width: 57em) {
   /* line 123, ../scss/components/organisms/_river-widget.scss */
-  .widget-river--filters {
+  .widget-river-graph--filters {
     position: static;
     height: auto;
     max-height: 100em;
@@ -4280,7 +4709,7 @@ input[type="search"] {
   }
 }
 /* line 149, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters .close {
+.widget-river-graph--filters .close {
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
@@ -4297,16 +4726,16 @@ input[type="search"] {
 }
 @media (min-width: 57em) {
   /* line 149, ../scss/components/organisms/_river-widget.scss */
-  .widget-river--filters .close {
+  .widget-river-graph--filters .close {
     display: none;
   }
 }
 /* line 164, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters ul {
+.widget-river-graph--filters ul {
   border-top: 1px solid #f5f5f5;
 }
 /* line 168, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters li a {
+.widget-river-graph--filters li a {
   text-decoration: none;
   text-shadow: none;
   background-image: none;
@@ -4320,31 +4749,31 @@ input[type="search"] {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
 /* line 136, ../scss/global/mixins/_link.scss */
-.widget-river--filters li a:visited {
+.widget-river-graph--filters li a:visited {
   text-shadow: none;
   background-image: none;
 }
 /* line 140, ../scss/global/mixins/_link.scss */
-.widget-river--filters li a:focus {
+.widget-river-graph--filters li a:focus {
   text-shadow: none;
   background-image: none;
 }
 /* line 144, ../scss/global/mixins/_link.scss */
-.widget-river--filters li a:hover {
+.widget-river-graph--filters li a:hover {
   text-shadow: none;
   background-image: none;
 }
 /* line 148, ../scss/global/mixins/_link.scss */
-.widget-river--filters li a:active {
+.widget-river-graph--filters li a:active {
   text-shadow: none;
   background-image: none;
 }
 /* line 178, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters li a:hover {
+.widget-river-graph--filters li a:hover {
   background-color: #f5f5f5;
 }
 /* line 181, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters li a:after {
+.widget-river-graph--filters li a:after {
   display: block;
   position: absolute;
   width: 0;
@@ -4359,7 +4788,7 @@ input[type="search"] {
 }
 
 /* line 190, ../scss/components/organisms/_river-widget.scss */
-.widget-river--filters--title {
+.widget-river-graph--filters--title {
   font-size: 16px;
   font-size: 1rem;
   position: relative;
@@ -4372,26 +4801,26 @@ input[type="search"] {
   text-transform: uppercase;
 }
 /* line 200, ../scss/components/organisms/_river-widget.scss */
-.results--item--reports .widget-river--filters--title {
+.results--item--reports .widget-river-graph--filters--title {
   background-color: #665695;
 }
 /* line 203, ../scss/components/organisms/_river-widget.scss */
-.results--item--maps .widget-river--filters--title {
+.results--item--maps .widget-river-graph--filters--title {
   background-color: #375573;
 }
 /* line 206, ../scss/components/organisms/_river-widget.scss */
-.results--item--jobs .widget-river--filters--title {
+.results--item--jobs .widget-river-graph--filters--title {
   background-color: #ddb049;
 }
 
 @media (min-width: 40em) {
   /* line 212, ../scss/components/organisms/_river-widget.scss */
-  .widget-river--results {
+  .widget-river-graph--results {
     margin: 1rem;
   }
 }
 /* line 216, ../scss/components/organisms/_river-widget.scss */
-.widget-river--results .widget-river--results--graph {
+.widget-river-graph--results .widget-river-graph--results--graph {
   margin-bottom: 1.5em;
   border: 0.5rem solid #cccccc;
   background-color: #cccccc;
@@ -4559,18 +4988,18 @@ input[type="search"] {
 .timeline-widget-dropdown--item-date {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  float: right;
   border: 1px solid #d9e2ed;
   background-color: #eef0f3;
   font-size: 12.8px;
+  float: right;
 }
 
-/* line 78, ../scss/components/organisms/_timeline-widget.scss */
+/* line 74, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-dropdown--item-desc {
   clear: both;
 }
 
-/* line 82, ../scss/components/organisms/_timeline-widget.scss */
+/* line 78, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-heading {
   width: 100%;
   padding: 0.625em 2em;
@@ -4582,13 +5011,13 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 82, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 78, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown-heading {
     display: none;
     width: auto;
   }
 }
-/* line 98, ../scss/components/organisms/_timeline-widget.scss */
+/* line 94, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-heading .button-arrow {
   display: block;
   position: absolute;
@@ -4604,14 +5033,14 @@ input[type="search"] {
   position: relative;
 }
 
-/* line 106, ../scss/components/organisms/_timeline-widget.scss */
+/* line 102, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls {
   position: relative;
   height: 3.4375em;
   padding: 0.625em 2em;
   background: #2E4455;
 }
-/* line 112, ../scss/components/organisms/_timeline-widget.scss */
+/* line 108, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls .close {
   display: inline-block;
   vertical-align: middle;
@@ -4627,12 +5056,12 @@ input[type="search"] {
   cursor: pointer;
 }
 @media (min-width: 43.75em) {
-  /* line 112, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 108, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown-controls .close {
     display: none;
   }
 }
-/* line 125, ../scss/components/organisms/_timeline-widget.scss */
+/* line 121, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls .form-select {
   display: inline-block;
   vertical-align: middle;
@@ -4640,7 +5069,7 @@ input[type="search"] {
   *zoom: 1;
   *display: inline;
 }
-/* line 128, ../scss/components/organisms/_timeline-widget.scss */
+/* line 124, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls .form-today {
   position: relative;
   top: -11px;
@@ -4652,12 +5081,12 @@ input[type="search"] {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   line-height: 1.5;
 }
-/* line 138, ../scss/components/organisms/_timeline-widget.scss */
+/* line 134, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown-controls .form-today:hover {
   background-color: #a993e1;
 }
 
-/* line 144, ../scss/components/organisms/_timeline-widget.scss */
+/* line 140, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--container {
   height: 100%;
   height: calc(100vh - 55px);
@@ -4666,13 +5095,13 @@ input[type="search"] {
   overflow: hidden;
 }
 @media (min-width: 43.75em) {
-  /* line 144, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 140, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--dropdown--container {
     height: calc(100vh - 55px - 62px);
   }
 }
 
-/* line 155, ../scss/components/organisms/_timeline-widget.scss */
+/* line 151, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-dropdown--list-item {
   position: relative;
   background: white;
@@ -4683,7 +5112,7 @@ input[type="search"] {
   color: #4d515b;
   text-align: right;
 }
-/* line 162, ../scss/components/organisms/_timeline-widget.scss */
+/* line 158, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-dropdown--list-item.active {
   position: relative;
   background: white;
@@ -4713,7 +5142,7 @@ input[type="search"] {
   margin-top: -0.6875em;
 }
 
-/* line 168, ../scss/components/organisms/_timeline-widget.scss */
+/* line 164, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dropdown--month, .timeline-widget--dropdown--end-of-line {
   margin: 0.5em;
   border: none;
@@ -4722,14 +5151,14 @@ input[type="search"] {
   text-transform: uppercase;
 }
 
-/* line 184, ../scss/components/organisms/_timeline-widget.scss */
+/* line 180, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--frames ul {
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-/* line 190, ../scss/components/organisms/_timeline-widget.scss */
+/* line 186, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--frames .timeline-widget-item {
   height: 100%;
   margin: 0;
@@ -4737,18 +5166,18 @@ input[type="search"] {
   float: left;
 }
 
-/* line 198, ../scss/components/organisms/_timeline-widget.scss */
+/* line 194, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget {
   position: relative;
   margin: 0 auto;
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
 }
 
-/* line 204, ../scss/components/organisms/_timeline-widget.scss */
+/* line 200, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls {
   position: relative;
 }
-/* line 207, ../scss/components/organisms/_timeline-widget.scss */
+/* line 203, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next,
 .timeline-widget--controls .prev {
   position: absolute;
@@ -4759,7 +5188,7 @@ input[type="search"] {
   z-index: 10;
 }
 @media (min-width: 43.75em) {
-  /* line 207, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 203, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next,
   .timeline-widget--controls .prev {
     top: 16.25em;
@@ -4767,23 +5196,23 @@ input[type="search"] {
     height: 3.125em;
   }
 }
-/* line 222, ../scss/components/organisms/_timeline-widget.scss */
+/* line 218, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next.disabled,
 .timeline-widget--controls .prev.disabled {
   display: none;
 }
 @media (min-width: 43.75em) {
-  /* line 207, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 203, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next,
   .timeline-widget--controls .prev {
     display: none;
   }
 }
-/* line 230, ../scss/components/organisms/_timeline-widget.scss */
+/* line 226, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next {
   right: 0;
 }
-/* line 233, ../scss/components/organisms/_timeline-widget.scss */
+/* line 229, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .next .arrow {
   display: block;
   position: absolute;
@@ -4799,16 +5228,16 @@ input[type="search"] {
   right: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 233, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 229, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next .arrow {
     display: none;
   }
 }
-/* line 245, ../scss/components/organisms/_timeline-widget.scss */
+/* line 241, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .prev {
   left: 0;
 }
-/* line 248, ../scss/components/organisms/_timeline-widget.scss */
+/* line 244, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--controls .prev .arrow {
   display: block;
   position: absolute;
@@ -4824,40 +5253,40 @@ input[type="search"] {
   left: 0;
 }
 @media (min-width: 43.75em) {
-  /* line 248, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 244, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .prev .arrow {
     display: none;
   }
 }
 @media (min-width: 85em) {
-  /* line 261, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 257, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .next {
     right: -6.375em;
   }
-  /* line 265, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 261, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget--controls .prev {
     left: -6.375em;
   }
 }
 
-/* line 271, ../scss/components/organisms/_timeline-widget.scss */
+/* line 267, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--headline {
   margin: 0 2.5em;
 }
 @media (min-width: 43.75em) {
-  /* line 271, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 267, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--headline {
     margin: 0;
     font-size: 31.25px;
   }
 }
 
-/* line 280, ../scss/components/organisms/_timeline-widget.scss */
+/* line 276, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--header {
   padding-top: 0.5em;
 }
 
-/* line 284, ../scss/components/organisms/_timeline-widget.scss */
+/* line 280, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--title {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -4867,13 +5296,13 @@ input[type="search"] {
   line-height: normal;
 }
 @media (min-width: 43.75em) {
-  /* line 284, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 280, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--title {
     font-size: 31.25px;
   }
 }
 
-/* line 295, ../scss/components/organisms/_timeline-widget.scss */
+/* line 291, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--category {
   display: inline-block;
   vertical-align: middle;
@@ -4886,7 +5315,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 295, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 291, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--category {
     margin-right: 20px;
     padding: 0.375em 0.625em;
@@ -4894,7 +5323,7 @@ input[type="search"] {
     color: white;
   }
 }
-/* line 309, ../scss/components/organisms/_timeline-widget.scss */
+/* line 305, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--category .arrow {
   display: block;
   position: absolute;
@@ -4911,13 +5340,13 @@ input[type="search"] {
   right: -0.75em;
 }
 @media (min-width: 43.75em) {
-  /* line 309, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 305, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--category .arrow {
     display: block;
   }
 }
 
-/* line 322, ../scss/components/organisms/_timeline-widget.scss */
+/* line 318, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--date {
   display: block;
   color: #665695;
@@ -4926,7 +5355,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 @media (min-width: 43.75em) {
-  /* line 322, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 318, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--date {
     display: inline-block;
     vertical-align: middle;
@@ -4937,12 +5366,12 @@ input[type="search"] {
   }
 }
 
-/* line 336, ../scss/components/organisms/_timeline-widget.scss */
+/* line 332, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content a {
   font-weight: bold;
   text-transform: none;
 }
-/* line 341, ../scss/components/organisms/_timeline-widget.scss */
+/* line 337, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .btn {
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -4958,34 +5387,34 @@ input[type="search"] {
   font-weight: normal;
   text-decoration: none;
 }
-/* line 354, ../scss/components/organisms/_timeline-widget.scss */
+/* line 341, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image {
   position: relative;
 }
-/* line 358, ../scss/components/organisms/_timeline-widget.scss */
+/* line 345, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons {
   position: absolute;
   top: 0;
   left: 0;
   font-size: 16px;
 }
-/* line 364, ../scss/components/organisms/_timeline-widget.scss */
+/* line 351, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons a {
   border: none;
   color: white;
   text-shadow: none;
   text-transform: uppercase;
 }
-/* line 369, ../scss/components/organisms/_timeline-widget.scss */
+/* line 356, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--view-more {
   background: #f5c655;
 }
-/* line 373, ../scss/components/organisms/_timeline-widget.scss */
+/* line 360, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--image--icons a.timeline-widget-item--image--country {
   padding: 0 0.1875em;
   background: #375573;
 }
-/* line 380, ../scss/components/organisms/_timeline-widget.scss */
+/* line 367, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--description {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -4994,23 +5423,23 @@ input[type="search"] {
   font-family: "skolar", serif;
 }
 @media (min-width: 43.75em) {
-  /* line 380, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 367, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--content .timeline-widget-item--description {
     margin-top: 2.25em;
   }
 }
-/* line 388, ../scss/components/organisms/_timeline-widget.scss */
+/* line 375, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-item--content .timeline-widget-item--description p {
   display: none;
 }
 @media (min-width: 43.75em) {
-  /* line 388, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 375, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-item--content .timeline-widget-item--description p {
     display: block;
   }
 }
 
-/* line 397, ../scss/components/organisms/_timeline-widget.scss */
+/* line 384, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager {
   position: relative;
   width: 100%;
@@ -5018,26 +5447,26 @@ input[type="search"] {
   padding-bottom: 10px;
   background: url('../images/pager-bk-img.png') repeat-x 0 0.875em;
 }
-/* line 404, ../scss/components/organisms/_timeline-widget.scss */
+/* line 391, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager ul {
   width: 100%;
   margin: 0;
   padding: 0;
 }
-/* line 410, ../scss/components/organisms/_timeline-widget.scss */
+/* line 397, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager li {
   display: inline;
   height: 100%;
   float: left;
 }
 
-/* line 417, ../scss/components/organisms/_timeline-widget.scss */
+/* line 404, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager--item {
   max-width: 16.25em;
   margin: 0 auto;
 }
 
-/* line 422, ../scss/components/organisms/_timeline-widget.scss */
+/* line 409, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager--item-content {
   position: relative;
   background: white;
@@ -5073,12 +5502,12 @@ input[type="search"] {
   margin-left: -0.6875em;
 }
 @media (min-width: 43.75em) {
-  /* line 422, ../scss/components/organisms/_timeline-widget.scss */
+  /* line 409, ../scss/components/organisms/_timeline-widget.scss */
   .timeline-widget-pager--item-content {
     display: block;
   }
 }
-/* line 433, ../scss/components/organisms/_timeline-widget.scss */
+/* line 420, ../scss/components/organisms/_timeline-widget.scss */
 .active .timeline-widget-pager--item-content {
   position: relative;
   background: white;
@@ -5109,7 +5538,7 @@ input[type="search"] {
   margin-left: -0.6875em;
 }
 
-/* line 439, ../scss/components/organisms/_timeline-widget.scss */
+/* line 426, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget-pager--current {
   width: 100%;
   margin: auto;
@@ -5121,7 +5550,7 @@ input[type="search"] {
   text-transform: uppercase;
 }
 
-/* line 450, ../scss/components/organisms/_timeline-widget.scss */
+/* line 437, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dot {
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
@@ -5134,12 +5563,12 @@ input[type="search"] {
   color: white;
   font-weight: bold;
 }
-/* line 459, ../scss/components/organisms/_timeline-widget.scss */
+/* line 446, ../scss/components/organisms/_timeline-widget.scss */
 .active .timeline-widget--dot {
   border-color: #a993e1;
   background: #665695;
 }
-/* line 463, ../scss/components/organisms/_timeline-widget.scss */
+/* line 450, ../scss/components/organisms/_timeline-widget.scss */
 .timeline-widget--dot .timeline-widget--dot--date {
   width: 30px;
   margin: auto;

@@ -9,7 +9,7 @@ var BeatBlocks = require('beat-blocks');
 
 // Widgets
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
-var RiverWidget = require('./components/river/river');
+var RiverWidget = require('./components/river.ver2/river');
 var TimelineWidget = require('./components/timeline/timeline');
 var FinancialWidget = require('./components/financial/financial');
 
