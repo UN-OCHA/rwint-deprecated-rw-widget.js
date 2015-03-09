@@ -938,7 +938,9 @@ RiverWidget.prototype.link = function(elements) {
   var rw = reliefweb.client();
 
   function init() {
-    _(filters).forEach(function(filter) {
+    console.log("filters", filters);
+    filters.forEach(function(filter) {
+      console.log("Filter", filter);
       getDataAndRender(filter.id, filter.filters);
     });
 
