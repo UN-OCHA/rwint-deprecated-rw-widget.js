@@ -333,7 +333,7 @@ FinancialWidget.prototype.link = function(elements) {
       return;
     }
 
-    var margin = {top: 20, bottom: 20, left: 50, right: 20},
+    var margin = {top: 50, bottom: 50, left: 20, right: 20},
       w = $('#finance-bubbles', $element).width() - margin.left - margin.right,
       h = (chartState.direction == 'horizontal') ? 500 : 680;
 
@@ -413,11 +413,20 @@ FinancialWidget.prototype.link = function(elements) {
         force.start();
       }
 
+      // Offset y-axis tick labels.
+      $('.axis.y .tick text').attr("transform", "translate(0, -10)");
+
+      var labelx = w/2 - 52;
+      var trianglex = labelx + 110;
       if (chartState.direction == 'horizontal') {
         bubblePlacementScale.range([0, w]);
         canvas.select(".grid.x").style('display', 'block').call(gridXAxis);
         canvas.select(".axis.x-top").style('display', 'block').call(xAxisTop);
         canvas.select(".axis.x").attr("transform", "translate(0," + h + ")").style('display', 'block').call(xAxis);
+        canvas.select(".label.x-top").attr("transform", "translate(" + labelx + ",-30)").style('display', 'block');
+        canvas.select(".label.x-bottom").attr("transform", "translate(" + labelx + "," + (h + 45) + ")").style('display', 'block');
+        canvas.select(".triangle.triangle-top").attr("transform", "translate(" + trianglex + ", -43)").style('display', 'block');
+        canvas.select(".triangle.triangle-bottom").attr("transform", "translate(" + trianglex + "," + (h + 32) + ")").style('display', 'block');
         canvas.select(".axis.y").style('display', 'none');
         canvas.select(".grid.y").style('display', 'none');
       } else {
@@ -425,8 +434,12 @@ FinancialWidget.prototype.link = function(elements) {
         canvas.select(".axis.x-top").style('display', 'none');
         canvas.select(".axis.x").style('display', 'none');
         canvas.select(".grid.x").style('display', 'none');
-        canvas.select(".grid.x").style('display', 'none');
+        canvas.select(".label.x-top").style('display', 'none');
+        canvas.select(".label.x-bottom").style('display', 'none');
+        canvas.select(".triangle.triangle-top").style('display', 'none');
+        canvas.select(".triangle.triangle-bottom").style('display', 'none');
         canvas.select(".axis.y").style('display', 'block').call(yAxis);
+        canvas.select(".axis.y .domain").style('display', 'none');
         canvas.select(".grid.y").style('display', 'block').call(gridYAxis);
       }
     };
@@ -477,9 +490,13 @@ FinancialWidget.prototype.link = function(elements) {
       .scale(bubblePlacementScale)
       .tickValues([0, 0.25, 0.5, 0.75, 1])
       .tickFormat(function(d) {
-        return (d * 100) + "%";
+        if (d == 1) {
+          return "100% Funded";
+        } else {
+          return (d * 100) + "%";
+        }
       })
-      .orient("left");
+      .orient("right");
 
     var gridXAxis = d3.svg.axis()
       .scale(bubblePlacementScale)
@@ -493,7 +510,7 @@ FinancialWidget.prototype.link = function(elements) {
       .orient("left").tickFormat("")
       .innerTickSize(-w)
       .outerTickSize(0)
-      .tickValues([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]);
+      .tickValues([0, 0.25, 0.5, 0.75, 1]);
 
     var canvas = svg.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -513,6 +530,42 @@ FinancialWidget.prototype.link = function(elements) {
       })
       .attr("transform", "translate(0,0)")
       .call(xAxisTop);
+
+    var labelx = w/2 - 52;
+    var trianglex = labelx + 110;
+    canvas.append("text")
+      .classed({
+        "x-top": true,
+        "label": true
+      })
+      .attr("transform", "translate(" + labelx + ",-30)")
+      .text("Per Cent Funded");
+
+    canvas.append("path")
+      .classed({
+        "triangle": true,
+        "triangle-top": true
+      })
+      .attr("transform", "translate(" + trianglex + ", -43)")
+      .attr("d", "M0,16 L0,0 L12,8 L0,16 Z")
+      .attr("fill", "#D8D8D8");
+
+    canvas.append("text")
+      .classed({
+        "x-bottom": true,
+        "label": true
+      })
+      .attr("transform", "translate(" + labelx + "," + (h + 45) + ")")
+      .text("Per Cent Funded");
+
+    canvas.append("path")
+      .classed({
+        "triangle": true,
+        "triangle-bottom": true
+      })
+      .attr("transform", "translate(" + trianglex + "," + (h + 32) + ")")
+      .attr("d", "M0,16 L0,0 L12,8 L0,16 Z")
+      .attr("fill", "#D8D8D8");
 
     canvas.append("g")
       .classed({
@@ -844,12 +897,30 @@ templates['river-item.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":
 },{}],6:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['river.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+templates['river.hbs'] = template({"1":function(depth0,helpers,partials,data) {
+    var helper, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "        <input type=\"radio\" name=\"river\" id=\""
+    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
+    + "\" class=\"accordion-set--check\" />\n        <label for=\""
+    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
+    + "\" class=\"accordion-set--label\">"
+    + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
+    + "</label>\n        <div id=\""
+    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
+    + "-accordion\" class=\"accordion-set--content\">\n          <div class=\"widget-river--filters-content\">\n            <h2 class=\"filters-content--title\">"
+    + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
+    + "</h2>\n            <ul class=\"filters-content--items\">\n            </ul>\n            <a class=\"filters-content--more btn\" href=\""
+    + alias2(((helper = (helper = helpers.location || (depth0 != null ? depth0.location : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"location","hash":{},"data":data}) : helper)))
+    + "\" target=\"_blank\">View full list on ReliefWeb</a>\n          </div>\n        </div>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper;
 
   return "<div class=\"widget-river\" id=\"widget-river\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-activity_reporting widget-title--icon\"></i>"
     + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</span></h1>\n  <div class=\"widget-river--results clearfix\">\n\n    <div class=\"accordion-set widget-river--filters results--item--reports\">\n      <h5 class=\"widget-river--filters--title\">Filter Results:  <span class=\"tab\">Reports</span> <span class=\"close\"></span></h5>\n      <!--Item 1-->\n      <input type=\"radio\" name=\"river\" id=\"situation-reports\" class=\"accordion-set--check\"/>\n      <label for=\"situation-reports\" class=\"accordion-set--label\">Situation Reports</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Situation Reports</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">25 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Factsheet Syrian Crisis - January 2015</h3>\n\n              <div class=\"filters-content--item-source\">Swiss Agency for Development and Coopration</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">23 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Jordan Refugee Response - Inter-Agency Winterization Update: Response to Snow Storm Jana, 23rd February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN High Commissioner for Refugees</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">18 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syrian refugees: Inter-agency regional update, 18 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN High Commissioner for Refugees</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">18 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syria operations from Turkey, Humanitarian Bulletin Issue 13 | 02-17 Feb 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Office for the Coordination of Humanitarian Affairs</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 2-->\n      <input type=\"radio\" name=\"river\" id=\"needs-assessments\" class=\"accordion-set--check\"/>\n      <label for=\"needs-assessments\" class=\"accordion-set--label\">Needs Assessments</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Needs Assessments</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">An assessment of antenatal care among Syrian refugees in Lebanon</h3>\n\n              <div class=\"filters-content--item-source\">BioMed Central</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">23 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Winterisation assessment in Al Za’atari refugee camp in Jordan - October 2014</h3>\n\n              <div class=\"filters-content--item-source\">UN High Commissioner for Refugees, REACH Initiative</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">13 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Economic and social impact assessment of the Syrian conflict and the ISIS crisis</h3>\n\n              <div class=\"filters-content--item-source\">World Bank</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">03 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Understanding livelihoods in northern Syria: how people are coping with repeated shocks, constant change and an uncertain future</h3>\n\n              <div class=\"filters-content--item-source\">Save the Children</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 3-->\n      <input type=\"radio\" name=\"river\" id=\"education\" class=\"accordion-set--check\"/>\n      <label for=\"education\" class=\"accordion-set--label\">Education</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Education</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">28 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Programmes implemented by the UN Agencies with the contribution of the Italian Government for a total amount of 2.5 million Euro</h3>\n\n              <div class=\"filters-content--item-source\">UN Development Programme</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Emergencies updates: 6 to 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Oxfam</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Japan commits US$ 32.2 million to support Palestine refugees</h3>\n\n              <div class=\"filters-content--item-source\">UN Relief and Works Agency for Palestine Refugees in the Near East</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>\n\n              <div class=\"filters-content--item-source\">UN Security Council</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 4-->\n      <input type=\"radio\" name=\"river\" id=\"emergency-shelter\" class=\"accordion-set--check\"/>\n      <label for=\"emergency-shelter\" class=\"accordion-set--label\">Emergency Shelter</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Emergency Shelter</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Emergencies updates: 6 to 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Oxfam</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syria Response Official Fuel Prices Snapshot (Jan 2014 – Feb 2015)</h3>\n\n              <div class=\"filters-content--item-source\">World Food Programme, Logistics Cluster</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Inter-Sector Working Group (ISWG) Work Plan: January to June 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN High Commissioner for Refugees</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Japan commits US$ 32.2 million to support Palestine refugees</h3>\n\n              <div class=\"filters-content--item-source\">UN Relief and Works Agency for Palestine Refugees in the Near East</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 5-->\n      <input type=\"radio\" name=\"river\" id=\"emergency-telecommunications\" class=\"accordion-set--check\"/>\n      <label for=\"emergency-telecommunications\" class=\"accordion-set--label\">Emergency Telecommunications</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Emergency Telecommunications</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">28 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Turkey | Syria: Border Crossings Status - 27 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Office for the Coordination of Humanitarian Affairs</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syria Crisis: Logistics Cluster Warehouse Capacity as of 23rd February 2015</h3>\n\n              <div class=\"filters-content--item-source\">World Food Programme, Logistics Cluster</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Assistant Secretary-General for Humanitarian Affairs and Deputy Emergency Relief Coordinator, Kyung-Wha Kang: Security Council Briefing on Syria - New York, 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Office for the Coordination of Humanitarian Affairs</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">More than 55 responses in January, 2015</h3>\n\n              <div class=\"filters-content--item-source\">Syrian Arab Red Crescent</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 6-->\n      <input type=\"radio\" name=\"river\" id=\"food-security\" class=\"accordion-set--check\"/>\n      <label for=\"food-security\" class=\"accordion-set--label\">Food Security</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Food Security</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Emergencies updates: 6 to 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Oxfam</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">The crisis in Yarmouk Camp, 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Relief and Works Agency for Palestine Refugees in the Near East</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">In Hama, Kirnaz city receives aid for the first time after two years</h3>\n\n              <div class=\"filters-content--item-source\">Syrian Arab Red Crescent</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>\n\n              <div class=\"filters-content--item-source\">UN Security Council</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 7-->\n      <input type=\"radio\" name=\"river\" id=\"health\" class=\"accordion-set--check\"/>\n      <label for=\"health\" class=\"accordion-set--label\">Health</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Health</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syria’s Medical Community Under Assault</h3>\n\n              <div class=\"filters-content--item-source\">Physicians for Human Rights</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Emergencies updates: 6 to 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Oxfam</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Palestinian refugee camps in Lebanon and Syria: Red Cross Red Crescent is calling for greater support for refugees</h3>\n\n              <div class=\"filters-content--item-source\">International Committee of the Red Cross, Palestine Red Crescent Society, International Federation of Red Cross And Red Crescent Societies</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Polio this week as of 25 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Global Polio Eradication Initiative</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 8-->\n      <input type=\"radio\" name=\"river\" id=\"logistics\" class=\"accordion-set--check\"/>\n      <label for=\"logistics\" class=\"accordion-set--label\">Logistics</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Logistics</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">28 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Turkey | Syria: Border Crossings Status - 27 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Office for the Coordination of Humanitarian Affairs</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syria Crisis: Logistics Cluster Warehouse Capacity as of 23rd February 2015</h3>\n\n              <div class=\"filters-content--item-source\">World Food Programme, Logistics Cluster</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Assistant Secretary-General for Humanitarian Affairs and Deputy Emergency Relief Coordinator, Kyung-Wha Kang: Security Council Briefing on Syria - New York, 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Office for the Coordination of Humanitarian Affairs</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">More than 55 responses in January, 2015</h3>\n\n              <div class=\"filters-content--item-source\">Syrian Arab Red Crescent</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 9-->\n      <input type=\"radio\" name=\"river\" id=\"nutrition\" class=\"accordion-set--check\"/>\n      <label for=\"nutrition\" class=\"accordion-set--label\">Nutrition</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Nutrition</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Emergencies updates: 6 to 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Oxfam</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">The crisis in Yarmouk Camp, 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Relief and Works Agency for Palestine Refugees in the Near East</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">In Hama, Kirnaz city receives aid for the first time after two years</h3>\n\n              <div class=\"filters-content--item-source\">Syrian Arab Red Crescent</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">26 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Implementation of Security Council resolutions 2139 (2014), 2165 (2014) and 2191 (2014) - Report of the Secretary-General (S/2015/124) [EN/AR]</h3>\n\n              <div class=\"filters-content--item-source\">UN Security Council</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n      <!--Item 10-->\n      <input type=\"radio\" name=\"river\" id=\"protection\" class=\"accordion-set--check\"/>\n      <label for=\"protection\" class=\"accordion-set--label\">Protection</label>\n      <div class=\"accordion-set--content\">\n        <div class=\"widget-river--filters-content\">\n          <h2 class=\"filters-content--title\">Protection</h2>\n          <ul class=\"filters-content--items\">\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Emergencies updates: 6 to 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">Oxfam</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Car bomb kills 11 outside Damascus: monitor</h3>\n\n              <div class=\"filters-content--item-source\">Agence France-Presse</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">Syria’s war continues ‘unabated and with total impunity,’ Security Council told</h3>\n\n              <div class=\"filters-content--item-source\">UN News Service</div>\n            </li>\n            <li class=\"filters-content--item\">\n              <div class=\"filters-content--item-date\">27 February 2015</div>\n              <h3 class=\"filters-content--item-title\">The crisis in Yarmouk Camp, 26 February 2015</h3>\n\n              <div class=\"filters-content--item-source\">UN Relief and Works Agency for Palestine Refugees in the Near East</div>\n            </li>\n          </ul>\n          <a class=\"filters-content--more btn\" href=\"\">View full list on ReliefWeb</a>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n</div>\n";
+    + "</span></h1>\n  <div class=\"widget-river--results clearfix\">\n\n    <div class=\"accordion-set widget-river--filters results--item--reports\">\n      <h5 class=\"widget-river--filters--title\">Filter Results:  <span class=\"tab\">Reports</span> <span class=\"close\"></span></h5>\n\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.filters : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    </div>\n  </div>\n</div>\n";
 },"useData":true});
 })();
 },{}],7:[function(require,module,exports){
@@ -908,18 +979,32 @@ RiverWidget.prototype.compile = function(elements, next) {
   }
 };
 
-RiverWidget.prototype.link = function(elements, next) {
+RiverWidget.prototype.link = function(elements) {
 
   var $element = $(elements[0][0]);
   var widget = this;
-  var content = widget.config('content');
+  var filters = widget.config('filters');
   var rw = reliefweb.client();
 
   function init() {
-    paint();
+    console.log("filters", filters);
+    filters.forEach(function(filter) {
+      console.log("Filter", filter);
+      getDataAndRender(filter.id, filter.filters);
+    });
+
+    $element.find('.accordion-set--label').click(function() {
+      // Accordion is absolutely positioned, which means it won't play well with pym.js.
+      var that = this;
+      setTimeout(function() {
+        var $accordian = $('#' + $(that).attr('for') + '-accordion');
+        var height = $accordian.find('.widget-river--filters-content').height() + 75;
+        $('.widget-river--results').height(height);
+      }, 1);
+    });
   }
 
-  function paint(updatedContent) {
+  function getDataAndRender(filterId, filterData) {
     rw.post('reports')
       .send({'limit': 4})
       .send({
@@ -927,6 +1012,7 @@ RiverWidget.prototype.link = function(elements, next) {
           'include': ["title", "source", "date"]
         }
       })
+      .send({"filter": filterData})
       .sort('date.created', 'desc')
       .end(function(err, res) {
         if (!err) {
@@ -944,98 +1030,12 @@ RiverWidget.prototype.link = function(elements, next) {
             return acc + Handlebars.templates['river-item.hbs'](value);
           }, '');
 
-          $('.filters-content--items', $element).empty().html(items);
+          $('#' + filterId + '-accordion .filters-content--items', $element).empty().html(items);
         }
       });
   }
 
   init();
-};
-
-RiverWidget.prototype.getData = function(period, updatePage) {
-  var widget = this;
-  var currentDate = moment().utc().format();
-  var fromDate = moment().utc().subtract(1, period).format();
-  var countries = widget.config('countries');
-  var content = widget.config('content');
-
-  var interval = "day";
-  if (period == "years") {
-    interval = "month";
-  }
-
-  widget.config('timePeriod', {
-    duration: period,
-    startDate: moment(fromDate, moment.ISO_8601).utc().format("MM-DD-YYYY"),
-    endDate: moment(currentDate, moment.ISO_8601).utc().format("MM-DD-YYYY")
-  });
-
-  var factets = {
-    facets: [
-      {
-        "field": "date.created",
-        "interval": interval
-      }
-    ]
-  };
-
-  var count = 0;
-  var rw = reliefweb.client();
-  content.forEach(function(val, key) {
-
-    var type;
-    var filters = {
-      filter: {
-        'operator': 'AND',
-        'conditions': [
-          {
-            "field": "date.created",
-            "value": {
-              "from": fromDate,
-              "to": currentDate
-            }
-          }
-        ]
-      }
-    };
-
-    if (Array.isArray(countries) && countries.length) {
-      filters.filter.conditions.push({
-        'field': 'country.name',
-        'value': countries,
-        'operator': 'OR'
-      });
-    }
-
-    if (val.type == "maps") {
-      type = "reports";
-      filters.filter.conditions.push({
-        "field": "format.name",
-        "value": ["Map", "Infographic"],
-        "operator": "OR"
-      });
-    }
-    else {
-      type = val.type;
-    }
-
-    rw.post(type)
-      .send({preset: "analysis", limit: 0})
-      .send(factets)
-      .send(filters)
-      .sort('date.created', 'asc')
-      .end(function(err, res) {
-        if (!err) {
-          count++;
-          // TODO: Check to make sure values exists before setting.
-          content[key].count = res.body.totalCount;
-          content[key].graphData = res.body.embedded.facets["date.created"].data;
-          if (count == content.length) {
-            updatePage(content);
-          }
-        }
-      });
-  });
 };
 
 module.exports = RiverWidget;
