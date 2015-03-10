@@ -417,6 +417,7 @@ FinancialWidget.prototype.link = function(elements) {
       $('.axis.y .tick text').attr("transform", "translate(0, -10)");
 
       var labelx = w/2 - 52;
+      var trianglex = labelx + 110;
       if (chartState.direction == 'horizontal') {
         bubblePlacementScale.range([0, w]);
         canvas.select(".grid.x").style('display', 'block').call(gridXAxis);
@@ -424,6 +425,8 @@ FinancialWidget.prototype.link = function(elements) {
         canvas.select(".axis.x").attr("transform", "translate(0," + h + ")").style('display', 'block').call(xAxis);
         canvas.select(".label.x-top").attr("transform", "translate(" + labelx + ",-30)").style('display', 'block');
         canvas.select(".label.x-bottom").attr("transform", "translate(" + labelx + "," + (h + 45) + ")").style('display', 'block');
+        canvas.select(".triangle.triangle-top").attr("transform", "translate(" + trianglex + ", -43)").style('display', 'block');
+        canvas.select(".triangle.triangle-bottom").attr("transform", "translate(" + trianglex + "," + (h + 32) + ")").style('display', 'block');
         canvas.select(".axis.y").style('display', 'none');
         canvas.select(".grid.y").style('display', 'none');
       } else {
@@ -431,9 +434,10 @@ FinancialWidget.prototype.link = function(elements) {
         canvas.select(".axis.x-top").style('display', 'none');
         canvas.select(".axis.x").style('display', 'none');
         canvas.select(".grid.x").style('display', 'none');
-        canvas.select(".grid.x").style('display', 'none');
         canvas.select(".label.x-top").style('display', 'none');
         canvas.select(".label.x-bottom").style('display', 'none');
+        canvas.select(".triangle.triangle-top").style('display', 'none');
+        canvas.select(".triangle.triangle-bottom").style('display', 'none');
         canvas.select(".axis.y").style('display', 'block').call(yAxis);
         canvas.select(".axis.y .domain").style('display', 'none');
         canvas.select(".grid.y").style('display', 'block').call(gridYAxis);
@@ -528,6 +532,7 @@ FinancialWidget.prototype.link = function(elements) {
       .call(xAxisTop);
 
     var labelx = w/2 - 52;
+    var trianglex = labelx + 110;
     canvas.append("text")
       .classed({
         "x-top": true,
@@ -536,6 +541,15 @@ FinancialWidget.prototype.link = function(elements) {
       .attr("transform", "translate(" + labelx + ",-30)")
       .text("Per Cent Funded");
 
+    canvas.append("path")
+      .classed({
+        "triangle": true,
+        "triangle-top": true
+      })
+      .attr("transform", "translate(" + trianglex + ", -43)")
+      .attr("d", "M0,16 L0,0 L12,8 L0,16 Z")
+      .attr("fill", "#D8D8D8");
+
     canvas.append("text")
       .classed({
         "x-bottom": true,
@@ -543,6 +557,15 @@ FinancialWidget.prototype.link = function(elements) {
       })
       .attr("transform", "translate(" + labelx + "," + (h + 45) + ")")
       .text("Per Cent Funded");
+
+    canvas.append("path")
+      .classed({
+        "triangle": true,
+        "triangle-bottom": true
+      })
+      .attr("transform", "translate(" + trianglex + "," + (h + 32) + ")")
+      .attr("d", "M0,16 L0,0 L12,8 L0,16 Z")
+      .attr("fill", "#D8D8D8");
 
     canvas.append("g")
       .classed({
