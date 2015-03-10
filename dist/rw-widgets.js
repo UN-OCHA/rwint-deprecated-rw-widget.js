@@ -668,9 +668,11 @@ FinancialWidget.prototype.link = function(elements) {
         });
 
       var icon = getClusterIcon(node.title);
+      var iconx = (w / 2) - 495;
+      var icony = (h / 2) - 230;
       overlay.append("path")
         .classed("detail--icon", true)
-        .attr("transform", "translate(105,0)")
+        .attr("transform", "translate("+ iconx +"," + icony + ")")
         .attr("d", icon);
 
       var textContainer = overlay.append("g")
