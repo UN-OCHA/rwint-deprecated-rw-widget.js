@@ -103,6 +103,8 @@ FinancialWidget.prototype.link = function(elements) {
       $element = $(elements[0][0]), // @TODO, grab any potential element selected.
       calculatedDataSources = config.calculatedDataSources;
 
+  var labelMapping = widget.config('labelMapping');
+
   var chartState = {
     direction: ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical',
     currentSection: 0
@@ -117,7 +119,9 @@ FinancialWidget.prototype.link = function(elements) {
     $('.financial-widget--data-source-chooser :first-child', $element).toggleClass('active');
     populateBar();
 
-    $('.financial-widget--data-source', $element).click(function(e){
+    setTitle($('.financial-widget--data-source', $element).first().text());
+
+    $('.financial-widget--data-source', $element).click(function(e) {
       e.preventDefault();
       var selected = this.text;
       chartState.currentSection = _.findKey(config.dataSources, function(val) {return val.dataItemTitle == selected;});
@@ -177,19 +181,15 @@ FinancialWidget.prototype.link = function(elements) {
       return d.r < 50;
     };
 
-    var titleCleanup = function(title) {
-      return title;
-    };
-
     var windowResize = function() {
       var axisSwitch = false,
         oldDirection = chartState.direction;
 
-      w = $('#finance-bubbles').width();
+      w = $('#finance-bubbles', $element).width();
       svg.attr("width", w);
       w = w - margin.left - margin.right;
 
-      chartState.direction = ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical';
+      chartState.direction = ($('#finance-bubbles', $element).width() > 650) ? 'horizontal' : 'vertical';
 
       axisSwitch = (chartState.direction !== oldDirection);
 
@@ -273,7 +273,7 @@ FinancialWidget.prototype.link = function(elements) {
     var nodes = d3.range(sampleData.length).map(function(i) {
       var fundingPercentage = (sampleData[i].current_requirement) ? sampleData[i].funding / sampleData[i].current_requirement : 0;
       return {
-        title: titleCleanup(sampleData[i].name),
+        title: sampleData[i].name,
         fundingPercentage: fundingPercentage,
         requested: sampleData[i].original_requirement,
         funded: sampleData[i].funding,
@@ -441,7 +441,7 @@ FinancialWidget.prototype.link = function(elements) {
       });
 
     cluster.append("text")
-      .text(function(d) {return d.title;})
+      .text(function(d) {return shortClusterLabel(d.title);})
       .style("text-transform", "capitalize")
       .attr({
         "text-anchor": "middle",
@@ -558,7 +558,7 @@ FinancialWidget.prototype.link = function(elements) {
         .attr({
           "text-anchor": "middle"
         })
-        .text(node.title);
+        .text(longClusterLabel(node.title));
 
       textContainer.append("text")
         .attr({
@@ -656,16 +656,16 @@ FinancialWidget.prototype.link = function(elements) {
   }
 
   function populateYearSelector() {
-    var $yearSelector = $('select[name="time-chooser"]', $element);
-    // We are not pulling any 2015 data at this time. Start with 2014.
-    var currentYear = moment().subtract(1, "years").format('YYYY');
-    var selected = '';
-    for (var i = 0; i < 4; i++) {
-      selected = (currentYear == 2015) ? 'selected' : '';
-      $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
-      currentYear--;
-    }
-    $yearSelector.selectric();
+    //var $yearSelector = $('select[name="time-chooser"]', $element);
+    //// We are not pulling any 2015 data at this time. Start with 2014.
+    //var currentYear = moment().subtract(1, "years").format('YYYY');
+    //var selected = '';
+    //for (var i = 0; i < 4; i++) {
+    //  selected = (currentYear == 2015) ? 'selected' : '';
+    //  $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
+    //  currentYear--;
+    //}
+    //$yearSelector.selectric();
   }
 
   function populateBar() {
@@ -693,6 +693,22 @@ FinancialWidget.prototype.link = function(elements) {
     var selectedSource = calculatedDataSources[value];
     setCovered(selectedSource.fundingTotal, selectedSource.percentageRaised);
     setRequested(selectedSource.currentRequirementTotal);
+  }
+
+  function longClusterLabel(original) {
+    var mapped = _.result(_.find(labelMapping, function(item) {
+      return item.original == original;
+    }), "long");
+
+    return (mapped) ? mapped : original;
+  }
+
+  function shortClusterLabel(original) {
+    var mapped = _.result(_.find(labelMapping, function(item) {
+      return item.original == original;
+    }), "short");
+
+    return (mapped) ? mapped : original;
   }
 
   init();

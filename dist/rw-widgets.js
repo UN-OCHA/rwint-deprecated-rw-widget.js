@@ -167,7 +167,7 @@ templates['financial.hbs'] = template({"1":function(depth0,helpers,partials,data
   if (stack1 != null) { buffer += stack1; }
   return buffer + "  </div>\n  <div class=\"financial-widget--time\">\n    <h1>"
     + alias3(((helper = (helper = helpers.dataItemTitleCurrent || (depth0 != null ? depth0.dataItemTitleCurrent : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataItemTitleCurrent","hash":{},"data":data}) : helper)))
-    + "</h1>\n    <select class=\"financial-widget--time-select\" name=\"time-chooser\" id=\"\">\n    </select>\n  </div>\n  <div class=\"financial-widget--percent-funded\">\n    <div class=\"financial-widget--percent-funded--amount covered\">$2.12B Funded <span class=\"percent\">57% <span>covered</span></span>\n    </div>\n    <div class=\"financial-widget--percent-funded--amount requested \">$3.74B Requested</div>\n  </div>\n  <div class=\"financial-widget--cluster-funding\">\n    <h2>Requirements &amp; Funding Per Cluster</h2>\n    <div id=\"finance-bubbles\"></div>\n  </div>\n  <footer class=\"financial-widget--explore\"><a href=\""
+    + "</h1>\n  </div>\n  <div class=\"financial-widget--percent-funded\">\n    <div class=\"financial-widget--percent-funded--amount covered\">$2.12B Funded <span class=\"percent\">57% <span>covered</span></span>\n    </div>\n    <div class=\"financial-widget--percent-funded--amount requested \">$3.74B Requested</div>\n  </div>\n  <div class=\"financial-widget--cluster-funding\">\n    <h2>Requirements &amp; Funding Per Cluster</h2>\n    <div id=\"finance-bubbles\"></div>\n  </div>\n  <footer class=\"financial-widget--explore\"><a href=\""
     + alias3(((helper = (helper = helpers.fundingDocumentURL || (depth0 != null ? depth0.fundingDocumentURL : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"fundingDocumentURL","hash":{},"data":data}) : helper)))
     + "\" target=\"_blank\">Explore Funding Documents via ReliefWeb</a></footer>\n  <footer class=\"financial-widget--sources\">Data Source <cite><a href=\""
     + alias3(((helper = (helper = helpers.dataSourceURL || (depth0 != null ? depth0.dataSourceURL : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"dataSourceURL","hash":{},"data":data}) : helper)))
@@ -281,6 +281,8 @@ FinancialWidget.prototype.link = function(elements) {
       $element = $(elements[0][0]), // @TODO, grab any potential element selected.
       calculatedDataSources = config.calculatedDataSources;
 
+  var labelMapping = widget.config('labelMapping');
+
   var chartState = {
     direction: ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical',
     currentSection: 0
@@ -295,7 +297,9 @@ FinancialWidget.prototype.link = function(elements) {
     $('.financial-widget--data-source-chooser :first-child', $element).toggleClass('active');
     populateBar();
 
-    $('.financial-widget--data-source', $element).click(function(e){
+    setTitle($('.financial-widget--data-source', $element).first().text());
+
+    $('.financial-widget--data-source', $element).click(function(e) {
       e.preventDefault();
       var selected = this.text;
       chartState.currentSection = _.findKey(config.dataSources, function(val) {return val.dataItemTitle == selected;});
@@ -355,19 +359,15 @@ FinancialWidget.prototype.link = function(elements) {
       return d.r < 50;
     };
 
-    var titleCleanup = function(title) {
-      return title;
-    };
-
     var windowResize = function() {
       var axisSwitch = false,
         oldDirection = chartState.direction;
 
-      w = $('#finance-bubbles').width();
+      w = $('#finance-bubbles', $element).width();
       svg.attr("width", w);
       w = w - margin.left - margin.right;
 
-      chartState.direction = ($('#finance-bubbles').width() > 650) ? 'horizontal' : 'vertical';
+      chartState.direction = ($('#finance-bubbles', $element).width() > 650) ? 'horizontal' : 'vertical';
 
       axisSwitch = (chartState.direction !== oldDirection);
 
@@ -451,7 +451,7 @@ FinancialWidget.prototype.link = function(elements) {
     var nodes = d3.range(sampleData.length).map(function(i) {
       var fundingPercentage = (sampleData[i].current_requirement) ? sampleData[i].funding / sampleData[i].current_requirement : 0;
       return {
-        title: titleCleanup(sampleData[i].name),
+        title: sampleData[i].name,
         fundingPercentage: fundingPercentage,
         requested: sampleData[i].original_requirement,
         funded: sampleData[i].funding,
@@ -619,7 +619,7 @@ FinancialWidget.prototype.link = function(elements) {
       });
 
     cluster.append("text")
-      .text(function(d) {return d.title;})
+      .text(function(d) {return shortClusterLabel(d.title);})
       .style("text-transform", "capitalize")
       .attr({
         "text-anchor": "middle",
@@ -736,7 +736,7 @@ FinancialWidget.prototype.link = function(elements) {
         .attr({
           "text-anchor": "middle"
         })
-        .text(node.title);
+        .text(longClusterLabel(node.title));
 
       textContainer.append("text")
         .attr({
@@ -834,16 +834,16 @@ FinancialWidget.prototype.link = function(elements) {
   }
 
   function populateYearSelector() {
-    var $yearSelector = $('select[name="time-chooser"]', $element);
-    // We are not pulling any 2015 data at this time. Start with 2014.
-    var currentYear = moment().subtract(1, "years").format('YYYY');
-    var selected = '';
-    for (var i = 0; i < 4; i++) {
-      selected = (currentYear == 2015) ? 'selected' : '';
-      $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
-      currentYear--;
-    }
-    $yearSelector.selectric();
+    //var $yearSelector = $('select[name="time-chooser"]', $element);
+    //// We are not pulling any 2015 data at this time. Start with 2014.
+    //var currentYear = moment().subtract(1, "years").format('YYYY');
+    //var selected = '';
+    //for (var i = 0; i < 4; i++) {
+    //  selected = (currentYear == 2015) ? 'selected' : '';
+    //  $yearSelector.append('<option value="' + currentYear + '"' + selected + '>' + currentYear + '</option>');
+    //  currentYear--;
+    //}
+    //$yearSelector.selectric();
   }
 
   function populateBar() {
@@ -871,6 +871,22 @@ FinancialWidget.prototype.link = function(elements) {
     var selectedSource = calculatedDataSources[value];
     setCovered(selectedSource.fundingTotal, selectedSource.percentageRaised);
     setRequested(selectedSource.currentRequirementTotal);
+  }
+
+  function longClusterLabel(original) {
+    var mapped = _.result(_.find(labelMapping, function(item) {
+      return item.original == original;
+    }), "long");
+
+    return (mapped) ? mapped : original;
+  }
+
+  function shortClusterLabel(original) {
+    var mapped = _.result(_.find(labelMapping, function(item) {
+      return item.original == original;
+    }), "short");
+
+    return (mapped) ? mapped : original;
   }
 
   init();
@@ -987,9 +1003,7 @@ RiverWidget.prototype.link = function(elements) {
   var rw = reliefweb.client();
 
   function init() {
-    console.log("filters", filters);
     filters.forEach(function(filter) {
-      console.log("Filter", filter);
       getDataAndRender(filter.id, filter.filters);
     });
 
