@@ -326,13 +326,12 @@ TimelineWidget.prototype.link = function(elements) {
     var current = moment(currentString, 'MMM YYYY').unix();
     var itemTime;
     var val;
-
-
+    
     for (var i = 0; i < timelineContent.length; i++) {
       val = timelineContent[i];
       itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
 
-      if (current > itemTime) {
+      if (current < itemTime) {
         timelineState.currentIndex = i;
         paint();
         break;
@@ -355,7 +354,7 @@ TimelineWidget.prototype.link = function(elements) {
   function lazyLoad() {
     if ($sly.rel.activeItem === 0) {
       widget.getData($sly.items.length, function(timelineItems) {
-        widget.config('timeline-items', timelineItems);
+
         timelineItems.forEach(function(item){
           $('.timeline-widget--frames ul.slidee').prepend(Handlebars.templates['frameItem.hbs'](item));
           $('.timeline-widget--dropdown--container ul.slidee').prepend(Handlebars.templates['dropDownItem.hbs'](item));
