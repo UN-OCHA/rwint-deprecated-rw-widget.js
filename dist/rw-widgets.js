@@ -1137,7 +1137,6 @@ var reliefweb = (typeof window !== "undefined" ? window.reliefweb : typeof globa
 var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null);
 
 // load template
-
 require('./timeline.hbs.js');
 require('./frame-item.hbs.js');
 require('./dropdown-item.hbs.js');
@@ -1207,7 +1206,7 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
   var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'asc')
+    .sort('date.original', 'desc')
     .send(filters)
     .send({limit: limit})
     .send({offset: offset})
@@ -1242,6 +1241,7 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
 
           count++;
           if (count == res.body.data.length) {
+            //timelineItems.reverse();
             updatePage(timelineItems);
           }
         });
@@ -1483,15 +1483,15 @@ TimelineWidget.prototype.link = function(elements) {
 
   function lazyLoad() {
     if (timelineState.currentIndex == ($sly.items.length - 1)) {
+      // Add ten to current index
+      //timelineState.currentIndex = widget.config('limit');
       widget.getData($sly.items.length, function(timelineItems) {
         widget.config('timeline-items', timelineItems);
 
         var index = $sly.items.length;
         timelineItems.forEach(function(item){
-          item.index = index;
           $('.timeline-widget--frames ul.slidee').append(Handlebars.templates['frameItem.hbs'](item));
           $('.timeline-widget--dropdown--container ul.slidee').append(Handlebars.templates['dropDownItem.hbs'](item));
-          index++;
         });
 
         // Add no more entries text when at the end.
@@ -1499,17 +1499,15 @@ TimelineWidget.prototype.link = function(elements) {
           $('.timeline-widget--dropdown--container ul.slidee').append('<li class="timeline-widget--dropdown--end-of-line">No More Entries</li>');
         }
 
-        // Set initial widths.
-        var $newItems = $('.timeline-widget-item');
-        $newItems.width($frame.width());
-        $newItems.css({
+        $item = $('.timeline-widget-item', $element);
+        $item.width($frame.width());
+        $item.css({
           marginRight : margin
         });
 
         $sly.reload();
         $slyDropdown.reload();
 
-        // TODO: Figure out why I need to declare this again.
         $('.timeline-widget-dropdown--list-item', $element).click(function(){
           timelineState.currentIndex = $(this).attr('data-slide');
           $('.timeline-widget--dropdown--wrapper').toggleClass('open');
