@@ -213,7 +213,6 @@ TimelineWidget.prototype.link = function(elements) {
       itemNav: 'forceCentered',
       smart: 1,
       activateMiddle: 1,
-      mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
       startAt: timelineState.currentIndex,
