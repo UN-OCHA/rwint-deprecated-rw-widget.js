@@ -6,10 +6,13 @@ var WidgetBase = require('beat-blocks').helpers.widgetBase;
 var $ = require('jquery');
 var moment = require('moment');
 var reliefweb = require('reliefweb');
+var Handlebars = require('handlebars');
 
 // load template
 
 require('./timeline.hbs.js');
+require('./frame-item.hbs.js');
+require('./dropdown-item.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {
@@ -26,11 +29,8 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
-TimelineWidget.prototype.compile = function(elements, next) {
+TimelineWidget.prototype.getData = function(offset, updatePage) {
   var widget = this;
-
-  var config = this.config();
-  this.config('adjustedTitle', titleAdjust(config.title));
 
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
@@ -39,10 +39,12 @@ TimelineWidget.prototype.compile = function(elements, next) {
 
   if (widget.has('limit')) {
     limit = widget.config('limit');
+  } else {
+    widget.config('limit', limit);
   }
 
   var filters = {
-      filter: {
+    filter: {
       'operator': 'AND',
       'conditions': [
         {
@@ -80,8 +82,10 @@ TimelineWidget.prototype.compile = function(elements, next) {
     .sort('date.original', 'asc')
     .send(filters)
     .send({limit: limit})
+    .send({offset: offset})
     .end(function(err, res) {
       if (!err) {
+        var count = 0;
         var timelineItems = [];
         res.body.data.forEach(function(val, key) {
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
@@ -96,7 +100,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
           if (val.fields.headline.image) {
             item["img-src"] = val.fields.headline.image.url;
           } else {
-            // @TODO: Default image
+            // @TODO: Default imagel
           }
 
           var time = moment(val.fields.date.original,  moment.ISO_8601);
@@ -107,19 +111,33 @@ TimelineWidget.prototype.compile = function(elements, next) {
           item['new-month'] = prevMonth !== time.month();
 
           timelineItems.push(item);
-        });
 
-        widget.config('timeline-items', timelineItems);
-
-        widget.template(function(content) {
-          elements
-            .classed('rw-widget', true)
-            .html(content);
-
-          next();
+          count++;
+          if (count == res.body.data.length) {
+            updatePage(timelineItems);
+          }
         });
       }
     });
+};
+
+TimelineWidget.prototype.compile = function(elements, next) {
+  var widget = this;
+
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
+
+  widget.getData(0, function(timelineItems) {
+    widget.config('timeline-items', timelineItems);
+
+    widget.template(function(content) {
+      elements
+        .classed('rw-widget', true)
+        .html(content);
+
+      next();
+    });
+  });
 
   function titleAdjust(title) {
     var snippet = '<span class="word[[counter]]">[[word]]</span>';
@@ -133,6 +151,8 @@ TimelineWidget.prototype.compile = function(elements, next) {
 };
 
 TimelineWidget.prototype.link = function(elements) {
+  var widget = this;
+
   var timelineState = {};
   var timelineContent = this.config('timeline-items');
 
@@ -329,8 +349,48 @@ TimelineWidget.prototype.link = function(elements) {
   // Update other sliders based on main.
   $sly.on('moveStart', function(){
     timelineState.currentIndex = $sly.rel.activeItem;
+    lazyLoad();
     paint();
   });
+
+  function lazyLoad() {
+    if (timelineState.currentIndex == ($sly.items.length - 1)) {
+      widget.getData($sly.items.length, function(timelineItems) {
+        widget.config('timeline-items', timelineItems);
+
+        var index = $sly.items.length;
+        timelineItems.forEach(function(item){
+          item.index = index;
+          $('.timeline-widget--frames ul.slidee').append(Handlebars.templates['frameItem.hbs'](item));
+          $('.timeline-widget--dropdown--container ul.slidee').append(Handlebars.templates['dropDownItem.hbs'](item));
+          index++;
+        });
+
+        // Add no more entries text when at the end.
+        if (timelineItems.length < widget.config('limit')) {
+          $('.timeline-widget--dropdown--container ul.slidee').append('<li class="timeline-widget--dropdown--end-of-line">No More Entries</li>');
+        }
+
+        // Set initial widths.
+        var $newItems = $('.timeline-widget-item');
+        $newItems.width($frame.width());
+        $newItems.css({
+          marginRight : margin
+        });
+
+        $sly.reload();
+        $slyDropdown.reload();
+
+        // TODO: Figure out why I need to declare this again.
+        $('.timeline-widget-dropdown--list-item', $element).click(function(){
+          timelineState.currentIndex = $(this).attr('data-slide');
+          $('.timeline-widget--dropdown--wrapper').toggleClass('open');
+          paint();
+        });
+
+      });
+    }
+  }
 };
 
 module.exports = TimelineWidget;
