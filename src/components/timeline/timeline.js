@@ -113,7 +113,6 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
 
           count++;
           if (count == res.body.data.length) {
-            //timelineItems.reverse();
             updatePage(timelineItems);
           }
         });
@@ -128,6 +127,7 @@ TimelineWidget.prototype.compile = function(elements, next) {
   this.config('adjustedTitle', titleAdjust(config.title));
 
   widget.getData(0, function(timelineItems) {
+    timelineItems.reverse();
     widget.config('timeline-items', timelineItems);
 
     widget.template(function(content) {
@@ -332,7 +332,7 @@ TimelineWidget.prototype.link = function(elements) {
       val = timelineContent[i];
       itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
 
-      if (current < itemTime) {
+      if (current > itemTime) {
         timelineState.currentIndex = i;
         paint();
         break;
@@ -346,29 +346,30 @@ TimelineWidget.prototype.link = function(elements) {
   });
 
   // Update other sliders based on main.
-  $sly.on('moveStart', function(){
-    timelineState.currentIndex = $sly.rel.activeItem;
+  $sly.on('moveStart', function() {
     lazyLoad();
+    timelineState.currentIndex = $sly.rel.activeItem;
     paint();
   });
 
   function lazyLoad() {
-    if (timelineState.currentIndex == ($sly.items.length - 1)) {
-      // Add ten to current index
-      //timelineState.currentIndex = widget.config('limit');
+    if ($sly.rel.activeItem === 0) {
       widget.getData($sly.items.length, function(timelineItems) {
         widget.config('timeline-items', timelineItems);
-
-        var index = $sly.items.length;
         timelineItems.forEach(function(item){
-          $('.timeline-widget--frames ul.slidee').append(Handlebars.templates['frameItem.hbs'](item));
-          $('.timeline-widget--dropdown--container ul.slidee').append(Handlebars.templates['dropDownItem.hbs'](item));
+          $('.timeline-widget--frames ul.slidee').prepend(Handlebars.templates['frameItem.hbs'](item));
+          $('.timeline-widget--dropdown--container ul.slidee').prepend(Handlebars.templates['dropDownItem.hbs'](item));
         });
 
         // Add no more entries text when at the end.
         if (timelineItems.length < widget.config('limit')) {
           $('.timeline-widget--dropdown--container ul.slidee').append('<li class="timeline-widget--dropdown--end-of-line">No More Entries</li>');
         }
+
+        // Reset dataslide attribute.
+        $('li.timeline-widget-dropdown--list-item').each(function(idx){
+          $(this).attr('data-slide', idx);
+        });
 
         $item = $('.timeline-widget-item', $element);
         $item.width($frame.width());
@@ -385,6 +386,7 @@ TimelineWidget.prototype.link = function(elements) {
           paint();
         });
 
+        slideTo(widget.config('limit'));
       });
     }
   }
