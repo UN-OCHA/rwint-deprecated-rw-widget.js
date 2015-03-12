@@ -100,6 +100,9 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
             item["img-src"] = val.fields.headline.image.url;
           } else {
             // @TODO: Default imagel
+            if (widget.has('emptyImage')) {
+              item["img-src"] = widget.config('emptyImage');
+            }
           }
 
           var time = moment(val.fields.date.original,  moment.ISO_8601);
