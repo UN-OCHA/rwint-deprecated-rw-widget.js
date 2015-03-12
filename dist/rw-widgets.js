@@ -1145,7 +1145,7 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
     + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
     + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
     + alias2(alias1((depth0 != null ? depth0.url : depth0), depth0))
-    + "\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
+    + "\" target=\"_blank\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
   "<div class=\"timeline-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-product_type_timeline widget-title--icon-custom widget-title--icon\"></i>"
