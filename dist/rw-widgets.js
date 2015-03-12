@@ -1179,7 +1179,8 @@ var TimelineWidget = function(opts) {
   var config = {
     title: "Crisis Timeline",
     template: "timeline.hbs",
-    countries: []
+    countries: [],
+    limit: 100
   };
 
   opts = (opts) ? opts : {};
@@ -1195,13 +1196,11 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
 
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
-  var startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
-  var limit = 10;
+  var startDate;
+  var limit = widget.config('limit');
 
-  if (widget.has('limit')) {
-    limit = widget.config('limit');
-  } else {
-    widget.config('limit', limit);
+  if (widget.has("startDate")) {
+    startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
   }
 
   var filters = {
@@ -1210,16 +1209,19 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
       'conditions': [
         {
           'field': 'headline.featured'
-        },
-        {
-          "field": "date.original",
-          "value": {
-            "from":  startDate
-          }
         }
       ]
     }
   };
+
+  if (startDate) {
+    filters.filter.conditions.push({
+      "field": "date.original",
+      "value": {
+        "from":  startDate
+      }
+    });
+  }
 
   if (Array.isArray(countries) && countries.length) {
     filters.filter.conditions.push({
@@ -1261,13 +1263,13 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
           if (val.fields.headline.image) {
             item["img-src"] = val.fields.headline.image.url;
           } else {
-            // @TODO: Default imagel
+
             if (widget.has('emptyImage')) {
               item["img-src"] = widget.config('emptyImage');
             }
           }
 
-          var time = moment(val.fields.date.original,  moment.ISO_8601);
+          var time = moment(val.fields.date.original, moment.ISO_8601);
           item['date-full'] = time.format('DD MMM YYYY');
           item['date-month'] = time.format('MMMM');
           item['date-day'] = time.format('DD');
