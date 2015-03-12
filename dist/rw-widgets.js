@@ -1077,49 +1077,88 @@ module.exports = RiverWidget;
 },{"./river-item.hbs.js":5,"./river.hbs.js":6}],8:[function(require,module,exports){
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data) {
-  var helper, lambda=this.lambda, escapeExpression=this.escapeExpression, functionType="function", helperMissing=helpers.helperMissing;
-  return "              <li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
-    + escapeExpression(lambda((data && data.index), depth0))
-    + "\">\n                <div class=\"timeline-widget-dropdown--item\">\n                  <div class=\"timeline-widget-dropdown--item-date\">"
+templates['dropDownItem.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  return "<li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
+    + escapeExpression(((helper = (helper = helpers.index || (depth0 != null ? depth0.index : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"index","hash":{},"data":data}) : helper)))
+    + "\">\n  <div class=\"timeline-widget-dropdown--item\">\n    <div class=\"timeline-widget-dropdown--item-date\">"
     + escapeExpression(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-day","hash":{},"data":data}) : helper)))
     + " "
     + escapeExpression(((helper = (helper = helpers['date-month'] || (depth0 != null ? depth0['date-month'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-month","hash":{},"data":data}) : helper)))
     + " "
     + escapeExpression(((helper = (helper = helpers['date-year'] || (depth0 != null ? depth0['date-year'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"date-year","hash":{},"data":data}) : helper)))
-    + "</div>\n                  <div class=\"timeline-widget-dropdown--item-desc\">"
+    + "</div>\n    <div class=\"timeline-widget-dropdown--item-desc\">"
     + escapeExpression(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"short-desc","hash":{},"data":data}) : helper)))
-    + "</div>\n                </div>\n              </li>\n";
-},"3":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
-    + escapeExpression(lambda((depth0 != null ? depth0['date-full'] : depth0), depth0))
-    + "</div>\n              </div>\n              <h1 class=\"timeline-widget-item--title\">"
-    + escapeExpression(lambda((depth0 != null ? depth0.title : depth0), depth0))
-    + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content\">\n                  <div class=\"timeline-widget-item--image\">\n                    <div class=\"timeline-widget-item--image--icons\">\n                      <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                      <a class=\"timeline-widget-item--image--country\">"
-    + escapeExpression(lambda((depth0 != null ? depth0.country : depth0), depth0))
-    + "</a>\n                    </div>\n                    <img src=\""
-    + escapeExpression(lambda((depth0 != null ? depth0['img-src'] : depth0), depth0))
-    + "\" />\n                  </div>\n              <div class=\"timeline-widget-item--description\">\n                  ";
-  stack1 = lambda((depth0 != null ? depth0['long-desc'] : depth0), depth0);
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
-    + escapeExpression(lambda((depth0 != null ? depth0.url : depth0), depth0))
-    + "\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, helper, options, functionType="function", helperMissing=helpers.helperMissing, blockHelperMissing=helpers.blockHelperMissing, buffer = "<div class=\"timeline-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-product_type_timeline widget-title--icon-custom widget-title--icon\"></i>";
-  stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"adjustedTitle","hash":{},"data":data}) : helper));
-  if (stack1 != null) { buffer += stack1; }
-  buffer += "</span></h1>\n  <div class=\"timeline-widget--controls\">\n    <button class=\"prev\"><div class=\"arrow\"></div></button>\n    <button class=\"next\"><div class=\"arrow\"></div></button>\n  </div>\n\n  <div class=\"timeline-widget--dropdown\">\n    <div class=\"timeline-widget--dropdown-heading\">\n      <span class=\"button-arrow\"></span> Timeline - Calendar</div>\n    <div class=\"clear\"></div>\n    <div class=\"timeline-widget--dropdown--wrapper\">\n      <div class=\"timeline-widget--dropdown-controls\">\n        <div class=\"form-select\">\n          <select name=\"year\">\n          </select>\n        </div>\n        <div class=\"form-select\">\n          <select name=\"month\">\n          </select>\n        </div>\n        <button class=\"form-today\">Today</button>\n        <span class=\"close\"></span>\n      </div>\n      <div class=\"timeline-widget--dropdown--container\">\n        <ul class=\"slidee\">\n";
-  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : helperMissing),(options={"name":"timeline-items","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data}),(typeof helper === functionType ? helper.call(depth0, options) : helper));
-  if (!helpers['timeline-items']) { stack1 = blockHelperMissing.call(depth0, stack1, options); }
-  if (stack1 != null) { buffer += stack1; }
-  buffer += "          <li class=\"timeline-widget--dropdown--end-of-line\">No More Entries</li>\n        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"timeline-widget--frames\">\n    <ul class=\"slidee\">\n";
-  stack1 = helpers.each.call(depth0, (depth0 != null ? depth0['timeline-items'] : depth0), {"name":"each","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
-  if (stack1 != null) { buffer += stack1; }
-  return buffer + "    </ul>\n  </div>\n  <div class=\"clear-both\"></div>\n</div>";
+    + "</div>\n  </div>\n</li>";
 },"useData":true});
 })();
 },{}],9:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['frameItem.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression, buffer = "<li class=\"timeline-widget-item\">\n  <div class=\"timeline-widget-item--header\">\n    <div class=\"timeline-widget-item--headline\">\n      <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + escapeExpression(lambda((depth0 != null ? depth0['date-full'] : depth0), depth0))
+    + "</div>\n    </div>\n    <h1 class=\"timeline-widget-item--title\">"
+    + escapeExpression(lambda((depth0 != null ? depth0.title : depth0), depth0))
+    + "</h1>\n  </div>\n  <div class=\"timeline-widget-item--content\">\n    <div class=\"timeline-widget-item--image\">\n      <div class=\"timeline-widget-item--image--icons\">\n        <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n        <a class=\"timeline-widget-item--image--country\">"
+    + escapeExpression(lambda((depth0 != null ? depth0.country : depth0), depth0))
+    + "</a>\n      </div>\n      <img src=\""
+    + escapeExpression(lambda((depth0 != null ? depth0['img-src'] : depth0), depth0))
+    + "\" />\n    </div>\n    <div class=\"timeline-widget-item--description\">\n      ";
+  stack1 = lambda((depth0 != null ? depth0['long-desc'] : depth0), depth0);
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "\n      <div class=\"timeline-widget-item-link\">\n        <a class=\"btn\" href=\""
+    + escapeExpression(lambda((depth0 != null ? depth0.url : depth0), depth0))
+    + "\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n      </div>\n    </div>\n  </div>\n</li>";
+},"useData":true});
+})();
+},{}],10:[function(require,module,exports){
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data) {
+    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+
+  return "              <li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
+    + alias3(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\">\n                <div class=\"timeline-widget-dropdown--item\">\n                  <div class=\"timeline-widget-dropdown--item-date\">"
+    + alias3(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-day","hash":{},"data":data}) : helper)))
+    + " "
+    + alias3(((helper = (helper = helpers['date-month'] || (depth0 != null ? depth0['date-month'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-month","hash":{},"data":data}) : helper)))
+    + " "
+    + alias3(((helper = (helper = helpers['date-year'] || (depth0 != null ? depth0['date-year'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-year","hash":{},"data":data}) : helper)))
+    + "</div>\n                  <div class=\"timeline-widget-dropdown--item-desc\">"
+    + alias3(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"short-desc","hash":{},"data":data}) : helper)))
+    + "</div>\n                </div>\n              </li>\n";
+},"3":function(depth0,helpers,partials,data) {
+    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+
+  return "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + alias2(alias1((depth0 != null ? depth0['date-full'] : depth0), depth0))
+    + "</div>\n              </div>\n              <h1 class=\"timeline-widget-item--title\">"
+    + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
+    + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content\">\n                  <div class=\"timeline-widget-item--image\">\n                    <div class=\"timeline-widget-item--image--icons\">\n                      <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                      <a class=\"timeline-widget-item--image--country\">"
+    + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
+    + "</a>\n                    </div>\n                    <img src=\""
+    + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
+    + "\" />\n                  </div>\n              <div class=\"timeline-widget-item--description\">\n                  "
+    + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
+    + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
+    + alias2(alias1((depth0 != null ? depth0.url : depth0), depth0))
+    + "\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
+},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+    var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
+  "<div class=\"timeline-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-product_type_timeline widget-title--icon-custom widget-title--icon\"></i>"
+    + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
+    + "</span></h1>\n  <div class=\"timeline-widget--controls\">\n    <button class=\"prev\"><div class=\"arrow\"></div></button>\n    <button class=\"next\"><div class=\"arrow\"></div></button>\n  </div>\n\n  <div class=\"timeline-widget--dropdown\">\n    <div class=\"timeline-widget--dropdown-heading\">\n      <span class=\"button-arrow\"></span> Timeline - Calendar</div>\n    <div class=\"clear\"></div>\n    <div class=\"timeline-widget--dropdown--wrapper\">\n      <div class=\"timeline-widget--dropdown-controls\">\n        <div class=\"form-select\">\n          <select name=\"year\">\n          </select>\n        </div>\n        <div class=\"form-select\">\n          <select name=\"month\">\n          </select>\n        </div>\n        <button class=\"form-today\">Today</button>\n        <span class=\"close\"></span>\n      </div>\n      <div class=\"timeline-widget--dropdown--container\">\n        <ul class=\"slidee\">\n";
+  stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : alias1),(options={"name":"timeline-items","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
+  if (!helpers['timeline-items']) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
+  if (stack1 != null) { buffer += stack1; }
+  return buffer + "        </ul>\n      </div>\n    </div>\n  </div>\n\n  <div class=\"timeline-widget--frames\">\n    <ul class=\"slidee\">\n"
+    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0['timeline-items'] : depth0),{"name":"each","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
+    + "    </ul>\n  </div>\n  <div class=\"clear-both\"></div>\n</div>";
+},"useData":true});
+})();
+},{}],11:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -1129,16 +1168,19 @@ var WidgetBase = (typeof window !== "undefined" ? window.BeatBlocks : typeof glo
 var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
 var moment = (typeof window !== "undefined" ? window.moment : typeof global !== "undefined" ? global.moment : null);
 var reliefweb = (typeof window !== "undefined" ? window.reliefweb : typeof global !== "undefined" ? global.reliefweb : null);
+var Handlebars = (typeof window !== "undefined" ? window.Handlebars : typeof global !== "undefined" ? global.Handlebars : null);
 
 // load template
-
 require('./timeline.hbs.js');
+require('./frame-item.hbs.js');
+require('./dropdown-item.hbs.js');
 
 var TimelineWidget = function(opts) {
   var config = {
     title: "Crisis Timeline",
     template: "timeline.hbs",
-    countries: []
+    countries: [],
+    limit: 100
   };
 
   opts = (opts) ? opts : {};
@@ -1149,37 +1191,37 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
-TimelineWidget.prototype.compile = function(elements, next) {
+TimelineWidget.prototype.getData = function(offset, updatePage) {
   var widget = this;
-
-  var config = this.config();
-  this.config('adjustedTitle', titleAdjust(config.title));
 
   var countries = widget.config('countries');
   var disaster = widget.config('disaster');
-  var startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
-  var limit = 10;
+  var startDate;
+  var limit = widget.config('limit');
 
-  if (widget.has('limit')) {
-    limit = widget.config('limit');
+  if (widget.has("startDate")) {
+    startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
   }
 
   var filters = {
-      filter: {
+    filter: {
       'operator': 'AND',
       'conditions': [
         {
           'field': 'headline.featured'
-        },
-        {
-          "field": "date.original",
-          "value": {
-            "from":  startDate
-          }
         }
       ]
     }
   };
+
+  if (startDate) {
+    filters.filter.conditions.push({
+      "field": "date.original",
+      "value": {
+        "from":  startDate
+      }
+    });
+  }
 
   if (Array.isArray(countries) && countries.length) {
     filters.filter.conditions.push({
@@ -1200,11 +1242,13 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var rw = reliefweb.client();
   rw.post('reports')
     .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'asc')
+    .sort('date.original', 'desc')
     .send(filters)
     .send({limit: limit})
+    .send({offset: offset})
     .end(function(err, res) {
       if (!err) {
+        var count = 0;
         var timelineItems = [];
         res.body.data.forEach(function(val, key) {
           var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
@@ -1219,12 +1263,13 @@ TimelineWidget.prototype.compile = function(elements, next) {
           if (val.fields.headline.image) {
             item["img-src"] = val.fields.headline.image.url;
           } else {
+
             if (widget.has('emptyImage')) {
               item["img-src"] = widget.config('emptyImage');
             }
           }
 
-          var time = moment(val.fields.date.original,  moment.ISO_8601);
+          var time = moment(val.fields.date.original, moment.ISO_8601);
           item['date-full'] = time.format('DD MMM YYYY');
           item['date-month'] = time.format('MMMM');
           item['date-day'] = time.format('DD');
@@ -1232,19 +1277,34 @@ TimelineWidget.prototype.compile = function(elements, next) {
           item['new-month'] = prevMonth !== time.month();
 
           timelineItems.push(item);
-        });
 
-        widget.config('timeline-items', timelineItems);
-
-        widget.template(function(content) {
-          elements
-            .classed('rw-widget', true)
-            .html(content);
-
-          next();
+          count++;
+          if (count == res.body.data.length) {
+            updatePage(timelineItems);
+          }
         });
       }
     });
+};
+
+TimelineWidget.prototype.compile = function(elements, next) {
+  var widget = this;
+
+  var config = this.config();
+  this.config('adjustedTitle', titleAdjust(config.title));
+
+  widget.getData(0, function(timelineItems) {
+    timelineItems.reverse();
+    widget.config('timeline-items', timelineItems);
+
+    widget.template(function(content) {
+      elements
+        .classed('rw-widget', true)
+        .html(content);
+
+      next();
+    });
+  });
 
   function titleAdjust(title) {
     var snippet = '<span class="word[[counter]]">[[word]]</span>';
@@ -1258,6 +1318,8 @@ TimelineWidget.prototype.compile = function(elements, next) {
 };
 
 TimelineWidget.prototype.link = function(elements) {
+  var widget = this;
+
   var timelineState = {};
   var timelineContent = this.config('timeline-items');
 
@@ -1318,7 +1380,6 @@ TimelineWidget.prototype.link = function(elements) {
       itemNav: 'forceCentered',
       smart: 1,
       activateMiddle: 1,
-      mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
       startAt: timelineState.currentIndex,
@@ -1432,8 +1493,7 @@ TimelineWidget.prototype.link = function(elements) {
     var current = moment(currentString, 'MMM YYYY').unix();
     var itemTime;
     var val;
-
-
+    
     for (var i = 0; i < timelineContent.length; i++) {
       val = timelineContent[i];
       itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
@@ -1452,16 +1512,56 @@ TimelineWidget.prototype.link = function(elements) {
   });
 
   // Update other sliders based on main.
-  $sly.on('moveStart', function(){
+  $sly.on('moveStart', function() {
+    lazyLoad();
     timelineState.currentIndex = $sly.rel.activeItem;
     paint();
   });
+
+  function lazyLoad() {
+    if ($sly.rel.activeItem === 0) {
+      widget.getData($sly.items.length, function(timelineItems) {
+
+        timelineItems.forEach(function(item){
+          $('.timeline-widget--frames ul.slidee').prepend(Handlebars.templates['frameItem.hbs'](item));
+          $('.timeline-widget--dropdown--container ul.slidee').prepend(Handlebars.templates['dropDownItem.hbs'](item));
+        });
+
+        // Add no more entries text when at the end.
+        if (timelineItems.length < widget.config('limit')) {
+          $('.timeline-widget--dropdown--container ul.slidee').append('<li class="timeline-widget--dropdown--end-of-line">No More Entries</li>');
+        }
+
+        // Reset dataslide attribute.
+        $('li.timeline-widget-dropdown--list-item').each(function(idx){
+          $(this).attr('data-slide', idx);
+        });
+
+        $item = $('.timeline-widget-item', $element);
+        $item.width($frame.width());
+        $item.css({
+          marginRight : margin
+        });
+
+        $sly.reload();
+        $slyDropdown.reload();
+
+        $('.timeline-widget-dropdown--list-item', $element).click(function(){
+          timelineState.currentIndex = $(this).attr('data-slide');
+          $('.timeline-widget--dropdown--wrapper').toggleClass('open');
+          paint();
+        });
+
+        slideTo(widget.config('limit'));
+      });
+    }
+  }
 };
 
 module.exports = TimelineWidget;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./timeline.hbs.js":8}],10:[function(require,module,exports){
+},{"./dropdown-item.hbs.js":8,"./frame-item.hbs.js":9,"./timeline.hbs.js":10}],12:[function(require,module,exports){
 (function (global){
 "use strict";
 
@@ -1486,4 +1586,4 @@ BeatBlocks.addWidgetToRegistry('financial', FinancialWidget);
 module.exports = {};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./components/crisis-overview/crisis-overview":2,"./components/financial/financial":4,"./components/river.ver2/river":7,"./components/timeline/timeline":9}]},{},[10]);
+},{"./components/crisis-overview/crisis-overview":2,"./components/financial/financial":4,"./components/river.ver2/river":7,"./components/timeline/timeline":11}]},{},[12]);

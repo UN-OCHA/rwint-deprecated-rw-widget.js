@@ -1,0 +1,23 @@
+<li class="timeline-widget-item">
+  <div class="timeline-widget-item--header">
+    <div class="timeline-widget-item--headline">
+      <div class="timeline-widget-item--category">Ocha <div class="arrow"></div></div> <div class="timeline-widget-item--date">{{ this.date-full }}</div>
+    </div>
+    <h1 class="timeline-widget-item--title">{{ this.title }}</h1>
+  </div>
+  <div class="timeline-widget-item--content">
+    <div class="timeline-widget-item--image">
+      <div class="timeline-widget-item--image--icons">
+        <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img--yellow.png"></a>
+        <a class="timeline-widget-item--image--country">{{ this.country }}</a>
+      </div>
+      <img src="{{ this.img-src }}" />
+    </div>
+    <div class="timeline-widget-item--description">
+      {{{ this.long-desc }}}
+      <div class="timeline-widget-item-link">
+        <a class="btn" href="{{ this.url }}"><span class="un-icon-product_type_report"></span> Read full report</a>
+      </div>
+    </div>
+  </div>
+</li>
