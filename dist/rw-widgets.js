@@ -741,7 +741,7 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
-          "transform": "translate(0,20)"
+          "transform": "translate(0,40)"
         })
         .text(percentageFormatter(node.fundingPercentage) + " funded");
 
@@ -749,7 +749,7 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
-          "transform": "translate(0,40)"
+          "transform": "translate(0,60)"
         })
         .text(fundingPrefix.scale(node.requested).toFixed(2) + fundingPrefix.symbol + " Requested");
 
@@ -757,7 +757,7 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
-          "transform": "translate(0,60)"
+          "transform": "translate(0,80)"
         })
         .text(fundingPrefix.scale(node.funded).toFixed(2) + fundingPrefix.symbol + " Funded");
 
@@ -768,6 +768,9 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.attr({
         "transform": "translate(" + xTrans + "," + yTrans + ")"
       });
+
+      textContainer.selectAll("text")
+        .call(wrap, 300);
 
       overlay.append("rect")
         .attr({
