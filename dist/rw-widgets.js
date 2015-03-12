@@ -1186,7 +1186,9 @@ TimelineWidget.prototype.compile = function(elements, next) {
           if (val.fields.headline.image) {
             item["img-src"] = val.fields.headline.image.url;
           } else {
-            // @TODO: Default image
+            if (widget.has('emptyImage')) {
+              item["img-src"] = widget.config('emptyImage');
+            }
           }
 
           var time = moment(val.fields.date.original,  moment.ISO_8601);
