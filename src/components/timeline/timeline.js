@@ -250,6 +250,11 @@ TimelineWidget.prototype.link = function(elements) {
       clickBar: 1
     }).init();
 
+    // Fix for scrolling in iframe. The height of the container is set to 0 initially.
+    setTimeout(function() {
+      $slyDropdown.reload();
+    }, 100);
+
     paint();
   }
 
