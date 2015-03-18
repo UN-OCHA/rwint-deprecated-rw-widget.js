@@ -212,7 +212,7 @@ FinancialWidget.prototype.compile = function(elements, next) {
     currentRequirementTotal = pledgesTotal = fundingTotal = 0;
 
     // Get totals.
-    $.each(val.clusters, function() {
+    $.each(val.clusters.content, function() {
       currentRequirementTotal += this.current_requirement;
       pledgesTotal += this.pledges;
       fundingTotal += this.funding;
@@ -329,7 +329,7 @@ FinancialWidget.prototype.link = function(elements) {
   }
 
   function chartInit() {
-    var sampleData = config.dataSources[chartState.currentSection].clusters;
+    var sampleData = config.dataSources[chartState.currentSection].clusters.content;
 
     $('#finance-bubbles', $element).empty();
 
