@@ -3035,28 +3035,34 @@ input[type="search"] {
   transition: max-height 0.3s ease-in-out;
   max-height: 0;
   overflow: hidden;
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
 }
-
 /* line 6, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--check {
-  display: none;
-}
-/* line 10, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
-  /* @todo: this isn't working in Safari */
+.accordion-set--content.is-active {
   max-height: 100em;
 }
 
-/* line 17, ../scss/components/molecules/_accordion-set.scss */
+/* line 10, ../scss/components/molecules/_accordion-set.scss */
+.accordion-set--check {
+  display: none;
+}
+/* line 14, ../scss/components/molecules/_accordion-set.scss */
+.accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
+  max-height: 100em;
+}
+
+/* line 20, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--label {
   display: block;
 }
 
-/* line 22, ../scss/components/molecules/_accordion-set.scss */
+/* line 25, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--label {
   position: relative;
 }
-/* line 24, ../scss/components/molecules/_accordion-set.scss */
+/* line 27, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--label:before {
   -moz-transition: -moz-transform 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out;
@@ -3078,9 +3084,8 @@ input[type="search"] {
   top: 1em;
   left: 0.5em;
 }
-
-/* line 36, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--check:checked + .accordion-set--label:before {
+/* line 35, ../scss/components/molecules/_accordion-set.scss */
+.accordion-set--label.is-active:before {
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
@@ -3487,12 +3492,14 @@ input[type="search"] {
   /* line 7, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--data-source-chooser {
     display: flex;
+    display: -webkit-box;
+    display: -moz-box-flex;
     display: -webkit-flex;
     display: -ms-flexbox;
   }
 }
 
-/* line 16, ../scss/components/organisms/_financial-widget.scss */
+/* line 19, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source {
   text-decoration: none;
   text-shadow: none;
@@ -3530,15 +3537,18 @@ input[type="search"] {
   background-image: none;
 }
 @media (min-width: 38.75em) {
-  /* line 16, ../scss/components/organisms/_financial-widget.scss */
+  /* line 19, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--data-source {
     padding: 0.5rem 1.5em;
     border-bottom: 1px solid #d9e2ed;
     flex-grow: 1;
+    -webkit-box-flex: 1;
+    -moz-flex-grow: 1;
     -webkit-flex-grow: 1;
     -ms-flex-grow: 1;
+    -ms-flex: 1;
   }
-  /* line 31, ../scss/components/organisms/_financial-widget.scss */
+  /* line 38, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--data-source:before {
     -moz-transition-property: border-color, -moz-transform;
     -o-transition-property: border-color, -o-transform;
@@ -3557,7 +3567,7 @@ input[type="search"] {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  /* line 40, ../scss/components/organisms/_financial-widget.scss */
+  /* line 47, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--data-source.active:before, .financial-widget--data-source:hover:before {
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -3565,7 +3575,7 @@ input[type="search"] {
     transform: rotate(90deg);
   }
 }
-/* line 45, ../scss/components/organisms/_financial-widget.scss */
+/* line 52, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source:before {
   -moz-transition: border-color 0.3s ease-in-out;
   -o-transition: border-color 0.3s ease-in-out;
@@ -3584,15 +3594,15 @@ input[type="search"] {
   left: 0.5em;
   z-index: 10;
 }
-/* line 52, ../scss/components/organisms/_financial-widget.scss */
+/* line 59, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source:nth-last-of-type(1n+2) {
   border-bottom: 1px solid #d9e2ed;
 }
-/* line 55, ../scss/components/organisms/_financial-widget.scss */
+/* line 62, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source.active, .financial-widget--data-source:hover {
   background-color: white;
 }
-/* line 57, ../scss/components/organisms/_financial-widget.scss */
+/* line 64, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source.active:before, .financial-widget--data-source:hover:before {
   display: block;
   position: absolute;
@@ -3605,7 +3615,7 @@ input[type="search"] {
   border-color: transparent transparent transparent #a993e1;
 }
 
-/* line 63, ../scss/components/organisms/_financial-widget.scss */
+/* line 70, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--time {
   display: table;
   width: 100%;
@@ -3613,12 +3623,12 @@ input[type="search"] {
   border-bottom: 1px solid #cccccc;
 }
 @media (min-width: 38.75em) {
-  /* line 63, ../scss/components/organisms/_financial-widget.scss */
+  /* line 70, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--time {
     display: flex;
   }
 }
-/* line 71, ../scss/components/organisms/_financial-widget.scss */
+/* line 78, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--time h1 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -3626,12 +3636,12 @@ input[type="search"] {
   font-size: 1.5625rem;
   line-height: 1.1;
 }
-/* line 76, ../scss/components/organisms/_financial-widget.scss */
+/* line 83, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--time .selectric-financial-widget--time-select {
   margin-top: 1em;
 }
 @media (min-width: 38.75em) {
-  /* line 76, ../scss/components/organisms/_financial-widget.scss */
+  /* line 83, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--time .selectric-financial-widget--time-select {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -3639,46 +3649,46 @@ input[type="search"] {
   }
 }
 
-/* line 87, ../scss/components/organisms/_financial-widget.scss */
+/* line 94, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric {
   background-color: #f5f5f5;
 }
-/* line 89, ../scss/components/organisms/_financial-widget.scss */
+/* line 96, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric .button {
   color: #a993e1;
 }
-/* line 92, ../scss/components/organisms/_financial-widget.scss */
+/* line 99, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric .label {
   color: #6c9acd;
 }
-/* line 96, ../scss/components/organisms/_financial-widget.scss */
+/* line 103, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems {
   background-color: #f5f5f5;
 }
-/* line 98, ../scss/components/organisms/_financial-widget.scss */
+/* line 105, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li {
   color: #6c9acd;
 }
-/* line 100, ../scss/components/organisms/_financial-widget.scss */
+/* line 107, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li:nth-last-of-type(1n+2) {
   border-top: 1px solid #d9e2ed;
 }
-/* line 103, ../scss/components/organisms/_financial-widget.scss */
+/* line 110, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li.selected {
   background-color: #d9e2ed;
   color: #375573;
 }
-/* line 107, ../scss/components/organisms/_financial-widget.scss */
+/* line 114, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li:hover {
   background-color: #d9e2ed;
   color: #375573;
 }
-/* line 114, ../scss/components/organisms/_financial-widget.scss */
+/* line 121, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric-financial-widget--time-select .label {
   margin-bottom: 0;
 }
 
-/* line 120, ../scss/components/organisms/_financial-widget.scss */
+/* line 127, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded {
   width: 100%;
   height: 3rem;
@@ -3688,7 +3698,7 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 129, ../scss/components/organisms/_financial-widget.scss */
+/* line 136, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount {
   position: relative;
   height: 100%;
@@ -3697,7 +3707,7 @@ input[type="search"] {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   white-space: nowrap;
 }
-/* line 136, ../scss/components/organisms/_financial-widget.scss */
+/* line 143, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount.covered {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjEuMCIgeTE9IjAuNSIgeDI9IjAuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1YzY1NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #f5d17d 16px, #f5d17d 32px);
   background-size: 100%;
@@ -3715,12 +3725,12 @@ input[type="search"] {
   background-position: 50% 50%, 50% 50%;
   color: #957128;
 }
-/* line 147, ../scss/components/organisms/_financial-widget.scss */
+/* line 154, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount.requested {
   color: #375573;
   text-align: right;
 }
-/* line 151, ../scss/components/organisms/_financial-widget.scss */
+/* line 158, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount .percent {
   position: absolute;
   top: 5px;
@@ -3730,13 +3740,13 @@ input[type="search"] {
   line-height: 1;
   text-align: right;
 }
-/* line 159, ../scss/components/organisms/_financial-widget.scss */
+/* line 166, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount .percent span {
   display: block;
   font-size: 16px;
 }
 
-/* line 169, ../scss/components/organisms/_financial-widget.scss */
+/* line 176, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--cluster-funding h2 {
   font-size: 24px;
   font-size: 1.5rem;
@@ -3747,98 +3757,98 @@ input[type="search"] {
   color: white;
   line-height: 1.1;
 }
-/* line 178, ../scss/components/organisms/_financial-widget.scss */
+/* line 185, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--cluster-funding svg {
   width: 100%;
 }
 
-/* line 184, ../scss/components/organisms/_financial-widget.scss */
+/* line 191, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles.horizontal {
   display: none;
 }
 @media (min-width: 42.5em) {
-  /* line 188, ../scss/components/organisms/_financial-widget.scss */
+  /* line 195, ../scss/components/organisms/_financial-widget.scss */
   #finance-bubbles.vertical {
     display: none;
   }
-  /* line 191, ../scss/components/organisms/_financial-widget.scss */
+  /* line 198, ../scss/components/organisms/_financial-widget.scss */
   #finance-bubbles.horizontal {
     display: block;
   }
 }
 
-/* line 196, ../scss/components/organisms/_financial-widget.scss */
+/* line 203, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles {
   margin-bottom: 24px;
   padding: 1em 0 1em 0.5em;
   background-color: white;
 }
-/* line 201, ../scss/components/organisms/_financial-widget.scss */
+/* line 208, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .axis .domain {
   fill: none;
   stroke: #cccccc;
 }
-/* line 205, ../scss/components/organisms/_financial-widget.scss */
+/* line 212, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .axis line {
   stroke: #cccccc;
 }
-/* line 210, ../scss/components/organisms/_financial-widget.scss */
+/* line 217, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .grid line {
   stroke: #cccccc;
 }
-/* line 214, ../scss/components/organisms/_financial-widget.scss */
+/* line 221, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles text {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
-/* line 218, ../scss/components/organisms/_financial-widget.scss */
+/* line 225, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .scale-line {
   stroke: #cccccc;
 }
-/* line 221, ../scss/components/organisms/_financial-widget.scss */
+/* line 228, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .scale-line--percent {
   fill: #a993e1;
 }
-/* line 225, ../scss/components/organisms/_financial-widget.scss */
+/* line 232, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble text {
   fill: white;
 }
-/* line 228, ../scss/components/organisms/_financial-widget.scss */
+/* line 235, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble circle {
   fill: #a993e1;
 }
-/* line 232, ../scss/components/organisms/_financial-widget.scss */
+/* line 239, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble.small text {
   fill: #665695;
 }
-/* line 237, ../scss/components/organisms/_financial-widget.scss */
+/* line 244, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay {
   display: none;
 }
-/* line 239, ../scss/components/organisms/_financial-widget.scss */
+/* line 246, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--block {
   fill: rgba(255, 255, 255, 0.8);
 }
-/* line 242, ../scss/components/organisms/_financial-widget.scss */
+/* line 249, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--icon {
   fill: white;
 }
-/* line 245, ../scss/components/organisms/_financial-widget.scss */
+/* line 252, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--info {
   fill: #a993e1;
   stroke: #665695;
 }
-/* line 249, ../scss/components/organisms/_financial-widget.scss */
+/* line 256, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--text {
   font-size: 20px;
   fill: white;
 }
-/* line 253, ../scss/components/organisms/_financial-widget.scss */
+/* line 260, ../scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--title {
   font-size: 24px;
 }
 
-/* line 261, ../scss/components/organisms/_financial-widget.scss */
+/* line 268, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -3846,13 +3856,13 @@ input[type="search"] {
   background-color: white;
   align-self: flex-end;
 }
-/* line 266, ../scss/components/organisms/_financial-widget.scss */
+/* line 273, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore {
   position: relative;
   margin-bottom: 0.75em;
   background-color: #a993e1;
 }
-/* line 270, ../scss/components/organisms/_financial-widget.scss */
+/* line 277, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore a {
   text-decoration: none;
   text-shadow: none;
@@ -3879,7 +3889,7 @@ input[type="search"] {
   text-shadow: none;
   background-image: none;
 }
-/* line 274, ../scss/components/organisms/_financial-widget.scss */
+/* line 281, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore:after {
   display: block;
   position: absolute;
@@ -4389,10 +4399,10 @@ input[type="search"] {
 @media (min-width: 40em) {
   /* line 99, ../scss/components/organisms/_river-re-reimagined-widget.scss */
   .widget-river--filters .accordion-set--content {
-    -moz-transition: width 0.3s ease-in-out;
-    -o-transition: width 0.3s ease-in-out;
-    -webkit-transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out;
+    -moz-transition: height 0.3s ease-in-out;
+    -o-transition: height 0.3s ease-in-out;
+    -webkit-transition: height 0.3s ease-in-out;
+    transition: height 0.3s ease-in-out;
   }
 }
 /* line 108, ../scss/components/organisms/_river-re-reimagined-widget.scss */
