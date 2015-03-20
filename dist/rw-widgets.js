@@ -812,7 +812,9 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
       if (original.figure != null && typeof original.figure === 'object' && original.figure.type == 'request') {
         var value = numeral(original.figure.content[0].value).format('0.00 a').split(' ');
         this.config('indicators.' + i + '.data.' + j + '.figure', value[0]);
-        this.config('indicators.' + i + '.data.' + 0 + '.quantifier', value[1]);
+        if (!original.quantifier) {
+          this.config('indicators.' + i + '.data.' + 0 + '.quantifier', value[1]);
+        }
       }
     }
   }
