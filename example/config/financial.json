@@ -1,0 +1,377 @@
+{
+  "fundingDocumentURL": "http://reliefweb.int/updates?advanced-search=(C226.C122)_(F4)_!(S1242)_!(S1741)_!(S1255)_!(PC254)_!(S4304)#content",
+  "dataSources": [
+    {
+      "dataItemTitle": "Iraq Strategic Response Plan",
+      "dataSourceURL": "http://fts.unocha.org/reports/daily/OCHA_R32sum_A983.PDF",
+      "clusters": {
+        "type": "request",
+        "source": "fts",
+        "path": "v1/cluster/appeal/983.json",
+        "fallback": [],
+        "content": [
+          {
+            "name": "CAMP COORDINATION AND CAMP MANAGEMENT (CCCM)",
+            "current_requirement": 32488735,
+            "original_requirement": 0,
+            "funding": 842256,
+            "pledges": 0
+          },
+          {
+            "name": "CLUSTER NOT YET SPECIFIED",
+            "current_requirement": 0,
+            "original_requirement": 0,
+            "funding": 144826049,
+            "pledges": 0
+          },
+          {
+            "name": "COORDINATION AND SUPPORT SERVICES",
+            "current_requirement": 24216949,
+            "original_requirement": 0,
+            "funding": 8100551,
+            "pledges": 1543478
+          },
+          {
+            "name": "EDUCATION",
+            "current_requirement": 154256764,
+            "original_requirement": 6000000,
+            "funding": 15364197,
+            "pledges": 0
+          },
+          {
+            "name": "EMERGENCY TELECOMMUNICATIONS",
+            "current_requirement": 1511782,
+            "original_requirement": 0,
+            "funding": 763159,
+            "pledges": 0
+          },
+          {
+            "name": "FOOD SECURITY",
+            "current_requirement": 512119533,
+            "original_requirement": 25160000,
+            "funding": 259809870,
+            "pledges": 0
+          },
+          {
+            "name": "HEALTH",
+            "current_requirement": 314231723,
+            "original_requirement": 25000000,
+            "funding": 95509273,
+            "pledges": 0
+          },
+          {
+            "name": "LOGISTICS",
+            "current_requirement": 3569680,
+            "original_requirement": 321000,
+            "funding": 2372190,
+            "pledges": 0
+          },
+          {
+            "name": "MULTI-SECTOR REFUGEES",
+            "current_requirement": 0,
+            "original_requirement": 0,
+            "funding": 0,
+            "pledges": 0
+          },
+          {
+            "name": "PROTECTION",
+            "current_requirement": 212095062,
+            "original_requirement": 11325000,
+            "funding": 73923179,
+            "pledges": 0
+          },
+          {
+            "name": "SHELTER/NFI",
+            "current_requirement": 753519061,
+            "original_requirement": 29936377,
+            "funding": 201048055,
+            "pledges": 0
+          },
+          {
+            "name": "SOCIAL COHESION AND SUSTAINABLE LIVELIHOODS",
+            "current_requirement": 63773602,
+            "original_requirement": 0,
+            "funding": 8926800,
+            "pledges": 0
+          },
+          {
+            "name": "WASH",
+            "current_requirement": 158526468,
+            "original_requirement": 6000000,
+            "funding": 43020506,
+            "pledges": 0
+          }
+        ],
+        "date": {
+          "checked": "2015-03-18T18:32:14.264Z",
+          "updated": "2015-03-18T18:32:14.264Z"
+        }
+      }
+    },
+    {
+      "dataItemTitle": "Syria Regional Refugee Response Plan",
+      "dataSourceURL": "http://fts.unocha.org/reports/daily/ocha_R32sum_A1090___13_February_2015_(16_19).pdf",
+      "clusters": {
+        "type": "request",
+        "source": "fts",
+        "path": "v1/cluster/appeal/1048.json",
+        "fallback": [],
+        "content": [
+          {
+            "name": "MULTI-SECTOR",
+            "current_requirement": 3740654701,
+            "original_requirement": 4264717711,
+            "funding": 2383537298,
+            "pledges": 495766
+          }
+        ],
+        "date": {
+          "checked": "2015-03-18T18:32:13.989Z",
+          "updated": "2015-03-18T18:32:13.989Z"
+        }
+      }
+    },
+    {
+      "dataItemTitle": "Syria Humanitarian Assistance Response Plan",
+      "dataSourceURL": "http://fts.unocha.org/pageloader.aspx?page=special-syriancrisis",
+      "clusters": {
+        "type": "request",
+        "source": "fts",
+        "path": "v1/cluster/appeal/1044.json",
+        "fallback": [],
+        "content": [
+          {
+            "name": "CLUSTER NOT YET SPECIFIED",
+            "current_requirement": 0,
+            "original_requirement": 0,
+            "funding": 207685192,
+            "pledges": 0
+          },
+          {
+            "name": "COORDINATION",
+            "current_requirement": 50814214,
+            "original_requirement": 50814214,
+            "funding": 23879790,
+            "pledges": 0
+          },
+          {
+            "name": "EARLY RECOVERY AND LIVELIHOODS",
+            "current_requirement": 71054434,
+            "original_requirement": 71054434,
+            "funding": 11788434,
+            "pledges": 0
+          },
+          {
+            "name": "EDUCATION",
+            "current_requirement": 103163335,
+            "original_requirement": 103163335,
+            "funding": 39670028,
+            "pledges": 0
+          },
+          {
+            "name": "EMERGENCY TELECOMMUNICATIONS (ETC)",
+            "current_requirement": 1584010,
+            "original_requirement": 1584010,
+            "funding": 947887,
+            "pledges": 0
+          },
+          {
+            "name": "FOOD AND AGRICULTURE",
+            "current_requirement": 1098790696,
+            "original_requirement": 1118741037,
+            "funding": 566083638,
+            "pledges": 0
+          },
+          {
+            "name": "HEALTH",
+            "current_requirement": 233376172,
+            "original_requirement": 233376172,
+            "funding": 100604130,
+            "pledges": 0
+          },
+          {
+            "name": "LOGISTICS",
+            "current_requirement": 12060910,
+            "original_requirement": 12060910,
+            "funding": 5576718,
+            "pledges": 0
+          },
+          {
+            "name": "NON-FOOD ITEMS (NFIs) AND SHELTER",
+            "current_requirement": 420903819,
+            "original_requirement": 420903819,
+            "funding": 30632291,
+            "pledges": 0
+          },
+          {
+            "name": "NUTRITION",
+            "current_requirement": 29999820,
+            "original_requirement": 29999820,
+            "funding": 22778685,
+            "pledges": 0
+          },
+          {
+            "name": "PROTECTION AND COMMUNITY SERVICES",
+            "current_requirement": 73493864,
+            "original_requirement": 73493864,
+            "funding": 22107388,
+            "pledges": 0
+          },
+          {
+            "name": "STAFF SAFETY SERVICES",
+            "current_requirement": 6183984,
+            "original_requirement": 6183984,
+            "funding": 2485518,
+            "pledges": 0
+          },
+          {
+            "name": "WASH",
+            "current_requirement": 154773755,
+            "original_requirement": 154773755,
+            "funding": 45792438,
+            "pledges": 0
+          }
+        ],
+        "date": {
+          "checked": "2015-03-18T18:32:14.196Z",
+          "updated": "2015-03-18T18:32:14.196Z"
+        }
+      }
+    }
+  ],
+  "labelMapping": [
+    {
+      "original": "Iraq",
+      "short": "Iraq",
+      "long": "Iraq Strategic Response Plan"
+    },
+    {
+      "original": "PROTECTION",
+      "short": "Protection",
+      "long": "Protection",
+      "icon": "protection"
+    },
+    {
+      "original": "CAMP COORDINATION AND CAMP MANAGEMENT (CCCM)",
+      "short": "CCCM",
+      "long": "Camp Coordination and Camp Management",
+      "icon": "logistics"
+    },
+    {
+      "original": "CLUSTER NOT YET SPECIFIED",
+      "short": "Not Specified",
+      "long": "Not Specified",
+      "icon": "coordination"
+    },
+    {
+      "original": "COORDINATION AND SUPPORT SERVICES",
+      "short": "Coordination",
+      "long": "Coordination and Support Services",
+      "icon": "coordination"
+    },
+    {
+      "original": "EDUCATION",
+      "short": "Education",
+      "long": "Education",
+      "icon": "education"
+    },
+    {
+      "original": "EMERGENCY TELECOMMUNICATIONS",
+      "short": "ETC",
+      "long": "Emergency Telecommunications Cluster",
+      "icon": "etc"
+    },
+    {
+      "original": "FOOD SECURITY",
+      "short": "Food Security",
+      "long": "Food Security",
+      "icon": "food"
+    },
+    {
+      "original": "HEALTH",
+      "short": "Health",
+      "long": "Health",
+      "icon": "health"
+    },
+    {
+      "original": "LOGISTICS",
+      "short": "Logistics",
+      "long": "Logistics",
+      "icon": "logistics"
+    },
+    {
+      "original": "SHELTER/NFI",
+      "short": "Shelter/NFI",
+      "long": "Shelter/NFI",
+      "icon": "shelter"
+    },
+    {
+      "original": "SOCIAL COHESION AND SUSTAINABLE LIVELIHOODS",
+      "short": "Social",
+      "long": "Social Cohesion and Sustainable Livelihoods",
+      "icon": "social"
+    },
+    {
+      "original": "WASH",
+      "short": "WASH",
+      "long": "Water Sanitation and Hygiene",
+      "icon": "wash"
+    },
+    {
+      "original": "COORDINATION",
+      "short": "Coordination",
+      "long": "Coordination",
+      "icon": "coordination"
+    },
+    {
+      "original": "EARLY RECOVERY AND LIVELIHOODS",
+      "short": "Early Recovery",
+      "long": "Early Recovery and Livelihoods",
+      "icon": "shelter"
+    },
+    {
+      "original": "EMERGENCY TELECOMMUNICATIONS (ETC)",
+      "short": "ETC",
+      "long": "Emergency Telecommunication",
+      "icon": "etc"
+    },
+    {
+      "original": "FOOD AND AGRICULTURE",
+      "short": "Food",
+      "long": "Food and Agriculture",
+      "icon": "food"
+    },
+    {
+      "original": "NON-FOOD ITEMS (NFIs) AND SHELTER",
+      "short": "Shelter/NFI",
+      "long": "NFIs and Shelter",
+      "icon": "shelter"
+    },
+    {
+      "original": "NUTRITION",
+      "short": "Nutrition",
+      "long": "Nutrition",
+      "icon": "food"
+    },
+    {
+      "original": "PROTECTION AND COMMUNITY SERVICES",
+      "short": "Protection",
+      "long": "Protection and Community Services",
+      "icon": "protection"
+    },
+    {
+      "original": "STAFF SAFETY SERVICES",
+      "short": "Staff Safety",
+      "long": "Staff Safety Services",
+      "icon": "protection"
+    }
+  ],
+  "processed": {
+    "generator": "collector",
+    "version": "0.2.0",
+    "date": {
+      "updated": "2015-03-18T18:32:12.990Z"
+    },
+    "name": "financial"
+  }
+}

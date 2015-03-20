@@ -26,7 +26,7 @@ module.exports = function (grunt) {
     watch: {
       dist: {
         files: ['src/*.js', 'src/**/*.js'],
-        tasks: ['jshint:all', 'mochaTest:dist', 'browserify:dist', 'copy:base']
+        tasks: ['jshint:all', 'mochaTest:dist', 'build', 'copy:base']
       }
     },
     browserify: {
