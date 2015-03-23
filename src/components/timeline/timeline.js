@@ -67,6 +67,12 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
       'value': countries,
       'operator': 'OR'
     });
+
+    filters.filter.conditions.push({
+      'field': 'primary_country.name',
+      'value': "World",
+      'negate': true
+    });
   }
 
   if (Array.isArray(disaster) && disaster.length) {
