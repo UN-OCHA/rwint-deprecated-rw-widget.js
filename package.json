@@ -36,6 +36,7 @@
     "lodash": "^3.2.0",
     "moment": "^2.8.4",
     "npm": "^2.7.0",
+    "numeral": "^1.5.3",
     "reliefweb": "^0.4.1"
   },
   "browserify-shim": {
@@ -45,7 +46,8 @@
     "moment": "global:moment",
     "reliefweb": "global:reliefweb",
     "jquery": "global:$",
-    "beat-blocks": "global:BeatBlocks"
+    "beat-blocks": "global:BeatBlocks",
+    "numeral": "global:numeral"
   },
   "browserify": {
     "transform": [

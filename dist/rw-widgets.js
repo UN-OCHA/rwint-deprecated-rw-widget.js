@@ -94,6 +94,7 @@ templates['crisis-overview.hbs'] = template({"1":function(depth0,helpers,partial
 var _ = (typeof window !== "undefined" ? window._ : typeof global !== "undefined" ? global._ : null);
 var d3 = (typeof window !== "undefined" ? window.d3 : typeof global !== "undefined" ? global.d3 : null);
 var $ = (typeof window !== "undefined" ? window.$ : typeof global !== "undefined" ? global.$ : null);
+var numeral = (typeof window !== "undefined" ? window.numeral : typeof global !== "undefined" ? global.numeral : null);
 var WidgetBase = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null).helpers.widgetBase;
 
 // load template
@@ -121,6 +122,22 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
+  // Traverses data indicators looking for points that are structured as API-driven content.
+  // This is then formatted via our custom 'en-long' language to handle quantifier mappings.
+  numeral.language('en-long');
+  for (var i in config.indicators) {
+    for (var j in config.indicators[i].data) {
+      var original = config.indicators[i].data[j];
+      if (original.figure != null && typeof original.figure === 'object' && original.figure.type == 'request') {
+        var value = numeral(original.figure.content[0].value).format('0.00 a').split(' ');
+        this.config('indicators.' + i + '.data.' + j + '.figure', value[0]);
+        if (!original.quantifier) {
+          this.config('indicators.' + i + '.data.' + 0 + '.quantifier', value[1]);
+        }
+      }
+    }
+  }
+
   this.template(function(content) {
     elements
       .classed('rw-widget', true)
@@ -139,6 +156,7 @@ function titleAdjust(title) {
   }
   return adjustedTitle;
 }
+
 
 CrisisOverviewWidget.prototype.link = function(elements) {
   // Open links in a new tab.
@@ -1618,6 +1636,7 @@ module.exports = TimelineWidget;
  */
 
 var BeatBlocks = (typeof window !== "undefined" ? window.BeatBlocks : typeof global !== "undefined" ? global.BeatBlocks : null);
+var numeral = (typeof window !== "undefined" ? window.numeral : typeof global !== "undefined" ? global.numeral : null);
 
 // Widgets
 var CrisisOverviewWidget = require('./components/crisis-overview/crisis-overview');
@@ -1629,6 +1648,31 @@ BeatBlocks.addWidgetToRegistry('crisis-overview', CrisisOverviewWidget);
 BeatBlocks.addWidgetToRegistry('river', RiverWidget);
 BeatBlocks.addWidgetToRegistry('timeline', TimelineWidget);
 BeatBlocks.addWidgetToRegistry('financial', FinancialWidget);
+
+// The Numeral library allows whole-language overrides. Using that to map our
+// unit abbreviations to longer terms.
+numeral.language('en-long', {
+  delimiters: {
+    thousands: ',',
+    decimal: '.'
+  },
+  abbreviations: {
+    thousand: 'thousand',
+    million: 'million',
+    billion: 'billion',
+    trillion: 'trillion'
+  },
+  ordinal: function (number) {
+    var b = number % 10;
+    return (~~ (number % 100 / 10) === 1) ? 'th' :
+      (b === 1) ? 'st' :
+        (b === 2) ? 'nd' :
+          (b === 3) ? 'rd' : 'th';
+  },
+  currency: {
+    symbol: '$'
+  }
+});
 
 module.exports = {};
 
