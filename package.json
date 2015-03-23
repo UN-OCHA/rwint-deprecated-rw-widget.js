@@ -46,7 +46,8 @@
     "moment": "global:moment",
     "reliefweb": "global:reliefweb",
     "jquery": "global:$",
-    "beat-blocks": "global:BeatBlocks"
+    "beat-blocks": "global:BeatBlocks",
+    "numeral": "global:numeral"
   },
   "browserify": {
     "transform": [
