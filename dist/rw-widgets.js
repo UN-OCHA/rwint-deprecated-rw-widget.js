@@ -1462,13 +1462,12 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function slideTo(index) {
-    console.log("SLIDE TO", index);
     var $sliderPos = $sly.getPos(index);
     $sly.slideTo($sliderPos.center);
     $sly.activate(index);
 
     var $dropDownPos = $slyDropdown.getPos(index);
-    //$slyDropdown.slideTo($dropDownPos.start);
+    $slyDropdown.slideTo($dropDownPos.start);
     $slyDropdown.activate(index);
   }
 
@@ -1543,7 +1542,6 @@ TimelineWidget.prototype.link = function(elements) {
   });
 
   function lazyLoad() {
-    console.log("LAZY LOAD");
     if ($sly.rel.activeItem === 0) {
       widget.getData(timelineState.content.length, function(timelineItems) {
 
