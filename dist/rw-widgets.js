@@ -1154,7 +1154,7 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
   "<div class=\"timeline-widget\">\n  <h1 class=\"widget-title\"><span><i class=\"un-icon-product_type_timeline widget-title--icon-custom widget-title--icon\"></i>"
     + ((stack1 = ((helper = (helper = helpers.adjustedTitle || (depth0 != null ? depth0.adjustedTitle : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"adjustedTitle","hash":{},"data":data}) : helper))) != null ? stack1 : "")
-    + "</span></h1>\n  <div class=\"timeline-widget--controls\">\n    <button class=\"prev\"><div class=\"arrow\"></div></button>\n    <button class=\"next\"><div class=\"arrow\"></div></button>\n  </div>\n\n  <div class=\"timeline-widget--dropdown\">\n    <div class=\"timeline-widget--dropdown-heading\">\n      <span class=\"button-arrow\"></span> Timeline - Calendar</div>\n    <div class=\"clear\"></div>\n    <div class=\"timeline-widget--dropdown--wrapper\">\n      <div class=\"timeline-widget--dropdown-controls\">\n        <div class=\"form-select\">\n          <select name=\"year\">\n          </select>\n        </div>\n        <div class=\"form-select\">\n          <select name=\"month\">\n          </select>\n        </div>\n        <button class=\"form-today\">Today</button>\n        <span class=\"close\"></span>\n      </div>\n      <div class=\"timeline-widget--dropdown--container\">\n        <ul class=\"slidee\">\n          <li class=\"timeline-widget--dropdown--end-of-line\">No More Entries</li>\n";
+    + "</span></h1>\n  <div class=\"timeline-widget--controls\">\n    <button class=\"prev\"><div class=\"arrow\"></div></button>\n    <button class=\"next\"><div class=\"arrow\"></div></button>\n  </div>\n\n  <div class=\"timeline-widget--dropdown\">\n    <div class=\"timeline-widget--dropdown-heading\">\n      <span class=\"button-arrow\"></span> Timeline - Calendar</div>\n    <div class=\"clear\"></div>\n    <div class=\"timeline-widget--dropdown--wrapper\">\n      <div class=\"timeline-widget--dropdown-controls\">\n        <div class=\"form-select\">\n          <select name=\"year\">\n          </select>\n        </div>\n        <div class=\"form-select\">\n          <select name=\"month\">\n          </select>\n        </div>\n        <button class=\"form-today\">Today</button>\n        <span class=\"close\"></span>\n      </div>\n      <div class=\"timeline-widget--dropdown--container\">\n        <ul class=\"slidee\">\n";
   stack1 = ((helper = (helper = helpers['timeline-items'] || (depth0 != null ? depth0['timeline-items'] : depth0)) != null ? helper : alias1),(options={"name":"timeline-items","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data}),(typeof helper === alias2 ? helper.call(depth0,options) : helper));
   if (!helpers['timeline-items']) { stack1 = helpers.blockHelperMissing.call(depth0,stack1,options)}
   if (stack1 != null) { buffer += stack1; }
@@ -1233,6 +1233,12 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
       'field': 'country',
       'value': countries,
       'operator': 'OR'
+    });
+
+    filters.filter.conditions.push({
+      'field': 'primary_country.name',
+      'value': "World",
+      'negate': true
     });
   }
 
@@ -1328,7 +1334,6 @@ TimelineWidget.prototype.link = function(elements) {
   var timelineState = {
     content: this.config('timeline-items')
   };
-  var timelineContent = timelineState.content;
 
   var $element = $(elements[0][0]); // @TODO, grab any potential element selected.
   var $frame,
@@ -1346,7 +1351,7 @@ TimelineWidget.prototype.link = function(elements) {
     var closestIndex = 0;
     var closestIndexDistance;
 
-    timelineContent.forEach(function(val, key) {
+    timelineState.content.forEach(function(val, key) {
       var itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
       if (closestIndexDistance === undefined || Math.abs(now - itemTime) < closestIndexDistance) {
         closestIndexDistance = Math.abs(now - itemTime);
@@ -1359,7 +1364,7 @@ TimelineWidget.prototype.link = function(elements) {
 
   function init() {
     timelineState.currentIndex = findClosestTimelineContent();
-    var now = moment(timelineContent[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -1447,7 +1452,7 @@ TimelineWidget.prototype.link = function(elements) {
   function paint() {
     slideTo(timelineState.currentIndex);
 
-    var now = moment(timelineContent[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -1457,12 +1462,13 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function slideTo(index) {
+    console.log("SLIDE TO", index);
     var $sliderPos = $sly.getPos(index);
     $sly.slideTo($sliderPos.center);
     $sly.activate(index);
 
     var $dropDownPos = $slyDropdown.getPos(index);
-    $slyDropdown.slideTo($dropDownPos.start);
+    //$slyDropdown.slideTo($dropDownPos.start);
     $slyDropdown.activate(index);
   }
 
@@ -1506,8 +1512,8 @@ TimelineWidget.prototype.link = function(elements) {
     var itemTime;
     var val;
     
-    for (var i = 0; i < timelineContent.length; i++) {
-      val = timelineContent[i];
+    for (var i = 0; i < timelineState.content.length; i++) {
+      val = timelineState.content[i];
       itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
 
       if (current < itemTime) {
@@ -1525,14 +1531,19 @@ TimelineWidget.prototype.link = function(elements) {
 
   // Update other sliders based on main.
   $sly.on('moveStart', function() {
-    lazyLoad();
+    if ($sly.rel.activeItem === 0) {
+      lazyLoad();
+    } else {
+      timelineState.currentIndex = ($sly.rel.activeItem * 1);
+      paint();
+    }
   });
 
   $slyDropdown.on('change', function() {
-    //console.log($slyDropdown.rel);
   });
 
   function lazyLoad() {
+    console.log("LAZY LOAD");
     if ($sly.rel.activeItem === 0) {
       widget.getData(timelineState.content.length, function(timelineItems) {
 
@@ -1559,7 +1570,7 @@ TimelineWidget.prototype.link = function(elements) {
     });
 
     $('.timeline-widget--dropdown--container .timeline-widget-dropdown--list-item').remove();
-    $('.timeline-widget--dropdown--container .timeline-widget--dropdown--end-of-line').first().after(timelineItems);
+    $('.timeline-widget--dropdown--container .timeline-widget--dropdown--end-of-line').first().before(timelineItems);
 
     $('li.timeline-widget-dropdown--list-item').each(function(idx){
       $(this).attr('data-slide', idx);
@@ -1582,6 +1593,9 @@ TimelineWidget.prototype.link = function(elements) {
     });
 
     $('.timeline-widget--frames .slidee', $element).empty().html(timelineItems);
+
+    // Open links in a new tab.
+    $('.timeline-widget-frames li a').attr('target', '_blank');
 
     $item = $('.timeline-widget-item', $element);
     $item.width($frame.width());
