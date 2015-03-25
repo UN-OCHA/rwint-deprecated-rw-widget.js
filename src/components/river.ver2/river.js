@@ -61,7 +61,7 @@ RiverWidget.prototype.link = function(elements) {
 
   function init() {
     filters.forEach(function(filter) {
-      getDataAndRender(filter.id, filter.filters);
+      getDataAndRender(filter.id, filter.data.content);
     });
 
     $element.find('.accordion-set--label').click(function() {
@@ -76,34 +76,23 @@ RiverWidget.prototype.link = function(elements) {
   }
 
   function getDataAndRender(filterId, filterData) {
-    rw.post('reports')
-      .send({'limit': 4})
-      .send({
-        'fields': {
-          'include': ["title", "source", "date"]
-        }
-      })
-      .send({"filter": filterData})
-      .sort('date.created', 'desc')
-      .end(function(err, res) {
-        if (!err) {
-          var data = _.map(res.body.data, function(n) {
-            return {
-              item_date: moment(n.fields.date.created, moment.ISO_8601).format('DD MMMM YYYY'),
-              item_title: n.fields.title,
-              item_source: n.fields.source[0].name
-            };
-          });
-
-          var count = 0;
-
-          var items = _.reduce(data, function(acc, value) {
-            return acc + Handlebars.templates['river-item.hbs'](value);
-          }, '');
-
-          $('#' + filterId + '-accordion .filters-content--items', $element).empty().html(items);
-        }
+    if (filterData) {
+      var data = _.map(filterData.data, function(n) {
+        return {
+          item_date: moment(n.fields.date.created, moment.ISO_8601).format('DD MMMM YYYY'),
+          item_title: n.fields.title,
+          item_source: n.fields.source[0].shortname
+        };
       });
+
+      var count = 0;
+
+      var items = _.reduce(data, function(acc, value) {
+        return acc + Handlebars.templates['river-item.hbs'](value);
+      }, '');
+
+      $('#' + filterId + '-accordion .filters-content--items', $element).empty().html(items);
+    }
   }
 
   init();
