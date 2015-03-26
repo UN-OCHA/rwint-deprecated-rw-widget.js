@@ -18,7 +18,7 @@ var TimelineWidget = function(opts) {
     title: "Crisis Timeline",
     template: "timeline.hbs",
     countries: [],
-    limit: 10
+    limit: 100
   };
 
   opts = (opts) ? opts : {};
@@ -318,12 +318,13 @@ TimelineWidget.prototype.link = function(elements) {
     if (Math.abs(window.orientation) == 90) {
       // landscape
       width = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(width);
     } else if (window.orientation === 0) {
       // portrait
       width = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(width);
     }
 
-    $('.timeline-widget', $element).width(width);
     $item.width(width);
 
     setTimeout(function() {
