@@ -471,7 +471,7 @@ FinancialWidget.prototype.link = function(elements) {
       return {
         title: sampleData[i].name,
         fundingPercentage: fundingPercentage,
-        requested: sampleData[i].original_requirement,
+        requested: sampleData[i].current_requirement,
         funded: sampleData[i].funding,
         r: Math.sqrt(bubbleSizeScale(sampleData[i].funding) / Math.PI),
         x: (chartState.direction == 'horizontal') ? bubblePlacementScale(fundingPercentage) : w / 2 + ((Math.random() * 4) - 2),
@@ -653,7 +653,7 @@ FinancialWidget.prototype.link = function(elements) {
 
     force.on("tick", function(e) {
       var q = d3.geom.quadtree(nodes),
-        k = e.alpha * 0.1;
+        k = e.alpha * 0.05;
 
       nodes.forEach(function(o, i) {
         if (chartState.direction == 'horizontal') {
@@ -666,16 +666,17 @@ FinancialWidget.prototype.link = function(elements) {
           o.x = (o.x > w / 2) ? o.x - k : o.x + k;
         }
 
+        // Adjust here to help force bubbles towards the center.
         if (o.x + o.r > w) {
-          o.x -= 400 * k;
+          o.x -= 1200 * k;
         } else if (o.x - o.r < 0) {
-          o.x += 400 * k;
+          o.x += 1200 * k;
         }
 
         if (o.y + o.r + 20 > h) {
-          o.y -= 400 * k;
+          o.y -= 1200 * k;
         } else if (o.y - o.r < 0) {
-          o.y += 400 * k;
+          o.y += 1200 * k;
         }
 
         q.visit(collide(o));

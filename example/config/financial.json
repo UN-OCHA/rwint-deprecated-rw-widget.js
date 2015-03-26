@@ -21,14 +21,14 @@
             "name": "CLUSTER NOT YET SPECIFIED",
             "current_requirement": 0,
             "original_requirement": 0,
-            "funding": 144826049,
+            "funding": 149315387,
             "pledges": 0
           },
           {
             "name": "COORDINATION AND SUPPORT SERVICES",
             "current_requirement": 24216949,
             "original_requirement": 0,
-            "funding": 8100551,
+            "funding": 8609975,
             "pledges": 1543478
           },
           {
@@ -103,148 +103,143 @@
           }
         ],
         "date": {
-          "checked": "2015-03-18T18:32:14.264Z",
-          "updated": "2015-03-18T18:32:14.264Z"
+          "checked": "2015-03-25T14:41:00.376Z",
+          "updated": "2015-03-25T14:41:00.376Z"
         }
       }
     },
     {
-      "dataItemTitle": "Syria Regional Refugee Response Plan 2014",
-      "dataSourceURL": "http://fts.unocha.org/reports/daily/ocha_R32sum_A1090___13_February_2015_(16_19).pdf",
+      "dataItemTitle": "Syria Response Plan 2015",
+      "dataSourceURL": "http://fts.unocha.org/reports/daily/ocha_R32sum_A1069___19_March_2015_(17_30).pdf",
       "clusters": {
         "type": "request",
         "source": "fts",
-        "path": "v1/cluster/appeal/1048.json",
+        "path": "v1/cluster/appeal/1069.json",
         "fallback": [],
         "content": [
           {
-            "name": "MULTI-SECTOR",
-            "current_requirement": 3740654701,
-            "original_requirement": 4264717711,
-            "funding": 2383537298,
-            "pledges": 495766
-          }
-        ],
-        "date": {
-          "checked": "2015-03-18T18:32:13.989Z",
-          "updated": "2015-03-18T18:32:13.989Z"
-        }
-      }
-    },
-    {
-      "dataItemTitle": "Syria Humanitarian Assistance Response Plan 2015-2016",
-      "dataSourceURL": "http://fts.unocha.org/pageloader.aspx?page=special-syriancrisis",
-      "clusters": {
-        "type": "request",
-        "source": "fts",
-        "path": "v1/cluster/appeal/1044.json",
-        "fallback": [],
-        "content": [
+            "name": "CAMP COORDINATION AND CAMP MANAGEMENT (CCCM)",
+            "current_requirement": 12174640,
+            "original_requirement": 12174640,
+            "funding": 0,
+            "pledges": 0
+          },
           {
             "name": "CLUSTER NOT YET SPECIFIED",
             "current_requirement": 0,
             "original_requirement": 0,
-            "funding": 207685192,
-            "pledges": 0
+            "funding": 90242201,
+            "pledges": 5652264
           },
           {
-            "name": "COORDINATION",
-            "current_requirement": 50814214,
-            "original_requirement": 50814214,
-            "funding": 23879790,
-            "pledges": 0
+            "name": "COORDINATION AND COMMON SERVICES",
+            "current_requirement": 44015062,
+            "original_requirement": 44015062,
+            "funding": 3722417,
+            "pledges": 652174
           },
           {
             "name": "EARLY RECOVERY AND LIVELIHOODS",
-            "current_requirement": 71054434,
-            "original_requirement": 71054434,
-            "funding": 11788434,
+            "current_requirement": 102289149,
+            "original_requirement": 102289149,
+            "funding": 1122334,
             "pledges": 0
           },
           {
             "name": "EDUCATION",
-            "current_requirement": 103163335,
-            "original_requirement": 103163335,
-            "funding": 39670028,
+            "current_requirement": 224000000,
+            "original_requirement": 224000000,
+            "funding": 0,
             "pledges": 0
           },
           {
             "name": "EMERGENCY TELECOMMUNICATIONS (ETC)",
-            "current_requirement": 1584010,
-            "original_requirement": 1584010,
-            "funding": 947887,
+            "current_requirement": 1310000,
+            "original_requirement": 1310000,
+            "funding": 0,
             "pledges": 0
           },
           {
-            "name": "FOOD AND AGRICULTURE",
-            "current_requirement": 1098790696,
-            "original_requirement": 1118741037,
-            "funding": 566083638,
+            "name": "FOOD SECURITY AND AGRICULTURE",
+            "current_requirement": 1218000000,
+            "original_requirement": 1218000000,
+            "funding": 95869378,
             "pledges": 0
           },
           {
             "name": "HEALTH",
-            "current_requirement": 233376172,
-            "original_requirement": 233376172,
-            "funding": 100604130,
+            "current_requirement": 317905316,
+            "original_requirement": 317905316,
+            "funding": 9245222,
             "pledges": 0
           },
           {
             "name": "LOGISTICS",
-            "current_requirement": 12060910,
-            "original_requirement": 12060910,
-            "funding": 5576718,
+            "current_requirement": 9825000,
+            "original_requirement": 9825000,
+            "funding": 0,
             "pledges": 0
           },
           {
             "name": "NON-FOOD ITEMS (NFIs) AND SHELTER",
-            "current_requirement": 420903819,
-            "original_requirement": 420903819,
-            "funding": 30632291,
+            "current_requirement": 639504053,
+            "original_requirement": 639504053,
+            "funding": 41264642,
             "pledges": 0
           },
           {
             "name": "NUTRITION",
-            "current_requirement": 29999820,
-            "original_requirement": 29999820,
-            "funding": 22778685,
+            "current_requirement": 50706992,
+            "original_requirement": 50706992,
+            "funding": 0,
             "pledges": 0
           },
           {
             "name": "PROTECTION AND COMMUNITY SERVICES",
-            "current_requirement": 73493864,
-            "original_requirement": 73493864,
-            "funding": 22107388,
-            "pledges": 0
-          },
-          {
-            "name": "STAFF SAFETY SERVICES",
-            "current_requirement": 6183984,
-            "original_requirement": 6183984,
-            "funding": 2485518,
+            "current_requirement": 104800000,
+            "original_requirement": 104800000,
+            "funding": 1739874,
             "pledges": 0
           },
           {
             "name": "WASH",
-            "current_requirement": 154773755,
-            "original_requirement": 154773755,
-            "funding": 45792438,
+            "current_requirement": 168914381,
+            "original_requirement": 168914381,
+            "funding": 18034166,
             "pledges": 0
           }
         ],
         "date": {
-          "checked": "2015-03-18T18:32:14.196Z",
-          "updated": "2015-03-18T18:32:14.196Z"
+          "checked": "2015-03-25T14:40:57.366Z",
+          "updated": "2015-03-25T14:40:57.366Z"
+        }
+      }
+    },
+    {
+      "dataItemTitle": "Syria Regional Refugee and Resilience Plan (3RP) 2015",
+      "dataSourceURL": "http://fts.unocha.org/pageloader.aspx?page=special-syriancrisis",
+      "clusters": {
+        "type": "request",
+        "source": "fts",
+        "path": "v1/cluster/appeal/1090.json",
+        "fallback": [],
+        "content": [
+          {
+            "name": "Multi-sector refugees",
+            "current_requirement": 4533248258,
+            "original_requirement": 4533248258,
+            "funding": 287109081,
+            "pledges": 0
+          }
+        ],
+        "date": {
+          "checked": "2015-03-25T14:40:57.074Z",
+          "updated": "2015-03-25T14:40:57.074Z"
         }
       }
     }
   ],
   "labelMapping": [
-    {
-      "original": "Iraq",
-      "short": "Iraq",
-      "long": "Iraq Strategic Response Plan"
-    },
     {
       "original": "PROTECTION",
       "short": "Protection",
@@ -370,7 +365,7 @@
     "generator": "collector",
     "version": "0.2.0",
     "date": {
-      "updated": "2015-03-18T18:32:12.990Z"
+      "updated": "2015-03-25T14:40:55.787Z"
     },
     "name": "financial"
   }
