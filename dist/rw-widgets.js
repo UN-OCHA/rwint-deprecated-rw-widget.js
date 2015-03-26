@@ -128,7 +128,7 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   for (var i in config.indicators) {
     for (var j in config.indicators[i].data) {
       var original = config.indicators[i].data[j];
-      if (original.figure != null && typeof original.figure === 'object' && original.figure.type == 'request') {
+      if (original.figure !== null && typeof original.figure === 'object' && original.figure.type == 'request') {
         var value = numeral(original.figure.content[0].value).format('0.00 a').split(' ');
         this.config('indicators.' + i + '.data.' + j + '.figure', value[0]);
         if (!original.quantifier) {
@@ -653,7 +653,7 @@ FinancialWidget.prototype.link = function(elements) {
 
     force.on("tick", function(e) {
       var q = d3.geom.quadtree(nodes),
-        k = e.alpha * 0.1;
+        k = e.alpha * 0.05;
 
       nodes.forEach(function(o, i) {
         if (chartState.direction == 'horizontal') {
@@ -666,16 +666,17 @@ FinancialWidget.prototype.link = function(elements) {
           o.x = (o.x > w / 2) ? o.x - k : o.x + k;
         }
 
+        // Adjust here to help force bubbles towards the center.
         if (o.x + o.r > w) {
-          o.x -= 400 * k;
+          o.x -= 1200 * k;
         } else if (o.x - o.r < 0) {
-          o.x += 400 * k;
+          o.x += 1200 * k;
         }
 
         if (o.y + o.r + 20 > h) {
-          o.y -= 400 * k;
+          o.y -= 1200 * k;
         } else if (o.y - o.r < 0) {
-          o.y += 400 * k;
+          o.y += 1200 * k;
         }
 
         q.visit(collide(o));
