@@ -37,7 +37,7 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   for (var i in config.indicators) {
     for (var j in config.indicators[i].data) {
       var original = config.indicators[i].data[j];
-      if (original.figure != null && typeof original.figure === 'object' && original.figure.type == 'request') {
+      if (original.figure !== null && typeof original.figure === 'object' && original.figure.type == 'request') {
         var value = numeral(original.figure.content[0].value).format('0.00 a').split(' ');
         this.config('indicators.' + i + '.data.' + j + '.figure', value[0]);
         if (!original.quantifier) {
