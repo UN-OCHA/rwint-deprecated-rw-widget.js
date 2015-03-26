@@ -1115,7 +1115,7 @@ templates['timeline--frame-item.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1
     + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
     + "</h1>\n  </div>\n  <div class=\"timeline-widget-item--content\">\n    <div class=\"timeline-widget-item--image\">\n      <div class=\"timeline-widget-item--image--icons\">\n        <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n        <a class=\"timeline-widget-item--image--country\">"
     + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
-    + "</a>\n      </div>\n      <img src=\""
+    + "</a>\n      </div>\n      <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\""
     + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
     + "\" />\n    </div>\n    <div class=\"timeline-widget-item--description\">\n      "
     + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
@@ -1150,7 +1150,7 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
     + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
     + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content\">\n                  <div class=\"timeline-widget-item--image\">\n                    <div class=\"timeline-widget-item--image--icons\">\n                      <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                      <a class=\"timeline-widget-item--image--country\">"
     + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
-    + "</a>\n                    </div>\n                    <img src=\""
+    + "</a>\n                    </div>\n                    <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\""
     + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
     + "\" />\n                  </div>\n              <div class=\"timeline-widget-item--description\">\n                  "
     + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
@@ -1262,10 +1262,9 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
     .fields(['date', 'headline', 'primary_country', 'url'], [])
     .sort('date.original', 'desc')
     .send(filters)
-    .send({limit: limit})
+    .send({limit: 1000})
     .send({offset: offset})
     .end(function(err, res) {
-      console.log("data return", res);
       if (!err) {
         var count = 0;
         var timelineItems = [];
@@ -1462,6 +1461,7 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function paint() {
+    lazyLoadImage(timelineState.currentIndex);
     slideTo(timelineState.currentIndex);
 
     var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
@@ -1547,7 +1547,7 @@ TimelineWidget.prototype.link = function(elements) {
     paint();
   });
 
-  // Update other sliders based on main.
+  // Update other sliders based on main. Lazy-load in images.
   $sly.on('moveStart', function() {
     if ($sly.rel.activeItem === 0) {
       lazyLoad();
@@ -1557,8 +1557,10 @@ TimelineWidget.prototype.link = function(elements) {
     }
   });
 
-  $slyDropdown.on('change', function() {
-  });
+  function lazyLoadImage(index) {
+    var $headlineImage = $('.timeline-widget-item--image img', $sly.items[index].el).last();
+    $headlineImage.attr('src', $headlineImage.data('src'));
+  }
 
   function lazyLoad() {
     if ($sly.rel.activeItem === 0) {

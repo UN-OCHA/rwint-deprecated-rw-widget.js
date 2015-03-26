@@ -88,10 +88,9 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
     .fields(['date', 'headline', 'primary_country', 'url'], [])
     .sort('date.original', 'desc')
     .send(filters)
-    .send({limit: limit})
+    .send({limit: 1000})
     .send({offset: offset})
     .end(function(err, res) {
-      console.log("data return", res);
       if (!err) {
         var count = 0;
         var timelineItems = [];
@@ -288,6 +287,7 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function paint() {
+    lazyLoadImage(timelineState.currentIndex);
     slideTo(timelineState.currentIndex);
 
     var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
@@ -373,7 +373,7 @@ TimelineWidget.prototype.link = function(elements) {
     paint();
   });
 
-  // Update other sliders based on main.
+  // Update other sliders based on main. Lazy-load in images.
   $sly.on('moveStart', function() {
     if ($sly.rel.activeItem === 0) {
       lazyLoad();
@@ -383,8 +383,10 @@ TimelineWidget.prototype.link = function(elements) {
     }
   });
 
-  $slyDropdown.on('change', function() {
-  });
+  function lazyLoadImage(index) {
+    var $headlineImage = $('.timeline-widget-item--image img', $sly.items[index].el).last();
+    $headlineImage.attr('src', $headlineImage.data('src'));
+  }
 
   function lazyLoad() {
     if ($sly.rel.activeItem === 0) {

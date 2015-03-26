@@ -23,7 +23,7 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
     + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
     + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content\">\n                  <div class=\"timeline-widget-item--image\">\n                    <div class=\"timeline-widget-item--image--icons\">\n                      <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                      <a class=\"timeline-widget-item--image--country\">"
     + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
-    + "</a>\n                    </div>\n                    <img src=\""
+    + "</a>\n                    </div>\n                    <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\""
     + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
     + "\" />\n                  </div>\n              <div class=\"timeline-widget-item--description\">\n                  "
     + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
