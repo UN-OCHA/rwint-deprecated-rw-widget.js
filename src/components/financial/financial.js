@@ -275,7 +275,7 @@ FinancialWidget.prototype.link = function(elements) {
       return {
         title: sampleData[i].name,
         fundingPercentage: fundingPercentage,
-        requested: sampleData[i].original_requirement,
+        requested: sampleData[i].current_requirement,
         funded: sampleData[i].funding,
         r: Math.sqrt(bubbleSizeScale(sampleData[i].funding) / Math.PI),
         x: (chartState.direction == 'horizontal') ? bubblePlacementScale(fundingPercentage) : w / 2 + ((Math.random() * 4) - 2),
