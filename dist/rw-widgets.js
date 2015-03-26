@@ -1401,7 +1401,7 @@ TimelineWidget.prototype.link = function(elements) {
     $sly = new Sly($frame, {
       horizontal: 1,
       itemNav: 'forceCentered',
-      smart: 1,
+      smart: 0,
       activateMiddle: 1,
       touchDragging: 1,
       releaseSwing: 1,
@@ -1420,7 +1420,7 @@ TimelineWidget.prototype.link = function(elements) {
     // Dropdowns.
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
-      smart: 1,
+      smart: 0,
       activateOn: 'click',
       mouseDragging: 1,
       touchDragging: 1,
@@ -1475,12 +1475,12 @@ TimelineWidget.prototype.link = function(elements) {
 
   function slideTo(index) {
     var $sliderPos = $sly.getPos(index);
-    $sly.slideTo($sliderPos.center);
     $sly.activate(index);
+    $sly.slideTo($sliderPos.center);
 
     var $dropDownPos = $slyDropdown.getPos(index);
-    $slyDropdown.slideTo($dropDownPos.start);
     $slyDropdown.activate(index);
+    $slyDropdown.slideTo($dropDownPos.center);
   }
 
   function adjustTimelineWidth(width) {
@@ -1525,11 +1525,17 @@ TimelineWidget.prototype.link = function(elements) {
   });
 
   $('.timeline-widget--dropdown-controls select', $element).on('selectric-change', function(element) {
+    selectChange();
+  }).on('change', function() {
+    selectChange();
+  });
+
+  function selectChange() {
     var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
     var current = moment(currentString, 'MMM YYYY').unix();
     var itemTime;
     var val;
-    
+
     for (var i = 0; i < timelineState.content.length; i++) {
       val = timelineState.content[i];
       itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
@@ -1540,7 +1546,7 @@ TimelineWidget.prototype.link = function(elements) {
         break;
       }
     }
-  });
+  }
 
   $('.form-today', $element).click(function() {
     timelineState.currentIndex = findClosestTimelineContent();
