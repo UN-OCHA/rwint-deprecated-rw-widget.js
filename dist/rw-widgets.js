@@ -128,7 +128,7 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   for (var i in config.indicators) {
     for (var j in config.indicators[i].data) {
       var original = config.indicators[i].data[j];
-      if (original.figure != null && typeof original.figure === 'object' && original.figure.type == 'request') {
+      if (original.figure !== null && typeof original.figure === 'object' && original.figure.type == 'request') {
         var value = numeral(original.figure.content[0].value).format('0.00 a').split(' ');
         this.config('indicators.' + i + '.data.' + j + '.figure', value[0]);
         if (!original.quantifier) {
@@ -1265,6 +1265,7 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
     .send({limit: limit})
     .send({offset: offset})
     .end(function(err, res) {
+      console.log("data return", res);
       if (!err) {
         var count = 0;
         var timelineItems = [];
@@ -1393,6 +1394,10 @@ TimelineWidget.prototype.link = function(elements) {
       adjustTimelineWidth($frame.width());
     });
 
+    $(window).on( "orientationchange", function(event) {
+      adjustTimelineWidth($frame.width());
+    });
+
     // Main slider.
     $sly = new Sly($frame, {
       horizontal: 1,
@@ -1482,8 +1487,17 @@ TimelineWidget.prototype.link = function(elements) {
     // Fix for iOS mobile browser. For some reason, Sly will cause the browser window to dramatically
     // increase in width. This interacts poorly with our implementation of pym.js, which causes a feedback
     // loop in which the widget gets scaled to infinite width.
+
+    // Do the orientation check to deal with safari not adjusting screen dimensions properly in iframe context.
     if (window.screen.width < width) {
-      width = window.screen.width;
+      if (window.orientation == 'portrait') {
+        width = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
+      } else if (window.orientation == 'landscape') {
+        width = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
+      } else {
+        // Not a mobile
+        width = window.screen.width;
+      }
     }
 
     $('timeline-widget', $element).width(width);
