@@ -204,7 +204,9 @@ TimelineWidget.prototype.link = function(elements) {
 
     populateOverlaySelectors();
 
-    $('select', $element).selectric();
+    $('select', $element).selectric({
+      disableOnMobile: false
+    });
     // Initialize Sly Sliders.
     $frame = $('.timeline-widget--frames', $element);
     $item = $('.timeline-widget-item', $element);
