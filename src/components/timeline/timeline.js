@@ -18,7 +18,7 @@ var TimelineWidget = function(opts) {
     title: "Crisis Timeline",
     template: "timeline.hbs",
     countries: [],
-    limit: 10
+    limit: 100
   };
 
   opts = (opts) ? opts : {};
@@ -88,7 +88,7 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
     .fields(['date', 'headline', 'primary_country', 'url'], [])
     .sort('date.original', 'desc')
     .send(filters)
-    .send({limit: limit})
+    .send({limit: 1000})
     .send({offset: offset})
     .end(function(err, res) {
       if (!err) {
@@ -219,11 +219,15 @@ TimelineWidget.prototype.link = function(elements) {
       adjustTimelineWidth($frame.width());
     });
 
+    $(window).on( "orientationchange", function(event) {
+      adjustTimelineWidth($frame.width());
+    });
+
     // Main slider.
     $sly = new Sly($frame, {
       horizontal: 1,
       itemNav: 'forceCentered',
-      smart: 1,
+      smart: 0,
       activateMiddle: 1,
       touchDragging: 1,
       releaseSwing: 1,
@@ -242,7 +246,7 @@ TimelineWidget.prototype.link = function(elements) {
     // Dropdowns.
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
-      smart: 1,
+      smart: 0,
       activateOn: 'click',
       mouseDragging: 1,
       touchDragging: 1,
@@ -283,6 +287,7 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function paint() {
+    lazyLoadImage(timelineState.currentIndex);
     slideTo(timelineState.currentIndex);
 
     var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
@@ -296,23 +301,30 @@ TimelineWidget.prototype.link = function(elements) {
 
   function slideTo(index) {
     var $sliderPos = $sly.getPos(index);
-    $sly.slideTo($sliderPos.center);
     $sly.activate(index);
+    $sly.slideTo($sliderPos.center);
 
     var $dropDownPos = $slyDropdown.getPos(index);
-    $slyDropdown.slideTo($dropDownPos.start);
     $slyDropdown.activate(index);
+    $slyDropdown.slideTo($dropDownPos.center);
   }
 
   function adjustTimelineWidth(width) {
     // Fix for iOS mobile browser. For some reason, Sly will cause the browser window to dramatically
     // increase in width. This interacts poorly with our implementation of pym.js, which causes a feedback
     // loop in which the widget gets scaled to infinite width.
-    if (window.screen.width < width) {
-      width = window.screen.width;
+
+    // Do the orientation check to deal with safari not adjusting screen dimensions properly in iframe context.
+    if (Math.abs(window.orientation) == 90) {
+      // landscape
+      width = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(width);
+    } else if (window.orientation === 0) {
+      // portrait
+      width = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(width);
     }
 
-    $('timeline-widget', $element).width(width);
     $item.width(width);
 
     setTimeout(function() {
@@ -339,11 +351,17 @@ TimelineWidget.prototype.link = function(elements) {
   });
 
   $('.timeline-widget--dropdown-controls select', $element).on('selectric-change', function(element) {
+    selectChange();
+  }).on('change', function() {
+    selectChange();
+  });
+
+  function selectChange() {
     var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
     var current = moment(currentString, 'MMM YYYY').unix();
     var itemTime;
     var val;
-    
+
     for (var i = 0; i < timelineState.content.length; i++) {
       val = timelineState.content[i];
       itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
@@ -354,14 +372,14 @@ TimelineWidget.prototype.link = function(elements) {
         break;
       }
     }
-  });
+  }
 
   $('.form-today', $element).click(function() {
     timelineState.currentIndex = findClosestTimelineContent();
     paint();
   });
 
-  // Update other sliders based on main.
+  // Update other sliders based on main. Lazy-load in images.
   $sly.on('moveStart', function() {
     if ($sly.rel.activeItem === 0) {
       lazyLoad();
@@ -371,8 +389,10 @@ TimelineWidget.prototype.link = function(elements) {
     }
   });
 
-  $slyDropdown.on('change', function() {
-  });
+  function lazyLoadImage(index) {
+    var $headlineImage = $('.timeline-widget-item--image img', $sly.items[index].el).last();
+    $headlineImage.attr('src', $headlineImage.data('src'));
+  }
 
   function lazyLoad() {
     if ($sly.rel.activeItem === 0) {
