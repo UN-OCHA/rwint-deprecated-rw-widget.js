@@ -5,6 +5,8 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
 
   return "              <li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
     + alias3(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\" data-rw-id=\""
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
     + "\">\n                <div class=\"timeline-widget-dropdown--item\">\n                  <div class=\"timeline-widget-dropdown--item-date\">"
     + alias3(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-day","hash":{},"data":data}) : helper)))
     + " "
@@ -15,20 +17,22 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
     + alias3(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"short-desc","hash":{},"data":data}) : helper)))
     + "</div>\n                </div>\n              </li>\n";
 },"3":function(depth0,helpers,partials,data) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+    var stack1, helper, alias1=this.escapeExpression, alias2=this.lambda;
 
-  return "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
-    + alias2(alias1((depth0 != null ? depth0['date-full'] : depth0), depth0))
+  return "          <li class=\"timeline-widget-item\" data-rw-id=\""
+    + alias1(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + alias1(alias2((depth0 != null ? depth0['date-full'] : depth0), depth0))
     + "</div>\n              </div>\n              <h1 class=\"timeline-widget-item--title\">"
-    + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.title : depth0), depth0))
     + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content\">\n                  <div class=\"timeline-widget-item--image\">\n                    <div class=\"timeline-widget-item--image--icons\">\n                      <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                      <a class=\"timeline-widget-item--image--country\">"
-    + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.country : depth0), depth0))
     + "</a>\n                    </div>\n                    <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\""
-    + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0['img-src'] : depth0), depth0))
     + "\" />\n                  </div>\n              <div class=\"timeline-widget-item--description\">\n                  "
-    + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
+    + ((stack1 = alias2((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
     + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
-    + alias2(alias1((depth0 != null ? depth0.url : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.url : depth0), depth0))
     + "\" target=\"_blank\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 

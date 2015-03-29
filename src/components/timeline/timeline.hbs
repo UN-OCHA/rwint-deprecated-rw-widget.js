@@ -25,7 +25,7 @@
       <div class="timeline-widget--dropdown--container">
         <ul class="slidee">
             {{#timeline-items}}
-              <li class="timeline-widget-dropdown--list-item" data-slide="{{ @index }}">
+              <li class="timeline-widget-dropdown--list-item" data-slide="{{ @index }}" data-rw-id="{{ id }}">
                 <div class="timeline-widget-dropdown--item">
                   <div class="timeline-widget-dropdown--item-date">{{ date-day }} {{ date-month }} {{ date-year }}</div>
                   <div class="timeline-widget-dropdown--item-desc">{{ short-desc }}</div>
@@ -41,7 +41,7 @@
   <div class="timeline-widget--frames">
     <ul class="slidee">
         {{#each timeline-items}}
-          <li class="timeline-widget-item">
+          <li class="timeline-widget-item" data-rw-id="{{ id }}">
             <div class="timeline-widget-item--header">
               <div class="timeline-widget-item--headline">
                 <div class="timeline-widget-item--category">Ocha <div class="arrow"></div></div> <div class="timeline-widget-item--date">{{ this.date-full }}</div>
