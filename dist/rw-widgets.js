@@ -1396,7 +1396,7 @@ TimelineWidget.prototype.link = function(elements) {
     currentMonth: null,
     currentFormatted: null,
     requestedDate: null,
-    range: [null, null],
+    range: [0, 50],
     activeId: null
   };
 
@@ -1434,7 +1434,6 @@ TimelineWidget.prototype.link = function(elements) {
 
   function init() {
     timelineState.activeId = findClosestTimelineContent();
-    //var now = moment(timelineDataStore.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
     var content = _.find(timelineDataStore.content, function(item) {
       return item.id == timelineState.activeId;
     });
@@ -1491,13 +1490,11 @@ TimelineWidget.prototype.link = function(elements) {
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
       smart: 0,
-      //activateOn: 'click',
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
       scrollBy: 1,
       startAt: 0,
-      //activatePageOn: 'click',
       speed: 300,
       elasticBounds: 1,
       dragHandle: 1,
@@ -1532,7 +1529,6 @@ TimelineWidget.prototype.link = function(elements) {
 
   function paint() {
     lazyLoadImage();
-    //slideTo(timelineState.currentIndex);
     slideToById(timelineState.activeId);
 
     var content = _.find(timelineDataStore.content, function(item) {
@@ -1563,20 +1559,6 @@ TimelineWidget.prototype.link = function(elements) {
     }
   }
 
-  // @TODO: Depreciate-ish. slideTo should use id instead of index.
-
-  function slideTo(index) {
-    var $sliderPos = $sly.getPos(index);
-    $sly.activate(index);
-    $sly.slideTo($sliderPos.center);
-
-    var $dropDownPos = $slyDropdown.getPos(index);
-    $slyDropdown.activate(index);
-    $slyDropdown.slideTo($dropDownPos.center);
-
-    lazyLoadImage();
-  }
-
   function adjustTimelineWidth(width) {
     // Fix for iOS mobile browser. For some reason, Sly will cause the browser window to dramatically
     // increase in width. This interacts poorly with our implementation of pym.js, which causes a feedback
@@ -1604,8 +1586,14 @@ TimelineWidget.prototype.link = function(elements) {
   init();
 
   $('.timeline-widget-dropdown--list-item', $element).click(function(){
-    timelineState.activeId = $(this).data('rwId');
-    paint();
+    if ($(this).data('rwId') == $($slyDropdown.items[0].el).data('rwId')) {
+      timelineState.activeId = $(this).data('rwId');
+      lazyLoad();
+    } else {
+      timelineState.activeId = $(this).data('rwId');
+      paint();
+    }
+    $('.timeline-widget--dropdown--wrapper').removeClass('open');
   });
 
   // Open popup.
@@ -1664,21 +1652,6 @@ TimelineWidget.prototype.link = function(elements) {
       $slyDropdown.reload();
       paint();
     });
-
-    //var current = moment(currentString, 'MMM YYYY').unix();
-    //var itemTime;
-    //var val;
-    //
-    //for (var i = 0; i < timelineDataStore.content.length; i++) {
-    //  val = timelineDataStore.content[i];
-    //  itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
-    //
-    //  if (current < itemTime) {
-    //    timelineState.currentIndex = i;
-    //    paint();
-    //    break;
-    //  }
-    //}
   }
 
   $('.form-today', $element).click(function() {
@@ -1704,32 +1677,24 @@ TimelineWidget.prototype.link = function(elements) {
     });
   });
 
-  $slyDropdown.on('change', function() {
-    //console.log("stuff from slider", $slyDropdown.pos, $slyDropdown.items);
-  });
-
   function lazyLoadImage() {
     var $headlineImage = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"] img').last();
     $headlineImage.attr('src', $headlineImage.data('src'));
   }
 
-  // @TODO: Depreciate
-
   function lazyLoad() {
-    if ($sly.rel.activeItem === 0) {
-      widget.getData(timelineDataStore.content.length, function(timelineItems) {
+    widget.getData(timelineState.range[1], function(timelineItems) {
 
-        timelineItems = timelineItems.reverse();
-        timelineDataStore.content = timelineItems.concat(timelineDataStore.content);
-        timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
+      timelineState.range[1] += 50; // @TODO: Avoid hardcoded
+      timelineItems = timelineItems.reverse();
+      timelineDataStore.content = timelineItems.concat(timelineDataStore.content);
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
 
-        renderTimelineDropdownItems();
-        renderTimelineSlideItems();
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
 
-        timelineState.currentIndex = (timelineState.currentIndex * 1) + (timelineItems.length * 1) + 1;
-        slideTo(timelineState.currentIndex);
-      });
-    }
+      paint();
+    });
   }
 
   function renderTimelineDropdownItems() {
@@ -1744,8 +1709,13 @@ TimelineWidget.prototype.link = function(elements) {
     $('.timeline-widget--dropdown--container .timeline-widget--dropdown--end-of-line').first().before(timelineItems);
 
     $('.timeline-widget-dropdown--list-item', $element).click(function(){
-      timelineState.activeId = $(this).data('rwId');
-      paint();
+      if ($(this).data('rwId') == $($slyDropdown.items[0].el).data('rwId')) {
+        timelineState.activeId = $(this).data('rwId');
+        lazyLoad();
+      } else {
+        timelineState.activeId = $(this).data('rwId');
+        paint();
+      }
       $('.timeline-widget--dropdown--wrapper').removeClass('open');
     });
 
