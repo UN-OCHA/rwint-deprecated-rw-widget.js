@@ -706,6 +706,11 @@ FinancialWidget.prototype.link = function(elements) {
     // Not sure why it adds 20 when using .width().
     // Because of this, I'm manually subtracting 20 from the value.
     $('.financial-widget--percent-funded .covered').width(percentage-20 + '%').html(value);
+
+    // Align the label to the right if the percentage is less than 20.
+    if (percentage < 20) {
+      $('.financial-widget--percent-funded--amount .percent').addClass('aligned-right');
+    }
   }
 
   function setRequested(value) {

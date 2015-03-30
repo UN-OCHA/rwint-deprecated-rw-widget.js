@@ -902,6 +902,11 @@ FinancialWidget.prototype.link = function(elements) {
     // Not sure why it adds 20 when using .width().
     // Because of this, I'm manually subtracting 20 from the value.
     $('.financial-widget--percent-funded .covered').width(percentage-20 + '%').html(value);
+
+    // Align the label to the right if the percentage is less than 20.
+    if (percentage < 20) {
+      $('.financial-widget--percent-funded--amount .percent').addClass('aligned-right');
+    }
   }
 
   function setRequested(value) {
@@ -1255,7 +1260,6 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
   var path = widget.config('items.path').split('/');
   path.shift();
   path = path.join('/');
-  console.log(path);
   // Override the API host, need to strip out the protocol as the library handles it.
   var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
   rw.post(path)
