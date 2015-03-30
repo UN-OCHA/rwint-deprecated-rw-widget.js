@@ -14,7 +14,7 @@
   ],
   "main": "dist/rw-widgets.js",
   "dependencies": {
-    "lodash": "~3.2.0",
+    "lodash": "~3.6.0",
     "handlebars": "~2.0.0",
     "d3": "~3.5.3",
     "moment": "~2.8.4",

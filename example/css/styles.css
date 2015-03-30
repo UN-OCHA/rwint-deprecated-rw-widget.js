@@ -3035,61 +3035,20 @@ input[type="search"] {
   transition: max-height 0.3s ease-in-out;
   max-height: 0;
   overflow: hidden;
-  -moz-transform: translateX(0);
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
 }
-/* line 6, ../scss/components/molecules/_accordion-set.scss */
+/* line 5, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--content.is-active {
   max-height: 100em;
 }
 
-/* line 10, ../scss/components/molecules/_accordion-set.scss */
+/* line 9, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--check {
   display: none;
 }
-/* line 14, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
-  max-height: 100em;
-}
 
-/* line 20, ../scss/components/molecules/_accordion-set.scss */
+/* line 12, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--label {
   display: block;
-}
-
-/* line 25, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--label {
-  position: relative;
-}
-/* line 27, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--label:before {
-  -moz-transition: -moz-transform 0.3s ease-in-out;
-  -o-transition: -o-transform 0.3s ease-in-out;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  color: transparent;
-  content: '.';
-  border-width: 0.5em 0 0.5em 0.66em;
-  border-color: transparent transparent transparent #a993e1;
-  top: 1em;
-  left: 0.5em;
-}
-/* line 35, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--label.is-active:before {
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
 }
 
 /* line 3, ../scss/components/molecules/_header.scss */

@@ -1062,6 +1062,8 @@ RiverWidget.prototype.link = function(elements) {
         $('.widget-river--results').height(height);
       }, 1);
     });
+
+    accordion_set_add_active($('.accordion-set--check:checked'));
   }
 
   function getDataAndRender(filterId, filterData) {
@@ -1084,6 +1086,38 @@ RiverWidget.prototype.link = function(elements) {
     }
   }
 
+  function accordion_set_clear_all_active() {
+    $('.accordion-set')
+      .find('.accordion-set--check').removeClass('is-active').end()
+      .find('.accordion-set--label').removeClass('is-active').end()
+      .find('.accordion-set--content').removeClass('is-active');
+  }
+
+  function accordion_set_clear_active(el) {
+    $(el)
+      .removeClass('is-active')
+      .next('.accordion-set--label').removeClass('is-active')
+      .next('.accordion-set--content').removeClass('is-active');
+  }
+
+  function accordion_set_add_active(el) {
+    $(el)
+      .addClass('is-active')
+      .next('.accordion-set--label').addClass('is-active')
+      .next('.accordion-set--content').addClass('is-active');
+  }
+
+  $('.accordion-set--check').change(function(ev){
+    if($(this).is('[type=radio]')) {
+      accordion_set_clear_all_active();
+    }
+    if ($(this).is(':checked')) {
+      accordion_set_add_active($(this));
+    } else {
+      accordion_set_clear_active($(this));
+    }
+  });
+
   init();
 };
 
@@ -1098,6 +1132,8 @@ templates['timeline--dropdown-item.hbs'] = template({"compiler":[6,">= 2.0.0-bet
 
   return "<li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
     + alias3(((helper = (helper = helpers.index || (depth0 != null ? depth0.index : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\" data-rw-id=\""
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
     + "\">\n  <div class=\"timeline-widget-dropdown--item\">\n    <div class=\"timeline-widget-dropdown--item-date\">"
     + alias3(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-day","hash":{},"data":data}) : helper)))
     + " "
@@ -1113,20 +1149,22 @@ templates['timeline--dropdown-item.hbs'] = template({"compiler":[6,">= 2.0.0-bet
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['timeline--frame-item.hbs'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+    var stack1, helper, alias1=this.escapeExpression, alias2=this.lambda;
 
-  return "<li class=\"timeline-widget-item\">\n  <div class=\"timeline-widget-item--header\">\n    <div class=\"timeline-widget-item--headline\">\n      <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
-    + alias2(alias1((depth0 != null ? depth0['date-full'] : depth0), depth0))
+  return "<li class=\"timeline-widget-item\" data-rw-id=\""
+    + alias1(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">\n  <div class=\"timeline-widget-item--header\">\n    <div class=\"timeline-widget-item--headline\">\n      <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + alias1(alias2((depth0 != null ? depth0['date-full'] : depth0), depth0))
     + "</div>\n    </div>\n    <h1 class=\"timeline-widget-item--title\">"
-    + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.title : depth0), depth0))
     + "</h1>\n  </div>\n  <div class=\"timeline-widget-item--content\">\n    <div class=\"timeline-widget-item--image\">\n      <div class=\"timeline-widget-item--image--icons\">\n        <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n        <a class=\"timeline-widget-item--image--country\">"
-    + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.country : depth0), depth0))
     + "</a>\n      </div>\n      <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\""
-    + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0['img-src'] : depth0), depth0))
     + "\" />\n    </div>\n    <div class=\"timeline-widget-item--description\">\n      "
-    + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
+    + ((stack1 = alias2((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
     + "\n      <div class=\"timeline-widget-item-link\">\n        <a class=\"btn\" href=\""
-    + alias2(alias1((depth0 != null ? depth0.url : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.url : depth0), depth0))
     + "\" target=\"_blank\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n      </div>\n    </div>\n  </div>\n</li>";
 },"useData":true});
 })();
@@ -1138,6 +1176,8 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
 
   return "              <li class=\"timeline-widget-dropdown--list-item\" data-slide=\""
     + alias3(((helper = (helper = helpers.index || (data && data.index)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"index","hash":{},"data":data}) : helper)))
+    + "\" data-rw-id=\""
+    + alias3(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
     + "\">\n                <div class=\"timeline-widget-dropdown--item\">\n                  <div class=\"timeline-widget-dropdown--item-date\">"
     + alias3(((helper = (helper = helpers['date-day'] || (depth0 != null ? depth0['date-day'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"date-day","hash":{},"data":data}) : helper)))
     + " "
@@ -1148,20 +1188,22 @@ templates['timeline.hbs'] = template({"1":function(depth0,helpers,partials,data)
     + alias3(((helper = (helper = helpers['short-desc'] || (depth0 != null ? depth0['short-desc'] : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"short-desc","hash":{},"data":data}) : helper)))
     + "</div>\n                </div>\n              </li>\n";
 },"3":function(depth0,helpers,partials,data) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+    var stack1, helper, alias1=this.escapeExpression, alias2=this.lambda;
 
-  return "          <li class=\"timeline-widget-item\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
-    + alias2(alias1((depth0 != null ? depth0['date-full'] : depth0), depth0))
+  return "          <li class=\"timeline-widget-item\" data-rw-id=\""
+    + alias1(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\">\n            <div class=\"timeline-widget-item--header\">\n              <div class=\"timeline-widget-item--headline\">\n                <div class=\"timeline-widget-item--category\">Ocha <div class=\"arrow\"></div></div> <div class=\"timeline-widget-item--date\">"
+    + alias1(alias2((depth0 != null ? depth0['date-full'] : depth0), depth0))
     + "</div>\n              </div>\n              <h1 class=\"timeline-widget-item--title\">"
-    + alias2(alias1((depth0 != null ? depth0.title : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.title : depth0), depth0))
     + "</h1>\n            </div>\n            <div class=\"timeline-widget-item--content\">\n                  <div class=\"timeline-widget-item--image\">\n                    <div class=\"timeline-widget-item--image--icons\">\n                      <a class=\"timeline-widget-item--image--view-more\"><img src=\"../../images/eye-img--yellow.png\"></a>\n                      <a class=\"timeline-widget-item--image--country\">"
-    + alias2(alias1((depth0 != null ? depth0.country : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.country : depth0), depth0))
     + "</a>\n                    </div>\n                    <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7\" data-src=\""
-    + alias2(alias1((depth0 != null ? depth0['img-src'] : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0['img-src'] : depth0), depth0))
     + "\" />\n                  </div>\n              <div class=\"timeline-widget-item--description\">\n                  "
-    + ((stack1 = alias1((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
+    + ((stack1 = alias2((depth0 != null ? depth0['long-desc'] : depth0), depth0)) != null ? stack1 : "")
     + "\n                <div class=\"timeline-widget-item-link\">\n                  <a class=\"btn\" href=\""
-    + alias2(alias1((depth0 != null ? depth0.url : depth0), depth0))
+    + alias1(alias2((depth0 != null ? depth0.url : depth0), depth0))
     + "\" target=\"_blank\"><span class=\"un-icon-product_type_report\"></span> Read full report</a>\n                </div>\n              </div>\n            </div>\n          </li>\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1, helper, options, alias1=helpers.helperMissing, alias2="function", buffer = 
@@ -1209,7 +1251,12 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
-TimelineWidget.prototype.getData = function(offset, updatePage) {
+/**
+ * Method for getting filters needed for ReliefWeb API.
+ * @returns {{filter: {operator: string, conditions: {field: string}[]}}}
+ */
+
+TimelineWidget.prototype.getRWFilters = function() {
   var widget = this;
 
   var countries = widget.config('countries');
@@ -1263,52 +1310,63 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
     });
   }
 
-  var rw = reliefweb.client();
-  rw.post('reports')
-    .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
-    .send(filters)
-    .send({limit: 1000})
+  return filters;
+};
+
+TimelineWidget.prototype.getData = function(offset, updatePage) {
+  var widget = this;
+
+  // On offset "0" just use the data from configuration.
+  if (offset === 0) {
+    updateTimelineData(widget.config('items.content.0'), updatePage);
+    return true;
+  }
+
+  // Remove v1/ from the configured path.
+  var path = widget.config('items.path').split('/');
+  path.shift();
+  path = path.join('/');
+  // Override the API host, need to strip out the protocol as the library handles it.
+  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
+  rw.post(path)
+    .send(widget.config('items.payload'))
     .send({offset: offset})
+    .send({limit: 50})
+    .send({facets: null})
     .end(function(err, res) {
       if (!err) {
-        var count = 0;
-        var timelineItems = [];
-        res.body.data.forEach(function(val, key) {
-          var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-          var item = {
-            title: val.fields.headline.title,
-            country: val.fields.primary_country.name,
-            "long-desc": val.fields.headline.summary,
-            "short-desc": val.fields.headline.title,
-            "url": val.fields.url
-          };
-
-          if (val.fields.headline.image) {
-            item["img-src"] = val.fields.headline.image['url-large'];
-          } else {
-
-            if (widget.has('emptyImage')) {
-              item["img-src"] = widget.config('emptyImage');
-            }
-          }
-
-          var time = moment(val.fields.date.original, moment.ISO_8601);
-          item['date-full'] = time.format('DD MMM YYYY');
-          item['date-month'] = time.format('MMMM');
-          item['date-day'] = time.format('DD');
-          item['date-year'] = time.format('YYYY');
-          item['new-month'] = prevMonth !== time.month();
-
-          timelineItems.push(item);
-
-          count++;
-          if (count == res.body.data.length) {
-            updatePage(timelineItems);
-          }
-        });
+        updateTimelineData(res.body.data, updatePage);
       }
     });
+
+  function updateTimelineData(data, cb) {
+    var timelineItems = _.map(data, function(item) {
+      var returnItem = {
+        title: item.fields.headline.title,
+        country: item.fields.primary_country.name,
+        "long-desc": item.fields.headline.summary,
+        "short-desc": item.fields.headline.title,
+        "url": item.fields.url,
+        id: item.id
+      };
+
+      if (item.fields.headline.image) {
+        returnItem["img-src"] = item.fields.headline.image['url-large'];
+      } else if (widget.has('emptyImage')) {
+        returnItem["img-src"] = widget.config('emptyImage');
+      }
+
+      var time = moment(item.fields.date.original, moment.ISO_8601);
+      returnItem['date-full'] = time.format('DD MMM YYYY');
+      returnItem['date-month'] = time.format('MMMM');
+      returnItem['date-day'] = time.format('DD');
+      returnItem['date-year'] = time.format('YYYY');
+
+      return returnItem;
+    });
+
+    cb(timelineItems);
+  }
 };
 
 TimelineWidget.prototype.compile = function(elements, next) {
@@ -1317,18 +1375,45 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
-  widget.getData(0, function(timelineItems) {
-    timelineItems.reverse();
-    widget.config('timeline-items', timelineItems);
+  // Remove v1/ from the configured path.
+  var path = widget.config('items.path').split('/');
+  path.shift();
+  path = path.join('/');
+  // Override the API host, need to strip out the protocol as the library handles it.
+  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
+  rw.post(path)
+    .send(widget.config('items.payload'))
+    .send({limit: 0})
+    .send({offset: 0})
+    .send({facets: [
+      {
+        'field': 'date.original',
+        'interval': 'month'
+      }
+    ]})
+    .end(function(err, res) {
+      if (!err) {
+        widget.config('dataRanges', _.map(res.body.embedded.facets['date.original'].data, function(item) {
+          return {
+            count: item.count,
+            value: moment(item.value, moment.ISO_8601())
+          };
+        }));
+      }
 
-    widget.template(function(content) {
-      elements
-        .classed('rw-widget', true)
-        .html(content);
+      widget.getData(0, function(timelineItems) {
+        timelineItems.reverse();
+        widget.config('timeline-items', timelineItems);
 
-      next();
+        widget.template(function(content) {
+          elements
+            .classed('rw-widget', true)
+            .html(content);
+
+          next();
+        });
+      });
     });
-  });
 
   function titleAdjust(title) {
     var snippet = '<span class="word[[counter]]">[[word]]</span>';
@@ -1345,39 +1430,53 @@ TimelineWidget.prototype.link = function(elements) {
   var widget = this;
 
   var timelineState = {
+    currentIndex: null,
+    currentYear: null,
+    currentMonth: null,
+    currentFormatted: null,
+    requestedDate: null,
+    range: [0, 50],
+    activeId: null
+  };
+
+  var timelineDataStore = {
+    rangePerMonth: this.config('dataRanges'),
     content: this.config('timeline-items')
   };
 
   var $element = $(elements[0][0]); // @TODO, grab any potential element selected.
   var $frame,
-      $item,
-      margin;
+    $item,
+    margin;
 
   var $sly,
-      $slyDropdown;
+    $slyDropdown;
 
   // Open links in a new tab.
   $('.timeline-widget-frames li a').attr('target', '_blank');
 
-  function findClosestTimelineContent() {
-    var now = moment().unix();
-    var closestIndex = 0;
+  function findClosestTimelineContent(date) {
+    var now = (date) ? date.unix() : moment().unix();
+    var closestId;
     var closestIndexDistance;
 
-    timelineState.content.forEach(function(val, key) {
+    timelineDataStore.content.forEach(function(val, key) {
       var itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
       if (closestIndexDistance === undefined || Math.abs(now - itemTime) < closestIndexDistance) {
         closestIndexDistance = Math.abs(now - itemTime);
-        closestIndex = key;
+        closestId = val.id;
       }
     });
 
-    return closestIndex;
+    return closestId;
   }
 
   function init() {
-    timelineState.currentIndex = findClosestTimelineContent();
-    var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    timelineState.activeId = findClosestTimelineContent();
+    var content = _.find(timelineDataStore.content, function(item) {
+      return item.id == timelineState.activeId;
+    });
+    var now = moment(content['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -1413,12 +1512,13 @@ TimelineWidget.prototype.link = function(elements) {
       activateMiddle: 1,
       touchDragging: 1,
       releaseSwing: 1,
-      startAt: timelineState.currentIndex,
+      startAt: 0,
       speed: 200,
       elasticBounds: 1,
       dragHandle: 1,
       dynamicHandle: 1,
       clickBar: 1,
+      scrollHijack: 0,
 
       // Buttons
       prev: $('.prev'),
@@ -1429,13 +1529,11 @@ TimelineWidget.prototype.link = function(elements) {
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
       smart: 0,
-      activateOn: 'click',
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
       scrollBy: 1,
-      startAt: timelineState.currentIndex,
-      activatePageOn: 'click',
+      startAt: 0,
       speed: 300,
       elasticBounds: 1,
       dragHandle: 1,
@@ -1469,10 +1567,13 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function paint() {
-    lazyLoadImage(timelineState.currentIndex);
-    slideTo(timelineState.currentIndex);
+    lazyLoadImage();
+    slideToById(timelineState.activeId);
 
-    var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    var content = _.find(timelineDataStore.content, function(item) {
+      return item.id == timelineState.activeId;
+    });
+    var now = moment(content['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -1481,14 +1582,20 @@ TimelineWidget.prototype.link = function(elements) {
     $('select[name="year"]', $element).val(now.format('YYYY')).selectric('refresh');
   }
 
-  function slideTo(index) {
-    var $sliderPos = $sly.getPos(index);
-    $sly.activate(index);
-    $sly.slideTo($sliderPos.center);
+  function slideToById(id) {
+    var $sliderItem = $('.timeline-widget-item[data-rw-id="' + id + '"]');
+    if ($sliderItem) {
+      var $sliderPos = $sly.getPos($sliderItem);
+      $sly.activate($sliderItem);
+      $sly.slideTo($sliderPos.center);
+    }
 
-    var $dropDownPos = $slyDropdown.getPos(index);
-    $slyDropdown.activate(index);
-    $slyDropdown.slideTo($dropDownPos.center);
+    var $dropDownItem = $('.timeline-widget-dropdown--list-item[data-rw-id="' + id + '"]');
+    if ($dropDownItem) {
+      var $dropDownPos = $slyDropdown.getPos($dropDownItem);
+      $slyDropdown.activate($dropDownItem, true);
+      $slyDropdown.slideTo($dropDownPos.center);
+    }
   }
 
   function adjustTimelineWidth(width) {
@@ -1519,8 +1626,14 @@ TimelineWidget.prototype.link = function(elements) {
   init();
 
   $('.timeline-widget-dropdown--list-item', $element).click(function(){
-    timelineState.currentIndex = $(this).attr('data-slide');
-    paint();
+    if ($(this).data('rwId') == $($slyDropdown.items[0].el).data('rwId')) {
+      timelineState.activeId = $(this).data('rwId');
+      lazyLoad();
+    } else {
+      timelineState.activeId = $(this).data('rwId');
+      paint();
+    }
+    $('.timeline-widget--dropdown--wrapper').removeClass('open');
   });
 
   // Open popup.
@@ -1534,87 +1647,116 @@ TimelineWidget.prototype.link = function(elements) {
     $('.timeline-widget--dropdown--wrapper').removeClass('open');
   });
 
-  $('.timeline-widget--dropdown-controls select', $element).on('selectric-change', function(element) {
-    selectChange();
-  }).on('change', function() {
+  $('.timeline-widget--dropdown-controls select', $element).on('change', function() {
     selectChange();
   });
 
-  function selectChange() {
-    var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
-    var current = moment(currentString, 'MMM YYYY').unix();
-    var itemTime;
-    var val;
+  $('.next').on('click', function() {
+    var $item = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"]');
+    var activeIndex = $sly.getIndex($item);
 
-    for (var i = 0; i < timelineState.content.length; i++) {
-      val = timelineState.content[i];
-      itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
-
-      if (current < itemTime) {
-        timelineState.currentIndex = i;
-        paint();
-        break;
-      }
-    }
-  }
-
-  $('.form-today', $element).click(function() {
-    timelineState.currentIndex = findClosestTimelineContent();
-    paint();
-  });
-
-  // Update other sliders based on main. Lazy-load in images.
-  $sly.on('moveStart', function() {
-    if ($sly.rel.activeItem === 0) {
-      lazyLoad();
-    } else {
-      timelineState.currentIndex = ($sly.rel.activeItem * 1);
+    if (activeIndex < $sly.items.length - 1) {
+      timelineState.activeId = $($sly.items[activeIndex + 1].el).data('rwId');
       paint();
     }
   });
 
-  function lazyLoadImage(index) {
-    var $headlineImage = $('.timeline-widget-item--image img', $sly.items[index].el).last();
+  $(".prev").on("click", function() {
+    var $item = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"]');
+    var activeIndex = $sly.getIndex($item);
+
+    if (activeIndex > 0) {
+      timelineState.activeId = $($sly.items[activeIndex - 1].el).data('rwId');
+      paint();
+    }
+  });
+
+  function selectChange() {
+    var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
+
+    var offset = findOffsetForTime(moment(currentString, 'MMM YYYY')) - 5;
+    offset = (offset < 5) ? 0 : offset;
+
+    widget.getData(offset, function(items) {
+      var timelineItems = items.reverse();
+      timelineDataStore.content = timelineItems;
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
+
+      var newActive = findClosestTimelineContent(moment(currentString, 'MMM YYYY'));
+      timelineState.activeId = newActive;
+
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
+
+      $sly.reload();
+      $slyDropdown.reload();
+      paint();
+    });
+  }
+
+  $('.form-today', $element).click(function() {
+    var now = moment();
+
+    var offset = findOffsetForTime(now) - 5;
+    offset = (offset < 5) ? 0 : offset;
+
+    widget.getData(offset, function(items) {
+      var timelineItems = items.reverse();
+      timelineDataStore.content = timelineItems;
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
+
+      var newActive = findClosestTimelineContent(now);
+      timelineState.activeId = newActive;
+
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
+
+      $sly.reload();
+      $slyDropdown.reload();
+      paint();
+    });
+  });
+
+  function lazyLoadImage() {
+    var $headlineImage = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"] img').last();
     $headlineImage.attr('src', $headlineImage.data('src'));
   }
 
   function lazyLoad() {
-    if ($sly.rel.activeItem === 0) {
-      widget.getData(timelineState.content.length, function(timelineItems) {
+    widget.getData(timelineState.range[1], function(timelineItems) {
 
-        timelineItems = timelineItems.reverse();
-        timelineState.content = timelineItems.concat(timelineState.content);
-        timelineState.content = _.uniq(timelineState.content, function(item) {
-          return item.url;
-        });
+      timelineState.range[1] += 50; // @TODO: Avoid hardcoded
+      timelineItems = timelineItems.reverse();
+      timelineDataStore.content = timelineItems.concat(timelineDataStore.content);
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
 
-        renderTimelineDropdownItems();
-        renderTimelineSlideItems();
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
 
-        timelineState.currentIndex = (timelineState.currentIndex * 1) + (timelineItems.length * 1) + 1;
-        slideTo(timelineState.currentIndex);
-      });
-    }
+      paint();
+    });
   }
 
   function renderTimelineDropdownItems() {
     var timelineItems = '';
 
-    timelineState.content.forEach(function(item){
+    timelineDataStore.content.forEach(function(item, i) {
+      item.index = i;
       timelineItems += Handlebars.templates['timeline--dropdown-item.hbs'](item);
     });
 
     $('.timeline-widget--dropdown--container .timeline-widget-dropdown--list-item').remove();
     $('.timeline-widget--dropdown--container .timeline-widget--dropdown--end-of-line').first().before(timelineItems);
 
-    $('li.timeline-widget-dropdown--list-item').each(function(idx){
-      $(this).attr('data-slide', idx);
-    });
-
     $('.timeline-widget-dropdown--list-item', $element).click(function(){
-      timelineState.currentIndex = $(this).attr('data-slide');
-      $('.timeline-widget--dropdown--wrapper').toggleClass('open');
-      paint();
+      if ($(this).data('rwId') == $($slyDropdown.items[0].el).data('rwId')) {
+        timelineState.activeId = $(this).data('rwId');
+        lazyLoad();
+      } else {
+        timelineState.activeId = $(this).data('rwId');
+        paint();
+      }
+      $('.timeline-widget--dropdown--wrapper').removeClass('open');
     });
 
     $slyDropdown.reload();
@@ -1623,7 +1765,7 @@ TimelineWidget.prototype.link = function(elements) {
   function renderTimelineSlideItems() {
     var timelineItems = '';
 
-    timelineState.content.forEach(function(item){
+    timelineDataStore.content.forEach(function(item){
       timelineItems += Handlebars.templates['timeline--frame-item.hbs'](item);
     });
 
@@ -1639,6 +1781,26 @@ TimelineWidget.prototype.link = function(elements) {
     });
 
     $sly.reload();
+  }
+
+  /**
+   * Given data in timelineDataStore.rangePerMonth that's based on the facet return from
+   * RW API, return the offset needed to load data starting at a particular time.
+   *
+   * @param date - Moment.js object.
+   * @returns offset #, useful for getData
+   */
+
+  function findOffsetForTime(date) {
+    var priorDates = _.filter(timelineDataStore.rangePerMonth, function(item) {
+      return item.value.isAfter(date);
+    });
+
+    var sum = _.reduce(priorDates, function(sum, item) {
+      return sum + item.count;
+    }, 0);
+
+    return sum;
   }
 };
 
