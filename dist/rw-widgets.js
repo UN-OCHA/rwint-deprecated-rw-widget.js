@@ -1287,7 +1287,6 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
   var path = widget.config('items.path').split('/');
   path.shift();
   path = path.join('/');
-  console.log("GET DATA PATH?", path);
   // Override the API host, need to strip out the protocol as the library handles it.
   var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
   rw.post(path)
@@ -1302,7 +1301,6 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
     });
 
   function updateTimelineData(data, cb) {
-    console.log("CALLBACK", data);
     var timelineItems = _.map(data, function(item) {
       var returnItem = {
         title: item.fields.headline.title,
@@ -1506,8 +1504,6 @@ TimelineWidget.prototype.link = function(elements) {
       dynamicHandle: 1,
       clickBar: 1
     }).init();
-
-    window.dropdown = $slyDropdown;
 
     // Fix for scrolling in iframe. The height of the container is set to 0 initially.
     setTimeout(function() {
