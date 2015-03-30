@@ -94,45 +94,59 @@ TimelineWidget.prototype.getRWFilters = function() {
 TimelineWidget.prototype.getData = function(offset, updatePage) {
   var widget = this;
 
-  var filters = this.getRWFilters();
+  // On offset "0" just use the data from configuration.
+  if (offset === 0) {
+    updateTimelineData(widget.config('items.content.0'), updatePage);
+    return true;
+  }
 
-  var rw = reliefweb.client();
-  rw.post('reports')
-    .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
-    .send(filters)
-    .send({limit: 50})
+  // Remove v1/ from the configured path.
+  var path = widget.config('items.path').split('/');
+  path.shift();
+  path = path.join('/');
+  console.log("GET DATA PATH?", path);
+  // Override the API host, need to strip out the protocol as the library handles it.
+  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
+  rw.post(path)
+    .send(widget.config('items.payload'))
     .send({offset: offset})
+    .send({limit: 50})
+    .send({facets: null})
     .end(function(err, res) {
       if (!err) {
-        var timelineItems = _.map(res.body.data, function(item) {
-          var returnItem = {
-            title: item.fields.headline.title,
-            country: item.fields.primary_country.name,
-            "long-desc": item.fields.headline.summary,
-            "short-desc": item.fields.headline.title,
-            "url": item.fields.url,
-            id: item.id
-          };
-
-          if (item.fields.headline.image) {
-            returnItem["img-src"] = item.fields.headline.image['url-large'];
-          } else if (widget.has('emptyImage')) {
-            returnItem["img-src"] = widget.config('emptyImage');
-          }
-
-          var time = moment(item.fields.date.original, moment.ISO_8601);
-          returnItem['date-full'] = time.format('DD MMM YYYY');
-          returnItem['date-month'] = time.format('MMMM');
-          returnItem['date-day'] = time.format('DD');
-          returnItem['date-year'] = time.format('YYYY');
-
-          return returnItem;
-        });
-
-        updatePage(timelineItems);
+        updateTimelineData(res.body.data, updatePage);
       }
     });
+
+  function updateTimelineData(data, cb) {
+    console.log("CALLBACK", data);
+    var timelineItems = _.map(data, function(item) {
+      var returnItem = {
+        title: item.fields.headline.title,
+        country: item.fields.primary_country.name,
+        "long-desc": item.fields.headline.summary,
+        "short-desc": item.fields.headline.title,
+        "url": item.fields.url,
+        id: item.id
+      };
+
+      if (item.fields.headline.image) {
+        returnItem["img-src"] = item.fields.headline.image['url-large'];
+      } else if (widget.has('emptyImage')) {
+        returnItem["img-src"] = widget.config('emptyImage');
+      }
+
+      var time = moment(item.fields.date.original, moment.ISO_8601);
+      returnItem['date-full'] = time.format('DD MMM YYYY');
+      returnItem['date-month'] = time.format('MMMM');
+      returnItem['date-day'] = time.format('DD');
+      returnItem['date-year'] = time.format('YYYY');
+
+      return returnItem;
+    });
+
+    cb(timelineItems);
+  }
 };
 
 TimelineWidget.prototype.compile = function(elements, next) {
@@ -141,12 +155,16 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
-  var rw = reliefweb.client();
-
-  rw.post('reports')
+  // Remove v1/ from the configured path.
+  var path = widget.config('items.path').split('/');
+  path.shift();
+  path = path.join('/');
+  // Override the API host, need to strip out the protocol as the library handles it.
+  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
+  rw.post(path)
+    .send(widget.config('items.payload'))
     .send({limit: 0})
     .send({offset: 0})
-    .send(widget.getRWFilters())
     .send({facets: [
       {
         'field': 'date.original',
@@ -208,11 +226,11 @@ TimelineWidget.prototype.link = function(elements) {
 
   var $element = $(elements[0][0]); // @TODO, grab any potential element selected.
   var $frame,
-      $item,
-      margin;
+    $item,
+    margin;
 
   var $sly,
-      $slyDropdown;
+    $slyDropdown;
 
   // Open links in a new tab.
   $('.timeline-widget-frames li a').attr('target', '_blank');
