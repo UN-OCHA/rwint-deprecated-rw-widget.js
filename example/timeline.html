@@ -24,10 +24,7 @@
     <script type="text/javascript">
       var widget = BeatBlocks.widget('timeline', {
         template: Handlebars.templates['timeline.hbs'],
-        countries: ["Malawi", "Mozambique", "Zambia", "Zimbabwe", "Madagascar"],
-          startDate: "2011-12-22",
-          disaster: "17696",
-          emptyImage:  "images/overview-map.jpg"
+        configFile: 'config/timeline.json'
       });
       widget.render('#widget');
     </script>
