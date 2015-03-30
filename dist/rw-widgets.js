@@ -1604,17 +1604,18 @@ TimelineWidget.prototype.link = function(elements) {
     // loop in which the widget gets scaled to infinite width.
 
     // Do the orientation check to deal with safari not adjusting screen dimensions properly in iframe context.
+    var overallWidth = 0;
     if (Math.abs(window.orientation) == 90) {
       // landscape
-      width = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
-      $('.timeline-widget', $element).width(width);
+      overallWidth = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(overallWidth);
     } else if (window.orientation === 0) {
       // portrait
-      width = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
-      $('.timeline-widget', $element).width(width);
+      overallWidth = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(overallWidth);
     }
 
-    $item.width(width);
+    $item.width($frame.width());
 
     setTimeout(function() {
       $sly.reload();
