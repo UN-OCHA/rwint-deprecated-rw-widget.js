@@ -1246,101 +1246,62 @@ TimelineWidget.prototype = new WidgetBase();
 TimelineWidget.prototype.getData = function(offset, updatePage) {
   var widget = this;
 
-  var countries = widget.config('countries');
-  var disaster = widget.config('disaster');
-  var startDate;
-  var limit = widget.config('limit');
+  var updateTimelineData = function(data, cb) {
+    var count = 0;
+    var timelineItems = [];
+    data.forEach(function(val, key) {
+      var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
+      var item = {
+        title: val.fields.headline.title,
+        country: val.fields.primary_country.name,
+        "long-desc": val.fields.headline.summary,
+        "short-desc": val.fields.headline.title,
+        "url": val.fields.url
+      };
 
-  if (widget.has("startDate")) {
-    startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
-  }
+      if (val.fields.headline.image) {
+        item["img-src"] = val.fields.headline.image['url-large'];
+      } else {
 
-  var filters = {
-    filter: {
-      'operator': 'AND',
-      'conditions': [
-        {
-          'field': 'headline.featured'
+        if (widget.has('emptyImage')) {
+          item["img-src"] = widget.config('emptyImage');
         }
-      ]
-    }
-  };
+      }
 
-  if (startDate) {
-    filters.filter.conditions.push({
-      "field": "date.original",
-      "value": {
-        "from":  startDate
+      var time = moment(val.fields.date.original, moment.ISO_8601);
+      item['date-full'] = time.format('DD MMM YYYY');
+      item['date-month'] = time.format('MMMM');
+      item['date-day'] = time.format('DD');
+      item['date-year'] = time.format('YYYY');
+      item['new-month'] = prevMonth !== time.month();
+
+      timelineItems.push(item);
+
+      count++;
+      if (count == data.length) {
+        cb(timelineItems);
       }
     });
+  };
+
+  // On offset "0" just use the data from configuration.
+  if (offset === 0) {
+    updateTimelineData(widget.config('items.content.0'), updatePage);
+    return true;
   }
 
-  if (Array.isArray(countries) && countries.length) {
-    filters.filter.conditions.push({
-      'field': 'country',
-      'value': countries,
-      'operator': 'OR'
-    });
-
-    filters.filter.conditions.push({
-      'field': 'primary_country.name',
-      'value': "World",
-      'negate': true
-    });
-  }
-
-  if (Array.isArray(disaster) && disaster.length) {
-    filters.filter.conditions.push({
-      'field': 'disaster',
-      'value': disaster,
-      'operator': 'OR'
-    });
-  }
-
-  var rw = reliefweb.client();
-  rw.post('reports')
-    .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
-    .send(filters)
-    .send({limit: 1000})
+  // Remove v1/ from the configured path.
+  var path = widget.config('items.path').split('/');
+  path.shift();
+  path = path.join('/');
+  // Override the API host, need to strip out the protocol as the library handles it.
+  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
+  rw.post(path)
+    .send(widget.config('items.payload'))
     .send({offset: offset})
     .end(function(err, res) {
       if (!err) {
-        var count = 0;
-        var timelineItems = [];
-        res.body.data.forEach(function(val, key) {
-          var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-          var item = {
-            title: val.fields.headline.title,
-            country: val.fields.primary_country.name,
-            "long-desc": val.fields.headline.summary,
-            "short-desc": val.fields.headline.title,
-            "url": val.fields.url
-          };
-
-          if (val.fields.headline.image) {
-            item["img-src"] = val.fields.headline.image['url-large'];
-          } else {
-
-            if (widget.has('emptyImage')) {
-              item["img-src"] = widget.config('emptyImage');
-            }
-          }
-
-          var time = moment(val.fields.date.original, moment.ISO_8601);
-          item['date-full'] = time.format('DD MMM YYYY');
-          item['date-month'] = time.format('MMMM');
-          item['date-day'] = time.format('DD');
-          item['date-year'] = time.format('YYYY');
-          item['new-month'] = prevMonth !== time.month();
-
-          timelineItems.push(item);
-
-          count++;
-          if (count == res.body.data.length) {
-            updatePage(timelineItems);
-          }
-        });
+        updateTimelineData(res.body.data, updatePage);
       }
     });
 };
