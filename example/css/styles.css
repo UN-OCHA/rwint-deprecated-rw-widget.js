@@ -4112,6 +4112,7 @@ input[type="search"] {
   -webkit-columns: 2;
   columns: 2;
   margin-bottom: 1.5em;
+  display: inline-block;
 }
 @media (min-width: 37.5em) {
   /* line 126, ../scss/components/organisms/_overview-widget.scss */
@@ -4120,7 +4121,7 @@ input[type="search"] {
   }
 }
 
-/* line 144, ../scss/components/organisms/_overview-widget.scss */
+/* line 145, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs {
   display: flex;
   display: -webkit-flex;
@@ -4131,12 +4132,12 @@ input[type="search"] {
   -ms-flex-wrap: wrap;
 }
 @media (min-width: 37.5em) {
-  /* line 144, ../scss/components/organisms/_overview-widget.scss */
+  /* line 145, ../scss/components/organisms/_overview-widget.scss */
   .overview-widget--tabs {
     margin-top: 0;
   }
 }
-/* line 155, ../scss/components/organisms/_overview-widget.scss */
+/* line 156, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label {
   -moz-transition-property: background-color, color;
   -o-transition-property: background-color, color;
@@ -4162,7 +4163,7 @@ input[type="search"] {
   float: left;
   width: 33%;
 }
-/* line 169, ../scss/components/organisms/_overview-widget.scss */
+/* line 170, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs label:before {
   -moz-transition: opacity 0.3s ease-in-out;
   -o-transition: opacity 0.3s ease-in-out;
@@ -4182,42 +4183,42 @@ input[type="search"] {
   z-index: 10;
   opacity: 0;
 }
-/* line 179, ../scss/components/organisms/_overview-widget.scss */
+/* line 180, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label {
   background-color: #a993e1;
   color: white;
 }
-/* line 182, ../scss/components/organisms/_overview-widget.scss */
+/* line 183, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--tab:checked + label:before {
   opacity: 1;
 }
-/* line 187, ../scss/components/organisms/_overview-widget.scss */
+/* line 188, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--content {
   position: relative;
   width: 100%;
   background-color: #665695;
 }
-/* line 192, ../scss/components/organisms/_overview-widget.scss */
+/* line 193, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body {
   padding: 1em 0.5em;
 }
-/* line 197, ../scss/components/organisms/_overview-widget.scss */
+/* line 198, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 {
   margin-bottom: 0;
   color: #a993e1;
   line-height: 1;
   text-transform: lowercase;
 }
-/* line 202, ../scss/components/organisms/_overview-widget.scss */
+/* line 203, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 .figure {
   color: white;
   font-weight: bold;
 }
-/* line 206, ../scss/components/organisms/_overview-widget.scss */
+/* line 207, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 + p {
   color: white;
 }
-/* line 211, ../scss/components/organisms/_overview-widget.scss */
+/* line 212, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .un-icon-crisis_population_displacement {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
   opacity: 0.1;
@@ -4228,7 +4229,7 @@ input[type="search"] {
   text-align: center;
 }
 
-/* line 222, ../scss/components/organisms/_overview-widget.scss */
+/* line 223, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--sources {
   margin: 1em 0;
   color: #cccccc;
