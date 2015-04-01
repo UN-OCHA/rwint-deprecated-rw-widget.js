@@ -1286,74 +1286,12 @@ var TimelineWidget = function(opts) {
 
 TimelineWidget.prototype = new WidgetBase();
 
-/**
- * Method for getting filters needed for ReliefWeb API.
- * @returns {{filter: {operator: string, conditions: {field: string}[]}}}
- */
-
-TimelineWidget.prototype.getRWFilters = function() {
-  var widget = this;
-
-  var countries = widget.config('countries');
-  var disaster = widget.config('disaster');
-  var startDate;
-  var limit = widget.config('limit');
-
-  if (widget.has("startDate")) {
-    startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
-  }
-
-  var filters = {
-    filter: {
-      'operator': 'AND',
-      'conditions': [
-        {
-          'field': 'headline.featured'
-        }
-      ]
-    }
-  };
-
-  if (startDate) {
-    filters.filter.conditions.push({
-      "field": "date.original",
-      "value": {
-        "from":  startDate
-      }
-    });
-  }
-
-  if (Array.isArray(countries) && countries.length) {
-    filters.filter.conditions.push({
-      'field': 'country',
-      'value': countries,
-      'operator': 'OR'
-    });
-
-    filters.filter.conditions.push({
-      'field': 'primary_country.name',
-      'value': "World",
-      'negate': true
-    });
-  }
-
-  if (Array.isArray(disaster) && disaster.length) {
-    filters.filter.conditions.push({
-      'field': 'disaster',
-      'value': disaster,
-      'operator': 'OR'
-    });
-  }
-
-  return filters;
-};
-
 TimelineWidget.prototype.getData = function(offset, updatePage) {
   var widget = this;
 
   // On offset "0" just use the data from configuration.
   if (offset === 0) {
-    updateTimelineData(widget.config('items.content.0'), updatePage);
+    updateTimelineData(widget.config('items.content.data'), updatePage);
     return true;
   }
 
@@ -1361,13 +1299,14 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
   var path = widget.config('items.path').split('/');
   path.shift();
   path = path.join('/');
+  // Make the query more efficient by dropping facet parameter.
+  var payload = widget.config('items.payload');
+  delete payload.facets;
   // Override the API host, need to strip out the protocol as the library handles it.
   var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
   rw.post(path)
-    .send(widget.config('items.payload'))
+    .send(payload)
     .send({offset: offset})
-    .send({limit: 50})
-    .send({facets: null})
     .end(function(err, res) {
       if (!err) {
         updateTimelineData(res.body.data, updatePage);
@@ -1410,45 +1349,26 @@ TimelineWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
-  // Remove v1/ from the configured path.
-  var path = widget.config('items.path').split('/');
-  path.shift();
-  path = path.join('/');
-  // Override the API host, need to strip out the protocol as the library handles it.
-  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
-  rw.post(path)
-    .send(widget.config('items.payload'))
-    .send({limit: 0})
-    .send({offset: 0})
-    .send({facets: [
-      {
-        'field': 'date.original',
-        'interval': 'month'
-      }
-    ]})
-    .end(function(err, res) {
-      if (!err) {
-        widget.config('dataRanges', _.map(res.body.embedded.facets['date.original'].data, function(item) {
-          return {
-            count: item.count,
-            value: moment(item.value, moment.ISO_8601())
-          };
-        }));
-      }
+  var facets = widget.config('items.content.embedded.facets');
+  widget.config('dataRanges', _.map(facets['date.original'].data, function(item) {
+    return {
+      count: item.count,
+      value: moment(item.value, moment.ISO_8601())
+    };
+  }));
 
-      widget.getData(0, function(timelineItems) {
-        timelineItems.reverse();
-        widget.config('timeline-items', timelineItems);
+  widget.getData(0, function(timelineItems) {
+    timelineItems.reverse();
+    widget.config('timeline-items', timelineItems);
 
-        widget.template(function(content) {
-          elements
-            .classed('rw-widget', true)
-            .html(content);
+    widget.template(function(content) {
+      elements
+        .classed('rw-widget', true)
+        .html(content);
 
-          next();
-        });
-      });
+      next();
     });
+  });
 
   function titleAdjust(title) {
     var snippet = '<span class="word[[counter]]">[[word]]</span>';
