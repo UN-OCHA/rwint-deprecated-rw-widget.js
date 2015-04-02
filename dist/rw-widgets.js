@@ -1089,13 +1089,15 @@ RiverWidget.prototype.link = function(elements) {
     });
 
     $element.find('.accordion-set--label').click(function() {
-      // Accordion is absolutely positioned, which means it won't play well with pym.js.
-      var that = this;
-      setTimeout(function() {
-        var $accordian = $('#' + $(that).attr('for') + '-accordion');
-        var height = $accordian.find('.widget-river--filters-content').height() + 75;
-        $('.widget-river--results').height(height);
-      }, 1);
+      if ($(window).width() > 640 ) {
+        // Accordion is absolutely positioned, which means it won't play well with pym.js.
+        var that = this;
+        setTimeout(function () {
+          var $accordian = $('#' + $(that).attr('for') + '-accordion');
+          var height = $accordian.find('.widget-river--filters-content').height() + 75;
+          $('.widget-river--results').height(height);
+        }, 1);
+      }
     });
 
     accordion_set_add_active($('.accordion-set--check:checked'));
