@@ -6,6 +6,12 @@
     "method": "POST",
     "path": "v1/reports?limit=50&fields[include][0]=date&fields[include][1]=headline&fields[include][2]=primary_country&fields[include][3]=url",
     "payload": {
+      "facets": [
+        {
+          "field": "date.original",
+          "interval": "month"
+        }
+      ],
       "filter": {
         "operator": "AND",
         "conditions": [
@@ -37,10 +43,95 @@
         "date.original:desc"
       ]
     },
-    "selector": "$.data",
     "fallback": [],
-    "content": [
-      [
+    "content": {
+      "href": "http://api.rwlabs.org/v1/reports?limit=50&fields%5Binclude%5D%5B0%5D=date&fields%5Binclude%5D%5B1%5D=headline&fields%5Binclude%5D%5B2%5D=primary_country&fields%5Binclude%5D%5B3%5D=url",
+      "time": 18,
+      "links": {
+        "self": {
+          "href": "http://api.rwlabs.org/v1/reports?offset=0&limit=50&preset=minimal"
+        },
+        "next": {
+          "href": "http://api.rwlabs.org/v1/reports?offset=50&limit=50&preset=minimal"
+        }
+      },
+      "totalCount": 1040,
+      "count": 50,
+      "data": [
+        {
+          "id": "918376",
+          "score": 1,
+          "href": "http://api.rwlabs.org/v1/reports/918376",
+          "fields": {
+            "headline": {
+              "summary": "The pledge will assist some 12.2 million people, including 5.6 million children, twelve times more than when the crisis erupted four years ago. Ninety percent of funds from the January 2014 pledge have already been disbursed.",
+              "title": "Donors pledge $3.8 billion to Syria crisis",
+              "image": {
+                "id": "322921",
+                "url-thumb": "http://reliefweb.int/sites/reliefweb.int/files/styles/m/public/headline-images/627349-ki-moon-syria-conference.jpg",
+                "filesize": "158353",
+                "height": "683",
+                "url-small": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-small/public/headline-images/627349-ki-moon-syria-conference.jpg",
+                "width": "1024",
+                "filename": "627349-ki-moon-syria-conference.jpg",
+                "caption": "Secretary-General Ban Ki-moon with with other participants of the Third International Humanitarian Pledging Conference for Syria, taking place in Kuwait City",
+                "url-large": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-large/public/headline-images/627349-ki-moon-syria-conference.jpg",
+                "copyright": "UN Photo/Evan Schneider",
+                "filemime": "image/jpeg",
+                "url": "http://reliefweb.int/sites/reliefweb.int/files/headline-images/627349-ki-moon-syria-conference.jpg"
+              },
+              "featured": true
+            },
+            "title": "Donors pledge $3.8 billion to help people affected by the constantly deteriorating Syria crisis",
+            "date": {
+              "changed": "2015-03-31T22:06:32+00:00",
+              "original": "2015-03-31T14:38:50+00:00",
+              "created": "2015-03-31T14:38:50+00:00"
+            },
+            "primary_country": {
+              "href": "http://api.rwlabs.org/v1/countries/226",
+              "id": 226,
+              "location": [
+                38.51,
+                35.01
+              ],
+              "name": "Syrian Arab Republic",
+              "shortname": "Syria",
+              "iso3": "syr"
+            },
+            "url": "http://reliefweb.int/node/918376"
+          }
+        },
+        {
+          "id": "917746",
+          "score": 1,
+          "href": "http://api.rwlabs.org/v1/reports/917746",
+          "fields": {
+            "headline": {
+              "summary": "Kuwait and the EU pledged Tuesday around 1.6 billion euros ($1.7 billion) to help alleviate war-torn Syria's humanitarian crisis at a meeting aimed at raising $8.4 billion this year.",
+              "title": "EU, Kuwait pledge 1.6 bn euros in Syria humanitarian aid",
+              "featured": true
+            },
+            "title": "Syria aid pledges hit $3.8 bn: UN chief",
+            "date": {
+              "changed": "2015-03-31T19:08:56+00:00",
+              "original": "2015-03-31T10:30:44+00:00",
+              "created": "2015-03-31T10:30:44+00:00"
+            },
+            "primary_country": {
+              "href": "http://api.rwlabs.org/v1/countries/226",
+              "id": 226,
+              "location": [
+                38.51,
+                35.01
+              ],
+              "name": "Syrian Arab Republic",
+              "shortname": "Syria",
+              "iso3": "syr"
+            },
+            "url": "http://reliefweb.int/node/917746"
+          }
+        },
         {
           "id": "915576",
           "score": 1,
@@ -67,7 +158,7 @@
             },
             "title": "FAO appeals for $121 million to support livelihoods affected by Syria crisis",
             "date": {
-              "changed": "2015-03-30T09:42:47+00:00",
+              "changed": "2015-03-31T12:33:46+00:00",
               "original": "2015-03-30T09:04:21+00:00",
               "created": "2015-03-30T09:04:21+00:00"
             },
@@ -83,6 +174,50 @@
               "iso3": "syr"
             },
             "url": "http://reliefweb.int/node/915576"
+          }
+        },
+        {
+          "id": "915311",
+          "score": 1,
+          "href": "http://api.rwlabs.org/v1/reports/915311",
+          "fields": {
+            "headline": {
+              "summary": "Oxfam has calculated that nearly half of the world’s top donors didn’t give their fair share of aid in 2014. Wealthy countries meeting on Tuesday in Kuwait to pledge aid must dig deeper than last year, Oxfam says.",
+              "title": "International appeals for Syria crisis less than 10% funded ahead of donor conference",
+              "image": {
+                "id": "321821",
+                "url-thumb": "http://reliefweb.int/sites/reliefweb.int/files/styles/m/public/headline-images/03-30-2015Syrian_Turkey.jpg",
+                "filesize": "186657",
+                "height": "619",
+                "url-small": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-small/public/headline-images/03-30-2015Syrian_Turkey.jpg",
+                "width": "928",
+                "filename": "03-30-2015Syrian_Turkey.jpg",
+                "caption": "",
+                "url-large": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-large/public/headline-images/03-30-2015Syrian_Turkey.jpg",
+                "copyright": "WFP/Berna Cetin",
+                "filemime": "image/jpeg",
+                "url": "http://reliefweb.int/sites/reliefweb.int/files/headline-images/03-30-2015Syrian_Turkey.jpg"
+              },
+              "featured": true
+            },
+            "title": "Syria Crisis Fair Share Analysis 2015 [EN/AR]",
+            "date": {
+              "changed": "2015-03-30T20:28:29+00:00",
+              "original": "2015-03-30T06:41:14+00:00",
+              "created": "2015-03-30T06:41:14+00:00"
+            },
+            "primary_country": {
+              "href": "http://api.rwlabs.org/v1/countries/226",
+              "id": 226,
+              "location": [
+                38.51,
+                35.01
+              ],
+              "name": "Syrian Arab Republic",
+              "shortname": "Syria",
+              "iso3": "syr"
+            },
+            "url": "http://reliefweb.int/node/915311"
           }
         },
         {
@@ -1990,150 +2125,270 @@
             },
             "url": "http://reliefweb.int/node/823931"
           }
-        },
-        {
-          "id": "819341",
-          "score": 1,
-          "href": "http://api.rwlabs.org/v1/reports/819341",
-          "fields": {
-            "headline": {
-              "summary": "Located in the southeastern border town of Suruc, the tent city has two hospitals, seven medical clinics and enough classrooms for 10,000 children.",
-              "title": "Turkey opens biggest camp for 35,000 Kobani refugees",
-              "image": {
-                "id": "268296",
-                "url-thumb": "http://reliefweb.int/sites/reliefweb.int/files/styles/m/public/headline-images/075_orenstein-syrianku141219_npTUu.jpg",
-                "filesize": "1676093",
-                "height": "1848",
-                "url-small": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-small/public/headline-images/075_orenstein-syrianku141219_npTUu.jpg",
-                "width": "2784",
-                "filename": "075_orenstein-syrianku141219_npTUu.jpg",
-                "caption": "",
-                "url-large": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-large/public/headline-images/075_orenstein-syrianku141219_npTUu.jpg",
-                "copyright": "GAIL ORENSTEIN / NURPHOTO / AFP",
-                "filemime": "image/jpeg",
-                "url": "http://reliefweb.int/sites/reliefweb.int/files/headline-images/075_orenstein-syrianku141219_npTUu.jpg"
+        }
+      ],
+      "embedded": {
+        "facets": {
+          "date.original": {
+            "type": "date",
+            "data": [
+              {
+                "value": "2011-04-01T00:00:00+00:00",
+                "epoch_ms": 1301616000000,
+                "count": 2
               },
-              "featured": true
-            },
-            "title": "Turkey opens biggest refugee camp for 35,000 from Kobani",
-            "date": {
-              "changed": "2015-01-26T12:54:46+00:00",
-              "original": "2015-01-26T12:30:51+00:00",
-              "created": "2015-01-26T12:30:51+00:00"
-            },
-            "primary_country": {
-              "href": "http://api.rwlabs.org/v1/countries/236",
-              "id": 236,
-              "location": [
-                35.18,
-                39.06
-              ],
-              "name": "Turkey",
-              "iso3": "tur"
-            },
-            "url": "http://reliefweb.int/node/819341"
-          }
-        },
-        {
-          "id": "816956",
-          "score": 1,
-          "href": "http://api.rwlabs.org/v1/reports/816956",
-          "fields": {
-            "headline": {
-              "summary": "Some $77.5 million will go to countries affected by the Syria crisis. Critically underfunded humanitarian operations in DR Congo, Burundi, Rwanda, Colombia, DPR Korea and Djibouti will also receive support.",
-              "title": "UN Emergency Fund gives $100 million for aid operations in Syria and other poorly funded crises",
-              "image": {
-                "id": "267171",
-                "url-thumb": "http://reliefweb.int/sites/reliefweb.int/files/styles/m/public/headline-images/Capture_67.JPG",
-                "filesize": "134237",
-                "height": "719",
-                "url-small": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-small/public/headline-images/Capture_67.JPG",
-                "width": "1339",
-                "filename": "Capture.JPG",
-                "caption": "",
-                "url-large": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-large/public/headline-images/Capture_67.JPG",
-                "copyright": "OCHA",
-                "filemime": "image/jpeg",
-                "url": "http://reliefweb.int/sites/reliefweb.int/files/headline-images/Capture_67.JPG"
+              {
+                "value": "2011-05-01T00:00:00+00:00",
+                "epoch_ms": 1304208000000,
+                "count": 15
               },
-              "featured": true
-            },
-            "title": "UN Emergency Fund gives $100 million for aid operations in Syria and other poorly funded crises",
-            "date": {
-              "changed": "2015-01-23T22:24:20+00:00",
-              "original": "2015-01-23T17:15:36+00:00",
-              "created": "2015-01-23T17:15:36+00:00"
-            },
-            "primary_country": {
-              "href": "http://api.rwlabs.org/v1/countries/226",
-              "id": 226,
-              "location": [
-                38.51,
-                35.01
-              ],
-              "name": "Syrian Arab Republic",
-              "shortname": "Syria",
-              "iso3": "syr"
-            },
-            "url": "http://reliefweb.int/node/816956"
-          }
-        },
-        {
-          "id": "806501",
-          "score": 1,
-          "href": "http://api.rwlabs.org/v1/reports/806501",
-          "fields": {
-            "headline": {
-              "summary": "As winter conditions worsen, the winterization plan, which was launched in October 2014 and targets 3.3 million people inside Syria, remains underfunded by $70 million.",
-              "title": "Syria Humanitarian Coordinator calls for urgent funding for winter response",
-              "image": {
-                "id": "261421",
-                "url-thumb": "http://reliefweb.int/sites/reliefweb.int/files/styles/m/public/headline-images/Jaramana Photo 1-XL.jpg",
-                "filesize": "286427",
-                "height": "683",
-                "url-small": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-small/public/headline-images/Jaramana Photo 1-XL.jpg",
-                "width": "1024",
-                "filename": "Jaramana Photo 1-XL.jpg",
-                "caption": "",
-                "url-large": "http://reliefweb.int/sites/reliefweb.int/files/styles/attachment-large/public/headline-images/Jaramana Photo 1-XL.jpg",
-                "copyright": "UNRWA/Taghrid Mohammad",
-                "filemime": "image/jpeg",
-                "url": "http://reliefweb.int/sites/reliefweb.int/files/headline-images/Jaramana Photo 1-XL.jpg"
+              {
+                "value": "2011-06-01T00:00:00+00:00",
+                "epoch_ms": 1306886400000,
+                "count": 12
               },
-              "featured": true
-            },
-            "title": "Syria Humanitarian Coordinator calls on the international community to urgently fund winter response [EN/AR]",
-            "date": {
-              "changed": "2015-03-11T18:47:36+00:00",
-              "original": "2015-01-16T14:39:43+00:00",
-              "created": "2015-01-16T14:39:43+00:00"
-            },
-            "primary_country": {
-              "href": "http://api.rwlabs.org/v1/countries/226",
-              "id": 226,
-              "location": [
-                38.51,
-                35.01
-              ],
-              "name": "Syrian Arab Republic",
-              "shortname": "Syria",
-              "iso3": "syr"
-            },
-            "url": "http://reliefweb.int/node/806501"
+              {
+                "value": "2011-07-01T00:00:00+00:00",
+                "epoch_ms": 1309478400000,
+                "count": 8
+              },
+              {
+                "value": "2011-08-01T00:00:00+00:00",
+                "epoch_ms": 1312156800000,
+                "count": 9
+              },
+              {
+                "value": "2011-09-01T00:00:00+00:00",
+                "epoch_ms": 1314835200000,
+                "count": 3
+              },
+              {
+                "value": "2011-10-01T00:00:00+00:00",
+                "epoch_ms": 1317427200000,
+                "count": 7
+              },
+              {
+                "value": "2011-11-01T00:00:00+00:00",
+                "epoch_ms": 1320105600000,
+                "count": 7
+              },
+              {
+                "value": "2011-12-01T00:00:00+00:00",
+                "epoch_ms": 1322697600000,
+                "count": 9
+              },
+              {
+                "value": "2012-01-01T00:00:00+00:00",
+                "epoch_ms": 1325376000000,
+                "count": 6
+              },
+              {
+                "value": "2012-02-01T00:00:00+00:00",
+                "epoch_ms": 1328054400000,
+                "count": 15
+              },
+              {
+                "value": "2012-03-01T00:00:00+00:00",
+                "epoch_ms": 1330560000000,
+                "count": 21
+              },
+              {
+                "value": "2012-04-01T00:00:00+00:00",
+                "epoch_ms": 1333238400000,
+                "count": 11
+              },
+              {
+                "value": "2012-05-01T00:00:00+00:00",
+                "epoch_ms": 1335830400000,
+                "count": 8
+              },
+              {
+                "value": "2012-06-01T00:00:00+00:00",
+                "epoch_ms": 1338508800000,
+                "count": 11
+              },
+              {
+                "value": "2012-07-01T00:00:00+00:00",
+                "epoch_ms": 1341100800000,
+                "count": 21
+              },
+              {
+                "value": "2012-08-01T00:00:00+00:00",
+                "epoch_ms": 1343779200000,
+                "count": 25
+              },
+              {
+                "value": "2012-09-01T00:00:00+00:00",
+                "epoch_ms": 1346457600000,
+                "count": 18
+              },
+              {
+                "value": "2012-10-01T00:00:00+00:00",
+                "epoch_ms": 1349049600000,
+                "count": 23
+              },
+              {
+                "value": "2012-11-01T00:00:00+00:00",
+                "epoch_ms": 1351728000000,
+                "count": 18
+              },
+              {
+                "value": "2012-12-01T00:00:00+00:00",
+                "epoch_ms": 1354320000000,
+                "count": 31
+              },
+              {
+                "value": "2013-01-01T00:00:00+00:00",
+                "epoch_ms": 1356998400000,
+                "count": 42
+              },
+              {
+                "value": "2013-02-01T00:00:00+00:00",
+                "epoch_ms": 1359676800000,
+                "count": 34
+              },
+              {
+                "value": "2013-03-01T00:00:00+00:00",
+                "epoch_ms": 1362096000000,
+                "count": 34
+              },
+              {
+                "value": "2013-04-01T00:00:00+00:00",
+                "epoch_ms": 1364774400000,
+                "count": 33
+              },
+              {
+                "value": "2013-05-01T00:00:00+00:00",
+                "epoch_ms": 1367366400000,
+                "count": 34
+              },
+              {
+                "value": "2013-06-01T00:00:00+00:00",
+                "epoch_ms": 1370044800000,
+                "count": 27
+              },
+              {
+                "value": "2013-07-01T00:00:00+00:00",
+                "epoch_ms": 1372636800000,
+                "count": 28
+              },
+              {
+                "value": "2013-08-01T00:00:00+00:00",
+                "epoch_ms": 1375315200000,
+                "count": 32
+              },
+              {
+                "value": "2013-09-01T00:00:00+00:00",
+                "epoch_ms": 1377993600000,
+                "count": 30
+              },
+              {
+                "value": "2013-10-01T00:00:00+00:00",
+                "epoch_ms": 1380585600000,
+                "count": 31
+              },
+              {
+                "value": "2013-11-01T00:00:00+00:00",
+                "epoch_ms": 1383264000000,
+                "count": 23
+              },
+              {
+                "value": "2013-12-01T00:00:00+00:00",
+                "epoch_ms": 1385856000000,
+                "count": 22
+              },
+              {
+                "value": "2014-01-01T00:00:00+00:00",
+                "epoch_ms": 1388534400000,
+                "count": 31
+              },
+              {
+                "value": "2014-02-01T00:00:00+00:00",
+                "epoch_ms": 1391212800000,
+                "count": 32
+              },
+              {
+                "value": "2014-03-01T00:00:00+00:00",
+                "epoch_ms": 1393632000000,
+                "count": 26
+              },
+              {
+                "value": "2014-04-01T00:00:00+00:00",
+                "epoch_ms": 1396310400000,
+                "count": 27
+              },
+              {
+                "value": "2014-05-01T00:00:00+00:00",
+                "epoch_ms": 1398902400000,
+                "count": 28
+              },
+              {
+                "value": "2014-06-01T00:00:00+00:00",
+                "epoch_ms": 1401580800000,
+                "count": 32
+              },
+              {
+                "value": "2014-07-01T00:00:00+00:00",
+                "epoch_ms": 1404172800000,
+                "count": 28
+              },
+              {
+                "value": "2014-08-01T00:00:00+00:00",
+                "epoch_ms": 1406851200000,
+                "count": 24
+              },
+              {
+                "value": "2014-09-01T00:00:00+00:00",
+                "epoch_ms": 1409529600000,
+                "count": 26
+              },
+              {
+                "value": "2014-10-01T00:00:00+00:00",
+                "epoch_ms": 1412121600000,
+                "count": 30
+              },
+              {
+                "value": "2014-11-01T00:00:00+00:00",
+                "epoch_ms": 1414800000000,
+                "count": 20
+              },
+              {
+                "value": "2014-12-01T00:00:00+00:00",
+                "epoch_ms": 1417392000000,
+                "count": 19
+              },
+              {
+                "value": "2015-01-01T00:00:00+00:00",
+                "epoch_ms": 1420070400000,
+                "count": 19
+              },
+              {
+                "value": "2015-02-01T00:00:00+00:00",
+                "epoch_ms": 1422748800000,
+                "count": 20
+              },
+              {
+                "value": "2015-03-01T00:00:00+00:00",
+                "epoch_ms": 1425168000000,
+                "count": 28
+              }
+            ],
+            "missing": 0,
+            "more": false
           }
         }
-      ]
-    ],
+      }
+    },
     "date": {
-      "checked": "2015-03-30T13:57:33.596Z",
-      "updated": "2015-03-30T13:57:33.596Z"
+      "checked": "2015-04-02T14:01:01.433Z",
+      "updated": "2015-04-02T14:01:01.433Z"
     }
   },
   "processed": {
     "generator": "collector",
     "version": "0.2.0",
     "date": {
-      "updated": "2015-03-30T13:57:33.013Z"
+      "updated": "2015-04-02T14:01:01.001Z"
     },
     "name": "timeline"
   },
@@ -2142,7 +2397,7 @@
       "hdx": "https://data.hdx.rwlabs.org/api",
       "fts": "http://fts.unocha.org/api",
       "reliefweb": "http://api.rwlabs.org",
-      "reliefweb-embed": "http://localhost:3000"
+      "reliefweb-embed": "http://embed.rwdev.org"
     },
     "content": "http://crisis.rwdev.org/"
   }
