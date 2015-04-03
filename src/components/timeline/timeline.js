@@ -32,103 +32,58 @@ TimelineWidget.prototype = new WidgetBase();
 TimelineWidget.prototype.getData = function(offset, updatePage) {
   var widget = this;
 
-  var countries = widget.config('countries');
-  var disaster = widget.config('disaster');
-  var startDate;
-  var limit = widget.config('limit');
-
-  if (widget.has("startDate")) {
-    startDate = moment(widget.config('startDate'), moment.ISO_8601).utc().format();
+  // On offset "0" just use the data from configuration.
+  if (offset === 0) {
+    updateTimelineData(widget.config('items.content.data'), updatePage);
+    return true;
   }
 
-  var filters = {
-    filter: {
-      'operator': 'AND',
-      'conditions': [
-        {
-          'field': 'headline.featured'
-        }
-      ]
-    }
-  };
-
-  if (startDate) {
-    filters.filter.conditions.push({
-      "field": "date.original",
-      "value": {
-        "from":  startDate
-      }
-    });
-  }
-
-  if (Array.isArray(countries) && countries.length) {
-    filters.filter.conditions.push({
-      'field': 'country',
-      'value': countries,
-      'operator': 'OR'
-    });
-
-    filters.filter.conditions.push({
-      'field': 'primary_country.name',
-      'value': "World",
-      'negate': true
-    });
-  }
-
-  if (Array.isArray(disaster) && disaster.length) {
-    filters.filter.conditions.push({
-      'field': 'disaster',
-      'value': disaster,
-      'operator': 'OR'
-    });
-  }
-
-  var rw = reliefweb.client();
-  rw.post('reports')
-    .fields(['date', 'headline', 'primary_country', 'url'], [])
-    .sort('date.original', 'desc')
-    .send(filters)
-    .send({limit: 1000})
+  // Remove v1/ from the configured path.
+  var path = widget.config('items.path').split('/');
+  path.shift();
+  path = path.join('/');
+  // Make the query more efficient by dropping facet parameter.
+  var payload = widget.config('items.payload');
+  delete payload.facets;
+  // Override the API host, need to strip out the protocol as the library handles it.
+  var rw = reliefweb.client({host: widget.config('environment.sources.reliefweb').replace(/.*?:\/\//g, "")});
+  rw.post(path)
+    .send(payload)
     .send({offset: offset})
     .end(function(err, res) {
       if (!err) {
-        var count = 0;
-        var timelineItems = [];
-        res.body.data.forEach(function(val, key) {
-          var prevMonth = (key !== 0) ? moment(timelineItems[key - 1]['date-full'], 'DD MMM YYYY').month() : -1;
-          var item = {
-            title: val.fields.headline.title,
-            country: val.fields.primary_country.name,
-            "long-desc": val.fields.headline.summary,
-            "short-desc": val.fields.headline.title,
-            "url": val.fields.url
-          };
-
-          if (val.fields.headline.image) {
-            item["img-src"] = val.fields.headline.image['url-large'];
-          } else {
-
-            if (widget.has('emptyImage')) {
-              item["img-src"] = widget.config('emptyImage');
-            }
-          }
-
-          var time = moment(val.fields.date.original, moment.ISO_8601);
-          item['date-full'] = time.format('DD MMM YYYY');
-          item['date-month'] = time.format('MMMM');
-          item['date-day'] = time.format('DD');
-          item['date-year'] = time.format('YYYY');
-          item['new-month'] = prevMonth !== time.month();
-
-          timelineItems.push(item);
-
-          count++;
-          if (count == res.body.data.length) {
-            updatePage(timelineItems);
-          }
-        });
+        updateTimelineData(res.body.data, updatePage);
       }
     });
+
+  function updateTimelineData(data, cb) {
+    var timelineItems = _.map(data, function(item) {
+      var returnItem = {
+        title: item.fields.headline.title,
+        country: item.fields.primary_country.name,
+        "long-desc": item.fields.headline.summary,
+        "short-desc": item.fields.headline.title,
+        "url": item.fields.url,
+        id: item.id
+      };
+
+      if (item.fields.headline.image) {
+        returnItem["img-src"] = item.fields.headline.image['url-large'];
+      } else if (widget.has('emptyImage')) {
+        returnItem["img-src"] = widget.config('emptyImage');
+      }
+
+      var time = moment(item.fields.date.original, moment.ISO_8601);
+      returnItem['date-full'] = time.format('DD MMM YYYY');
+      returnItem['date-month'] = time.format('MMMM');
+      returnItem['date-day'] = time.format('DD');
+      returnItem['date-year'] = time.format('YYYY');
+
+      return returnItem;
+    });
+
+    cb(timelineItems);
+  }
 };
 
 TimelineWidget.prototype.compile = function(elements, next) {
@@ -136,6 +91,14 @@ TimelineWidget.prototype.compile = function(elements, next) {
 
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
+
+  var facets = widget.config('items.content.embedded.facets');
+  widget.config('dataRanges', _.map(facets['date.original'].data, function(item) {
+    return {
+      count: item.count,
+      value: moment(item.value, moment.ISO_8601())
+    };
+  }));
 
   widget.getData(0, function(timelineItems) {
     timelineItems.reverse();
@@ -165,39 +128,53 @@ TimelineWidget.prototype.link = function(elements) {
   var widget = this;
 
   var timelineState = {
+    currentIndex: null,
+    currentYear: null,
+    currentMonth: null,
+    currentFormatted: null,
+    requestedDate: null,
+    range: [0, 50],
+    activeId: null
+  };
+
+  var timelineDataStore = {
+    rangePerMonth: this.config('dataRanges'),
     content: this.config('timeline-items')
   };
 
   var $element = $(elements[0][0]); // @TODO, grab any potential element selected.
   var $frame,
-      $item,
-      margin;
+    $item,
+    margin;
 
   var $sly,
-      $slyDropdown;
+    $slyDropdown;
 
   // Open links in a new tab.
   $('.timeline-widget-frames li a').attr('target', '_blank');
 
-  function findClosestTimelineContent() {
-    var now = moment().unix();
-    var closestIndex = 0;
+  function findClosestTimelineContent(date) {
+    var now = (date) ? date.unix() : moment().unix();
+    var closestId;
     var closestIndexDistance;
 
-    timelineState.content.forEach(function(val, key) {
+    timelineDataStore.content.forEach(function(val, key) {
       var itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
       if (closestIndexDistance === undefined || Math.abs(now - itemTime) < closestIndexDistance) {
         closestIndexDistance = Math.abs(now - itemTime);
-        closestIndex = key;
+        closestId = val.id;
       }
     });
 
-    return closestIndex;
+    return closestId;
   }
 
   function init() {
-    timelineState.currentIndex = findClosestTimelineContent();
-    var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    timelineState.activeId = findClosestTimelineContent();
+    var content = _.find(timelineDataStore.content, function(item) {
+      return item.id == timelineState.activeId;
+    });
+    var now = moment(content['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -233,12 +210,13 @@ TimelineWidget.prototype.link = function(elements) {
       activateMiddle: 1,
       touchDragging: 1,
       releaseSwing: 1,
-      startAt: timelineState.currentIndex,
+      startAt: 0,
       speed: 200,
       elasticBounds: 1,
       dragHandle: 1,
       dynamicHandle: 1,
       clickBar: 1,
+      scrollHijack: 0,
 
       // Buttons
       prev: $('.prev'),
@@ -249,13 +227,11 @@ TimelineWidget.prototype.link = function(elements) {
     $slyDropdown = new Sly($('.timeline-widget--dropdown--container', $element), {
       itemNav: 'basic',
       smart: 0,
-      activateOn: 'click',
       mouseDragging: 1,
       touchDragging: 1,
       releaseSwing: 1,
       scrollBy: 1,
-      startAt: timelineState.currentIndex,
-      activatePageOn: 'click',
+      startAt: 0,
       speed: 300,
       elasticBounds: 1,
       dragHandle: 1,
@@ -265,8 +241,12 @@ TimelineWidget.prototype.link = function(elements) {
 
     // Fix for scrolling in iframe. The height of the container is set to 0 initially.
     setTimeout(function() {
-      $slyDropdown.reload();
-    }, 100);
+      var $dropDownItem = $('.timeline-widget-dropdown--list-item[data-rw-id="' + timelineState.activeId + '"]');
+      if ($dropDownItem) {
+        var $dropDownPos = $slyDropdown.getPos($dropDownItem);
+        $slyDropdown.slideTo($dropDownPos.center);
+      }
+    }, 750);
 
     paint();
   }
@@ -289,10 +269,13 @@ TimelineWidget.prototype.link = function(elements) {
   }
 
   function paint() {
-    lazyLoadImage(timelineState.currentIndex);
-    slideTo(timelineState.currentIndex);
+    lazyLoadImage();
+    slideToById(timelineState.activeId);
 
-    var now = moment(timelineState.content[timelineState.currentIndex]['date-full'], 'DD MMM YYYY');
+    var content = _.find(timelineDataStore.content, function(item) {
+      return item.id == timelineState.activeId;
+    });
+    var now = moment(content['date-full'], 'DD MMM YYYY');
     timelineState.currentYear = now.format('YYYY');
     timelineState.currentMonth = now.format('M');
     timelineState.currentFormatted = now.format('YYYY MMMM');
@@ -301,14 +284,20 @@ TimelineWidget.prototype.link = function(elements) {
     $('select[name="year"]', $element).val(now.format('YYYY')).selectric('refresh');
   }
 
-  function slideTo(index) {
-    var $sliderPos = $sly.getPos(index);
-    $sly.activate(index);
-    $sly.slideTo($sliderPos.center);
+  function slideToById(id) {
+    var $sliderItem = $('.timeline-widget-item[data-rw-id="' + id + '"]');
+    if ($sliderItem) {
+      var $sliderPos = $sly.getPos($sliderItem);
+      $sly.activate($sliderItem);
+      $sly.slideTo($sliderPos.center);
+    }
 
-    var $dropDownPos = $slyDropdown.getPos(index);
-    $slyDropdown.activate(index);
-    $slyDropdown.slideTo($dropDownPos.center);
+    var $dropDownItem = $('.timeline-widget-dropdown--list-item[data-rw-id="' + id + '"]');
+    if ($dropDownItem) {
+      var $dropDownPos = $slyDropdown.getPos($dropDownItem);
+      $slyDropdown.activate($dropDownItem, true);
+      $slyDropdown.slideTo($dropDownPos.center);
+    }
   }
 
   function adjustTimelineWidth(width) {
@@ -317,28 +306,36 @@ TimelineWidget.prototype.link = function(elements) {
     // loop in which the widget gets scaled to infinite width.
 
     // Do the orientation check to deal with safari not adjusting screen dimensions properly in iframe context.
+    var overallWidth = 0;
     if (Math.abs(window.orientation) == 90) {
       // landscape
-      width = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
-      $('.timeline-widget', $element).width(width);
+      overallWidth = (window.screen.width < window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(overallWidth);
     } else if (window.orientation === 0) {
       // portrait
-      width = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
-      $('.timeline-widget', $element).width(width);
+      overallWidth = (window.screen.width > window.screen.height) ? window.screen.height : window.screen.width;
+      $('.timeline-widget', $element).width(overallWidth);
     }
 
-    $item.width(width);
+    $item.width($frame.width());
 
     setTimeout(function() {
       $sly.reload();
+      $slyDropdown.reload();
     }, 1);
   }
 
   init();
 
   $('.timeline-widget-dropdown--list-item', $element).click(function(){
-    timelineState.currentIndex = $(this).attr('data-slide');
-    paint();
+    if ($(this).data('rwId') == $($slyDropdown.items[0].el).data('rwId')) {
+      timelineState.activeId = $(this).data('rwId');
+      lazyLoad();
+    } else {
+      timelineState.activeId = $(this).data('rwId');
+      paint();
+    }
+    $('.timeline-widget--dropdown--wrapper').removeClass('open');
   });
 
   // Open popup.
@@ -352,87 +349,116 @@ TimelineWidget.prototype.link = function(elements) {
     $('.timeline-widget--dropdown--wrapper').removeClass('open');
   });
 
-  $('.timeline-widget--dropdown-controls select', $element).on('selectric-change', function(element) {
-    selectChange();
-  }).on('change', function() {
+  $('.timeline-widget--dropdown-controls select', $element).on('change', function() {
     selectChange();
   });
 
-  function selectChange() {
-    var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
-    var current = moment(currentString, 'MMM YYYY').unix();
-    var itemTime;
-    var val;
+  $('.next').on('click', function() {
+    var $item = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"]');
+    var activeIndex = $sly.getIndex($item);
 
-    for (var i = 0; i < timelineState.content.length; i++) {
-      val = timelineState.content[i];
-      itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
-
-      if (current < itemTime) {
-        timelineState.currentIndex = i;
-        paint();
-        break;
-      }
-    }
-  }
-
-  $('.form-today', $element).click(function() {
-    timelineState.currentIndex = findClosestTimelineContent();
-    paint();
-  });
-
-  // Update other sliders based on main. Lazy-load in images.
-  $sly.on('moveStart', function() {
-    if ($sly.rel.activeItem === 0) {
-      lazyLoad();
-    } else {
-      timelineState.currentIndex = ($sly.rel.activeItem * 1);
+    if (activeIndex < $sly.items.length - 1) {
+      timelineState.activeId = $($sly.items[activeIndex + 1].el).data('rwId');
       paint();
     }
   });
 
-  function lazyLoadImage(index) {
-    var $headlineImage = $('.timeline-widget-item--image img', $sly.items[index].el).last();
+  $(".prev").on("click", function() {
+    var $item = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"]');
+    var activeIndex = $sly.getIndex($item);
+
+    if (activeIndex > 0) {
+      timelineState.activeId = $($sly.items[activeIndex - 1].el).data('rwId');
+      paint();
+    }
+  });
+
+  function selectChange() {
+    var currentString = $('select[name="month"]', $element).val() + ' ' + $('select[name="year"]', $element).val();
+
+    var offset = findOffsetForTime(moment(currentString, 'MMM YYYY')) - 5;
+    offset = (offset < 5) ? 0 : offset;
+
+    widget.getData(offset, function(items) {
+      var timelineItems = items.reverse();
+      timelineDataStore.content = timelineItems;
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
+
+      var newActive = findClosestTimelineContent(moment(currentString, 'MMM YYYY'));
+      timelineState.activeId = newActive;
+
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
+
+      $sly.reload();
+      $slyDropdown.reload();
+      paint();
+    });
+  }
+
+  $('.form-today', $element).click(function() {
+    var now = moment();
+
+    var offset = findOffsetForTime(now) - 5;
+    offset = (offset < 5) ? 0 : offset;
+
+    widget.getData(offset, function(items) {
+      var timelineItems = items.reverse();
+      timelineDataStore.content = timelineItems;
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
+
+      var newActive = findClosestTimelineContent(now);
+      timelineState.activeId = newActive;
+
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
+
+      $sly.reload();
+      $slyDropdown.reload();
+      paint();
+    });
+  });
+
+  function lazyLoadImage() {
+    var $headlineImage = $('.timeline-widget-item[data-rw-id="' + timelineState.activeId + '"] img').last();
     $headlineImage.attr('src', $headlineImage.data('src'));
   }
 
   function lazyLoad() {
-    if ($sly.rel.activeItem === 0) {
-      widget.getData(timelineState.content.length, function(timelineItems) {
+    widget.getData(timelineState.range[1], function(timelineItems) {
 
-        timelineItems = timelineItems.reverse();
-        timelineState.content = timelineItems.concat(timelineState.content);
-        timelineState.content = _.uniq(timelineState.content, function(item) {
-          return item.url;
-        });
+      timelineState.range[1] += 50; // @TODO: Avoid hardcoded
+      timelineItems = timelineItems.reverse();
+      timelineDataStore.content = timelineItems.concat(timelineDataStore.content);
+      timelineDataStore.content = _.uniq(timelineDataStore.content, 'id');
 
-        renderTimelineDropdownItems();
-        renderTimelineSlideItems();
+      renderTimelineDropdownItems();
+      renderTimelineSlideItems();
 
-        timelineState.currentIndex = (timelineState.currentIndex * 1) + (timelineItems.length * 1) + 1;
-        slideTo(timelineState.currentIndex);
-      });
-    }
+      paint();
+    });
   }
 
   function renderTimelineDropdownItems() {
     var timelineItems = '';
 
-    timelineState.content.forEach(function(item){
+    timelineDataStore.content.forEach(function(item, i) {
+      item.index = i;
       timelineItems += Handlebars.templates['timeline--dropdown-item.hbs'](item);
     });
 
     $('.timeline-widget--dropdown--container .timeline-widget-dropdown--list-item').remove();
     $('.timeline-widget--dropdown--container .timeline-widget--dropdown--end-of-line').first().before(timelineItems);
 
-    $('li.timeline-widget-dropdown--list-item').each(function(idx){
-      $(this).attr('data-slide', idx);
-    });
-
     $('.timeline-widget-dropdown--list-item', $element).click(function(){
-      timelineState.currentIndex = $(this).attr('data-slide');
-      $('.timeline-widget--dropdown--wrapper').toggleClass('open');
-      paint();
+      if ($(this).data('rwId') == $($slyDropdown.items[0].el).data('rwId')) {
+        timelineState.activeId = $(this).data('rwId');
+        lazyLoad();
+      } else {
+        timelineState.activeId = $(this).data('rwId');
+        paint();
+      }
+      $('.timeline-widget--dropdown--wrapper').removeClass('open');
     });
 
     $slyDropdown.reload();
@@ -441,7 +467,7 @@ TimelineWidget.prototype.link = function(elements) {
   function renderTimelineSlideItems() {
     var timelineItems = '';
 
-    timelineState.content.forEach(function(item){
+    timelineDataStore.content.forEach(function(item){
       timelineItems += Handlebars.templates['timeline--frame-item.hbs'](item);
     });
 
@@ -457,6 +483,26 @@ TimelineWidget.prototype.link = function(elements) {
     });
 
     $sly.reload();
+  }
+
+  /**
+   * Given data in timelineDataStore.rangePerMonth that's based on the facet return from
+   * RW API, return the offset needed to load data starting at a particular time.
+   *
+   * @param date - Moment.js object.
+   * @returns offset #, useful for getData
+   */
+
+  function findOffsetForTime(date) {
+    var priorDates = _.filter(timelineDataStore.rangePerMonth, function(item) {
+      return item.value.isAfter(date);
+    });
+
+    var sum = _.reduce(priorDates, function(sum, item) {
+      return sum + item.count;
+    }, 0);
+
+    return sum;
   }
 };
 
