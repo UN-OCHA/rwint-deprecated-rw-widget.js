@@ -3035,61 +3035,20 @@ input[type="search"] {
   transition: max-height 0.3s ease-in-out;
   max-height: 0;
   overflow: hidden;
-  -moz-transform: translateX(0);
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
 }
-/* line 6, ../scss/components/molecules/_accordion-set.scss */
+/* line 5, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--content.is-active {
   max-height: 100em;
 }
 
-/* line 10, ../scss/components/molecules/_accordion-set.scss */
+/* line 9, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--check {
   display: none;
 }
-/* line 14, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--check:checked + .accordion-set--label + .accordion-set--content {
-  max-height: 100em;
-}
 
-/* line 20, ../scss/components/molecules/_accordion-set.scss */
+/* line 12, ../scss/components/molecules/_accordion-set.scss */
 .accordion-set--label {
   display: block;
-}
-
-/* line 25, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--label {
-  position: relative;
-}
-/* line 27, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--label:before {
-  -moz-transition: -moz-transform 0.3s ease-in-out;
-  -o-transition: -o-transform 0.3s ease-in-out;
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out;
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-  display: block;
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  color: transparent;
-  content: '.';
-  border-width: 0.5em 0 0.5em 0.66em;
-  border-color: transparent transparent transparent #a993e1;
-  top: 1em;
-  left: 0.5em;
-}
-/* line 35, ../scss/components/molecules/_accordion-set.scss */
-.accordion-set--label.is-active:before {
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
 }
 
 /* line 3, ../scss/components/molecules/_header.scss */
@@ -3263,7 +3222,7 @@ input[type="search"] {
   border-color: transparent transparent transparent #6c9acd;
   display: inline-block;
   position: absolute;
-  top: 36px;
+  top: 13px;
   left: 50%;
   margin-left: 70px;
 }
@@ -3580,15 +3539,8 @@ input[type="search"] {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  /* line 47, ../scss/components/organisms/_financial-widget.scss */
-  .financial-widget--data-source.active:before, .financial-widget--data-source:hover:before {
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-  }
 }
-/* line 52, ../scss/components/organisms/_financial-widget.scss */
+/* line 47, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source:before {
   -moz-transition: border-color 0.3s ease-in-out;
   -o-transition: border-color 0.3s ease-in-out;
@@ -3607,15 +3559,15 @@ input[type="search"] {
   left: 0.5em;
   z-index: 10;
 }
-/* line 59, ../scss/components/organisms/_financial-widget.scss */
+/* line 54, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source:nth-last-of-type(1n+2) {
   border-bottom: 1px solid #d9e2ed;
 }
-/* line 62, ../scss/components/organisms/_financial-widget.scss */
+/* line 57, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source.active, .financial-widget--data-source:hover {
   background-color: white;
 }
-/* line 64, ../scss/components/organisms/_financial-widget.scss */
+/* line 59, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--data-source.active:before, .financial-widget--data-source:hover:before {
   display: block;
   position: absolute;
@@ -3626,9 +3578,13 @@ input[type="search"] {
   content: '.';
   border-width: 0.25em 0 0.25em 0.66em;
   border-color: transparent transparent transparent #a993e1;
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
-/* line 70, ../scss/components/organisms/_financial-widget.scss */
+/* line 66, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--time {
   display: table;
   width: 100%;
@@ -3636,12 +3592,12 @@ input[type="search"] {
   border-bottom: 1px solid #cccccc;
 }
 @media (min-width: 38.75em) {
-  /* line 70, ../scss/components/organisms/_financial-widget.scss */
+  /* line 66, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--time {
     display: flex;
   }
 }
-/* line 78, ../scss/components/organisms/_financial-widget.scss */
+/* line 74, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--time h1 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -3649,12 +3605,12 @@ input[type="search"] {
   font-size: 1.5625rem;
   line-height: 1.1;
 }
-/* line 83, ../scss/components/organisms/_financial-widget.scss */
+/* line 79, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--time .selectric-financial-widget--time-select {
   margin-top: 1em;
 }
 @media (min-width: 38.75em) {
-  /* line 83, ../scss/components/organisms/_financial-widget.scss */
+  /* line 79, ../scss/components/organisms/_financial-widget.scss */
   .financial-widget--time .selectric-financial-widget--time-select {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -3662,46 +3618,46 @@ input[type="search"] {
   }
 }
 
-/* line 94, ../scss/components/organisms/_financial-widget.scss */
+/* line 90, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric {
   background-color: #f5f5f5;
 }
-/* line 96, ../scss/components/organisms/_financial-widget.scss */
+/* line 92, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric .button {
   color: #a993e1;
 }
-/* line 99, ../scss/components/organisms/_financial-widget.scss */
+/* line 95, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric .label {
   color: #6c9acd;
 }
-/* line 103, ../scss/components/organisms/_financial-widget.scss */
+/* line 99, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems {
   background-color: #f5f5f5;
 }
-/* line 105, ../scss/components/organisms/_financial-widget.scss */
+/* line 101, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li {
   color: #6c9acd;
 }
-/* line 107, ../scss/components/organisms/_financial-widget.scss */
+/* line 103, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li:nth-last-of-type(1n+2) {
   border-top: 1px solid #d9e2ed;
 }
-/* line 110, ../scss/components/organisms/_financial-widget.scss */
+/* line 106, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li.selected {
   background-color: #d9e2ed;
   color: #375573;
 }
-/* line 114, ../scss/components/organisms/_financial-widget.scss */
+/* line 110, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectricItems li:hover {
   background-color: #d9e2ed;
   color: #375573;
 }
-/* line 121, ../scss/components/organisms/_financial-widget.scss */
+/* line 117, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget .selectric-financial-widget--time-select .label {
   margin-bottom: 0;
 }
 
-/* line 127, ../scss/components/organisms/_financial-widget.scss */
+/* line 123, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded {
   width: 100%;
   height: 3rem;
@@ -3711,7 +3667,7 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 136, ../scss/components/organisms/_financial-widget.scss */
+/* line 132, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount {
   position: relative;
   height: 100%;
@@ -3720,7 +3676,7 @@ input[type="search"] {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   white-space: nowrap;
 }
-/* line 143, ../scss/components/organisms/_financial-widget.scss */
+/* line 139, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount.covered {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjEuMCIgeTE9IjAuNSIgeDI9IjAuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y1YzY1NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 16px, #f5d17d 16px, #f5d17d 32px);
   background-size: 100%;
@@ -3738,12 +3694,12 @@ input[type="search"] {
   background-position: 50% 50%, 50% 50%;
   color: #957128;
 }
-/* line 154, ../scss/components/organisms/_financial-widget.scss */
+/* line 150, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount.requested {
   color: #375573;
   text-align: right;
 }
-/* line 158, ../scss/components/organisms/_financial-widget.scss */
+/* line 154, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount .percent {
   position: absolute;
   top: 5px;
@@ -3752,6 +3708,11 @@ input[type="search"] {
   font-size: 24px;
   line-height: 1;
   text-align: right;
+}
+/* line 162, ../scss/components/organisms/_financial-widget.scss */
+.financial-widget--percent-funded--amount .percent.aligned-right {
+  color: white;
+  right: -3.5em;
 }
 /* line 166, ../scss/components/organisms/_financial-widget.scss */
 .financial-widget--percent-funded--amount .percent span {
@@ -4178,7 +4139,7 @@ input[type="search"] {
   content: '.';
   border-width: 0.66em 0.5em 0 0.5em;
   border-color: #a993e1 transparent transparent transparent;
-  top: 100%;
+  bottom: -11px;
   left: 0.5em;
   z-index: 10;
   opacity: 0;
@@ -4194,31 +4155,32 @@ input[type="search"] {
 }
 /* line 188, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--content {
+  margin-top: -1px;
   position: relative;
   width: 100%;
   background-color: #665695;
 }
-/* line 193, ../scss/components/organisms/_overview-widget.scss */
+/* line 194, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body {
   padding: 1em 0.5em;
 }
-/* line 198, ../scss/components/organisms/_overview-widget.scss */
+/* line 199, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 {
   margin-bottom: 0;
   color: #a993e1;
   line-height: 1;
   text-transform: lowercase;
 }
-/* line 203, ../scss/components/organisms/_overview-widget.scss */
+/* line 204, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 .figure {
   color: white;
   font-weight: bold;
 }
-/* line 207, ../scss/components/organisms/_overview-widget.scss */
+/* line 208, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .tab-set--body h3 + p {
   color: white;
 }
-/* line 212, ../scss/components/organisms/_overview-widget.scss */
+/* line 213, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--tabs .un-icon-crisis_population_displacement {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
   opacity: 0.1;
@@ -4229,7 +4191,7 @@ input[type="search"] {
   text-align: center;
 }
 
-/* line 223, ../scss/components/organisms/_overview-widget.scss */
+/* line 224, ../scss/components/organisms/_overview-widget.scss */
 .overview-widget--sources {
   margin: 1em 0;
   color: #cccccc;
