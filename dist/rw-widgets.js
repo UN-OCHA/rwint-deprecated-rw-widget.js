@@ -703,7 +703,7 @@ FinancialWidget.prototype.link = function(elements) {
         // Adjust here to help force bubbles towards the center.
         if (o.x + o.r > w) {
           o.x -= 1200 * k;
-        } else if (o.x - o.r < 0) {
+        } else if ((o.x - o.r < 0 && chartState.direction == 'horizontal') || (o.x - o.r < 40)) {
           o.x += 1200 * k;
         }
 
