@@ -31,6 +31,10 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
+  if (config.environment && config.map.src) {
+    this.config('map.src', config.environment.content + config.map.src);
+  }
+
   // Traverses data indicators looking for points that are structured as API-driven content.
   // This is then formatted via our custom 'en-long' language to handle quantifier mappings.
   numeral.language('en-long');
