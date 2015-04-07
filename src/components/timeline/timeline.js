@@ -70,7 +70,7 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
       if (item.fields.headline.image) {
         returnItem["img-src"] = item.fields.headline.image['url-large'];
       } else if (widget.has('emptyImage')) {
-        returnItem["img-src"] = widget.config('emptyImage');
+        returnItem["img-src"] = widget.config('environment.content') + widget.config('emptyImage');
       }
 
       var time = moment(item.fields.date.original, moment.ISO_8601);
