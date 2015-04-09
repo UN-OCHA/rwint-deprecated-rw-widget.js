@@ -122,8 +122,10 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
-  if (config.environment && config.map.src) {
-    this.config('map.src', config.environment.content + config.map.src);
+  if (this.has('map.src') && this.has('environment.content')) {
+    this.config('map.src', this.config('environment.content') + this.config('map.src'));
+  } else {
+    console.log('Please verify that the "map.src" and "baseUrl" parameters are set in your config file.');
   }
 
   // Traverses data indicators looking for points that are structured as API-driven content.
@@ -1332,8 +1334,10 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
 
       if (item.fields.headline.image) {
         returnItem["img-src"] = item.fields.headline.image['url-large'];
-      } else if (widget.has('emptyImage')) {
+      } else if (widget.has('emptyImage') && widget.has('environment.content')) {
         returnItem["img-src"] = widget.config('environment.content') + widget.config('emptyImage');
+      } else {
+        console.log('Please verify that the "emptyImage" and "baseUrl" parameters are set in your config file.');
       }
 
       var time = moment(item.fields.date.original, moment.ISO_8601);

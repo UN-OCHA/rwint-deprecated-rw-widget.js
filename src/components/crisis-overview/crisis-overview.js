@@ -31,8 +31,10 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
-  if (config.environment && config.map.src) {
-    this.config('map.src', config.environment.content + config.map.src);
+  if (this.has('map.src') && this.has('environment.content')) {
+    this.config('map.src', this.config('environment.content') + this.config('map.src'));
+  } else {
+    console.log('Please verify that the "map.src" and "baseUrl" parameters are set in your config file.');
   }
 
   // Traverses data indicators looking for points that are structured as API-driven content.

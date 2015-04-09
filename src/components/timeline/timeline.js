@@ -69,8 +69,10 @@ TimelineWidget.prototype.getData = function(offset, updatePage) {
 
       if (item.fields.headline.image) {
         returnItem["img-src"] = item.fields.headline.image['url-large'];
-      } else if (widget.has('emptyImage')) {
+      } else if (widget.has('emptyImage') && widget.has('environment.content')) {
         returnItem["img-src"] = widget.config('environment.content') + widget.config('emptyImage');
+      } else {
+        console.log('Please verify that the "emptyImage" and "baseUrl" parameters are set in your config file.');
       }
 
       var time = moment(item.fields.date.original, moment.ISO_8601);
