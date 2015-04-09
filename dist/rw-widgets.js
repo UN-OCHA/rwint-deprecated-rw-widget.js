@@ -781,7 +781,7 @@ FinancialWidget.prototype.link = function(elements) {
 
       var icon = getClusterIcon(node.title);
       var iconx = (w / 2) - 495;
-      var icony = (h / 2) - 230;
+      var icony = (h / 2) - 240;
       overlay.append("path")
         .classed("detail--icon", true)
         .attr("transform", "translate("+ iconx +"," + icony + ")")
@@ -800,7 +800,7 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
-          "transform": "translate(0,40)"
+          "transform": "translate(0,60)"
         })
         .text(percentageFormatter(node.fundingPercentage) + " funded");
 
@@ -808,7 +808,7 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
-          "transform": "translate(0,60)"
+          "transform": "translate(0,80)"
         })
         .text(fundingPrefix.scale(node.requested).toFixed(2) + fundingPrefix.symbol + " Requested");
 
@@ -816,7 +816,7 @@ FinancialWidget.prototype.link = function(elements) {
       textContainer.append("text")
         .attr({
           "text-anchor": "middle",
-          "transform": "translate(0,80)"
+          "transform": "translate(0,100)"
         })
         .text(fundingPrefix.scale(node.funded).toFixed(2) + fundingPrefix.symbol + " Funded");
 
@@ -829,7 +829,7 @@ FinancialWidget.prototype.link = function(elements) {
       });
 
       textContainer.selectAll("text")
-        .call(wrap, 300);
+        .call(wrap, 250);
 
       overlay.append("rect")
         .attr({
