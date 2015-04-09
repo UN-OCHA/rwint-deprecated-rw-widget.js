@@ -31,6 +31,12 @@ CrisisOverviewWidget.prototype.compile = function(elements, next) {
   var config = this.config();
   this.config('adjustedTitle', titleAdjust(config.title));
 
+  if (this.has('map.src') && this.has('environment.content')) {
+    this.config('map.src', this.config('environment.content') + this.config('map.src'));
+  } else {
+    console.log('Please verify that the "map.src" and "baseUrl" parameters are set in your config file.');
+  }
+
   // Traverses data indicators looking for points that are structured as API-driven content.
   // This is then formatted via our custom 'en-long' language to handle quantifier mappings.
   numeral.language('en-long');
