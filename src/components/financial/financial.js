@@ -125,8 +125,8 @@ FinancialWidget.prototype.link = function(elements) {
       e.preventDefault();
       var selected = this.text;
       chartState.currentSection = _.findKey(config.dataSources, function(val) {return val.dataItemTitle == selected;});
-
-      if (config.dataSources[chartState.currentSection].clusters.length <= 1) {
+      
+      if (config.dataSources[chartState.currentSection].clusters.content.length < 2) {
         $('.financial-widget--cluster-funding', $element).hide();
       } else {
         $('.financial-widget--cluster-funding', $element).show();
