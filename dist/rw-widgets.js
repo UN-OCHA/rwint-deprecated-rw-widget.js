@@ -781,7 +781,7 @@ FinancialWidget.prototype.link = function(elements) {
 
       var icon = getClusterIcon(node.title);
       var iconx = (w / 2) - 495;
-      var icony = (h / 2) - 240;
+      var icony = (h / 2) - 220;
       overlay.append("path")
         .classed("detail--icon", true)
         .attr("transform", "translate("+ iconx +"," + icony + ")")
