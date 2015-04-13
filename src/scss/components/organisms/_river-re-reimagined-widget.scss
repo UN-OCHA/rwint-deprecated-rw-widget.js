@@ -1,0 +1,218 @@
+.widget-river {
+  background: image-url('diagonal-pinstripes.png') repeat $color--white;
+  .widget-river--filters {
+    @include single-transition(width, $default-transition-duration, $default-transition-function);
+    @include breakpoint($bp--river-2col) {
+      @include layout($grid--2, 0) {
+        width: grid-span(1, 1);
+      }
+    }
+    @include breakpoint($bp--river-2col-wide) {
+      @include layout($grid--golden-right, 0) {
+        width: grid-span(1, 1);
+      }
+    }
+  }
+}
+
+.widget-river--header {
+  @include fontsize-rem(ms(0));
+  position: relative;
+  margin: 0;
+  border-bottom: 1px solid $color--gray--lightish;
+  background-color: $color--gray--light;
+  .widget-river--title {
+    @include fontsize-rem(ms(0));
+    display: inline-block;
+    margin: 0 0.25em 0 0;
+    padding: 0 0.5em 0 1em;
+    background-color: $color--blue--dark;
+    color: $color--white;
+    font-weight: bold;
+    line-height: unitless-convert(54px);
+    text-transform: uppercase;
+    vertical-align: top;
+  }
+}
+
+.widget-river--results--type {
+  display: inline-block;
+  position: relative;
+  width: 67%;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+  background-color: rgba($color--white, .2);
+  cursor: pointer;
+  font-family: $font--futura;
+  white-space: nowrap;
+  &:after {
+    @include arrow($color--white, right);
+    top: 12px;
+    right: 0.5rem;
+  }
+  @include breakpoint($bp--river-unstack-tabs) {
+    display: block;
+    width: auto;
+  }
+}
+
+
+.widget-river--filters {
+  width: 100%;
+  margin-bottom: $base-line-em;
+  background-color: $color--white;
+  label {
+    @include unset-background-links();
+    display: block;
+    position: relative;
+    padding: em(10px) em(20px);
+    border-bottom: 1px solid $color--gray--light;
+    background: none;
+    background-color: $color--white;
+    color: $color--blue--dark;
+    font-family: $font--futura;
+    &:hover {
+      background-color: $color--gray--light;
+    }
+  }
+  .accordion-set--label {
+    padding-left: 1.5em;
+  }
+  .accordion-set--label {
+    @include single-transition(width, $default-transition-duration, $default-transition-function);
+    width: 100%;
+    @include breakpoint($bp--river-2col) {
+      &:before {
+        @include transition-property(transform, border-color);
+        @include transition-duration($default-transition-duration);
+        @include transition-timing-function($default-transition-function);
+        @include transform(rotateY(0deg));
+        @include transform-origin(90%, 50%);
+        @include arrow($color--purple);
+        right: 0.5em;
+        left: auto;
+        @include breakpoint($bp--river-2col-wide) {
+          @include transform-origin(75%, 50%);
+        }
+      }
+    }
+  }
+  .accordion-set--content {
+    @include breakpoint($bp--river-2col) {
+      @include single-transition(height, $default-transition-duration, $default-transition-function);
+    }
+  }
+
+
+  .accordion-set--check {
+    &:checked {
+      + .accordion-set--label {
+        background-color: $color--gray--light;
+        @include breakpoint($bp--river-2col) {
+          width: calc(100% + 16px);
+          &:before {
+            @include transform(rotateY(180deg));
+            border-left-color: $color--white;
+          }
+          + .accordion-set--content {
+            position: absolute;
+            top: 79px;
+            right: 1em;
+            height: calc(100% - 79px);
+            background-color: $color--white;
+            overflow: auto;
+
+          }
+        }
+        + .accordion-set--content {
+          @include breakpoint($bp--river-2col) {
+            @include layout($grid--2, 0) {
+              width: calc(#{grid-span(1, 2)} - 2em);
+            }
+          }
+          @include breakpoint($bp--river-2col-wide) {
+            @include layout($grid--golden-right, 0) {
+              width: calc(#{grid-span(1, 2)} - 2em);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .widget-river--filters-content {
+    padding: 0.5em 0.5em $base-line-em 0.5em;
+    background-color: adjust_color($color--gray--light, $lightness: 2%);
+    @include breakpoint($bp--river-2col) {
+      background-color: $color--white;
+    }
+  }
+  .filters-content--item {
+    margin-bottom: $base-line-em;
+  }
+  .filters-content--title {
+    @include fontsize-rem(ms(0));
+    display: none;
+    margin: 0 0 $base-line-em;
+    padding: 0 0 0.5em;
+    border-bottom: 1px solid $color--purple--dark;
+    color: $color--purple--dark;
+    font-weight: 900;
+    text-transform: uppercase;
+    @include breakpoint($bp--river-2col) {
+      display: block;
+    }
+  }
+  .filters-content--item-date {
+    @include list--item-date(left);
+  }
+  .filters-content--item-title {
+    @include fontsize-rem(ms(1));
+    margin-bottom: 0;
+    clear: both;
+    border-bottom: 1px solid $color--gray--lightish;
+  }
+  .filters-content--item-source {
+    @include fontsize-rem(ms(-1));
+    color: $color--gray--light--mid;
+    font-family: $font--futura;
+    text-transform: uppercase;
+  }
+  .filters-content--more {
+    @include phi-btn();
+  }
+}
+
+.widget-river--filters--title {
+  @include fontsize-rem(ms(0));
+  position: relative;
+  margin: 0;
+  padding: 0.5em 2em;
+  background-color: $color--blue--dark;
+  color: $color--white;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  .results--item--reports & {
+    background-color: $color--purple--dark;
+  }
+  .results--item--maps & {
+    background-color: $color--blue--dark;
+  }
+  .results--item--jobs & {
+    background-color: $color--yellow--mid;
+  }
+}
+
+.widget-river--results {
+  @include breakpoint($bp--river-unstack-tabs) {
+    margin: 1rem;
+  }
+  .widget-river--results--graph {
+    margin-bottom: $base-line-em;
+    border: 0.5rem solid $color--gray--lightish;
+    background-color: $color--gray--lightish;
+  }
+
+}
+
+

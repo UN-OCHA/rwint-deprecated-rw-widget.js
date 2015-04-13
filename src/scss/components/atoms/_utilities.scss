@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Components Atoms - Utilities
+   ========================================================================== */
+
+
+.clear-left {clear: left !important;}
+.clear-right {clear: right !important;}
+.clear-both {clear: both !important;}
+.float-left {float: left !important;}
+.float-right {float: right !important;}
+
+//emphasis colors
+.information {
+  color: $color--information;
+}
+.warning {
+  color: $color--warning;
+}
+.success {
+  color: $color--success;
+}
+.error {
+  color: $color--error;
+}
+
+%bg-img {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.bg-img,
+.js-bg-img {
+  @extend %bg-img;
+}
+%bg-img--expand {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.bg-img--expand,
+.js-bg-img--expand {
+  @extend %bg-img--expand;
+}

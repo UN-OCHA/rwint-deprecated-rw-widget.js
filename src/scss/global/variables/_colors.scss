@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Global Variables - Colors
+   ========================================================================== */
+
+
+/*
+ * Here's a great tutorial on how to use color variables properly:
+ * @see http://sachagreif.com/sass-color-variables/
+ */
+
+$color--purple: #a993e1;
+$color--purple--dark: #665695;
+$color--purple--light--mid: #c7bceb;
+$color--purple--light: #e6e6f5;
+$color--blue--paler: #eef0f3;
+$color--blue--pale: #d9e2ed;
+$color--blue: #6c9acd;
+$color--blue--dark: #375573;
+$color--blue--darker: #2E4455;
+$color--blue--light: #97dcf7;
+$color--yellow: #f5c655;
+$color--yellow--mid: #ddb049;
+$color--yellow--dark: #957128;
+$color--green: #a7da8d;
+$color--green--dark: #677f5c;
+$color--red: #ed5759;
+$color--red--dark: #92333b;
+$color--white: hsl(0, 0%, 100%);
+$color--gray--light: #f5f5f5;
+$color--gray--lightish: #cccccc;
+$color--gray--light--mid: #8c8e93;
+$color--gray: #4d515b;
+$color--gray--dark: #060606;
+$color--black: hsl(0, 0%, 0%);
+$color--transparent--white: hsla(0, 0%, 100%, 0);
+
+$color-map: (
+  color--purple: $color--purple,
+  color--purple--dark: $color--purple--dark,
+  color--purple--light--mid: $color--purple--light--mid,
+  color--purple--light: $color--purple--light,
+  color--blue--paler: $color--blue--paler,
+  color--blue--pale: $color--blue--pale,
+  color--blue: $color--blue,
+  color--blue-dark: $color--blue--dark,
+  color--blue-darker: $color--blue--darker,
+  color--blue-light: $color--blue--light,
+  color--yellow: $color--yellow,
+  color--yellow-mid: $color--yellow--mid,
+  color--yellow-dark: $color--yellow--dark,
+  color--green: $color--green,
+  color--green-dark: $color--green--dark,
+  color--red: $color--red,
+  color--red-dark: $color--red--dark,
+  color--white: $color--white,
+  color--gray--light: $color--gray--light,
+  color--gray--lightish: $color--gray--lightish,
+  color--gray--light--mid: $color--gray--light--mid,
+  color--gray: $color--gray,
+  color--gray--dark: $color--gray--dark,
+  color--black: $color--black
+);
+
+// Semantic Colors
+$color--text: $color--black;
+$color--link: $color--black;
+$color--border: $color--gray--light;
+$color--border-active: $color--black;
+$bg-color: $color--white;
+
+// Emphasis Colors
+$color--information: $color--blue;
+$color--success: $color--yellow;
+$color--error: $color--red;
+$color--warning: $color--blue--dark;
+
+// Links
+$cs-link-normal            : $color--blue;
+$cs-link-hover             : $color--blue--dark;
+$cs-link-active            : $color--blue;
+$cs-link-visited           : $color--blue;
+$cs-link-focus             : $color--blue--dark;
+$cs-link-underline-normal  : $color--blue;
+$cs-link-underline-hover   : $color--blue--dark;
+$cs-link-underline-active  : $color--blue;
+$cs-link-underline-visited : $color--blue;
+$cs-link-underline-focus   : $color--blue--dark;
+//
+$cs-link-background-normal: $color--blue;
+$cs-link-background-hover: $color--blue--dark;
+$cs-link-background-active: $color--blue;
+$cs-link-background-visited: $color--blue;
+$cs-link-background-focus: $color--blue--dark;
+$cs-link-background-bkg: $color--white;

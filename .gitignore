@@ -3,3 +3,5 @@ example/dist
 .idea
 bower_components
 node_modules
+.sass-cache
+gems
