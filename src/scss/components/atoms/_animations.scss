@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Components Atoms - Animations
+   ========================================================================== */
+
+
+/* Extendable - Animation Opacity
+   ========================================================================== */
+
+%animation-opacity {
+  @include single-transition(opacity, $default-transition-duration, $default-transition-function);
+}
+
+/* Extendable - Animation Min-height
+   ========================================================================== */
+
+%animation-min-height {
+  @include single-transition(min-height, $default-transition-duration, $default-transition-function);
+}
+
+/* Extendable - Animation Background-color
+   ========================================================================== */
+
+%animation-background-color {
+  @include single-transition(background-color, $default-transition-duration, $default-transition-function);
+}
+
+/* Extendable - Animation Text Color
+   ========================================================================== */
+
+%animation-text-color {
+  @include single-transition(color, $default-transition-duration, $default-transition-function);
+}
+
+/* Extendable - Animation All
+   ========================================================================== */
+
+%animation-all {
+  @include single-transition($default-transition-property, $default-transition-duration, $default-transition-function);
+}

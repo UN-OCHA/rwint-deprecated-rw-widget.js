@@ -1,0 +1,746 @@
+[class*="un-icon-"] {
+  font-family: 'humanitarian_icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.un-icon-activity_needs_assessment:before {
+  content: "\e600";
+}
+.un-icon-activity_policy:before {
+  content: "\e601";
+}
+.un-icon-activity_financing:before {
+  content: "\e602";
+}
+.un-icon-activity_information_management:before {
+  content: "\e603";
+}
+.un-icon-activity_information_technology:before {
+  content: "\e604";
+}
+.un-icon-activity_analysis:before {
+  content: "\e605";
+}
+.un-icon-activity_fund:before {
+  content: "\e606";
+}
+.un-icon-activity_training:before {
+  content: "\e607";
+}
+.un-icon-activity_leadership:before {
+  content: "\e608";
+}
+.un-icon-activity_partnership:before {
+  content: "\e609";
+}
+.un-icon-activity_deployment:before {
+  content: "\e60a";
+}
+.un-icon-activity_humanitarian_programme_cycle:before {
+  content: "\e60b";
+}
+.un-icon-activity_services_and_tools:before {
+  content: "\e60c";
+}
+.un-icon-activity_scale_operation:before {
+  content: "\e60d";
+}
+.un-icon-activity_staff_management:before {
+  content: "\e60e";
+}
+.un-icon-activity_innovation:before {
+  content: "\e60f";
+}
+.un-icon-activity_response:before {
+  content: "\e610";
+}
+.un-icon-activity_meeting:before {
+  content: "\e611";
+}
+.un-icon-activity_assessment:before {
+  content: "\e612";
+}
+.un-icon-activity_public_information:before {
+  content: "\e613";
+}
+.un-icon-activity_civil-military_coordination:before {
+  content: "\e614";
+}
+.un-icon-activity_gap_analysis:before {
+  content: "\e615";
+}
+.un-icon-activity_preparedness:before {
+  content: "\e616";
+}
+.un-icon-activity_learning:before {
+  content: "\e617";
+}
+.un-icon-activity_advocacy:before {
+  content: "\e618";
+}
+.un-icon-activity_coordinated_assessment:before {
+  content: "\e619";
+}
+.un-icon-activity_reporting:before {
+  content: "\e61a";
+}
+.un-icon-camp_IDP_refugee_camp:before {
+  content: "\e61b";
+}
+.un-icon-camp_temporary_camp:before {
+  content: "\e61c";
+}
+.un-icon-camp_permanent_camp:before {
+  content: "\e61d";
+}
+.un-icon-camp_transition_site:before {
+  content: "\e61e";
+}
+.un-icon-camp_spontaneous_site:before {
+  content: "\e61f";
+}
+.un-icon-camp_registration:before {
+  content: "\e620";
+}
+.un-icon-cluster_CCCM:before {
+  content: "\e621";
+}
+.un-icon-cluster_early_recovery:before {
+  content: "\e622";
+}
+.un-icon-cluster_education:before {
+  content: "\e623";
+}
+.un-icon-cluster_emergency_telecommunications:before {
+  content: "\e624";
+}
+.un-icon-cluster_health:before {
+  content: "\e625";
+}
+.un-icon-cluster_food_security:before {
+  content: "\e626";
+}
+.un-icon-cluster_protection:before {
+  content: "\e627";
+}
+.un-icon-cluster_WASH:before {
+  content: "\e628";
+}
+.un-icon-cluster_shelter:before {
+  content: "\e629";
+}
+.un-icon-cluster_logistics:before {
+  content: "\e62a";
+}
+.un-icon-cluster_nutrition:before {
+  content: "\e62b";
+}
+.un-icon-crisis_humanitarian_access:before {
+  content: "\e62c";
+}
+.un-icon-crisis_population_displacement:before {
+  content: "\e62d";
+}
+.un-icon-crisis_population_return:before {
+  content: "\e62e";
+}
+.un-icon-crisis_conflict:before {
+  content: "\e62f";
+}
+.un-icon-damage_affected:before {
+  content: "\e630";
+}
+.un-icon-damage_destroyed:before {
+  content: "\e631";
+}
+.un-icon-damage_not_affected:before {
+  content: "\e632";
+}
+.un-icon-damage_airport_affected:before {
+  content: "\e633";
+}
+.un-icon-damage_airport_destroyed:before {
+  content: "\e634";
+}
+.un-icon-damage_airport_not_affected:before {
+  content: "\e635";
+}
+.un-icon-damage_bridge_affected:before {
+  content: "\e636";
+}
+.un-icon-damage_bridge_destroyed:before {
+  content: "\e637";
+}
+.un-icon-damage_bridge_not_affected:before {
+  content: "\e638";
+}
+.un-icon-damage_building_not_affected:before {
+  content: "\e639";
+}
+.un-icon-damage_port_affected:before {
+  content: "\e63a";
+}
+.un-icon-damage_port_destroyed:before {
+  content: "\e63b";
+}
+.un-icon-damage_port_not_affected:before {
+  content: "\e63c";
+}
+.un-icon-damage_building_affected:before {
+  content: "\e63d";
+}
+.un-icon-damage_building_destroyed:before {
+  content: "\e63e";
+}
+.un-icon-damage_house_affected:before {
+  content: "\e63f";
+}
+.un-icon-damage_house_destroyed:before {
+  content: "\e640";
+}
+.un-icon-damage_house_not_affected:before {
+  content: "\e641";
+}
+.un-icon-damage_road_affected:before {
+  content: "\e642";
+}
+.un-icon-damage_road_destroyed:before {
+  content: "\e643";
+}
+.un-icon-damage_road_not_affected:before {
+  content: "\e644";
+}
+.un-icon-damage_school_affected:before {
+  content: "\e645";
+}
+.un-icon-damage_school_destroyed:before {
+  content: "\e646";
+}
+.un-icon-damage_school_not_affected:before {
+  content: "\e647";
+}
+.un-icon-disaster_cold_wave:before {
+  content: "\e648";
+}
+.un-icon-disaster_heatwave:before {
+  content: "\e649";
+}
+.un-icon-disaster_cyclone:before {
+  content: "\e64a";
+}
+.un-icon-disaster_earthquake:before {
+  content: "\e64b";
+}
+.un-icon-disaster_fire:before {
+  content: "\e64c";
+}
+.un-icon-disaster_epidemic:before {
+  content: "\e64d";
+}
+.un-icon-disaster_insect_infestation:before {
+  content: "\e64e";
+}
+.un-icon-disaster_heavy_rain:before {
+  content: "\e64f";
+}
+.un-icon-disaster_drought:before {
+  content: "\e650";
+}
+.un-icon-disaster_flash_flood:before {
+  content: "\e651";
+}
+.un-icon-disaster_flood:before {
+  content: "\e652";
+}
+.un-icon-disaster_snow_avalanche:before {
+  content: "\e653";
+}
+.un-icon-disaster_storm_surge:before {
+  content: "\e654";
+}
+.un-icon-disaster_tsunami:before {
+  content: "\e655";
+}
+.un-icon-disaster_landslide:before {
+  content: "\e656";
+}
+.un-icon-disaster_technological:before {
+  content: "\e657";
+}
+.un-icon-disaster_tornado:before {
+  content: "\e658";
+}
+.un-icon-disaster_violent_wind:before {
+  content: "\e659";
+}
+.un-icon-disaster_locust_infestation:before {
+  content: "\e65a";
+}
+.un-icon-disaster_snowfall:before {
+  content: "\e65b";
+}
+.un-icon-disaster_storm:before {
+  content: "\e65c";
+}
+.un-icon-disaster_volcano:before {
+  content: "\e65d";
+}
+.un-icon-food_NFI_mosquito_net:before {
+  content: "\e65e";
+}
+.un-icon-food_NFI_blanket:before {
+  content: "\e65f";
+}
+.un-icon-food_NFI_bottled_water:before {
+  content: "\e660";
+}
+.un-icon-food_NFI_bucket:before {
+  content: "\e661";
+}
+.un-icon-food_NFI_clothing:before {
+  content: "\e662";
+}
+.un-icon-food_NFI_detergent:before {
+  content: "\e663";
+}
+.un-icon-food_NFI_flour:before {
+  content: "\e664";
+}
+.un-icon-food_NFI_food:before {
+  content: "\e665";
+}
+.un-icon-food_NFI_infant_formula:before {
+  content: "\e666";
+}
+.un-icon-food_NFI_kitchen_set:before {
+  content: "\e667";
+}
+.un-icon-food_NFI_mattress:before {
+  content: "\e668";
+}
+.un-icon-food_NFI_medicine:before {
+  content: "\e669";
+}
+.un-icon-food_NFI_medical_supply:before {
+  content: "\e66a";
+}
+.un-icon-food_NFI_non-food_items:before {
+  content: "\e66b";
+}
+.un-icon-food_NFI_oil:before {
+  content: "\e66c";
+}
+.un-icon-food_NFI_plastic_sheeting:before {
+  content: "\e66d";
+}
+.un-icon-food_NFI_relief_goods:before {
+  content: "\e66e";
+}
+.un-icon-food_NFI_rice:before {
+  content: "\e66f";
+}
+.un-icon-food_NFI_salt:before {
+  content: "\e670";
+}
+.un-icon-food_NFI_sugar:before {
+  content: "\e671";
+}
+.un-icon-food_NFI_stove:before {
+  content: "\e672";
+}
+.un-icon-food_NFI_soap:before {
+  content: "\e673";
+}
+.un-icon-food_NFI_tarpaulin:before {
+  content: "\e674";
+}
+.un-icon-food_NFI_vaccine:before {
+  content: "\e675";
+}
+.un-icon-food_NFI_tent:before {
+  content: "\e676";
+}
+.un-icon-infrastructure_infrastructure:before {
+  content: "\e677";
+}
+.un-icon-infrastructure_government_office:before {
+  content: "\e678";
+}
+.un-icon-infrastructure_diplomatic_mission:before {
+  content: "\e679";
+}
+.un-icon-infrastructure_assembly_point:before {
+  content: "\e67a";
+}
+.un-icon-infrastructure_hotel:before {
+  content: "\e67b";
+}
+.un-icon-infrastructure_house:before {
+  content: "\e67c";
+}
+.un-icon-infrastructure_police_station:before {
+  content: "\e67d";
+}
+.un-icon-infrastructure_church:before {
+  content: "\e67e";
+}
+.un-icon-infrastructure_mosque:before {
+  content: "\e67f";
+}
+.un-icon-infrastructure_hindu_temple:before {
+  content: "\e680";
+}
+.un-icon-infrastructure_buddhist_temple:before {
+  content: "\e681";
+}
+.un-icon-infrastructure_health_facility:before {
+  content: "\e682";
+}
+.un-icon-infrastructure_hospital:before {
+  content: "\e683";
+}
+.un-icon-infrastructure_mobile_clinic:before {
+  content: "\e684";
+}
+.un-icon-infrastructure_health_post:before {
+  content: "\e685";
+}
+.un-icon-infrastructure_school:before {
+  content: "\e686";
+}
+.un-icon-infrastructure_clinic:before {
+  content: "\e687";
+}
+.un-icon-infrastructure_food_warehouse:before {
+  content: "\e688";
+}
+.un-icon-infrastructure_building:before {
+  content: "\e689";
+}
+.un-icon-infrastructure_community_building:before {
+  content: "\e68a";
+}
+.un-icon-infrastructure_distribution_site:before {
+  content: "\e68b";
+}
+.un-icon-infrastructure_university:before {
+  content: "\e68c";
+}
+.un-icon-infrastructure_UN_office:before {
+  content: "\e68d";
+}
+.un-icon-infrastructure_NGO_office:before {
+  content: "\e68e";
+}
+.un-icon-logistics_airport:before {
+  content: "\e68f";
+}
+.un-icon-logistics_airport_military:before {
+  content: "\e690";
+}
+.un-icon-logistics_boat:before {
+  content: "\e691";
+}
+.un-icon-logistics_truck:before {
+  content: "\e692";
+}
+.un-icon-logistics_bridge:before {
+  content: "\e693";
+}
+.un-icon-logistics_car:before {
+  content: "\e694";
+}
+.un-icon-logistics_gas_station:before {
+  content: "\e695";
+}
+.un-icon-logistics_helicopter:before {
+  content: "\e696";
+}
+.un-icon-logistics_helipad:before {
+  content: "\e697";
+}
+.un-icon-logistics_road:before {
+  content: "\e698";
+}
+.un-icon-logistics_port:before {
+  content: "\e699";
+}
+.un-icon-logistics_train:before {
+  content: "\e69a";
+}
+.un-icon-logistics_tunnel:before {
+  content: "\e69b";
+}
+.un-icon-logistics_ferry:before {
+  content: "\e69c";
+}
+.un-icon-logistics_ship:before {
+  content: "\e69d";
+}
+.un-icon-logistics_bus:before {
+  content: "\e69e";
+}
+.un-icon-other_cluster_coordination:before {
+  content: "\e69f";
+}
+.un-icon-other_cluster_rule_of_law:before {
+  content: "\e6a0";
+}
+.un-icon-other_cluster_environment:before {
+  content: "\e6a1";
+}
+.un-icon-other_cluster_multicluster:before {
+  content: "\e6a2";
+}
+.un-icon-other_cluster_agriculture:before {
+  content: "\e6a3";
+}
+.un-icon-other_cluster_fishery:before {
+  content: "\e6a4";
+}
+.un-icon-other_cluster_safety_security:before {
+  content: "\e6a5";
+}
+.un-icon-other_cluster_other:before {
+  content: "\e6a6";
+}
+.un-icon-people_affected_population:before {
+  content: "\e6a7";
+}
+.un-icon-people_missing:before {
+  content: "\e6a8";
+}
+.un-icon-people_dead:before {
+  content: "\e6a9";
+}
+.un-icon-people_injured:before {
+  content: "\e6aa";
+}
+.un-icon-people_woman:before {
+  content: "\e6ab";
+}
+.un-icon-people_children:before {
+  content: "\e6ac";
+}
+.un-icon-people_elderly:before {
+  content: "\e6ad";
+}
+.un-icon-people_pregnant:before {
+  content: "\e6ae";
+}
+.un-icon-people_physical_impairments:before {
+  content: "\e6af";
+}
+.un-icon-people_man:before {
+  content: "\e6b0";
+}
+.un-icon-people_child_combatant:before {
+  content: "\e6b1";
+}
+.un-icon-people_infant:before {
+  content: "\e6b2";
+}
+.un-icon-people_national_army:before {
+  content: "\e6b3";
+}
+.un-icon-people_peacekeeping_force:before {
+  content: "\e6b4";
+}
+.un-icon-people_rebel:before {
+  content: "\e6b5";
+}
+.un-icon-people_drowned:before {
+  content: "\e6b6";
+}
+.un-icon-physical_barrier_physical_closure:before {
+  content: "\e6b7";
+}
+.un-icon-physical_barrier_checkpoint:before {
+  content: "\e6b8";
+}
+.un-icon-physical_barrier_mililtary_gate:before {
+  content: "\e6b9";
+}
+.un-icon-physical_barrier_observation_tower:before {
+  content: "\e6ba";
+}
+.un-icon-physical_barrier_roadblock:before {
+  content: "\e6bb";
+}
+.un-icon-physical_barrier_border_crossing:before {
+  content: "\e6bc";
+}
+.un-icon-physical_barrier_earthmound:before {
+  content: "\e6bd";
+}
+.un-icon-physical_barrier_road_barrier:before {
+  content: "\e6be";
+}
+.un-icon-product_type_calendar:before {
+  content: "\e6bf";
+}
+.un-icon-product_type_chart:before {
+  content: "\e6c0";
+}
+.un-icon-product_type_data:before {
+  content: "\e6c1";
+}
+.un-icon-product_type_document:before {
+  content: "\e6c2";
+}
+.un-icon-product_type_film:before {
+  content: "\e6c3";
+}
+.un-icon-product_type_map:before {
+  content: "\e6c4";
+}
+.un-icon-product_type_photo:before {
+  content: "\e6c5";
+}
+.un-icon-product_type_report:before {
+  content: "\e6c6";
+}
+.un-icon-product_type_table:before {
+  content: "\e6c7";
+}
+.un-icon-security_arrest:before {
+  content: "\e6c8";
+}
+.un-icon-security_assault:before {
+  content: "\e6c9";
+}
+.un-icon-security_carjacking:before {
+  content: "\e6ca";
+}
+.un-icon-security_dangerous_area:before {
+  content: "\e6cb";
+}
+.un-icon-security_forced_entry:before {
+  content: "\e6cc";
+}
+.un-icon-security_mine:before {
+  content: "\e6cd";
+}
+.un-icon-security_attack:before {
+  content: "\e6ce";
+}
+.un-icon-security_harrassment:before {
+  content: "\e6cf";
+}
+.un-icon-security_murder:before {
+  content: "\e6d0";
+}
+.un-icon-security_house_burned:before {
+  content: "\e6d1";
+}
+.un-icon-security_forced_recruitment:before {
+  content: "\e6d2";
+}
+.un-icon-security_abduction:before {
+  content: "\e6d3";
+}
+.un-icon-security_robbery:before {
+  content: "\e6d4";
+}
+.un-icon-socioeconomic_population_growth:before {
+  content: "\e6d5";
+}
+.un-icon-socioeconomic_livestock:before {
+  content: "\e6d6";
+}
+.un-icon-socioeconomic_livelihood:before {
+  content: "\e6d7";
+}
+.un-icon-socioeconomic_debris_management:before {
+  content: "\e6d8";
+}
+.un-icon-socioeconomic_trade_and_market:before {
+  content: "\e6d9";
+}
+.un-icon-socioeconomic_reconstruction:before {
+  content: "\e6da";
+}
+.un-icon-socioeconomic_urban:before {
+  content: "\e6db";
+}
+.un-icon-socioeconomic_urban_rural:before {
+  content: "\e6dc";
+}
+.un-icon-socioeconomic_rural_exodus:before {
+  content: "\e6dd";
+}
+.un-icon-socioeconomic_rural:before {
+  content: "\e6de";
+}
+.un-icon-telecommunications_computer:before {
+  content: "\e6df";
+}
+.un-icon-telecommunications_radio:before {
+  content: "\e6e0";
+}
+.un-icon-telecommunications_walkie_talkie:before {
+  content: "\e6e1";
+}
+.un-icon-telecommunications_e-mail:before {
+  content: "\e6e2";
+}
+.un-icon-telecommunications_fax:before {
+  content: "\e6e3";
+}
+.un-icon-telecommunications_internet:before {
+  content: "\e6e4";
+}
+.un-icon-telecommunications_mobile_phone:before {
+  content: "\e6e5";
+}
+.un-icon-wash_latrine_cabin:before {
+  content: "\e6e6";
+}
+.un-icon-wash_toilet:before {
+  content: "\e6e7";
+}
+.un-icon-wash_shower:before {
+  content: "\e6e8";
+}
+.un-icon-wash_sanitation:before {
+  content: "\e6e9";
+}
+.un-icon-wash_solid_waste:before {
+  content: "\e6ea";
+}
+.un-icon-wash_spring_water:before {
+  content: "\e6eb";
+}
+.un-icon-wash_submersible_pump:before {
+  content: "\e6ec";
+}
+.un-icon-wash_water_trucking:before {
+  content: "\e6ed";
+}
+.un-icon-wash_communal_latrine:before {
+  content: "\e6ee";
+}
+.un-icon-wash_water_source:before {
+  content: "\e6ef";
+}
+.un-icon-wash_potable_water_source:before {
+  content: "\e6f0";
+}
+.un-icon-wash_borehole:before {
+  content: "\e6f1";
+}
+.un-icon-wash_well:before {
+  content: "\e6f2";
+}
+.un-icon-wash_potable_water:before {
+  content: "\e6f3";
+}

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Global Variables - Typography
+   ========================================================================== */
+
+
+/* Font names
+   ========================================================================== */
+/*
+ * Assign font names from global/variables/_fonts.scss $fonts map
+ * to actual usable font family strings.
+ */
+
+//$font--volkhov:   font-name('volkhov-regular'), 'Times New Roman', Times, serif;
+$font--futura:    'futura-pt', Helvetica, Arial, sans-serif;
+$font--helvetica: Helvetica, Arial, sans-serif;
+//$font--adelle-sans: "adelle-sans",sans-serif;
+//$font--servus-slab: "servus-slab",sans-serif;
+//$font--ff-tisa-web-pro: "ff-tisa-web-pro",serif;
+$font--skolar: "skolar",serif;
+
+$font-map: (
+//  font--volkhov: $font--volkhov,
+  font--futura: $font--futura,
+  font--helvetica: $font--helvetica,
+//  font--adelle-sans: $font--adelle-sans,
+//  font--servus-slab: $font--servus-slab,
+//  font--ff-tisa-web-pro: $font--ff-tisa-web-pro,
+  font--skolar: $font--skolar  3
+);
+
+$font-body: $font--skolar;
+$font-headline: $font--futura;
+
+// Font size and line-height
+$root-typesize   : 16px;
+$base-font-size  : $root-typesize;
+$base-line-px    : 24px;
+$base-line-em    : em($base-line-px);
+$base-line-height: unitless-convert($base-line-em);
+
+// Sassy Modular-scale
+$ms-base: $root-typesize;
+$ms-ratio: $major-third $fifth;
+
+// Heading sizes
+$heading-sizes:
+  ms(6)
+  ms(5)
+  ms(4)
+  ms(3)
+  ms(2)
+  ms(1);
+$heading-line-heights:
+  1.5
+  1.5
+  1.5
+  1.5
+  1.5
+  1.5;
+
+$ms-map: (
+  ms0: ms(0),
+  ms1: ms(1),
+  ms2: ms(2),
+  ms3: ms(3),
+  ms4: ms(4),
+  ms5: ms(5),
+  ms6: ms(6),
+  ms7: ms(7),
+  ms8: ms(8),
+  ms9: ms(9),
+  ms10: ms(10)
+)

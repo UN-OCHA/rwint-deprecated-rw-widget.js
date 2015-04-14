@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Layout - Extends
+   ========================================================================== */
+
+
+/* Extendable - Full Container
+   ========================================================================== */
+
+%full-container {
+  display: block;
+  width: 100%;
+}
+
+/* Extendables - Absolute Position Abstraction
+   ========================================================================== */
+
+%abs-pos {
+  position: absolute;
+  margin: 0;
+  clear: none;
+  display: block;
+  z-index: $z-low;
+}
+%abs-pos-left-top {
+  @extend %abs-pos;
+  left: 0;
+  top: 0;
+}
+%abs-pos-right-top {
+  @extend %abs-pos;
+  right: 0;
+  top: 0;
+}
+%abs-pos-right-bottom {
+  @extend %abs-pos;
+  right: 0;
+  bottom: 0;
+}
+%abs-pos-left-bottom {
+  @extend %abs-pos;
+  left: 0;
+  bottom: 0;
+}

@@ -1,0 +1,472 @@
+// LAYOUT
+.timeline-widget--frames {
+  width: 100%;
+}
+
+@include breakpoint($bp--timeline-2col) {
+  @include layout($grid--2) {
+    .timeline-widget--dropdown {
+      @include grid-span(1, 2);
+    }
+    .timeline-widget--frames {
+      @include grid-span(1, 1);
+    }
+  }
+}
+@include breakpoint($bp--timeline-2col-wide) {
+  @include layout($grid--2-3) {
+    .timeline-widget--dropdown {
+      @include grid-span(1, 2);
+    }
+    .timeline-widget--frames {
+      @include grid-span(1, 1);
+    }
+  }
+}
+// LAYOUT END
+
+.timeline-widget--dropdown {
+  position: relative;
+  top: auto;
+  right: auto;
+}
+
+.timeline-widget--dropdown--wrapper {
+  @include transition-property(max-height, opacity);
+  @include transition-duration($default-transition-duration);
+  @include transition-timing-function($default-transition-function);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 100;
+  &:before {
+    @include arrow($color--blue--darker, up);
+    right: 2em;
+    bottom: 100%;
+    @include breakpoint($bp--timeline-2col) {
+      display: none;
+    }
+  }
+
+  @include breakpoint($bp--timeline-2col) {
+    position: relative;
+    height: auto;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  &.open {
+    max-height: 100em;
+    opacity: 1;
+    overflow: visible;
+  }
+}
+
+.timeline-widget-dropdown--item-date {
+  @include list--item-date();
+}
+
+.timeline-widget-dropdown--item-desc {
+  clear: both;
+}
+
+.timeline-widget--dropdown-heading {
+  width: 100%;
+  padding: em(10px) em(32px);
+  float: right;
+  background: $color--purple--dark;
+  cursor: pointer;
+  color: $color--white;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include breakpoint($bp--timeline-2col) {
+    display:none;
+    width: auto;
+  }
+
+
+  .button-arrow {
+    @include arrow($color--purple, down);
+    @include margin-sides(right);
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.timeline-widget--dropdown-controls {
+  position: relative;
+  height: em(55px);
+  padding: em(10px) em(16px);
+  background: $color--blue--darker;
+
+  @include breakpoint(330px) {
+    padding: em(10px) em(32px);
+  }
+
+  .close {
+    @include inline-block;
+    width: em(15px);
+    height: em(15px);
+    margin-top: em(10px);
+    float: right;
+    background: url('../../images/close.svg');
+    background-size: em(15px);
+    cursor: pointer;
+    @include breakpoint($bp--timeline-2col) {
+      display: none;
+    }
+  }
+  .form-select {
+    @include inline-block;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .form-today {
+    height: 36px;
+    margin-left: 0.5em;
+    border: none;
+    background-color: $color--blue;
+    color: $color--white;
+    font-family: $font--futura;
+    line-height: 1.5;
+    vertical-align: middle;
+    &:hover {
+      background-color: $color--purple;
+    }
+  }
+}
+
+.timeline-widget--dropdown--container {
+  height: 100%;
+  height: calc(100vh - 55px);
+  padding: 0 em(15px) 0 em(30px);
+  background-image: image-url('diagonal-pinstripes.png');
+  overflow: hidden;
+  @include breakpoint($bp--timeline-2col) {
+    height: calc(100vh - 55px - 62px);
+  }
+}
+
+.timeline-widget-dropdown--list-item {
+  @include arrow-box(em(10px), $color--white, em(1px), $color--gray--light--mid, left, $arrow: false);
+  position: relative;
+  margin-bottom: em(14px);
+  padding: 0.5em;
+  color: $color--gray;
+  text-align: right;
+  &.active {
+    @include arrow-box(em(10px), $color--white, em(1px), $color--blue--dark, left);
+  }
+}
+
+
+%timeline-widget--dropdown--month {
+margin: 0.5em;
+  border: none;
+  color: $color--gray--light--mid;
+  text-align: center;
+  text-transform: uppercase;
+}
+.timeline-widget--dropdown--month {
+  @extend %timeline-widget--dropdown--month;
+}
+
+.timeline-widget--dropdown--end-of-line {
+  @extend %timeline-widget--dropdown--month;
+}
+
+.timeline-widget--frames {
+  ul {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .timeline-widget-item {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+}
+
+.timeline-widget {
+  position: relative;
+  margin: 0 auto;
+  font-family: $font--futura;
+}
+
+.timeline-widget--controls {
+  position: relative;
+
+  .next,
+  .prev {
+    position: absolute;
+    top: em(65px);
+    padding: 0;
+    border: none;
+    background: $color--white;
+    z-index: 10;
+
+    @include breakpoint($bp--timeline-2col) {
+      top: em(260px);
+      width: em(50px);
+      height: em(50px);
+    }
+
+    &.disabled {
+      display: none;
+    }
+    @include breakpoint($bp--timeline-2col) {
+      display: none;
+    }
+  }
+
+  .next {
+    right: 0;
+
+    .arrow {
+      @include arrow($color--gray--lightish, right, ms(1));
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      @include breakpoint($bp--timeline-2col) {
+        display: none;
+      }
+    }
+  }
+
+  .prev {
+    left: 0;
+
+    .arrow {
+      @include arrow($color--gray--lightish, left, ms(1));
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      @include breakpoint($bp--timeline-2col) {
+        display: none;
+      }
+    }
+  }
+
+  @include breakpoint($bp--timeline--navigation-buttons) {
+    .next {
+      right: em(-102px);
+    }
+
+    .prev {
+      left: em(-102px);
+    }
+  }
+}
+
+.timeline-widget-item--headline {
+  margin: 0 em(40px);
+
+  @include breakpoint($bp--timeline-2col) {
+    margin: 0;
+    font-size: ms(4);
+  }
+}
+
+.timeline-widget-item--header {
+  padding-top: 0.5em;
+}
+
+.timeline-widget-item--title {
+  @include padding-sides();
+  font-family: $font--futura;
+  font-size: ms(1);
+  font-weight: bold;
+  line-height: normal;
+  @include breakpoint($bp--timeline-2col) {
+    font-size: ms(4);
+  }
+}
+
+.timeline-widget-item--category {
+  @include inline-block;
+  position: relative;
+  color: $color--yellow;
+  font-size: ms(0);
+  text-transform: uppercase;
+
+  @include breakpoint($bp--timeline-2col) {
+    margin-right: 20px;
+    padding: em(6px) em(10px);
+    background: $color--yellow;
+    color: $color--white;
+  }
+
+  .arrow {
+    @include arrow($color--yellow, right, em(12px), em(37px));
+    display: none;
+    position: absolute;
+    top: 0;
+    right: em(-12px);
+
+    @include breakpoint($bp--timeline-2col) {
+      display: block;
+    }
+  }
+}
+
+.timeline-widget-item--date {
+  display: block;
+  color: $color--purple--dark;
+  font-size: ms(0);
+  font-weight: bold;
+  text-transform: uppercase;
+
+  @include breakpoint($bp--timeline-2col) {
+    @include inline-block;
+    font-size: ms(2);
+  }
+}
+
+.timeline-widget-item--content {
+  a {
+    font-weight: bold;
+    text-transform: none;
+  }
+
+  .btn {
+    @include phi-btn();
+  }
+
+  .timeline-widget-item--image {
+    background: $color--gray--light;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+
+    & > img {
+      margin: 0 auto;
+      max-height: 25rem;
+      width: auto;
+    }
+  }
+
+  .timeline-widget-item--image--icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: ms(0);
+
+    a {
+      border: none;
+      color: $color--white;
+      text-shadow: none;
+      text-transform: uppercase;
+      &.timeline-widget-item--image--view-more {
+        background: $color--yellow;
+      }
+
+      &.timeline-widget-item--image--country {
+        padding: 0 em(3px);
+        background: $color--blue--dark;
+      }
+    }
+  }
+
+  .timeline-widget-item--description {
+    @include padding-sides();
+    margin-top: $base-line-em;
+    color: $color--gray;
+    font-family: $font--skolar;
+    @include breakpoint($bp--timeline-2col) {
+      margin-top: $base-line-em * 1.5;
+    }
+    p {
+      display: none;
+      @include breakpoint($bp--timeline-2col) {
+        display: block;
+      }
+    }
+  }
+}
+
+.timeline-widget-pager {
+  position: relative;
+  width: 100%;
+  margin-top: em(40px);
+  padding-bottom: 10px;
+  background: image-url('pager-bk-img.png') repeat-x 0 em(14px);
+
+  ul {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline;
+    height: 100%;
+    float: left;
+  }
+}
+
+.timeline-widget-pager--item {
+  max-width: em(260px);
+  margin: 0 auto;
+}
+
+.timeline-widget-pager--item-content {
+  @include arrow-box(em(10px), $color--white, em(1px), $color--gray--lightish, up);
+  display: none;
+  margin: em(15px) em(5px) 0 em(5px);
+  padding: em(10px);
+  border: em(1px) solid $color--gray--lightish;
+  color: $color--gray;
+  text-align: center;
+  @include breakpoint($bp--timeline-2col) {
+    display: block;
+  }
+  .active & {
+    @include arrow-box(em(10px), $color--white, em(2px), $color--purple--dark, up);
+    color: $color--gray;
+  }
+}
+
+.timeline-widget-pager--current {
+  width: 100%;
+  margin: auto;
+  padding: em(10px);
+  border-top: em(1px) solid $color--white;
+  background: $color--gray--light;
+  font-size: ms(0);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.timeline-widget--dot {
+  @include border-radius(40px);
+  width: em(40px);
+  height: em(40px);
+  margin: 0 auto;
+  border: em(6px) solid $color--purple--light;
+  background: $color--purple;
+  color: $color--white;
+  font-weight: bold;
+  .active & {
+    border-color: $color--purple;
+    background: $color--purple--dark;
+  }
+  .timeline-widget--dot--date {
+    width: 30px;
+    margin: auto;
+    padding-top: 2px;
+    padding-right: 2px;
+    text-align: center;
+  }
+}

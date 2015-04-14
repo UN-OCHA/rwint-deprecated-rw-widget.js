@@ -1,0 +1,21 @@
+.tab-set--content {}
+
+.tab-set--body {
+  display: none;
+}
+
+.tab-set--tab {
+  display: none;
+  &:checked {
+    + label {}
+  }
+  @for $i from 1 through 10 {
+    &:nth-of-type(#{$i}):checked {
+      ~ .tab-set--content {
+        .tab-set--body:nth-of-type(#{$i}) {
+          display: block;
+        }
+      }
+    }
+  }
+}

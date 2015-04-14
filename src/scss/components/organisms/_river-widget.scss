@@ -1,0 +1,265 @@
+.widget-river-graph {
+  background: image-url('diagonal-pinstripes.png') repeat $color--white;
+  // layout
+  @include breakpoint($bp--river--two-cols) {
+    @include layout(7 3) {
+      .widget-river-graph--results--graph {
+        @include grid-span(1, 1);
+      }
+      .widget-river-graph--filters {
+        @include grid-span(1, 2);
+      }
+    }
+  }
+}
+
+.widget-river-graph--header {
+  @include fontsize-rem(ms(0));
+  position: relative;
+  margin: 0;
+  border-bottom: 1px solid $color--gray--lightish;
+  background-color: $color--gray--light;
+  .widget-river-graph--title {
+    @include fontsize-rem(ms(0));
+    display: inline-block;
+    margin: 0 0.25em 0 0;
+    padding: 0 0.5em 0 1em;
+    background-color: $color--blue--dark;
+    color: $color--white;
+    font-weight: bold;
+    line-height: unitless-convert(54px);
+    text-transform: uppercase;
+    vertical-align: top;
+  }
+}
+
+.widget-river-graph {
+  .selectricWrapper {
+    display: inline-block;
+    position: relative;
+    top: 9px;
+    border-top: 1px solid $color--gray--lightish;
+    border-bottom: 1px solid $color--gray--lightish;
+    background-color: $color--white;
+    p.label {
+      margin-bottom: 0;
+    }
+    .selectric {
+      background-color: $color--white;
+    }
+    .label {
+      color: $color--black;
+    }
+    .button {
+      color: $color--purple;
+    }
+  }
+  .selectricItems {
+    border-top: 1px solid $color--gray--lightish;
+  }
+}
+
+.widget-river-graph--results-tabs {
+  > li {
+    width: 100%;
+    padding: em(10px);
+    color: $color--white;
+    &:nth-child(1) {
+      background-color: $color--purple--dark;
+    }
+    &:nth-child(2) {
+      background-color: $color--blue--dark;
+    }
+    &:nth-child(3) {
+      background-color: $color--yellow--mid;
+    }
+    @include breakpoint($bp--river-unstack-tabs) {
+      width: 33.3%;
+      float: left;
+      text-align: center;
+    }
+    .widget-river-graph--results--number {
+      @include fontsize-rem(ms(4));
+      width: 33%;
+      float: left;
+      font-family: $font--futura;
+      font-weight: bold;
+      line-height: 1.3em;
+      vertical-align: middle;
+      @include breakpoint($bp--river-unstack-tabs) {
+        @include fontsize-rem(ms(9));
+        display: block;
+        width: auto;
+        float: none;
+        line-height: inherit;
+
+      }
+    }
+  }
+}
+
+.widget-river-graph--results--type {
+  display: inline-block;
+  position: relative;
+  width: 67%;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+  background-color: rgba($color--white, .2);
+  cursor: pointer;
+  font-family: $font--futura;
+  white-space: nowrap;
+  &:after {
+    @include arrow($color--white, right);
+    top: 12px;
+    right: 0.5rem;
+  }
+  @include breakpoint($bp--river-unstack-tabs) {
+    display: block;
+    width: auto;
+  }
+}
+
+
+
+.widget-river-graph--filters {
+//  @include transition-property(max-height, opacity);
+//  @include transition-duration($default-transition-duration);
+//  @include transition-timing-function($default-transition-function);
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 0;
+  background-color: $color--white;
+  opacity: 0;
+  overflow: hidden;
+  z-index: 100;
+  &.open {
+    max-height: 100em;
+    opacity: 1;
+    overflow: visible;
+  }
+  @include breakpoint($bp--river--two-cols) {
+    position: static;
+    height: auto;
+    max-height: 100em;
+    margin-bottom: $base-line-em;
+    opacity: 1;
+  }
+  .close {
+    @include transform(translateY(-50%));
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    float: right;
+    background: image-url('close.svg') no-repeat;
+    cursor: pointer;
+    @include breakpoint($bp--river--two-cols) {
+      display: none;
+    }
+  }
+  ul {
+    border-top: 1px solid $color--gray--light;
+  }
+  li {
+    a {
+      @include unset-background-links();
+      display: block;
+      position: relative;
+      padding: em(10px) em(20px);
+      border-bottom: 1px solid $color--gray--light;
+      background: none;
+      background-color: $color--white;
+      color: $color--blue--dark;
+      font-family: $font--futura;
+      &:hover {
+        background-color: $color--gray--light;
+      }
+      &:after {
+        @include arrow($color--purple, right);
+        top: 16px;
+        right: 0.5rem;
+      }
+    }
+  }
+}
+
+.widget-river-graph--filters--title {
+  @include fontsize-rem(ms(0));
+  position: relative;
+  margin: 0;
+  padding: 0.5em 2em;
+  background-color: $color--blue--dark;
+  color: $color--white;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  .results--item--reports & {
+    background-color: $color--purple--dark;
+  }
+  .results--item--maps & {
+    background-color: $color--blue--dark;
+  }
+  .results--item--jobs & {
+    background-color: $color--yellow--mid;
+  }
+}
+
+////////////////////////////////////////////
+.widget-river-graph--results {
+  @include breakpoint($bp--river-unstack-tabs) {
+    margin: 1rem;
+  }
+  .widget-river-graph--results--graph {
+    margin-bottom: $base-line-em;
+    border: 0.5rem solid $color--gray--lightish;
+    background-color: $color--gray--lightish;
+  }
+
+
+}
+
+.placeholder {
+  width: 100%;
+  background: $color--white;
+  .graph--heading {
+    @include fontsize-rem(ms(0));
+    margin-bottom: 0;
+    padding: 20px 0 0 30px;
+    color: $color--gray--dark;
+    font-family: $font--futura;
+    text-transform: uppercase;
+  }
+  .axis {
+    path, line {
+      stroke: $color--gray--lightish;
+    }
+  }
+  .tick{
+    text{
+      fill: $color--gray--light--mid;
+    }
+  }
+
+  svg {
+    width: 100%;
+    margin-bottom: em(20px);
+    background-color: $color--white;
+    text {
+      @include fontsize-rem(ms(-1));
+      font-family: $font--futura;
+    }
+    .graph-reports {
+      stroke: $color--blue--dark;
+    }
+    .graph-maps {
+      stroke: $color--yellow--mid;
+    }
+    .graph-jobs {
+      stroke: $color--purple--dark;
+    }
+  }
+}

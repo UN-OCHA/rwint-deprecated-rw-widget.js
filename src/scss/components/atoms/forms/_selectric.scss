@@ -1,0 +1,124 @@
+// Selectric styles.
+.selectricWrapper {
+  position: relative;
+  cursor: pointer;
+  font-family: $font--futura;
+}
+
+.selectric {
+  //  @include border-radius(em(2px));
+  position: relative;
+  background: $color--blue--dark;
+  color: $color--white;
+
+  .label {
+    display: block;
+    margin-right: em(14px);
+    padding: em(6px) em(12px);
+    color: $color--white;
+    font-size: ms(0);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .button {
+    display: block;
+    position: absolute;
+    top: 20%;
+    right: em(10px);
+    width: em(10px);
+    height: em(8px);
+    color: $color--white;
+    text-align: center;
+  }
+}
+
+.selectricOpen {
+  z-index: 9999;
+
+  .selectric {
+    background: $color--blue--dark;
+  }
+
+  .selectricItems {
+    display: block;
+  }
+}
+
+.selectricHideSelect {
+  position: relative;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+
+  select {
+    display: none;
+    position: absolute;
+    left: -100%;
+  }
+}
+
+.selectricInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.selectricTempShow {
+  display: block !important;
+  position: absolute !important;
+  visibility: hidden !important;
+}
+
+.selectricItems {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: $color--blue--dark;;
+  z-index: -1;
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-indent: 0.375rem;
+  }
+
+  li {
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+    color: $color--white;
+
+    &.selected {
+      background: $color--white;
+      color: $color--blue--dark;
+    }
+
+    &:hover {
+      background: $color--white;
+      color: $color--blue--dark;
+    }
+  }
+
+  .selectricScroll {
+    height: 100%;
+    overflow: auto;
+  }
+}
+
+.selectricAbove .selectricItems {
+  top: auto;
+  bottom: 100%;
+}

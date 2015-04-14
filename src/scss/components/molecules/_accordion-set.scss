@@ -1,0 +1,31 @@
+.accordion-set--content {
+  @include single-transition(max-height, $default-transition-duration, $default-transition-function);
+  max-height: 0;
+  overflow: hidden;
+  &.is-active {
+    max-height: 100em;
+  }
+}
+.accordion-set--check {
+  display: none;
+}
+.accordion-set--label {
+  display: block;
+}
+
+// Visual styles
+.accordion-set--label {
+  position: relative;
+  &:before {
+    @include single-transition(transform, $default-transition-duration, $default-transition-function);
+    @include transform(rotate(0deg));
+    @include arrow($color--purple);
+    top: 1em;
+    left: 0.5em;
+  }
+  &.is-active {
+    &:before {
+      @include transform(rotate(90deg));
+    }
+  }
+}

@@ -8,6 +8,15 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.initConfig({
+    compass: {
+      build: {
+        options: {
+          config: "compass.rb",
+          bundleExec: true,
+          sourcemap: true
+        }
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -86,7 +95,7 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('lint', ['jshint:all']);
-  grunt.registerTask('build', ['browserify:dist', 'uglify:dist']);
+  grunt.registerTask('build', ['browserify:dist', 'uglify:dist', 'compass']);
   grunt.registerTask('serve', ['copy:base', 'connect:standalone']);
   grunt.registerTask('default', ['build', 'copy:base', 'connect:watch', 'watch:dist']);
 };
