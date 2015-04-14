@@ -532,7 +532,7 @@ FinancialWidget.prototype.link = function(elements) {
 
       var icon = getClusterIcon(node.title);
       if (icon) {
-        $('.detail--text', $overlay).prepend("<img class='detail--icon' src='images/financial-icon--" + icon + ".svg' />");
+        $('.detail--text', $overlay).prepend("<img class='detail--icon' src='/images/financial-icon--" + icon + ".svg' />");
       }
 
       var $textContainer = $('.detail--text', $overlay);
