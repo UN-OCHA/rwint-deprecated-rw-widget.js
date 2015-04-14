@@ -4,7 +4,7 @@
  */
 /*! normalize.css v1.1.0 | MIT License | git.io/normalize */
 /*! normalize.css v1.1.0 | HTML5 Display Definitions | MIT License | git.io/normalize */
-/* line 9, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 9, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 article,
 aside,
 details,
@@ -20,7 +20,7 @@ summary {
   display: block;
 }
 
-/* line 26, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 26, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 audio,
 canvas,
 video {
@@ -29,19 +29,19 @@ video {
   *zoom: 1;
 }
 
-/* line 39, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 39, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 46, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
+/* line 46, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_html5.scss */
 [hidden] {
   display: none;
 }
 
 /*! normalize.css v1.1.0 | Base | MIT License | git.io/normalize */
-/* line 13, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
+/* line 13, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
 html {
   font-size: 100%;
   font-family: sans-serif;
@@ -49,7 +49,7 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-/* line 26, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
+/* line 26, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
 html,
 button,
 input,
@@ -58,101 +58,101 @@ textarea {
   font-family: sans-serif;
 }
 
-/* line 37, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
+/* line 37, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_base.scss */
 body {
   margin: 0;
 }
 
 /*! normalize.css v1.1.0 | Links | MIT License | git.io/normalize */
-/* line 9, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
+/* line 9, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
 a:focus {
   outline: thin dotted;
 }
 
-/* line 15, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
+/* line 15, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_links.scss */
 a:active,
 a:hover {
   outline: 0;
 }
 
 /*! normalize.css v1.1.0 | Typography | MIT License | git.io/normalize */
-/* line 13, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 13, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-/* line 19, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 19, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h2 {
   font-size: 1.5em;
   margin: 0.83em 0;
 }
 
-/* line 24, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 24, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
 
-/* line 29, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 29, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h4 {
   font-size: 1em;
   margin: 1.33em 0;
 }
 
-/* line 34, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 34, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h5 {
   font-size: 0.83em;
   margin: 1.67em 0;
 }
 
-/* line 39, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 39, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 h6 {
   font-size: 0.67em;
   margin: 2.33em 0;
 }
 
-/* line 47, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 47, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
-/* line 53, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 53, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 b,
 strong {
   font-weight: bold;
 }
 
-/* line 59, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 59, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 blockquote {
   margin: 1em 40px;
 }
 
-/* line 66, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 66, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 dfn {
   font-style: italic;
 }
 
-/* line 73, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 73, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 hr {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0;
 }
 
-/* line 81, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 81, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 mark {
   background: #ff0;
   color: #000;
 }
 
-/* line 89, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 89, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 p,
 pre {
   margin: 1em 0;
 }
 
-/* line 97, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 97, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 code,
 kbd,
 pre,
@@ -162,36 +162,36 @@ samp {
   font-size: 1em;
 }
 
-/* line 110, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 110, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* line 118, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 118, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
-/* line 127, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 127, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 q {
   quotes: none;
 }
 
-/* line 131, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 131, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 q:before,
 q:after {
   content: '';
   content: none;
 }
 
-/* line 140, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 140, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 small {
   font-size: 80%;
 }
 
-/* line 146, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 146, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 sub,
 sup {
   font-size: 75%;
@@ -200,17 +200,17 @@ sup {
   vertical-align: baseline;
 }
 
-/* line 154, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 154, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 158, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
+/* line 158, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_typography.scss */
 sub {
   bottom: -0.25em;
 }
 
-/* line 8, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 8, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 dl,
 menu,
 ol,
@@ -218,19 +218,19 @@ ul {
   margin: 1em 0;
 }
 
-/* line 15, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 15, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 dd {
   margin: 0 0 0 40px;
 }
 
-/* line 21, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 21, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 menu,
 ol,
 ul {
   padding: 0 0 0 40px;
 }
 
-/* line 29, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
+/* line 29, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_lists.scss */
 nav ul,
 nav ol {
   list-style: none;
@@ -238,37 +238,37 @@ nav ol {
 }
 
 /*! normalize.css v1.1.0 | Embedded Content | MIT License | git.io/normalize */
-/* line 9, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
+/* line 9, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
 }
 
-/* line 18, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
+/* line 18, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_embeds.scss */
 svg:not(:root) {
   overflow: hidden;
 }
 
 /*! normalize.css v1.1.0 | Figures | MIT License | git.io/normalize */
-/* line 9, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_figures.scss */
+/* line 9, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_figures.scss */
 figure {
   margin: 0;
 }
 
 /*! normalize.css v1.1.0 | Forms | MIT License | git.io/normalize */
-/* line 10, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 10, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 form {
   margin: 0;
 }
 
-/* line 17, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 17, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
 
-/* line 30, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 30, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 legend {
   border: 0;
   padding: 0;
@@ -276,7 +276,7 @@ legend {
   *margin-left: -7px;
 }
 
-/* line 46, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 46, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 input,
 select,
@@ -288,19 +288,19 @@ textarea {
   *vertical-align: middle;
 }
 
-/* line 62, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 62, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 input {
   line-height: normal;
 }
 
-/* line 72, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 72, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 select {
   text-transform: none;
 }
 
-/* line 87, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 87, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -310,13 +310,13 @@ input[type="submit"] {
   *overflow: visible;
 }
 
-/* line 100, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 100, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button[disabled],
 html input[disabled] {
   cursor: default;
 }
 
-/* line 112, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 112, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 input[type="checkbox"],
 input[type="radio"] {
   box-sizing: border-box;
@@ -325,7 +325,7 @@ input[type="radio"] {
   *width: 13px;
 }
 
-/* line 126, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 126, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
@@ -333,27 +333,27 @@ input[type="search"] {
   box-sizing: content-box;
 }
 
-/* line 136, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 136, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-/* line 143, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 143, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 152, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
+/* line 152, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_forms.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
 /*! normalize.css v1.1.0 | Tables | MIT License | git.io/normalize */
-/* line 9, ../../gems/ruby/2.0.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_tables.scss */
+/* line 9, ../../gems/ruby/2.2.0/gems/compass-normalize-1.4.3/stylesheets/normalize/_tables.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -544,19 +544,19 @@ a {
 a:focus {
   outline: none;
 }
-/* line 18, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:visited {
   color: #6c9acd;
 }
-/* line 21, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:focus {
   color: #375573;
 }
-/* line 24, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:hover {
   color: #375573;
 }
-/* line 27, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 a:active {
   color: #6c9acd;
 }
@@ -681,7 +681,7 @@ a:active {
  * 2. The use of `table` rather than `block` is only necessary if using
  *    `:before` to contain the top-margins of child elements.
  */
-/* line 13, ../../gems/ruby/2.0.0/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
+/* line 13, ../../gems/ruby/2.2.0/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
 .clearfix:after {
   content: "";
   display: table;
@@ -867,7 +867,7 @@ button {
 /*
  * Documentation: https://github.com/Team-Sass/Singularity/wiki
  */
-/* line 13, ../../gems/ruby/2.0.0/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
+/* line 13, ../../gems/ruby/2.2.0/gems/toolkit-2.9.0/stylesheets/toolkit/_clearfix.scss */
 [class*="grid-container--"]:after {
   content: "";
   display: table;
@@ -1321,19 +1321,19 @@ button {
   text-shadow: none;
   background-image: none;
 }
-/* line 18, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:visited {
   color: white;
 }
-/* line 21, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:focus {
   color: white;
 }
-/* line 24, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:hover {
   color: white;
 }
-/* line 27, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn:active {
   color: white;
 }
@@ -1397,19 +1397,19 @@ button {
   text-shadow: none;
   background-image: none;
 }
-/* line 18, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 18, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:visited {
   color: black;
 }
-/* line 21, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 21, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:focus {
   color: black;
 }
-/* line 24, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 24, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:hover {
   color: black;
 }
-/* line 27, ../../gems/ruby/2.0.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
+/* line 27, ../../gems/ruby/2.2.0/gems/compass-core-1.1.0.alpha.3/stylesheets/compass/typography/links/_link-colors.scss */
 .btn--light:active {
   color: black;
 }
@@ -3444,79 +3444,121 @@ input[type="search"] {
   margin-bottom: 24px;
   padding: 1em 0 1em 0.5em;
   background-color: white;
+  position: relative;
 }
-/* line 208, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 209, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .axis .domain {
   fill: none;
   stroke: #cccccc;
 }
-/* line 212, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 213, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .axis line {
   stroke: #cccccc;
 }
-/* line 217, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 218, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .grid line {
   stroke: #cccccc;
 }
-/* line 221, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 222, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles text {
   font-family: "futura-pt", Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
-/* line 225, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 226, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .scale-line {
   stroke: #cccccc;
 }
-/* line 228, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 229, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .scale-line--percent {
   fill: #a993e1;
 }
-/* line 232, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 233, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble text {
   fill: white;
 }
-/* line 235, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 236, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble circle {
   fill: #a993e1;
 }
-/* line 239, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 240, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles .cluster-bubble.small text {
   fill: #665695;
 }
-/* line 244, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 245, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay {
-  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-/* line 246, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 251, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--block {
-  fill: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
-/* line 249, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 259, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--icon {
-  fill: white;
+  width: 25%;
 }
-/* line 252, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 262, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--info {
-  fill: #a993e1;
-  stroke: #665695;
+  background: #a993e1;
+  border: 5px solid #665695;
+  border-radius: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  box-sizing: border-box;
+  padding: 3em;
+  text-align: center;
 }
-/* line 256, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 277, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--text {
-  font-size: 20px;
+  font-size: 16px;
   fill: white;
+  color: white;
+  text-align: center;
+  font-family: "futura-pt", Helvetica, Arial, sans-serif;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
-/* line 260, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 290, ../../src/scss/components/organisms/_financial-widget.scss */
 #finance-bubbles #detail-overlay .detail--title {
   font-size: 20px;
+  background: none;
+  border: none;
+  text-align: center;
 }
 @media (min-width: 42.5em) {
-  /* line 264, ../../src/scss/components/organisms/_financial-widget.scss */
+  /* line 297, ../../src/scss/components/organisms/_financial-widget.scss */
   #finance-bubbles #detail-overlay .detail--title {
     font-size: 24px;
   }
 }
+/* line 301, ../../src/scss/components/organisms/_financial-widget.scss */
+#finance-bubbles #detail-overlay .detail--click {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: all;
+}
 
-/* line 273, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 314, ../../src/scss/components/organisms/_financial-widget.scss */
 .financial-widget footer {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -3524,13 +3566,13 @@ input[type="search"] {
   background-color: white;
   align-self: flex-end;
 }
-/* line 278, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 319, ../../src/scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore {
   position: relative;
   margin-bottom: 0.75em;
   background-color: #a993e1;
 }
-/* line 282, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 323, ../../src/scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore a {
   text-decoration: none;
   text-shadow: none;
@@ -3557,7 +3599,7 @@ input[type="search"] {
   text-shadow: none;
   background-image: none;
 }
-/* line 286, ../../src/scss/components/organisms/_financial-widget.scss */
+/* line 327, ../../src/scss/components/organisms/_financial-widget.scss */
 .financial-widget footer.financial-widget--explore:after {
   display: block;
   position: absolute;

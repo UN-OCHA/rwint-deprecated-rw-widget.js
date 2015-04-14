@@ -204,6 +204,7 @@
   margin-bottom: $base-line-px;
   padding: 1em 0 1em 0.5em;
   background-color: $color--white;
+  position: relative;
   .axis {
     .domain {
       fill: none;
@@ -242,28 +243,68 @@
     }
   }
   #detail-overlay {
-    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     .detail--block {
-      fill: rgba($color--white, 0.8);
+      background: rgba($color--white, 0.8);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
     .detail--icon {
-      fill: $color--white;
+      width: 25%;
     }
     .detail--info {
-      fill: $color--purple;
-      stroke: $color--purple--dark;
+      background: $color--purple;
+      border: 5px solid $color--purple--dark;
+      border-radius: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      box-sizing: border-box;
+      padding: 3em;
+      text-align: center;
     }
     .detail--text {
-      font-size: ms(1);
+      font-size: 16px;
       fill: $color--white;
+      color: $color--white;
+      text-align: center;
+      font-family: $font--futura;
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
     }
     .detail--title {
       font-size: ms(1.75);
+      background: none;
+      border: none;
+      text-align: center;
     }
     @include breakpoint($bp--financial--wide-chart) {
       .detail--title {
         font-size: ms(2);
       }
+    }
+    .detail--click {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      pointer-events: all;
     }
   }
 }
