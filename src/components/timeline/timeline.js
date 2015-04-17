@@ -240,11 +240,14 @@ TimelineWidget.prototype.link = function(elements) {
     }).init();
 
     // Fix for scrolling in iframe. The height of the container is set to 0 initially.
-    setTimeout(function() {
-      var $dropDownItem = $('.timeline-widget-dropdown--list-item[data-rw-id="' + timelineState.activeId + '"]');
-      if ($dropDownItem) {
-        var $dropDownPos = $slyDropdown.getPos($dropDownItem);
-        $slyDropdown.slideTo($dropDownPos.center);
+    var iFrameHeight = setInterval(function() {
+      if ($('body').height() > 10) {
+        clearInterval(iFrameHeight);
+        var $dropDownItem = $('.timeline-widget-dropdown--list-item[data-rw-id="' + timelineState.activeId + '"]');
+        if ($dropDownItem) {
+          var $dropDownPos = $slyDropdown.getPos($dropDownItem);
+          $slyDropdown.slideTo($dropDownPos.center);
+        }
       }
     }, 750);
 
