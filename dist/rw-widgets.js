@@ -1334,7 +1334,8 @@ TimelineWidget.prototype.link = function(elements) {
     var now = (date) ? date : moment(),
         closestId,
         closestIndexDistance,
-        wrongMonthPenalty = 60 * 60 * 24 * 64; // 64 days offset unix time.
+        // 64 day offset in unix time = 60 * 60 * 24 * 64
+        wrongMonthPenalty = 5529600;
 
     timelineDataStore.content.forEach(function(val, key) {
       var itemTime = moment(val['date-full'], 'DD MMM YYYY'),
