@@ -1328,17 +1328,24 @@ TimelineWidget.prototype.link = function(elements) {
     $slyDropdown;
 
   // Open links in a new tab.
-  $('.timeline-widget-frames li a').attr('target', '_blank');
+  $('.timeline-widget-frames li a', $element).attr('target', '_blank');
 
   function findClosestTimelineContent(date) {
-    var now = (date) ? date.unix() : moment().unix();
-    var closestId;
-    var closestIndexDistance;
+    var now = (date) ? date : moment(),
+        closestId,
+        closestIndexDistance,
+        wrongMonthPenalty = 60 * 60 * 24 * 64; // 64 days offset unix time.
 
     timelineDataStore.content.forEach(function(val, key) {
-      var itemTime = moment(val['date-full'], 'DD MMM YYYY').unix();
-      if (closestIndexDistance === undefined || Math.abs(now - itemTime) < closestIndexDistance) {
-        closestIndexDistance = Math.abs(now - itemTime);
+      var itemTime = moment(val['date-full'], 'DD MMM YYYY'),
+          itemDistance = Math.abs(now.unix() - itemTime.unix());
+
+      if (now.month() !== itemTime.month()) {
+        itemDistance += wrongMonthPenalty;
+      }
+
+      if (closestIndexDistance === undefined || itemDistance < closestIndexDistance) {
+        closestIndexDistance = Math.abs(now.unix() - itemTime.unix());
         closestId = val.id;
       }
     });
