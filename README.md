@@ -8,6 +8,11 @@
 - [bower](http://bower.io/) - For client-side package management
 - [grunt](http://gruntjs.com/) - For automation
 - [browserify](http://browserify.org/) - For bundling various src files into a single distribution
+- [compass](http://compass-style.org/) - For compiling SCSS into css styles.
+
+## Dependencies
+
+- [Beat Blocks](https://github.com/phase2/beat-blocks)
 
 ## Install
 
@@ -57,8 +62,16 @@ At their core, a widget is a template file and a simple javascript object.
 
 - .template() - The actual rendering method for a widget. By default, widgets use Handlebars.js for templating purposes.
 
-## Creating a new widget
+## Differences between Beat-Blocks and Reliefweb Widgets
 
-The rw-widget library allows for developers to create additional widgets that can be registered to the library.
-Check the exapmle/custom-widget.html file for an example of how to define a custom widget.
+Much of the development process with ReliefWeb Widgets is very similar to [Beat-Blocks](https://github.com/phase2/beat-blocks) component development.
+However, there are a few things that we do in this codebase in an attempt to improve on the developer experience and make
+deployments easier within the ReliefWeb Crisis Page ecosystem.
 
+- We use [Browserify](http://browserify.org/) to bundle our various pieces of javascript together into a single js file
+that's usable in the browser. This allows us to write code that can be broken up into individual files.
+- Templates are [pre-compiled](http://handlebarsjs.com/precompilation.html) and embedded into the widget directly via 
+`require()` statements.
+- Examples for each widget are set up in the example folder of the repository to facilitate an isolated and simplified 
+development workflow.
+- Widget styling is compiled from `src/scss`. This can be kicked off via the `grunt build` task.
