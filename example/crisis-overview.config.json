@@ -5,6 +5,9 @@
     "src": "img/overview-map.jpg",
     "alt": "Syria/Iraq"
   },
+  "environment": {
+
+  },
   "content": {
     "syria": {
       "title": "Syria",

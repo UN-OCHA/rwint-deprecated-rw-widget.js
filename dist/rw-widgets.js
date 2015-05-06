@@ -1346,7 +1346,7 @@ TimelineWidget.prototype.link = function(elements) {
       }
 
       if (closestIndexDistance === undefined || itemDistance < closestIndexDistance) {
-        closestIndexDistance = Math.abs(now.unix() - itemTime.unix());
+        closestIndexDistance = itemDistance;
         closestId = val.id;
       }
     });
