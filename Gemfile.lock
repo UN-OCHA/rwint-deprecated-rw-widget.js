@@ -19,7 +19,7 @@ GEM
       sass (>= 3.2, < 3.5)
     compass-normalize (1.4.3)
       compass (>= 0.12.0)
-    ffi (1.9.8)
+    ffi (1.12.1)
     json (1.8.2)
     modular-scale (2.0.6)
       compass (>= 0.12.0)
